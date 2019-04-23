@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="古典密码 特征 对称加密 （substitution）替换性 （特定取代） （transposition） 置换性（位置变化）    monographic cipher单图密码Monoalphabetic单表密码基于替代原则（substitution）。以下密码都是基于单表替代原则。 凯撒加密（Caesar）略 关键字加密（Keyword） 加密过程 关键字去重（“success”-&amp;gt; “">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学基础笔记">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/密码学基础笔记/index.html">
+<meta property="og:site_name" content="CH4SER&#39;ZONE">
+<meta property="og:description" content="古典密码 特征 对称加密 （substitution）替换性 （特定取代） （transposition） 置换性（位置变化）    monographic cipher单图密码Monoalphabetic单表密码基于替代原则（substitution）。以下密码都是基于单表替代原则。 凯撒加密（Caesar）略 关键字加密（Keyword） 加密过程 关键字去重（“success”-&amp;gt; “">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286120-ff674280-53c9-11e9-8579-dce4bee74ecd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286104-c9c25980-53c9-11e9-9ee8-17766ae696f9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286128-20c82e80-53ca-11e9-9a2f-77aca93458fe.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286132-32113b00-53ca-11e9-92f8-bfb49ecfcdb1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286184-7997c700-53ca-11e9-9a6f-2b206b2cb27a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286220-5d485a00-53cb-11e9-9b2b-c5ba6fc2a5b4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286235-85d05400-53cb-11e9-829a-8e83ffc6c92d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286243-a4cee600-53cb-11e9-9664-1804206befe5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286255-d8117500-53cb-11e9-8533-bd7daef6a809.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286262-f5464380-53cb-11e9-962c-2f0172bb8fe8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286264-fd05e800-53cb-11e9-9874-02f49f420359.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286275-1a3ab680-53cc-11e9-86f4-d6608ae82673.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286438-9c2bdf00-53ce-11e9-9222-9e591f3cc39d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286441-a8b03780-53ce-11e9-937d-441ed7451eb8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286444-bfef2500-53ce-11e9-8405-2e7f372bf81f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286461-d2695e80-53ce-11e9-99a0-9789274793a1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55286468-d39a8b80-53ce-11e9-833c-69ff2755d11b.png">
+<meta property="og:updated_time" content="2019-04-23T03:33:55.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="密码学基础笔记">
+<meta name="twitter:description" content="古典密码 特征 对称加密 （substitution）替换性 （特定取代） （transposition） 置换性（位置变化）    monographic cipher单图密码Monoalphabetic单表密码基于替代原则（substitution）。以下密码都是基于单表替代原则。 凯撒加密（Caesar）略 关键字加密（Keyword） 加密过程 关键字去重（“success”-&amp;gt; “">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/55286120-ff674280-53c9-11e9-8579-dce4bee74ecd.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/23/密码学基础笔记/">
+
+
+
+
+
+  <title>密码学基础笔记 | CH4SER'ZONE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER'ZONE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The quieter you become, the more you are able to hear</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/密码学基础笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/40637063.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER'ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">密码学基础笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-23T02:48:49+00:00">
+                2019-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/闲来无事/" itemprop="url" rel="index">
+                    <span itemprop="name">闲来无事</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><ul>
+<li>特征<ul>
+<li>对称加密</li>
+<li>（substitution）替换性 （特定取代）</li>
+<li>（transposition） 置换性（位置变化）</li>
+</ul>
+</li>
+</ul>
+<h2 id="monographic-cipher单图密码"><a href="#monographic-cipher单图密码" class="headerlink" title="monographic cipher单图密码"></a>monographic cipher单图密码</h2><h3 id="Monoalphabetic单表密码"><a href="#Monoalphabetic单表密码" class="headerlink" title="Monoalphabetic单表密码"></a>Monoalphabetic单表密码</h3><p>基于替代原则（substitution）。以下密码都是基于单表替代原则。</p>
+<h4 id="凯撒加密（Caesar）"><a href="#凯撒加密（Caesar）" class="headerlink" title="凯撒加密（Caesar）"></a>凯撒加密（Caesar）</h4><p>略</p>
+<h4 id="关键字加密（Keyword）"><a href="#关键字加密（Keyword）" class="headerlink" title="关键字加密（Keyword）"></a>关键字加密（Keyword）</h4><ul>
+<li>加密过程<ul>
+<li>关键字去重（“success”-&gt; “suces”）</li>
+<li>先列出关键字，然后按照字母表顺序将剩下的字母按顺序排列，组成新的字母表</li>
+<li>按照对应关系一一加密<ul>
+<li>破解方法</li>
+<li>频率分析：字母频率分析（ETAONIRSHDLUCMPFYWGBVJKQXZ）字母组合频率分析<h4 id="仿射密码（Affine）"><a href="#仿射密码（Affine）" class="headerlink" title="仿射密码（Affine）"></a>仿射密码（Affine）</h4></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>加密过程<ul>
+<li>为每一个字母分配一个数字(0-25)</li>
+<li>在0到25之间选择两个数字a和b，要求a和26是互素的（欧几里得除法）</li>
+<li>c = ap +b其中p是明文字母，c是密文字母。</li>
+</ul>
+</li>
+<li>解密<ul>
+<li>p=a的逆元*(c-b) mod 26</li>
+</ul>
+</li>
+<li>破解<ul>
+<li>字母频率分析</li>
+<li>列出二元一次方程并求解</li>
+</ul>
+</li>
+</ul>
+<h3 id="Polyalphabetic-Cipher-多表密码"><a href="#Polyalphabetic-Cipher-多表密码" class="headerlink" title="Polyalphabetic Cipher 多表密码"></a>Polyalphabetic Cipher 多表密码</h3><p>基于替代原则，但是每一个字母可以被加密为不同的密文，每一个密文可以代表不同的明文字母。以下密码都是基于多表替代原则。</p>
+<h4 id="维吉尼亚密码Vigenere-cipher"><a href="#维吉尼亚密码Vigenere-cipher" class="headerlink" title="维吉尼亚密码Vigenere cipher"></a>维吉尼亚密码Vigenere cipher</h4><p>加密如图<br><img src="https://user-images.githubusercontent.com/40637063/55286120-ff674280-53c9-11e9-8579-dce4bee74ecd.png" alt></p>
+<p><img src="https://user-images.githubusercontent.com/40637063/55286104-c9c25980-53c9-11e9-9ee8-17766ae696f9.png" alt></p>
+<ul>
+<li><p>破解方法</p>
+<ul>
+<li>同样明文，同样关键字，加密的密文必定相同，通过分析相同密文串之间的长度，取最大公约数可知可能的关键词长度。</li>
+</ul>
+</li>
+<li>弱点：密钥长度小，重复加密</li>
+</ul>
+<h4 id="自动密钥加密Autokey-ciphertext"><a href="#自动密钥加密Autokey-ciphertext" class="headerlink" title="自动密钥加密Autokey ciphertext"></a>自动密钥加密Autokey ciphertext</h4><ul>
+<li><p>加密方法</p>
+<ul>
+<li>使用前一段明文加密后的密文作为这一段明文加密用的密钥，如图<br><img src="https://user-images.githubusercontent.com/40637063/55286128-20c82e80-53ca-11e9-9a2f-77aca93458fe.png" alt></li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>加密解密过程中的任何过失都会下剩下的过程中传播</li>
+<li>可以在不知道密钥的情况下使用密文密钥来破解，如图<br><img src="https://user-images.githubusercontent.com/40637063/55286132-32113b00-53ca-11e9-92f8-bfb49ecfcdb1.png" alt></li>
+</ul>
+</li>
+<li><p>改进</p>
+<ul>
+<li>使用明文作为下一段加密的密钥<h4 id="转轮密码Rotor"><a href="#转轮密码Rotor" class="headerlink" title="转轮密码Rotor"></a>转轮密码Rotor</h4></li>
+</ul>
+</li>
+<li><p>加密方法</p>
+<ul>
+<li>轮子，如图<br><img src="https://user-images.githubusercontent.com/40637063/55286184-7997c700-53ca-11e9-9a6f-2b206b2cb27a.png" alt></li>
+</ul>
+</li>
+<li><p>解密方法</p>
+<ul>
+<li>用相同但是反向排列的轮子<blockquote>
+<p>总结：以上密码都可以归结到单图密码(monographic cipher)下，其特征为：每次加密过程只对明文中的单个字母进行加密操作。不同于上述密码，多图密码(polygraphic cipher)每次会对多个字符同时进行加密。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="polygraphic-cipher-多图密码"><a href="#polygraphic-cipher-多图密码" class="headerlink" title="polygraphic cipher 多图密码"></a>polygraphic cipher 多图密码</h2><h4 id="digraphic-cipher"><a href="#digraphic-cipher" class="headerlink" title="digraphic cipher"></a>digraphic cipher</h4><ul>
+<li>加密<ul>
+<li>每次用两个字母替换两个字母</li>
+</ul>
+</li>
+</ul>
+<h4 id="playfair-cipher"><a href="#playfair-cipher" class="headerlink" title="playfair cipher"></a>playfair cipher</h4><ul>
+<li>加密<ul>
+<li>选取关键字</li>
+<li>先写关键字，字母表中剩下的字母（除了j）按顺序排列。所有字母组成5x5的矩阵。</li>
+<li>按照以下规则进行加密前的预处理：<ul>
+<li>j被替换成i</li>
+<li>同样字母之间插入特定字符</li>
+<li>奇数个数字符的字符串添加一个特定字符</li>
+</ul>
+</li>
+<li>按照以下加密规则加密：<ul>
+<li>两个字母同行，两个都分别替换成他们右边的字母</li>
+<li>两个字母同列，两个都分别替换成他们下面的字母</li>
+<li>不同行不同列，替换成以那两个字母的连线为对角线的矩阵的另外一条对角线两端的字母</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>破解：<ul>
+<li>probable word attack(可能词攻击)基于已知明文攻击（known-plaintext attack）</li>
+<li>检验规则：<ul>
+<li>明文和密文的对应字符不可能相同</li>
+<li>er和re都会被相同但排列不同的字符对替代</li>
+<li>是否能组成矩阵</li>
+</ul>
+</li>
+<li>每次移动两个字符</li>
+</ul>
+</li>
+<li><p>特征：</p>
+<ul>
+<li>每一个字符只能被5个其他字符替代（同行的4个和下面的一个）</li>
+<li>密文中不可能出现连续两个相同字母<h4 id="double-playfair-cipher"><a href="#double-playfair-cipher" class="headerlink" title="double playfair cipher"></a>double playfair cipher</h4></li>
+</ul>
+</li>
+<li><p>加密：</p>
+<ul>
+<li>两个关键字，两个矩阵</li>
+<li>规定明文周期，然后形成n行周期列的矩阵，如果不足就先等分，中间用低频字符来填充（?），如果是奇数字符就添加一个低频字符</li>
+<li>同行的，字符都在各自的矩阵中往右边移动一位，然后交换到对方矩阵中，进行下一次加密，再交换到对方矩阵中，密文为第一个矩阵中的对应字符和第二个矩阵中的对应字符</li>
+<li>同列的向下移动一位，其他和同行的规则一样</li>
+<li>不同行不同列的，把两个矩阵拼接在一起之后矩阵交换，然后字符交换，然后再次矩阵交换，再次字符交换，得到最终密文</li>
+</ul>
+</li>
+<li>和playfair的区别<ul>
+<li>sr和rs不一定会有同样的相反密文串</li>
+<li>连续字母可以不添加低频字母就可以加密</li>
+<li>连续两个相同字母可以出现在密文中</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>总结：以上密码都是基于替代原则。接下来的密码是基于置换原则的。</p>
+</blockquote>
+<h2 id="置换密码permutation-cipher"><a href="#置换密码permutation-cipher" class="headerlink" title="置换密码permutation cipher"></a>置换密码permutation cipher</h2><ul>
+<li>加密<ul>
+<li>确定d 根据d来随机产生f。</li>
+<li>如图加密：<br><img src="https://user-images.githubusercontent.com/40637063/55286220-5d485a00-53cb-11e9-9b2b-c5ba6fc2a5b4.png" alt></li>
+</ul>
+</li>
+</ul>
+<h4 id="skytale（斯巴达人发明的密码）"><a href="#skytale（斯巴达人发明的密码）" class="headerlink" title="skytale（斯巴达人发明的密码）"></a>skytale（斯巴达人发明的密码）</h4><ul>
+<li>加密如图：<br><img src="https://user-images.githubusercontent.com/40637063/55286235-85d05400-53cb-11e9-829a-8e83ffc6c92d.png" alt></li>
+</ul>
+<h4 id="列置换密码Column-permutation-cipher"><a href="#列置换密码Column-permutation-cipher" class="headerlink" title="列置换密码Column permutation cipher"></a>列置换密码Column permutation cipher</h4><ul>
+<li><p>加密：</p>
+<ul>
+<li><p>选择一个字母，根据字母表顺序来编号，如图<br><img src="https://user-images.githubusercontent.com/40637063/55286243-a4cee600-53cb-11e9-9664-1804206befe5.png" alt></p>
+</li>
+<li><p>按照编号最大数字来划分并产生明文矩阵</p>
+</li>
+<li><p>根据编号来重新排列明文列，如图，注意：密文是一列一列写下来的<br><img src="https://user-images.githubusercontent.com/40637063/55286255-d8117500-53cb-11e9-8533-bd7daef6a809.png" alt></p>
+</li>
+</ul>
+</li>
+<li><p>破解方法：</p>
+<ul>
+<li>找到可能的矩阵规模<ul>
+<li>根据字符数量进行因式分解</li>
+</ul>
+</li>
+<li>选出正确的矩阵规模<ul>
+<li>对每一段密文来说，元音字母出现的频率应该大致在百分之40，因此，对于17x9的矩阵来说，每一行的元音字母数量应该保持在3.6左右（9x0.4）</li>
+<li>根据该规则找出最有可能的矩阵规模，统计方法如下图</li>
+<li>找出列序编号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/40637063/55286262-f5464380-53cb-11e9-962c-2f0172bb8fe8.png" alt></p>
+<p><img src="https://user-images.githubusercontent.com/40637063/55286264-fd05e800-53cb-11e9-9874-02f49f420359.png" alt></p>
+<ul>
+<li>特征：<ul>
+<li>对于英语来说，必有如下图所示的特征<br><img src="https://user-images.githubusercontent.com/40637063/55286275-1a3ab680-53cc-11e9-86f4-d6608ae82673.png" alt><br>因此，如图</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/40637063/55286438-9c2bdf00-53ce-11e9-9222-9e591f3cc39d.png" alt></p>
+<p>而且根据如图统计，选出最有可能的组合<br><img src="https://user-images.githubusercontent.com/40637063/55286441-a8b03780-53ce-11e9-937d-441ed7451eb8.png" alt><br><img src="https://user-images.githubusercontent.com/40637063/55286444-bfef2500-53ce-11e9-8405-2e7f372bf81f.png" alt></p>
+<p>将最有可能的组合插入未确认的列中看看哪里最合理</p>
+<h4 id="double-transposition-cipher"><a href="#double-transposition-cipher" class="headerlink" title="double transposition cipher"></a>double transposition cipher</h4><p>只不过是给了两个关键字，进行两次Column permutation加密。</p>
+<blockquote>
+<p>总结：<br><img src="https://user-images.githubusercontent.com/40637063/55286461-d2695e80-53ce-11e9-99a0-9789274793a1.png" alt><br><img src="https://user-images.githubusercontent.com/40637063/55286468-d39a8b80-53ce-11e9-833c-69ff2755d11b.png" alt></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/流量分析/" rel="next" title="流量分析">
+                <i class="fa fa-chevron-left"></i> 流量分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/40637063.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4_ser" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#古典密码"><span class="nav-number">1.</span> <span class="nav-text">古典密码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#monographic-cipher单图密码"><span class="nav-number">1.1.</span> <span class="nav-text">monographic cipher单图密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Monoalphabetic单表密码"><span class="nav-number">1.1.1.</span> <span class="nav-text">Monoalphabetic单表密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#凯撒加密（Caesar）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">凯撒加密（Caesar）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字加密（Keyword）"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">关键字加密（Keyword）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射密码（Affine）"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">仿射密码（Affine）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Polyalphabetic-Cipher-多表密码"><span class="nav-number">1.1.2.</span> <span class="nav-text">Polyalphabetic Cipher 多表密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#维吉尼亚密码Vigenere-cipher"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">维吉尼亚密码Vigenere cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动密钥加密Autokey-ciphertext"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">自动密钥加密Autokey ciphertext</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转轮密码Rotor"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">转轮密码Rotor</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polygraphic-cipher-多图密码"><span class="nav-number">1.2.</span> <span class="nav-text">polygraphic cipher 多图密码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#digraphic-cipher"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">digraphic cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#playfair-cipher"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">playfair cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#double-playfair-cipher"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">double playfair cipher</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#置换密码permutation-cipher"><span class="nav-number">1.3.</span> <span class="nav-text">置换密码permutation cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#skytale（斯巴达人发明的密码）"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">skytale（斯巴达人发明的密码）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列置换密码Column-permutation-cipher"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">列置换密码Column permutation cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#double-transposition-cipher"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">double transposition cipher</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

