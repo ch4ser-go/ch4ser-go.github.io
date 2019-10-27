@@ -83,22 +83,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2019/10/10/zx/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">同学,CTF了解一下?</span><br><span class="line"></span><br><span class="line">我们是东北大学信息安全团队——NEX， 在这几年比赛中获得全国大学生信息安全技能赛一等奖、SUCTF全国前十、强网杯&quot;强网先锋&quot;优胜奖等大型赛事奖项。从14年创立至今，已有2位学长保研清华，上交北航武大中科院等名校若干。</span><br><span class="line"></span><br><span class="line">而每一代的NEX队员，都无一例外地在CTF的赛场上实现了自我的蜕变。我们会因为一道题目而绞尽脑汁，挑灯夜战直至天明，也会因为灵感的迸发思维的拓宽而欣喜若狂。</span><br><span class="line"></span><br><span class="line">而我们的最终目标就是穷尽一切手段拿到象征着胜利的flag。</span><br><span class="line"></span><br><span class="line">薪火相承，生生不息，如今，我们即将面向全校18级和19级(不限专业不限学院)学生进行招新，如果你对技术怀揣着热情，想要迫切的理解计算机底层在发生什么(二进制)，又或者，这个纷繁的网络世界又在发生着什么(web)，再或者,想要在0和1组成的数学世界(密码学)中深入思考，哪怕是简简单单的&quot;想要想当一名黑客&quot;这样的简单信念，只要拥有一份对技术的热情和一颗不羁的心，我们都十分欢迎。那么现在，你的机会来了。</span><br><span class="line"></span><br><span class="line">10月20号（周日）晚7点，一号楼A407，希望在宣讲会上见到你。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>paper</title>
-    <url>/2019/10/09/paper/</url>
-    <content><![CDATA[<h1 id="习题wp"><a href="#习题wp" class="headerlink" title="习题wp"></a>习题wp</h1><h2 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h2><p><a href="http://101.71.29.6:10021" target="_blank" rel="noopener">http://101.71.29.6:10021</a></p>
-<p>注册admin%c%c发现用户名为admin但是没有用,进而判断uid为关键.</p>
-<p>将uid作为username,发现解密操作.</p>
-<p>注册用户6%c%c,将注册成功之后的username作为uid来访问,就可以成功成为admin.</p>
-<h2 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h2>]]></content>
-  </entry>
-  <entry>
     <title>bytectf2019[working]</title>
     <url>/2019/09/09/bytectf2019-working/</url>
     <content><![CDATA[<h2 id="boring-code"><a href="#boring-code" class="headerlink" title="boring code"></a>boring code</h2><p>source code</p>
