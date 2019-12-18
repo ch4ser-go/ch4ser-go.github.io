@@ -82,13 +82,13 @@
 
 
 
-<meta name="description" content="DC-2 靶机渗透复现不下去了来打打靶机，嘤嘤嘤~ 首先arp-scan -l 和nmap -A -p- 172.28.15.94 开路，参数A Enable OS detection, version detection, script scanning, and traceroute 。  然后访问http://dc-2 访问不了，于是在/etc/hosts 中添加dc-2    172.28">
+<meta name="description" content="DC-2 靶机渗透 复现不下去了来打打靶机，嘤嘤嘤~~~ 首先arp-scan -l 和nmap -A -p- 172.28.15.94 开路，参数A Enable OS detection, version detection, script scanning, and traceroute 。  然后访问http://dc-2 访问不了，于是在/etc/hosts 中添加 dc-2	172.2">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vulhub-DC-2">
 <meta property="og:url" content="http://yoursite.com/2019/05/23/Vulhub-DC-2/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="DC-2 靶机渗透复现不下去了来打打靶机，嘤嘤嘤~ 首先arp-scan -l 和nmap -A -p- 172.28.15.94 开路，参数A Enable OS detection, version detection, script scanning, and traceroute 。  然后访问http://dc-2 访问不了，于是在/etc/hosts 中添加dc-2    172.28">
+<meta property="og:description" content="DC-2 靶机渗透 复现不下去了来打打靶机，嘤嘤嘤~~~ 首先arp-scan -l 和nmap -A -p- 172.28.15.94 开路，参数A Enable OS detection, version detection, script scanning, and traceroute 。  然后访问http://dc-2 访问不了，于是在/etc/hosts 中添加 dc-2	172.2">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58260318-d00cfa80-7da8-11e9-8af5-c5fc585b160e.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58260265-bb306700-7da8-11e9-8270-83388ac493a0.png">
@@ -98,7 +98,7 @@
 <meta property="og:updated_time" content="2019-07-04T08:22:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vulhub-DC-2">
-<meta name="twitter:description" content="DC-2 靶机渗透复现不下去了来打打靶机，嘤嘤嘤~ 首先arp-scan -l 和nmap -A -p- 172.28.15.94 开路，参数A Enable OS detection, version detection, script scanning, and traceroute 。  然后访问http://dc-2 访问不了，于是在/etc/hosts 中添加dc-2    172.28">
+<meta name="twitter:description" content="DC-2 靶机渗透 复现不下去了来打打靶机，嘤嘤嘤~~~ 首先arp-scan -l 和nmap -A -p- 172.28.15.94 开路，参数A Enable OS detection, version detection, script scanning, and traceroute 。  然后访问http://dc-2 访问不了，于是在/etc/hosts 中添加 dc-2	172.2">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/58260318-d00cfa80-7da8-11e9-8af5-c5fc585b160e.png">
 
 
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  453
+                  451
                 </span>
               
 
@@ -426,22 +426,23 @@
       
 
       
-        <h2 id="DC-2-靶机渗透"><a href="#DC-2-靶机渗透" class="headerlink" title="DC-2 靶机渗透"></a>DC-2 靶机渗透</h2><p>复现不下去了来打打靶机，嘤嘤嘤<del>~</del></p>
+        <h2 id="DC-2-靶机渗透">DC-2 靶机渗透</h2>
+<p>复现不下去了来打打靶机，嘤嘤嘤~~~</p>
 <p>首先<code>arp-scan -l</code> 和<code>nmap -A -p- 172.28.15.94</code> 开路，参数A <code>Enable OS detection, version detection, script scanning, and traceroute</code> 。</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/58260318-d00cfa80-7da8-11e9-8af5-c5fc585b160e.png" alt="image"></p>
-<p>然后访问<code>http://dc-2</code> 访问不了，于是在<code>/etc/hosts</code> 中添加<code>dc-2    172.28.15.94</code> ，然后就可以访问了。</p>
+<p>然后访问<code>http://dc-2</code> 访问不了，于是在<code>/etc/hosts</code> 中添加<code> dc-2	172.28.15.94</code> ，然后就可以访问了。</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/58260265-bb306700-7da8-11e9-8270-83388ac493a0.png" alt="image"></p>
 <p>看到了第一个<code>flag</code> ，提示说让使用工具<code>cewl</code> 这是一个通过爬取网页内容来生成password的工具。</p>
 <p><code>cewl -w dc2_passwords.txt http://dc-2</code></p>
 <p>经过<code>wpscan</code> 扫描之后可以看到三个用户名<code>jerry</code> <code>admin</code> <code>tom</code> ，尝试使用<code>hydra</code> 来爆破。</p>
-<p><code>hydra -L dc-2_user.txt -P dc2_password.txt dc-2 http-form-post &#39;/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log In&amp;testcookie=1:S=Location&#39;</code></p>
+<p><code>hydra -L dc-2_user.txt -P dc2_password.txt dc-2 http-form-post '/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log In&amp;testcookie=1:S=Location'</code></p>
 <p>字符串里的东西以<code>:</code>为分隔符分成几个<code>hydra</code> 的参数，被<code>^</code> 包裹的是传参位置标志，S表示希望成功。</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/58261191-6ee62680-7daa-11e9-8751-388384b1be62.png" alt="image"></p>
 <p>发现了两个用户名的密码，然后在<code>/wp-login.php</code>下登录<code>jerry</code> 可以看到第二个flag。</p>
 <p>尝试<code>ssh jerry@dc-2 -p</code> 失败，但是可以用<code>tom</code> 进行登录，进去之后使用<code>cd</code> 和<code>ls</code> 就会弹出<code>rbash</code> 的提示。但是可以使用<code>vi</code>命令，进入<code>vim</code> 之后以他为媒介执行命令<code>set shell=/bin/sh</code>以及<code>shell</code> ，就可以来到<code>sh</code> 环境下，配置环境变量<code>export PATH=/usr/sbin/:/usr/bin:/sbin:/bin</code> 之后就可以正常执行命令了，可以获得<code>flag3</code> 了。</p>
 <p>最后就是提权了。</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/58263410-81625f00-7dae-11e9-9664-e58db889bbe1.png" alt="image"></p>
-<p>根据提示 <code>sudo -l</code>列出可以执行的<code>sudo</code>命令，但是失败了。。。尝试登陆<code>jerry</code> 账号成功并且拿到了<code>flag4.txt</code> 根据文件中最后的提示，执行一下<code>sudo -l</code> ，发现可以执行<code>git</code>命令，使用<code>sudo git help status</code> ，并在里面执行<code>!/bin/bash</code> ，这样就可以以<code>root</code>的权限来到bash了，提权成功。</p>
+<p>根据提示 <code>sudo -l</code>列出可以执行的<code>sudo </code>命令，但是失败了。。。尝试登陆<code>jerry</code> 账号成功并且拿到了<code>flag4.txt</code> 根据文件中最后的提示，执行一下<code>sudo -l</code> ，发现可以执行<code>git</code>命令，使用<code>sudo git help status</code> ，并在里面执行<code>!/bin/bash</code> ，这样就可以以<code>root</code>的权限来到bash了，提权成功。</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/58263823-56c4d600-7daf-11e9-9b25-bb2b26e63a8a.png" alt="image"></p>
 
       
@@ -558,7 +559,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -736,7 +737,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

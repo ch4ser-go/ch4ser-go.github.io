@@ -404,7 +404,7 @@
         <p>不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/69004994-4e141d80-0956-11ea-8a97-a946b681ac75.png" alt="image"></p>
 <p>很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对象, 但是如果将constructor实施的话, 就是产生一个拥有新货物的仓库, 也就是cat实例对象, 那么类又是什么概念? 就像是给仓库定下一个整理计划, 这个计划叫做constructor, 而这个计划还没有实施, 你说他是静态的仓库(对象)似乎不妥, 因为有计划的存在, 这个仓库是可变的, 这个状态可以变化的仓库就叫做类.</p>
-<p>当然这种比喻很牵强, 我也不知道合不合理, 也只是为了更好理解原型链污染而做的臆想… </p>
+<p>当然这种比喻很牵强, 我也不知道合不合理, 也只是为了更好理解原型链污染而做的臆想…</p>
 <p>然后对于p师傅博客中写道关于字典赋值proto无效的问题,实验了一下:</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/69007214-fc7b8b00-0975-11ea-9f53-bf96932750ea.png" alt="image"></p>
 <p>字典在创立的时候应该是先创立字典内的项然后将他们聚合起来, 那么在创立a的时候先创立的是a的原型, 然后再创立的a, 这也就解释了为什么bar传不到Object中去,而是传入了Object的下一级, 也就是a的原型</p>
@@ -441,6 +441,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/16/vscode-vmware-xdebug/" rel="prev" title="使用vscode和xdebug实现远程调试虚拟机中的php项目">
+                使用vscode和xdebug实现远程调试虚拟机中的php项目 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -672,7 +676,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

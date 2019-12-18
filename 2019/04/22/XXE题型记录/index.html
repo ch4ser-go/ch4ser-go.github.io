@@ -82,20 +82,20 @@
 
 
 
-<meta name="description" content="SecurinetsCTF-2019 feedback进入页面。然后随便发一点什么东西试一试： 而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml = &amp;ap">
+<meta name="description" content="SecurinetsCTF-2019 feedback 进入页面。 然后随便发一点什么东西试一试：  而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml =">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XXE 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/XXE题型记录/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="SecurinetsCTF-2019 feedback进入页面。然后随便发一点什么东西试一试： 而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml = &amp;ap">
+<meta property="og:description" content="SecurinetsCTF-2019 feedback 进入页面。 然后随便发一点什么东西试一试：  而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml =">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/54907916-ab6be200-4f21-11e9-9471-bff46378d15d.png">
 <meta property="og:updated_time" content="2019-12-15T09:57:40.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XXE 题型记录[working forever]">
-<meta name="twitter:description" content="SecurinetsCTF-2019 feedback进入页面。然后随便发一点什么东西试一试： 而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml = &amp;ap">
+<meta name="twitter:description" content="SecurinetsCTF-2019 feedback 进入页面。 然后随便发一点什么东西试一试：  而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml =">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png">
 
 
@@ -423,13 +423,17 @@
       
 
       
-        <h2 id="SecurinetsCTF-2019-feedback"><a href="#SecurinetsCTF-2019-feedback" class="headerlink" title="SecurinetsCTF-2019 feedback"></a>SecurinetsCTF-2019 feedback</h2><p>进入页面。<br>然后随便发一点什么东西试一试：<br><img src="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png" alt></p>
+        <h2 id="SecurinetsCTF-2019-feedback">SecurinetsCTF-2019 feedback</h2>
+<p>进入页面。<br>
+然后随便发一点什么东西试一试：<br>
+<img src="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png" alt></p>
 <p>而且在网页的源代码中可以在<code>&lt;head&gt;</code>中找到以下脚本：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function func()&#123;</span><br><span class="line">    var xml = &apos;&apos; +</span><br><span class="line">        &apos;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&apos; +</span><br><span class="line">        &apos;&lt;feedback&gt;&apos; +</span><br><span class="line">        &apos;&lt;author&gt;&apos; + $(&apos;input[name=&quot;name&quot;]&apos;).val() + &apos;&lt;/author&gt;&apos; +</span><br><span class="line">        &apos;&lt;email&gt;&apos; + $(&apos;input[name=&quot;email&quot;]&apos;).val() + &apos;&lt;/email&gt;&apos; +</span><br><span class="line">        &apos;&lt;content&gt;&apos; + $(&apos;input[name=&quot;feedback&quot;]&apos;).val() + &apos;&lt;/content&gt;&apos; +</span><br><span class="line">        &apos;&lt;/feedback&gt;&apos;;</span><br><span class="line">    var xmlhttp = new XMLHttpRequest();</span><br><span class="line">    xmlhttp.onreadystatechange = function () &#123;</span><br><span class="line">        if(xmlhttp.readyState == 4)&#123;</span><br><span class="line">            console.log(xmlhttp.readyState);</span><br><span class="line">            console.log(xmlhttp.responseText);</span><br><span class="line">            document.getElementById(&apos;Message&apos;).innerHTML = xmlhttp.responseText;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xmlhttp.open(&quot;POST&quot;,&quot;feed.php&quot;,true);</span><br><span class="line">    xmlhttp.send(xml);</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以看出来这是个发送<code>xml</code>的脚本。我们将发送的数据抓包，的确是xml。<br>那么考虑<code>xxe</code>。抓包发包如下：</p>
+<p>可以看出来这是个发送<code>xml</code>的脚本。我们将发送的数据抓包，的确是xml。<br>
+那么考虑<code>xxe</code>。抓包发包如下：</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/54907916-ab6be200-4f21-11e9-9471-bff46378d15d.png" alt></p>
-<p>解码即可得到flag.<br>切记：任何细微的语法错误(比如忘了分号)都将导致回显失败。</p>
+<p>解码即可得到flag.<br>
+切记：任何细微的语法错误(比如忘了分号)都将导致回显失败。</p>
 
       
     </div>
@@ -545,7 +549,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -723,7 +727,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

