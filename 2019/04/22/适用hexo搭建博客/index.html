@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="CH4SER || 自闭室">
 <meta property="og:description" content="这篇文章主要记录使用hexo和github搭建网站的过程，参考了很多博客  node.js安装(使用nvm) 123456curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash# switch node version# set the newest version as defaul">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-28T18:12:11.747Z">
+<meta property="og:updated_time" content="2019-12-29T11:57:15.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo和github搭建网站">
 <meta name="twitter:description" content="这篇文章主要记录使用hexo和github搭建网站的过程，参考了很多博客  node.js安装(使用nvm) 123456curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash# switch node version# set the newest version as defaul">
@@ -333,7 +333,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:12:11+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T19:57:15+08:00">
                 2019-12-29
               </time>
             
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1k
+                  1.2k
                 </span>
               
 
@@ -496,6 +496,13 @@
 <h3 id="set-specific-article-as-top">set specific article as top</h3>
 <p>see the link below:</p>
 <p><a href="https://www.jianshu.com/p/42a4efcdf8d7" target="_blank" rel="noopener">https://www.jianshu.com/p/42a4efcdf8d7</a></p>
+<h2 id="图床问题">图床问题</h2>
+<p>以前都是用github的图床, 现在直接放在本地了</p>
+<p>我是在source下面新建了一个images文件夹, 然后在所有文章的开头都加上<code>typora-root-url: ../</code>, 同时在偏好里面设置图片存储位置为<code>../images</code> , 这样子<code>typora</code>在插入图片的时候就会把他放在/source/images下面了, 再也不用图床啦.</p>
+<h2 id="rsync部署到自己的服务器上">rsync部署到自己的服务器上</h2>
+<p>windows系统参考</p>
+<p>https://rawbin-.github.io/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%BA%94%E7%94%A8%E6%8A%80%E6%9C%AF/2016/03/05/windows-ssh-chmod/</p>
+<p><a href="https://www.wumingx.com/tools/hexo-deployer-rsync.html" target="_blank" rel="noopener">https://www.wumingx.com/tools/hexo-deployer-rsync.html</a></p>
 
       
     </div>
@@ -699,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js安装-使用nvm"><span class="nav-number">1.</span> <span class="nav-text">node.js安装(使用nvm)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-install"><span class="nav-number">2.</span> <span class="nav-text">npm install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-安装"><span class="nav-number">3.</span> <span class="nav-text">hexo 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网站个人信息修改"><span class="nav-number">4.</span> <span class="nav-text">网站个人信息修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题选择"><span class="nav-number">5.</span> <span class="nav-text">主题选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修枝剪叶"><span class="nav-number">6.</span> <span class="nav-text">修枝剪叶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到github"><span class="nav-number">7.</span> <span class="nav-text">部署到github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥部署"><span class="nav-number">7.1.</span> <span class="nav-text">密钥部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo-deployer-git"><span class="nav-number">7.2.</span> <span class="nav-text">安装hexo-deployer-git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用hexo-admin写博客-abandoned-and-use-typora-instead"><span class="nav-number">8.</span> <span class="nav-text">使用hexo-admin写博客(abandoned, and use typora instead)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友链"><span class="nav-number">9.</span> <span class="nav-text">友链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内搜索"><span class="nav-number">10.</span> <span class="nav-text">站内搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粒子效果添加"><span class="nav-number">11.</span> <span class="nav-text">粒子效果添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示更新时间"><span class="nav-number">12.</span> <span class="nav-text">显示更新时间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#博客按照修改时间来排序"><span class="nav-number">12.1.</span> <span class="nav-text">博客按照修改时间来排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计功能"><span class="nav-number">13.</span> <span class="nav-text">统计功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶部加载条"><span class="nav-number">14.</span> <span class="nav-text">顶部加载条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主页添加阴影"><span class="nav-number">15.</span> <span class="nav-text">主页添加阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义图标"><span class="nav-number">16.</span> <span class="nav-text">自定义图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计访问人数"><span class="nav-number">17.</span> <span class="nav-text">统计访问人数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-specific-article-as-top"><span class="nav-number">17.1.</span> <span class="nav-text">set specific article as top</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js安装-使用nvm"><span class="nav-number">1.</span> <span class="nav-text">node.js安装(使用nvm)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-install"><span class="nav-number">2.</span> <span class="nav-text">npm install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-安装"><span class="nav-number">3.</span> <span class="nav-text">hexo 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网站个人信息修改"><span class="nav-number">4.</span> <span class="nav-text">网站个人信息修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题选择"><span class="nav-number">5.</span> <span class="nav-text">主题选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修枝剪叶"><span class="nav-number">6.</span> <span class="nav-text">修枝剪叶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到github"><span class="nav-number">7.</span> <span class="nav-text">部署到github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥部署"><span class="nav-number">7.1.</span> <span class="nav-text">密钥部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo-deployer-git"><span class="nav-number">7.2.</span> <span class="nav-text">安装hexo-deployer-git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用hexo-admin写博客-abandoned-and-use-typora-instead"><span class="nav-number">8.</span> <span class="nav-text">使用hexo-admin写博客(abandoned, and use typora instead)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友链"><span class="nav-number">9.</span> <span class="nav-text">友链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内搜索"><span class="nav-number">10.</span> <span class="nav-text">站内搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粒子效果添加"><span class="nav-number">11.</span> <span class="nav-text">粒子效果添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示更新时间"><span class="nav-number">12.</span> <span class="nav-text">显示更新时间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#博客按照修改时间来排序"><span class="nav-number">12.1.</span> <span class="nav-text">博客按照修改时间来排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计功能"><span class="nav-number">13.</span> <span class="nav-text">统计功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶部加载条"><span class="nav-number">14.</span> <span class="nav-text">顶部加载条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主页添加阴影"><span class="nav-number">15.</span> <span class="nav-text">主页添加阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义图标"><span class="nav-number">16.</span> <span class="nav-text">自定义图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计访问人数"><span class="nav-number">17.</span> <span class="nav-text">统计访问人数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-specific-article-as-top"><span class="nav-number">17.1.</span> <span class="nav-text">set specific article as top</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图床问题"><span class="nav-number">18.</span> <span class="nav-text">图床问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rsync部署到自己的服务器上"><span class="nav-number">19.</span> <span class="nav-text">rsync部署到自己的服务器上</span></a></li></ol></div>
             
 
           </div>
@@ -733,7 +740,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">62.9k</span>
+    <span title="Site words total count">63.1k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

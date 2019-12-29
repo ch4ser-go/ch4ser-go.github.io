@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用hexo和github搭建网站</title>
+    <url>/2019/04/22/%E9%80%82%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<blockquote>
+<p>这篇文章主要记录使用hexo和github搭建网站的过程，参考了很多博客</p>
+</blockquote>
+<h2 id="node-js安装-使用nvm">node.js安装(使用nvm)</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br><span class="line"></span><br><span class="line"># switch node version</span><br><span class="line"># set the newest version as default</span><br><span class="line">nvm use node</span><br><span class="line">nvm alias default node</span><br></pre></td></tr></table></figure>
+<h2 id="npm-install">npm install</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>see the link below:</p>
+<p><a href="https://npm.taobao.org/" target="_blank" rel="noopener">https://npm.taobao.org/</a></p>
+<h2 id="hexo-安装">hexo 安装</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir blog</span><br><span class="line">cd blog</span><br><span class="line">mkdir hexo</span><br><span class="line">cd hexo </span><br><span class="line">cnpm install hexo-cli -g</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>访问4000端口就可以看见博客了</p>
+<h2 id="网站个人信息修改">网站个人信息修改</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#在example.github.io目录下</span><br><span class="line">vim _config.yml</span><br><span class="line">在这里修改：</span><br><span class="line"></span><br><span class="line">title:</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">.......</span><br><span class="line"># vim 快速查找用/keyword ，按n下一个</span><br></pre></td></tr></table></figure>
+<h2 id="主题选择">主题选择</h2>
+<p>个人比较喜欢next</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next</span><br></pre></td></tr></table></figure>
+<p>进入themes目录下的新主题目录中，查看<code>_config.yml</code> 文件,修改：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme:hexo-theme-next</span><br></pre></td></tr></table></figure>
+<p>然后进入hexo-theme-next目录下的<code>_config.yml</code>文件，依据个人偏好修改风格：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line"># scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br><span class="line"># 选择一个喜欢的，去掉#即可</span><br></pre></td></tr></table></figure>
+<p>重新生成运行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>再次访问即可看到效果</p>
+<h2 id="修枝剪叶">修枝剪叶</h2>
+<p>要想设置右侧栏(我用的是Gemini)的头像，进入主题配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># sidebar avatar</span><br><span class="line">avatar: /images/header.jpg</span><br></pre></td></tr></table></figure>
+<p>将header.jpg放在主题文件夹下的images中即可。</p>
+<p>修改联系方式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#主题文件夹中的_config.yml文件</span><br><span class="line">social:</span><br><span class="line">  github: https://github.com/your-user-name</span><br><span class="line">  twitter: https://twitter.com/your-user-name</span><br><span class="line">  #还有很多</span><br></pre></td></tr></table></figure>
+<h2 id="部署到github">部署到github</h2>
+<p>在你的github账户上创建仓库<code>yourusername.github.io</code>，必须是用户名开头命名，否则<code>github page</code>不会生效。</p>
+<h3 id="密钥部署">密钥部署</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd</span><br><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br><span class="line">然后将公钥粘贴进github账户的个人设置里面</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.email &quot;email&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="安装hexo-deployer-git">安装hexo-deployer-git</h3>
+<p>在博客目录下下载：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>修改网站根目录下的_config.yml文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	type: git#注意git的前面要加空格否则不生效</span><br><span class="line">   repo: https://github.com/example/example.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
+<p>保存退出后执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">hexo d #部署</span><br></pre></td></tr></table></figure>
+<h2 id="使用hexo-admin写博客-abandoned-and-use-typora-instead">使用hexo-admin写博客(abandoned, and use typora instead)</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>访问<code>url/admin</code>即可编辑博客</p>
+<h2 id="友链">友链</h2>
+<p>在主题的<code>_config.yml</code>文件里面的link项目里面设置即可。</p>
+<h2 id="站内搜索">站内搜索</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>修改主题的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 3</span><br></pre></td></tr></table></figure>
+<h2 id="粒子效果添加">粒子效果添加</h2>
+<p><a href="https://github.com/theme-next/theme-next-canvas-nest" target="_blank" rel="noopener">https://github.com/theme-next/theme-next-canvas-nest</a></p>
+<p>配置文件可能有所不同,把false改成true就可以了</p>
+<h2 id="显示更新时间">显示更新时间</h2>
+<p>主题配置文件中的<code>update_at</code> 修改为true</p>
+<h3 id="博客按照修改时间来排序">博客按照修改时间来排序</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-index-updated --save</span><br></pre></td></tr></table></figure>
+<p>在config.yml中的order by的值改为<code>-updated</code></p>
+<h2 id="统计功能">统计功能</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br></pre></td></tr></table></figure>
+<p>修改<code>post_wordcount</code></p>
+<h2 id="顶部加载条">顶部加载条</h2>
+<p>在<code>/themes/next/layout/_partials/head.swig</code> 中修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta charset=&quot;UTF-8&quot;/&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;/&gt;</span><br><span class="line">在这后面添加</span><br><span class="line">&lt;script src=&quot;//cdn.bootcss.com/pace/1.0.2/pace.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;link href=&quot;//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-flash.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="主页添加阴影">主页添加阴影</h2>
+<p>打开主题文件下的<code>\source\css\_custom\custom.styl</code>,向里面加入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.post &#123;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">  margin-bottom: 60px;</span><br><span class="line">  padding: 25px;</span><br><span class="line">  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义图标">自定义图标</h2>
+<p><a href="https://www.easyicon.net/language.en/iconsearch" target="_blank" rel="noopener">https://www.easyicon.net/language.en/iconsearch</a></p>
+<p>下载32的,然后放在主题文件中的images文件中,在配置中搜索favicon并修改</p>
+<h2 id="统计访问人数">统计访问人数</h2>
+<p>在<code>themes/你的主题/layout/_partial/footer.swig</code>中定位并插入如下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"copyright"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    &lt;script <span class="keyword">async</span> src=<span class="string">"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;span class="post-meta-divider"&gt;|&lt;/</span>span&gt;</span><br><span class="line">    &lt;span id=<span class="string">"busuanzi_container_site_pv"</span>&gt;</span><br><span class="line">        本站总访问量: <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>次</span><br><span class="line">    &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="set-specific-article-as-top">set specific article as top</h3>
+<p>see the link below:</p>
+<p><a href="https://www.jianshu.com/p/42a4efcdf8d7" target="_blank" rel="noopener">https://www.jianshu.com/p/42a4efcdf8d7</a></p>
+<h2 id="图床问题">图床问题</h2>
+<p>以前都是用github的图床, 现在直接放在本地了</p>
+<p>我是在source下面新建了一个images文件夹, 然后在所有文章的开头都加上<code>typora-root-url: ../</code>, 同时在偏好里面设置图片存储位置为<code>../images</code> , 这样子<code>typora</code>在插入图片的时候就会把他放在/source/images下面了, 再也不用图床啦.</p>
+<h2 id="rsync部署到自己的服务器上">rsync部署到自己的服务器上</h2>
+<p>windows系统参考</p>
+<p>https://rawbin-.github.io/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%BA%94%E7%94%A8%E6%8A%80%E6%9C%AF/2016/03/05/windows-ssh-chmod/</p>
+<p><a href="https://www.wumingx.com/tools/hexo-deployer-rsync.html" target="_blank" rel="noopener">https://www.wumingx.com/tools/hexo-deployer-rsync.html</a></p>
+]]></content>
+      <categories>
+        <category>闲来无事</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Awd笔记[working]</title>
     <url>/2019/08/19/Awd%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="登录">登录</h2>
@@ -229,90 +320,6 @@
 <h2 id="切换apache2-的php版本">切换apache2 的php版本</h2>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo a2dismod php7.0</span><br><span class="line">sudo a2enmod php7.1</span><br><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>使用hexo和github搭建网站</title>
-    <url>/2019/04/22/%E9%80%82%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<blockquote>
-<p>这篇文章主要记录使用hexo和github搭建网站的过程，参考了很多博客</p>
-</blockquote>
-<h2 id="node-js安装-使用nvm">node.js安装(使用nvm)</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br><span class="line"></span><br><span class="line"># switch node version</span><br><span class="line"># set the newest version as default</span><br><span class="line">nvm use node</span><br><span class="line">nvm alias default node</span><br></pre></td></tr></table></figure>
-<h2 id="npm-install">npm install</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>see the link below:</p>
-<p><a href="https://npm.taobao.org/" target="_blank" rel="noopener">https://npm.taobao.org/</a></p>
-<h2 id="hexo-安装">hexo 安装</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir blog</span><br><span class="line">cd blog</span><br><span class="line">mkdir hexo</span><br><span class="line">cd hexo </span><br><span class="line">cnpm install hexo-cli -g</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>访问4000端口就可以看见博客了</p>
-<h2 id="网站个人信息修改">网站个人信息修改</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#在example.github.io目录下</span><br><span class="line">vim _config.yml</span><br><span class="line">在这里修改：</span><br><span class="line"></span><br><span class="line">title:</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">.......</span><br><span class="line"># vim 快速查找用/keyword ，按n下一个</span><br></pre></td></tr></table></figure>
-<h2 id="主题选择">主题选择</h2>
-<p>个人比较喜欢next</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next</span><br></pre></td></tr></table></figure>
-<p>进入themes目录下的新主题目录中，查看<code>_config.yml</code> 文件,修改：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme:hexo-theme-next</span><br></pre></td></tr></table></figure>
-<p>然后进入hexo-theme-next目录下的<code>_config.yml</code>文件，依据个人偏好修改风格：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line"># scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br><span class="line"># 选择一个喜欢的，去掉#即可</span><br></pre></td></tr></table></figure>
-<p>重新生成运行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>再次访问即可看到效果</p>
-<h2 id="修枝剪叶">修枝剪叶</h2>
-<p>要想设置右侧栏(我用的是Gemini)的头像，进入主题配置文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># sidebar avatar</span><br><span class="line">avatar: /images/header.jpg</span><br></pre></td></tr></table></figure>
-<p>将header.jpg放在主题文件夹下的images中即可。</p>
-<p>修改联系方式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#主题文件夹中的_config.yml文件</span><br><span class="line">social:</span><br><span class="line">  github: https://github.com/your-user-name</span><br><span class="line">  twitter: https://twitter.com/your-user-name</span><br><span class="line">  #还有很多</span><br></pre></td></tr></table></figure>
-<h2 id="部署到github">部署到github</h2>
-<p>在你的github账户上创建仓库<code>yourusername.github.io</code>，必须是用户名开头命名，否则<code>github page</code>不会生效。</p>
-<h3 id="密钥部署">密钥部署</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd</span><br><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br><span class="line">然后将公钥粘贴进github账户的个人设置里面</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.email &quot;email&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="安装hexo-deployer-git">安装hexo-deployer-git</h3>
-<p>在博客目录下下载：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>修改网站根目录下的_config.yml文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	type: git#注意git的前面要加空格否则不生效</span><br><span class="line">   repo: https://github.com/example/example.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-<p>保存退出后执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">hexo d #部署</span><br></pre></td></tr></table></figure>
-<h2 id="使用hexo-admin写博客-abandoned-and-use-typora-instead">使用hexo-admin写博客(abandoned, and use typora instead)</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>访问<code>url/admin</code>即可编辑博客</p>
-<h2 id="友链">友链</h2>
-<p>在主题的<code>_config.yml</code>文件里面的link项目里面设置即可。</p>
-<h2 id="站内搜索">站内搜索</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<p>修改主题的配置文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 3</span><br></pre></td></tr></table></figure>
-<h2 id="粒子效果添加">粒子效果添加</h2>
-<p><a href="https://github.com/theme-next/theme-next-canvas-nest" target="_blank" rel="noopener">https://github.com/theme-next/theme-next-canvas-nest</a></p>
-<p>配置文件可能有所不同,把false改成true就可以了</p>
-<h2 id="显示更新时间">显示更新时间</h2>
-<p>主题配置文件中的<code>update_at</code> 修改为true</p>
-<h3 id="博客按照修改时间来排序">博客按照修改时间来排序</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-index-updated --save</span><br></pre></td></tr></table></figure>
-<p>在config.yml中的order by的值改为<code>-updated</code></p>
-<h2 id="统计功能">统计功能</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-wordcount --save</span><br></pre></td></tr></table></figure>
-<p>修改<code>post_wordcount</code></p>
-<h2 id="顶部加载条">顶部加载条</h2>
-<p>在<code>/themes/next/layout/_partials/head.swig</code> 中修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta charset=&quot;UTF-8&quot;/&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;/&gt;</span><br><span class="line">在这后面添加</span><br><span class="line">&lt;script src=&quot;//cdn.bootcss.com/pace/1.0.2/pace.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;link href=&quot;//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-flash.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="主页添加阴影">主页添加阴影</h2>
-<p>打开主题文件下的<code>\source\css\_custom\custom.styl</code>,向里面加入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.post &#123;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">  margin-bottom: 60px;</span><br><span class="line">  padding: 25px;</span><br><span class="line">  -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">  -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="自定义图标">自定义图标</h2>
-<p><a href="https://www.easyicon.net/language.en/iconsearch" target="_blank" rel="noopener">https://www.easyicon.net/language.en/iconsearch</a></p>
-<p>下载32的,然后放在主题文件中的images文件中,在配置中搜索favicon并修改</p>
-<h2 id="统计访问人数">统计访问人数</h2>
-<p>在<code>themes/你的主题/layout/_partial/footer.swig</code>中定位并插入如下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"copyright"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    &lt;script <span class="keyword">async</span> src=<span class="string">"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;span class="post-meta-divider"&gt;|&lt;/</span>span&gt;</span><br><span class="line">    &lt;span id=<span class="string">"busuanzi_container_site_pv"</span>&gt;</span><br><span class="line">        本站总访问量: <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>次</span><br><span class="line">    &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="set-specific-article-as-top">set specific article as top</h3>
-<p>see the link below:</p>
-<p><a href="https://www.jianshu.com/p/42a4efcdf8d7" target="_blank" rel="noopener">https://www.jianshu.com/p/42a4efcdf8d7</a></p>
-]]></content>
-      <categories>
-        <category>闲来无事</category>
-      </categories>
   </entry>
   <entry>
     <title>流量分析</title>
