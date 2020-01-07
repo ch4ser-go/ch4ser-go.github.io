@@ -82,14 +82,17 @@
 
 
 
-<meta name="description" content="安洵杯 2019 iamthinking thinkphp6 反序列化 https://xz.aliyun.com/t/6479 https://www.freebuf.com/column/221939.html https://www.anquanke.com/post/id/187393 12345678910111213141516171819202122232425262728这是con">
+<meta name="description" content="HarekazeCTF2019 easynote 看着wp复现复现 开局是这样的  登录之后有添加笔记删除笔记导出笔记和获取flag功能  关键源代码如下: 12345678flag.php&amp;lt;?php          if (is_admin()) &amp;#123;            echo &quot;Congratulations! The flag is: &amp;lt;code&amp;gt;&quot; . g">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码审计 题型记录">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/代码审计题型/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="安洵杯 2019 iamthinking thinkphp6 反序列化 https://xz.aliyun.com/t/6479 https://www.freebuf.com/column/221939.html https://www.anquanke.com/post/id/187393 12345678910111213141516171819202122232425262728这是con">
+<meta property="og:description" content="HarekazeCTF2019 easynote 看着wp复现复现 开局是这样的  登录之后有添加笔记删除笔记导出笔记和获取flag功能  关键源代码如下: 12345678flag.php&amp;lt;?php          if (is_admin()) &amp;#123;            echo &quot;Congratulations! The flag is: &amp;lt;code&amp;gt;&quot; . g">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20191230162838903.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191230162858039.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191230164250536.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70891231-cf2c0680-2021-11ea-86a3-b47fa58a89a4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70916320-70cd4b00-2056-11ea-83b9-b4b3d8460b42.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70916355-80e52a80-2056-11ea-993c-7e4acce3c4ac.png">
@@ -111,11 +114,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55333592-3290fb00-54ca-11e9-8816-f316ed169091.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55333654-58b69b00-54ca-11e9-8279-d88d243c7cff.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57857218-3f22a600-7821-11e9-88a5-624bf3bb442f.png">
-<meta property="og:updated_time" content="2019-12-28T18:11:42.549Z">
+<meta property="og:updated_time" content="2019-12-30T08:43:16.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码审计 题型记录">
-<meta name="twitter:description" content="安洵杯 2019 iamthinking thinkphp6 反序列化 https://xz.aliyun.com/t/6479 https://www.freebuf.com/column/221939.html https://www.anquanke.com/post/id/187393 12345678910111213141516171819202122232425262728这是con">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/70891231-cf2c0680-2021-11ea-86a3-b47fa58a89a4.png">
+<meta name="twitter:description" content="HarekazeCTF2019 easynote 看着wp复现复现 开局是这样的  登录之后有添加笔记删除笔记导出笔记和获取flag功能  关键源代码如下: 12345678flag.php&amp;lt;?php          if (is_admin()) &amp;#123;            echo &quot;Congratulations! The flag is: &amp;lt;code&amp;gt;&quot; . g">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20191230162838903.png">
 
 
 
@@ -355,8 +358,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:11:42+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-30T16:43:16+08:00">
+                2019-12-30
               </time>
             
           </span>
@@ -405,7 +408,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  12.7k
+                  13.1k
                 </span>
               
 
@@ -421,7 +424,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  69
+                  71
                 </span>
               
             </div>
@@ -442,7 +445,31 @@
       
 
       
-        <h2 id="安洵杯-2019-iamthinking">安洵杯 2019 iamthinking</h2>
+        <h2 id="HarekazeCTF2019-easynote">HarekazeCTF2019 easynote</h2>
+<p>看着wp复现复现</p>
+<p>开局是这样的</p>
+<p><img src="/images/image-20191230162838903.png" alt="image-20191230162838903"></p>
+<p>登录之后有添加笔记删除笔记导出笔记和获取flag功能</p>
+<p><img src="/images/image-20191230162858039.png" alt="image-20191230162858039"></p>
+<p>关键源代码如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">flag.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">          <span class="keyword">if</span> (is_admin()) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"Congratulations! The flag is: &lt;code&gt;"</span> . getenv(<span class="string">'FLAG'</span>) . <span class="string">"&lt;/code&gt;"</span>;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"You are not an admin :("</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">lib.php</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_admin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">isset</span>($_SESSION[<span class="string">'admin'</span>])) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> $_SESSION[<span class="string">'admin'</span>] === <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add_note</span><span class="params">($title, $body)</span> </span>&#123;</span><br><span class="line">  $notes = get_notes();</span><br><span class="line">  array_push($notes, [</span><br><span class="line">    <span class="string">'title'</span> =&gt; $title,</span><br><span class="line">    <span class="string">'body'</span> =&gt; $body,</span><br><span class="line">    <span class="string">'id'</span> =&gt; hash(<span class="string">'sha256'</span>, microtime())</span><br><span class="line">  ]);</span><br><span class="line">  $_SESSION[<span class="string">'notes'</span>] = $notes;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">init.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">'config.php'</span>);</span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">'lib.php'</span>);</span><br><span class="line"></span><br><span class="line">session_save_path(TEMP_DIR);</span><br><span class="line">session_start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">export.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">'init.php'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!is_logged_in()) &#123;</span><br><span class="line">  redirect(<span class="string">'/?page=home'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$notes = get_notes();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_GET[<span class="string">'type'</span>]) || <span class="keyword">empty</span>($_GET[<span class="string">'type'</span>])) &#123;</span><br><span class="line">  $type = <span class="string">'zip'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  $type = $_GET[<span class="string">'type'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$filename = get_user() . <span class="string">'-'</span> . bin2hex(random_bytes(<span class="number">8</span>)) . <span class="string">'.'</span> . $type;</span><br><span class="line">$filename = str_replace(<span class="string">'..'</span>, <span class="string">''</span>, $filename); <span class="comment">// avoid path traversal</span></span><br><span class="line">$path = TEMP_DIR . <span class="string">'/'</span> . $filename;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($type === <span class="string">'tar'</span>) &#123;</span><br><span class="line">  $archive = <span class="keyword">new</span> PharData($path);</span><br><span class="line">  $archive-&gt;startBuffering();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// use zip as default</span></span><br><span class="line">  $archive = <span class="keyword">new</span> ZipArchive();</span><br><span class="line">  $archive-&gt;open($path, ZIPARCHIVE::CREATE | ZipArchive::OVERWRITE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ($index = <span class="number">0</span>; $index &lt; count($notes); $index++) &#123;</span><br><span class="line">  $note = $notes[$index];</span><br><span class="line">  $title = $note[<span class="string">'title'</span>];</span><br><span class="line">  $title = preg_replace(<span class="string">'/[^!-~]/'</span>, <span class="string">'-'</span>, $title);</span><br><span class="line">  $title = preg_replace(<span class="string">'#[/\\?*.]#'</span>, <span class="string">'-'</span>, $title); <span class="comment">// delete suspicious characters</span></span><br><span class="line">  $archive-&gt;addFromString(<span class="string">"&#123;$index&#125;_&#123;$title&#125;.json"</span>, json_encode($note));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($type === <span class="string">'tar'</span>) &#123;</span><br><span class="line">  $archive-&gt;stopBuffering();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  $archive-&gt;close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">header(<span class="string">'Content-Disposition: attachment; filename="'</span> . $filename . <span class="string">'";'</span>);</span><br><span class="line">header(<span class="string">'Content-Length: '</span> . filesize($path));</span><br><span class="line">header(<span class="string">'Content-Type: application/zip'</span>);</span><br><span class="line">readfile($path);</span><br></pre></td></tr></table></figure>
+<p>几个点</p>
+<ul>
+<li>如果导出类型不是tar的话就会生成并覆盖写文件<code>ZIPARCHIVE::CREATE | ZipArchive::OVERWRITE</code></li>
+<li>session存储的目录和压缩包存储的目录是一样的</li>
+<li>压缩包的名字可控</li>
+</ul>
+<p>那么思路就是添加笔记的时候写入session序列化字符串片段, 并将它导出压缩包, 但是控制压缩包的名字为sess_xxxxxxx, 这样就会生成一个新的session, 然后利用拿到的这个session去获取flag就可以啦</p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用用户名sess_登录</span><br><span class="line">添加note , title为|N;admin|b:1;</span><br><span class="line">导出note, 用burpsuite抓包, 修改type为.</span><br><span class="line">利用导出的sessionid去getflag</span><br></pre></td></tr></table></figure>
+<p>然后关于序列化字符串这里, php默认是键名+|+序列化字符串</p>
+<p>比如</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">session_save_path(<span class="string">"./uploads"</span>);</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">$_SESSION[<span class="string">'test'</span>]=<span class="string">"test"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20191230164250536.png" alt="image-20191230164250536"></p>
+<h2 id="安洵杯-2019-iamthinking">安洵杯 2019 iamthinking</h2>
 <p>thinkphp6 反序列化</p>
 <p><a href="https://xz.aliyun.com/t/6479" target="_blank" rel="noopener">https://xz.aliyun.com/t/6479</a></p>
 <p><a href="https://www.freebuf.com/column/221939.html" target="_blank" rel="noopener">https://www.freebuf.com/column/221939.html</a></p>
@@ -885,7 +912,7 @@ Thanks for your message Array, it has been received.</p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -973,7 +1000,7 @@ Thanks for your message Array, it has been received.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安洵杯-2019-iamthinking"><span class="nav-number">1.</span> <span class="nav-text">安洵杯 2019 iamthinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安洵杯-2019-这不是文件上传"><span class="nav-number">2.</span> <span class="nav-text">安洵杯 2019 这不是文件上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安洵杯-2019-easy-serialize-php"><span class="nav-number">3.</span> <span class="nav-text">安洵杯 2019 easy_serialize_php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#De1ta-ctf-2019-shellshellshell"><span class="nav-number">4.</span> <span class="nav-text">De1ta ctf 2019 shellshellshell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-laravel1"><span class="nav-number">5.</span> <span class="nav-text">CISCN 2019 laravel1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jarvisoj-babyphp"><span class="nav-number">6.</span> <span class="nav-text">jarvisoj babyphp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hctf-admin"><span class="nav-number">7.</span> <span class="nav-text">hctf admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-CISCN-northern-DropBox"><span class="nav-number">8.</span> <span class="nav-text">2019 CISCN northern DropBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCTF2016-piapiapia"><span class="nav-number">9.</span> <span class="nav-text">TCTF2016 piapiapia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTCF2018-warmup"><span class="nav-number">10.</span> <span class="nav-text">HTCF2018 warmup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019强网杯-upload"><span class="nav-number">11.</span> <span class="nav-text">2019强网杯 upload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4队伍出的一道题"><span class="nav-number">12.</span> <span class="nav-text">p4队伍出的一道题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-RCTF-nextphp"><span class="nav-number">13.</span> <span class="nav-text">2019 RCTF nextphp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-Hash"><span class="nav-number">14.</span> <span class="nav-text">ichunqiu Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-try"><span class="nav-number">15.</span> <span class="nav-text">ichunqiu try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#login"><span class="nav-number">16.</span> <span class="nav-text">login</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backdoor-ichunqiu"><span class="nav-number">17.</span> <span class="nav-text">backdoor (ichunqiu)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in-a-mess"><span class="nav-number">18.</span> <span class="nav-text">in a mess</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babyphp-boot2root"><span class="nav-number">19.</span> <span class="nav-text">babyphp (boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pingserver-boot2root"><span class="nav-number">20.</span> <span class="nav-text">pingserver(boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dragonscim-workshop"><span class="nav-number">21.</span> <span class="nav-text">dragonscim workshop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-百度杯getflag"><span class="nav-number">22.</span> <span class="nav-text">ichunqiu 百度杯getflag</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HarekazeCTF2019-easynote"><span class="nav-number">1.</span> <span class="nav-text">HarekazeCTF2019 easynote</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安洵杯-2019-iamthinking"><span class="nav-number">2.</span> <span class="nav-text">安洵杯 2019 iamthinking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安洵杯-2019-这不是文件上传"><span class="nav-number">3.</span> <span class="nav-text">安洵杯 2019 这不是文件上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安洵杯-2019-easy-serialize-php"><span class="nav-number">4.</span> <span class="nav-text">安洵杯 2019 easy_serialize_php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#De1ta-ctf-2019-shellshellshell"><span class="nav-number">5.</span> <span class="nav-text">De1ta ctf 2019 shellshellshell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-laravel1"><span class="nav-number">6.</span> <span class="nav-text">CISCN 2019 laravel1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jarvisoj-babyphp"><span class="nav-number">7.</span> <span class="nav-text">jarvisoj babyphp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hctf-admin"><span class="nav-number">8.</span> <span class="nav-text">hctf admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-CISCN-northern-DropBox"><span class="nav-number">9.</span> <span class="nav-text">2019 CISCN northern DropBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCTF2016-piapiapia"><span class="nav-number">10.</span> <span class="nav-text">TCTF2016 piapiapia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTCF2018-warmup"><span class="nav-number">11.</span> <span class="nav-text">HTCF2018 warmup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019强网杯-upload"><span class="nav-number">12.</span> <span class="nav-text">2019强网杯 upload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4队伍出的一道题"><span class="nav-number">13.</span> <span class="nav-text">p4队伍出的一道题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-RCTF-nextphp"><span class="nav-number">14.</span> <span class="nav-text">2019 RCTF nextphp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-Hash"><span class="nav-number">15.</span> <span class="nav-text">ichunqiu Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-try"><span class="nav-number">16.</span> <span class="nav-text">ichunqiu try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#login"><span class="nav-number">17.</span> <span class="nav-text">login</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backdoor-ichunqiu"><span class="nav-number">18.</span> <span class="nav-text">backdoor (ichunqiu)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in-a-mess"><span class="nav-number">19.</span> <span class="nav-text">in a mess</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babyphp-boot2root"><span class="nav-number">20.</span> <span class="nav-text">babyphp (boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pingserver-boot2root"><span class="nav-number">21.</span> <span class="nav-text">pingserver(boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dragonscim-workshop"><span class="nav-number">22.</span> <span class="nav-text">dragonscim workshop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-百度杯getflag"><span class="nav-number">23.</span> <span class="nav-text">ichunqiu 百度杯getflag</span></a></li></ol></div>
             
 
           </div>
@@ -993,7 +1020,7 @@ Thanks for your message Array, it has been received.</p>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1007,7 +1034,7 @@ Thanks for your message Array, it has been received.</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">63.1k</span>
+    <span title="Site words total count">65k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

