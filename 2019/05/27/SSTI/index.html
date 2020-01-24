@@ -82,14 +82,16 @@
 
 
 
-<meta name="description" content="SCTF 2019 flag shop robots.txt 提示 ,找到源码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
+<meta name="description" content="ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将要加密的东西换成%ff, 又爆出了源码  是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了 SCTF 2019 flag shop ro">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSTI 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/SSTI/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="SCTF 2019 flag shop robots.txt 提示 ,找到源码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
+<meta property="og:description" content="ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将要加密的东西换成%ff, 又爆出了源码  是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了 SCTF 2019 flag shop ro">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200121164528251.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200121164628693.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20191231170305900.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20191231170332653.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/71469081-0dd07680-2803-11ea-9056-a078087a7001.png">
@@ -100,11 +102,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511254-b561a580-aa28-11e9-8e54-c89fcf20690b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511291-ce6a5680-aa28-11e9-8525-0c66dd03c840.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57853604-c1f33300-7818-11e9-8665-a592056576e0.png">
-<meta property="og:updated_time" content="2019-12-31T09:04:43.893Z">
+<meta property="og:updated_time" content="2020-01-21T09:14:09.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSTI 题型记录[working forever]">
-<meta name="twitter:description" content="SCTF 2019 flag shop robots.txt 提示 ,找到源码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848">
-<meta name="twitter:image" content="http://yoursite.com/images/image-20191231170305900.png">
+<meta name="twitter:description" content="ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将要加密的东西换成%ff, 又爆出了源码  是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了 SCTF 2019 flag shop ro">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200121164528251.png">
 
 
 
@@ -175,7 +177,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">要温柔而强大ヾ(≧▽≦*)o</p>
+        <p class="site-subtitle">志之难也,不在胜人,而在自胜.</p>
       
   </div>
 
@@ -344,8 +346,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-31T17:04:43+08:00">
-                2019-12-31
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-21T17:14:09+08:00">
+                2020-01-21
               </time>
             
           </span>
@@ -394,7 +396,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.2k
+                  1.4k
                 </span>
               
 
@@ -410,7 +412,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6
+                  7
                 </span>
               
             </div>
@@ -431,7 +433,13 @@
       
 
       
-        <h2 id="SCTF-2019-flag-shop">SCTF 2019 flag shop</h2>
+        <h2 id="ciscn-华东南赛区-Double-Secret">ciscn 华东南赛区 Double Secret</h2>
+<p>超过四位的字符加密会报错, 报错信息中可以看到部分源码</p>
+<p><img src="/images/image-20200121164528251.png" alt="image-20200121164528251"></p>
+<p>将要加密的东西换成%ff, 又爆出了源码</p>
+<p><img src="/images/image-20200121164628693.png" alt="image-20200121164628693"></p>
+<p>是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了</p>
+<h2 id="SCTF-2019-flag-shop">SCTF 2019 flag shop</h2>
 <p>robots.txt 提示 ,找到源码</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'sinatra'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'sinatra/cookies'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'sinatra/json'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'jwt'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'securerandom'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'erb'</span></span><br><span class="line"></span><br><span class="line">set <span class="symbol">:public_folder</span>, File.dirname(__FILE_<span class="number">_</span>) + <span class="string">'/static'</span></span><br><span class="line"></span><br><span class="line">FLAGPRICE = <span class="number">1000000000000000000000000000</span></span><br><span class="line">ENV[<span class="string">"SECRET"</span>] = SecureRandom.hex(<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">configure <span class="keyword">do</span></span><br><span class="line">  enable <span class="symbol">:logging</span></span><br><span class="line">  file = File.new(File.dirname(__FILE_<span class="number">_</span>) + <span class="string">'/../log/http.log'</span>,<span class="string">"a+"</span>)</span><br><span class="line">  file.sync = <span class="literal">true</span></span><br><span class="line">  use Rack::CommonLogger, file</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/"</span> <span class="keyword">do</span></span><br><span class="line">  redirect <span class="string">'/shop'</span>, <span class="number">302</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/filebak"</span> <span class="keyword">do</span></span><br><span class="line">  content_type <span class="symbol">:text</span></span><br><span class="line">  erb IO.binread __FILE_<span class="number">_</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/api/auth"</span> <span class="keyword">do</span></span><br><span class="line">  payload = &#123; <span class="symbol">uid:</span> SecureRandom.uuid , <span class="symbol">jkl:</span> <span class="number">20</span>&#125;</span><br><span class="line">  auth = JWT.encode payload,ENV[<span class="string">"SECRET"</span>] , <span class="string">'HS256'</span></span><br><span class="line">  cookies[<span class="symbol">:auth</span>] = auth</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/api/info"</span> <span class="keyword">do</span></span><br><span class="line">  islogin</span><br><span class="line">  auth = JWT.decode cookies[<span class="symbol">:auth</span>],ENV[<span class="string">"SECRET"</span>] , <span class="literal">true</span>, &#123; <span class="symbol">algorithm:</span> <span class="string">'HS256'</span> &#125;</span><br><span class="line">  json(&#123;<span class="symbol">uid:</span> auth[<span class="number">0</span>][<span class="string">"uid"</span>],<span class="symbol">jkl:</span> auth[<span class="number">0</span>][<span class="string">"jkl"</span>]&#125;)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/shop"</span> <span class="keyword">do</span></span><br><span class="line">  erb <span class="symbol">:shop</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">get <span class="string">"/work"</span> <span class="keyword">do</span></span><br><span class="line">  islogin</span><br><span class="line">  auth = JWT.decode cookies[<span class="symbol">:auth</span>],ENV[<span class="string">"SECRET"</span>] , <span class="literal">true</span>, &#123; <span class="symbol">algorithm:</span> <span class="string">'HS256'</span> &#125;</span><br><span class="line">  auth = auth[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">unless</span> params[<span class="symbol">:SECRET</span>].<span class="literal">nil</span>?</span><br><span class="line">    <span class="keyword">if</span> ENV[<span class="string">"SECRET"</span>].match(<span class="string">"<span class="subst">#&#123;params[<span class="symbol">:SECRET</span>].match(<span class="regexp">/[0-9a-z]+/</span>)&#125;</span>"</span>)</span><br><span class="line">      puts ENV[<span class="string">"FLAG"</span>]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> params[<span class="symbol">:do</span>] == <span class="string">"<span class="subst">#&#123;params[<span class="symbol">:name</span>][<span class="number">0</span>,<span class="number">7</span>]&#125;</span> is working"</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    auth[<span class="string">"jkl"</span>] = auth[<span class="string">"jkl"</span>].to_i + SecureRandom.random_number(<span class="number">10</span>)</span><br><span class="line">    auth = JWT.encode auth,ENV[<span class="string">"SECRET"</span>] , <span class="string">'HS256'</span></span><br><span class="line">    cookies[<span class="symbol">:auth</span>] = auth</span><br><span class="line">    ERB::new(<span class="string">"&lt;script&gt;alert('<span class="subst">#&#123;params[<span class="symbol">:name</span>][<span class="number">0</span>,<span class="number">7</span>]&#125;</span> working successfully!')&lt;/script&gt;"</span>).result</span><br><span class="line"></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">post <span class="string">"/shop"</span> <span class="keyword">do</span></span><br><span class="line">  islogin</span><br><span class="line">  auth = JWT.decode cookies[<span class="symbol">:auth</span>],ENV[<span class="string">"SECRET"</span>] , <span class="literal">true</span>, &#123; <span class="symbol">algorithm:</span> <span class="string">'HS256'</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> auth[<span class="number">0</span>][<span class="string">"jkl"</span>] &lt; FLAGPRICE <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    json(&#123;<span class="symbol">title:</span> <span class="string">"error"</span>,<span class="symbol">message:</span> <span class="string">"no enough jkl"</span>&#125;)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">    auth &lt;&lt; &#123;<span class="symbol">flag:</span> ENV[<span class="string">"FLAG"</span>]&#125;</span><br><span class="line">    auth = JWT.encode auth,ENV[<span class="string">"SECRET"</span>] , <span class="string">'HS256'</span></span><br><span class="line">    cookies[<span class="symbol">:auth</span>] = auth</span><br><span class="line">    json(&#123;<span class="symbol">title:</span> <span class="string">"success"</span>,<span class="symbol">message:</span> <span class="string">"jkl is good thing"</span>&#125;)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">islogin</span></span></span><br><span class="line">  <span class="keyword">if</span> cookies[<span class="symbol">:auth</span>].<span class="literal">nil</span>? <span class="keyword">then</span></span><br><span class="line">    redirect to(<span class="string">'/shop'</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>代码能看懂, 就是不知道这个东西是<code>ERB</code>模板注入. …</p>
@@ -605,7 +613,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -697,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">1.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">2.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">3.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">4.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ciscn-华东南赛区-Double-Secret"><span class="nav-number">1.</span> <span class="nav-text">ciscn 华东南赛区 Double Secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">2.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">3.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">4.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">5.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
             
 
           </div>
@@ -731,7 +739,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">68.7k</span>
+    <span title="Site words total count">72.2k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
